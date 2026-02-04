@@ -39,7 +39,7 @@
         
         body {
             font-family: 'DM Sans', sans-serif;
-            background: var(--bg-primary);
+            background: #f1f0ea;
             color: var(--text-primary);
             min-height: 100vh;
             overflow: hidden;
@@ -53,7 +53,8 @@
             right: 0;
             z-index: 100;
             padding: 1rem 2rem;
-            background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(10,12,16,0.95) 70%, transparent 100%);
+            /*background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(10,12,16,0.95) 70%, transparent 100%);*/
+            background-color: transparent;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -708,7 +709,7 @@
     
     <!-- Header -->
     <header class="header">
-        <div class="header-left">
+        <div class="header-left" style="opacity: 0;">
             <h1>Red de Conexiones</h1>
             <p>Congresistas, Familiares y Contratos con el Estado</p>
         </div>
