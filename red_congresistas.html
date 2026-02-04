@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red de Conexiones: Congresistas y Contratos Públicos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --accent-gold: #ffd700;
+            --accent-red: #f85149;
+            --accent-blue: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-purple: #a371f7;
+            --accent-orange: #f0883e;
+            --border-subtle: #30363d;
+            --glow-intensity: 0.6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 2rem;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, transparent 100%);
+        }
+        
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.3rem;
+        }
+        
+        .header p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        
+        /* SVG Container */
+        #network-container {
+            width: 100vw;
+            height: 100vh;
+            cursor: grab;
+        }
+        
+        #network-container:active {
+            cursor: grabbing;
+        }
+        
+        /* Node Styles */
+        .node {
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        
+        .node-circle {
+            stroke-width: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .node-congressperson .node-circle {
+            fill: var(--bg-card);
+            stroke: var(--accent-gold);
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+        }
+        
+        .node-familiar .node-circle {
+            fill: var(--bg-card);
+            stroke: var(--accent-blue);
+            filter: drop-shadow(0 0 6px rgba(88, 166, 255, 0.3));
+        }
+        
+        .node-entity .node-circle {
+            fill: var(--bg-card);
+            stroke: var(--accent-purple);
+            filter: drop-shadow(0 0 6px rgba(163, 113, 247, 0.3));
+        }
+        
+        .node-contract .node-circle {
+            fill: var(--bg-card);
+            stroke: var(--accent-green);
+            filter: drop-shadow(0 0 5px rgba(63, 185, 80, 0.3));
+        }
+        
+        .node:hover .node-circle {
+            stroke-width: 3px;
+        }
+        
+        .node.highlighted .node-circle {
+            stroke-width: 4px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        .node.dimmed {
+            opacity: 0.15;
+        }
+        
+        .node-label {
+            font-size: 11px;
+            font-weight: 600;
+            fill: var(--text-primary);
+            text-anchor: middle;
+            pointer-events: none;
+        }
+        
+        .node-sublabel {
+            font-size: 9px;
+            font-weight: 400;
+            fill: var(--text-secondary);
+            text-anchor: middle;
+            pointer-events: none;
+        }
+        
+        /* Link Styles */
+        .link {
+            fill: none;
+            stroke-opacity: 0.4;
+            transition: all 0.3s ease;
+        }
+        
+        .link.highlighted {
+            stroke-opacity: 1;
+            stroke-width: 3px !important;
+        }
+        
+        .link.dimmed {
+            stroke-opacity: 0.05;
+        }
+        
+        .link-congressperson-familiar {
+            stroke: var(--accent-blue);
+            stroke-width: 2px;
+        }
+        
+        .link-familiar-entity {
+            stroke: var(--accent-purple);
+            stroke-width: 1.5px;
+        }
+        
+        .link-entity-contract {
+            stroke: var(--accent-green);
+            stroke-width: 1px;
+        }
+        
+        /* Node Icons */
+        .node-icon {
+            fill: var(--text-primary);
+            pointer-events: none;
+        }
+        
+        /* Photo clip */
+        .photo-clip {
+            clip-path: circle(50%);
+        }
+        
+        /* Tooltip */
+        .tooltip {
+            position: fixed;
+            padding: 1rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            max-width: 320px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+        
+        .tooltip.visible {
+            opacity: 1;
+        }
+        
+        .tooltip-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .tooltip-type {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            display: inline-block;
+        }
+        
+        .tooltip-type.congressperson { background: rgba(255, 215, 0, 0.2); color: var(--accent-gold); }
+        .tooltip-type.familiar { background: rgba(88, 166, 255, 0.2); color: var(--accent-blue); }
+        .tooltip-type.entity { background: rgba(163, 113, 247, 0.2); color: var(--accent-purple); }
+        .tooltip-type.contract { background: rgba(63, 185, 80, 0.2); color: var(--accent-green); }
+        
+        .tooltip-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .tooltip-row:last-child {
+            border-bottom: none;
+        }
+        
+        .tooltip-label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+        
+        .tooltip-value {
+            color: var(--text-primary);
+            font-weight: 600;
+            text-align: right;
+            max-width: 180px;
+        }
+        
+        .tooltip-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+            padding: 0.4rem 0.8rem;
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Info Panel */
+        .info-panel {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 280px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 50;
+        }
+        
+        .info-panel.visible {
+            opacity: 1;
+        }
+        
+        .info-panel h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .info-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .info-stat:last-child {
+            border-bottom: none;
+        }
+        
+        .info-stat-value {
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+        
+        /* Legend */
+        .legend {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            background: rgba(22, 27, 34, 0.9);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+            z-index: 50;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+        }
+        
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid;
+        }
+        
+        .legend-dot.congressperson { border-color: var(--accent-gold); background: rgba(255, 215, 0, 0.2); }
+        .legend-dot.familiar { border-color: var(--accent-blue); background: rgba(88, 166, 255, 0.2); }
+        .legend-dot.entity { border-color: var(--accent-purple); background: rgba(163, 113, 247, 0.2); }
+        .legend-dot.contract { border-color: var(--accent-green); background: rgba(63, 185, 80, 0.2); }
+        
+        /* Controls */
+        .controls {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 50;
+        }
+        
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .control-btn:hover {
+            background: var(--border-subtle);
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { filter: drop-shadow(0 0 8px currentColor); }
+            50% { filter: drop-shadow(0 0 16px currentColor); }
+        }
+        
+        /* Search */
+        .search-container {
+            position: fixed;
+            top: 1.5rem;
+            right: 2rem;
+            z-index: 100;
+        }
+        
+        .search-input {
+            width: 250px;
+            padding: 0.6rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        
+        .search-input:focus {
+            border-color: var(--accent-gold);
+        }
+        
+        .search-input::placeholder {
+            color: var(--text-secondary);
+        }
+        
+        /* Flow indicator */
+        .flow-indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(22, 27, 34, 0.95);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--accent-gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 200;
+        }
+        
+        .flow-indicator.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Red de Conexiones: Congresistas y Contratos Públicos</h1>
+        <p>Visualización interactiva de vínculos familiares y contrataciones con el Estado</p>
+    </div>
+    
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Buscar congresista, familiar o entidad..." id="search-input">
+    </div>
+    
+    <svg id="network-container"></svg>
+    
+    <div class="tooltip" id="tooltip"></div>
+    
+    <div class="flow-indicator" id="flow-indicator">
+        Mostrando flujo de conexiones
+    </div>
+    
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-dot congressperson"></div>
+            <span>Congresista</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot familiar"></div>
+            <span>Familiar</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot entity"></div>
+            <span>Entidad Contratante</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot contract"></div>
+            <span>Contrato</span>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button class="control-btn" id="zoom-in" title="Acercar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
+            </svg>
+        </button>
+        <button class="control-btn" id="zoom-out" title="Alejar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M8 11h6"/>
+            </svg>
+        </button>
+        <button class="control-btn" id="reset-view" title="Reiniciar vista">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+            </svg>
+        </button>
+        <button class="control-btn" id="clear-highlight" title="Limpiar selección">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+    </div>
+
+    <script>
+    // ============================================
+    // DATOS DE EJEMPLO - REEMPLAZAR CON DATOS REALES
+    // ============================================
+    const sampleData = {
+        nodes: [
+            // Congresistas
+            {
+                id: "C001",
+                type: "congressperson",
+                name: "Ana María Zegarra López",
+                dni: "42628319",
+                party: "Alianza para el Progreso",
+                commission: "Comisión de Economía",
+                photo: "https://i.pravatar.cc/150?img=1",
+                department: "Lima"
+            },
+            {
+                id: "C002",
+                type: "congressperson",
+                name: "José Luis Elías Ávalos",
+                dni: "21569935",
+                party: "Podemos Perú",
+                commission: "Comisión de Transportes",
+                photo: "https://i.pravatar.cc/150?img=3",
+                department: "Ica"
+            },
+            
+            // Familiares de Ana María Zegarra
+            {
+                id: "F001",
+                type: "familiar",
+                name: "Hugo Hermilio Alvarado Apaza",
+                dni: "04632989",
+                parentesco: "Padre del Cónyuge",
+                ocupacion: "Pescador Artesanal",
+                congresspersonId: "C001"
+            },
+            {
+                id: "F002",
+                type: "familiar",
+                name: "José Alfredo Alvarado Mamani",
+                dni: "40448882",
+                parentesco: "Cuñado(a)",
+                ocupacion: "Chofer",
+                lugarTrabajo: "Transportes Halcon SRL",
+                ruc: "20456789012",
+                congresspersonId: "C001"
+            },
+            {
+                id: "F003",
+                type: "familiar",
+                name: "Deisy Paola Alvarado Mamani",
+                dni: "42067814",
+                parentesco: "Cuñado(a)",
+                ocupacion: "Promotora Educativa",
+                lugarTrabajo: "Programa Educación Básica Para Todos",
+                congresspersonId: "C001"
+            },
+            
+            // Familiares de José Luis Elías
+            {
+                id: "F004",
+                type: "familiar",
+                name: "Carlos Elías Mendoza",
+                dni: "21234567",
+                parentesco: "Hermano",
+                ocupacion: "Gerente General",
+                lugarTrabajo: "Constructora del Sur SAC",
+                ruc: "20567891234",
+                congresspersonId: "C002"
+            },
+            {
+                id: "F005",
+                type: "familiar",
+                name: "María Elena Ávalos de Elías",
+                dni: "21345678",
+                parentesco: "Madre",
+                ocupacion: "Comerciante",
+                lugarTrabajo: "Distribuidora Ávalos EIRL",
+                ruc: "20123456789",
+                congresspersonId: "C002"
+            },
+            
+            // Entidades contratantes
+            {
+                id: "E001",
+                type: "entity",
+                name: "Transportes Halcon SRL",
+                ruc: "20456789012",
+                rubro: "Transporte de carga",
+                montoTotal: 1250000,
+                numContratos: 8
+            },
+            {
+                id: "E002",
+                type: "entity",
+                name: "Constructora del Sur SAC",
+                ruc: "20567891234",
+                rubro: "Construcción de infraestructura",
+                montoTotal: 4580000,
+                numContratos: 12
+            },
+            {
+                id: "E003",
+                type: "entity",
+                name: "Distribuidora Ávalos EIRL",
+                ruc: "20123456789",
+                rubro: "Comercialización de alimentos",
+                montoTotal: 890000,
+                numContratos: 5
+            },
+            
+            // Contratos
+            {
+                id: "CT001",
+                type: "contract",
+                entidadId: "E001",
+                fecha: "2023-05-15",
+                descripcion: "Servicio de transporte de materiales para PRONIED",
+                monto: 320000,
+                entidadContratante: "PRONIED",
+                documentUrl: "#"
+            },
+            {
+                id: "CT002",
+                type: "contract",
+                entidadId: "E001",
+                fecha: "2023-08-20",
+                descripcion: "Transporte de equipos médicos - MINSA",
+                monto: 185000,
+                entidadContratante: "MINSA",
+                documentUrl: "#"
+            },
+            {
+                id: "CT003",
+                type: "contract",
+                entidadId: "E002",
+                fecha: "2023-03-10",
+                descripcion: "Construcción de puente vehicular - Ica",
+                monto: 2150000,
+                entidadContratante: "MTC",
+                documentUrl: "#"
+            },
+            {
+                id: "CT004",
+                type: "contract",
+                entidadId: "E002",
+                fecha: "2023-11-05",
+                descripcion: "Mejoramiento de carretera regional",
+                monto: 1850000,
+                entidadContratante: "Gobierno Regional Ica",
+                documentUrl: "#"
+            },
+            {
+                id: "CT005",
+                type: "contract",
+                entidadId: "E003",
+                fecha: "2024-01-15",
+                descripcion: "Provisión de alimentos - Qali Warma",
+                monto: 520000,
+                entidadContratante: "Qali Warma",
+                documentUrl: "#"
+            }
+        ],
+        links: [
+            // Congresista -> Familiares
+            { source: "C001", target: "F001", type: "congressperson-familiar" },
+            { source: "C001", target: "F002", type: "congressperson-familiar" },
+            { source: "C001", target: "F003", type: "congressperson-familiar" },
+            { source: "C002", target: "F004", type: "congressperson-familiar" },
+            { source: "C002", target: "F005", type: "congressperson-familiar" },
+            
+            // Familiares -> Entidades (por RUC del lugar de trabajo)
+            { source: "F002", target: "E001", type: "familiar-entity" },
+            { source: "F004", target: "E002", type: "familiar-entity" },
+            { source: "F005", target: "E003", type: "familiar-entity" },
+            
+            // Entidades -> Contratos
+            { source: "E001", target: "CT001", type: "entity-contract" },
+            { source: "E001", target: "CT002", type: "entity-contract" },
+            { source: "E002", target: "CT003", type: "entity-contract" },
+            { source: "E002", target: "CT004", type: "entity-contract" },
+            { source: "E003", target: "CT005", type: "entity-contract" }
+        ]
+    };
+
+    // ============================================
+    // CONFIGURACIÓN DEL GRÁFICO
+    // ============================================
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    
+    const nodeRadius = {
+        congressperson: 45,
+        familiar: 30,
+        entity: 35,
+        contract: 22
+    };
+    
+    const svg = d3.select("#network-container")
+        .attr("width", width)
+        .attr("height", height);
+    
+    // Crear grupo principal con zoom
+    const g = svg.append("g");
+    
+    // Configurar zoom
+    const zoom = d3.zoom()
+        .scaleExtent([0.2, 4])
+        .on("zoom", (event) => {
+            g.attr("transform", event.transform);
+        });
+    
+    svg.call(zoom);
+    
+    // Crear definiciones para patrones y gradientes
+    const defs = svg.append("defs");
+    
+    // Crear patrones de fotos para congresistas
+    sampleData.nodes.filter(n => n.type === "congressperson").forEach(node => {
+        defs.append("pattern")
+            .attr("id", `photo-${node.id}`)
+            .attr("patternUnits", "objectBoundingBox")
+            .attr("width", 1)
+            .attr("height", 1)
+            .append("image")
+            .attr("xlink:href", node.photo)
+            .attr("width", nodeRadius.congressperson * 2)
+            .attr("height", nodeRadius.congressperson * 2)
+            .attr("preserveAspectRatio", "xMidYMid slice");
+    });
+    
+    // ============================================
+    // CREAR SIMULACIÓN DE FUERZA
+    // ============================================
+    const simulation = d3.forceSimulation(sampleData.nodes)
+        .force("link", d3.forceLink(sampleData.links)
+            .id(d => d.id)
+            .distance(d => {
+                if (d.type === "congressperson-familiar") return 150;
+                if (d.type === "familiar-entity") return 120;
+                return 80;
+            })
+            .strength(0.8))
+        .force("charge", d3.forceManyBody()
+            .strength(d => {
+                if (d.type === "congressperson") return -800;
+                if (d.type === "familiar") return -400;
+                if (d.type === "entity") return -300;
+                return -150;
+            }))
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("collision", d3.forceCollide()
+            .radius(d => nodeRadius[d.type] + 20))
+        .force("x", d3.forceX(width / 2).strength(0.05))
+        .force("y", d3.forceY(height / 2).strength(0.05));
+    
+    // ============================================
+    // CREAR ENLACES
+    // ============================================
+    const link = g.append("g")
+        .attr("class", "links")
+        .selectAll("path")
+        .data(sampleData.links)
+        .enter()
+        .append("path")
+        .attr("class", d => `link link-${d.type}`)
+        .attr("data-source", d => d.source.id || d.source)
+        .attr("data-target", d => d.target.id || d.target);
+    
+    // ============================================
+    // CREAR NODOS
+    // ============================================
+    const node = g.append("g")
+        .attr("class", "nodes")
+        .selectAll("g")
+        .data(sampleData.nodes)
+        .enter()
+        .append("g")
+        .attr("class", d => `node node-${d.type}`)
+        .attr("data-id", d => d.id)
+        .call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended));
+    
+    // Círculo base del nodo
+    node.append("circle")
+        .attr("class", "node-circle")
+        .attr("r", d => nodeRadius[d.type]);
+    
+    // Contenido específico por tipo de nodo
+    node.each(function(d) {
+        const nodeGroup = d3.select(this);
+        const r = nodeRadius[d.type];
+        
+        if (d.type === "congressperson") {
+            // Foto del congresista
+            nodeGroup.append("circle")
+                .attr("r", r - 4)
+                .attr("fill", `url(#photo-${d.id})`);
+            
+            // Etiqueta del nombre
+            nodeGroup.append("text")
+                .attr("class", "node-label")
+                .attr("y", r + 16)
+                .text(d.name.split(" ").slice(0, 2).join(" "));
+            
+            // Partido político
+            nodeGroup.append("text")
+                .attr("class", "node-sublabel")
+                .attr("y", r + 28)
+                .text(d.party);
+                
+        } else if (d.type === "familiar") {
+            // Icono de persona
+            nodeGroup.append("text")
+                .attr("class", "node-icon")
+                .attr("text-anchor", "middle")
+                .attr("dominant-baseline", "central")
+                .attr("font-size", "20px")
+                .text("👤");
+            
+            nodeGroup.append("text")
+                .attr("class", "node-label")
+                .attr("y", r + 14)
+                .text(d.name.split(" ").slice(0, 2).join(" "));
+            
+            nodeGroup.append("text")
+                .attr("class", "node-sublabel")
+                .attr("y", r + 25)
+                .text(d.parentesco);
+                
+        } else if (d.type === "entity") {
+            // Icono de edificio/empresa
+            nodeGroup.append("text")
+                .attr("class", "node-icon")
+                .attr("text-anchor", "middle")
+                .attr("dominant-baseline", "central")
+                .attr("font-size", "22px")
+                .text("🏢");
+            
+            nodeGroup.append("text")
+                .attr("class", "node-label")
+                .attr("y", r + 14)
+                .text(d.name.length > 20 ? d.name.substring(0, 18) + "..." : d.name);
+            
+            nodeGroup.append("text")
+                .attr("class", "node-sublabel")
+                .attr("y", r + 25)
+                .text(`S/ ${(d.montoTotal / 1000000).toFixed(2)}M`);
+                
+        } else if (d.type === "contract") {
+            // Icono de documento
+            nodeGroup.append("text")
+                .attr("class", "node-icon")
+                .attr("text-anchor", "middle")
+                .attr("dominant-baseline", "central")
+                .attr("font-size", "16px")
+                .text("📄");
+            
+            nodeGroup.append("text")
+                .attr("class", "node-label")
+                .attr("y", r + 12)
+                .text(`S/ ${(d.monto / 1000).toFixed(0)}K`);
+        }
+    });
+    
+    // ============================================
+    // TOOLTIP
+    // ============================================
+    const tooltip = d3.select("#tooltip");
+    
+    function showTooltip(event, d) {
+        let content = `<span class="tooltip-type ${d.type}">${getTypeLabel(d.type)}</span>`;
+        content += `<div class="tooltip-header">${d.name || formatMonto(d.monto)}</div>`;
+        
+        if (d.type === "congressperson") {
+            content += `
+                <div class="tooltip-row"><span class="tooltip-label">DNI</span><span class="tooltip-value">${d.dni}</span></div>
+                <div class="tooltip-row"><span class="tooltip-label">Partido</span><span class="tooltip-value">${d.party}</span></div>
+                <div class="tooltip-row"><span class="tooltip-label">Comisión</span><span class="tooltip-value">${d.commission || "N/A"}</span></div>
+                <div class="tooltip-row"><span class="tooltip-label">Departamento</span><span class="tooltip-value">${d.department}</span></div>
+            `;
+        } else if (d.type === "familiar") {
+            content += `
+                <div class="tooltip-row"><span class="tooltip-label">DNI</span><span class="tooltip-value">${d.dni}</span></div>
+                <div class="tooltip-row"><span class="tooltip-label">Parentesco</span><span class="tooltip-value">${d.parentesco}</span></div>
+                <div class="tooltip-row"><span class="tooltip-label">Ocupación</span><span class="tooltip-value">${d.ocupacion}</span></div>
+                ${d.lugarTrabajo ? `<div class="tooltip-row"><span class="tooltip-label">Lugar de trabajo</span><span class="tooltip-value">${d.lugarTrabajo}</span></div>` : ""}
+                ${d.ruc ? `<div class="tooltip-row"><span class="tooltip-label">RUC empresa</span><span class="tooltip-value">${d.ruc}</span></div>` : ""}
+            `;
+        } else if (d.type === "entity") {
+            content += `
+                <div class="tooltip-row"><span class="tooltip-label">RUC</span><span class="tooltip-value">${d.ruc}</span></div>
+                <div class="tooltip-row"><span class="tooltip-label">Rubro</span><span class="tooltip-value">${d.rubro}</span></div>
+                <div class="tooltip-row"><span class="tooltip-label">Monto total</span><span class="tooltip-value">${formatMonto(d.montoTotal)}</span></div>
+                <div class="tooltip-row"><span class="tooltip-label">N° contratos</span><span class="tooltip-value">${d.numContratos}</span></div>
+            `;
+        } else if (d.type === "contract") {
+            content += `
+                <div class="tooltip-row"><span class="tooltip-label">Fecha</span><span class="tooltip-value">${formatDate(d.fecha)}</span></div>
+                <div class="tooltip-row"><span class="tooltip-label">Descripción</span><span class="tooltip-value">${d.descripcion}</span></div>
+                <div class="tooltip-row"><span class="tooltip-label">Monto</span><span class="tooltip-value">${formatMonto(d.monto)}</span></div>
+                <div class="tooltip-row"><span class="tooltip-label">Entidad</span><span class="tooltip-value">${d.entidadContratante}</span></div>
+                <a href="${d.documentUrl}" class="tooltip-link" target="_blank">Ver documento</a>
+            `;
+        }
+        
+        tooltip.html(content)
+            .style("left", (event.pageX + 15) + "px")
+            .style("top", (event.pageY - 10) + "px")
+            .classed("visible", true);
+    }
+    
+    function hideTooltip() {
+        tooltip.classed("visible", false);
+    }
+    
+    // ============================================
+    // HIGHLIGHT DE CONEXIONES
+    // ============================================
+    let highlightedNodes = new Set();
+    let highlightedLinks = new Set();
+    
+    function highlightConnections(d) {
+        highlightedNodes.clear();
+        highlightedLinks.clear();
+        
+        // Encontrar todas las conexiones relacionadas
+        function findConnections(nodeId, visited = new Set()) {
+            if (visited.has(nodeId)) return;
+            visited.add(nodeId);
+            highlightedNodes.add(nodeId);
+            
+            sampleData.links.forEach(link => {
+                const sourceId = link.source.id || link.source;
+                const targetId = link.target.id || link.target;
+                
+                if (sourceId === nodeId) {
+                    highlightedLinks.add(`${sourceId}-${targetId}`);
+                    findConnections(targetId, visited);
+                }
+                if (targetId === nodeId) {
+                    highlightedLinks.add(`${sourceId}-${targetId}`);
+                    findConnections(sourceId, visited);
+                }
+            });
+        }
+        
+        findConnections(d.id);
+        
+        // Aplicar estilos
+        node.classed("highlighted", n => highlightedNodes.has(n.id))
+            .classed("dimmed", n => !highlightedNodes.has(n.id));
+        
+        link.classed("highlighted", l => {
+            const sourceId = l.source.id || l.source;
+            const targetId = l.target.id || l.target;
+            return highlightedLinks.has(`${sourceId}-${targetId}`);
+        })
+        .classed("dimmed", l => {
+            const sourceId = l.source.id || l.source;
+            const targetId = l.target.id || l.target;
+            return !highlightedLinks.has(`${sourceId}-${targetId}`);
+        });
+        
+        // Mostrar indicador de flujo
+        d3.select("#flow-indicator").classed("visible", true);
+        setTimeout(() => {
+            d3.select("#flow-indicator").classed("visible", false);
+        }, 1500);
+    }
+    
+    function clearHighlight() {
+        highlightedNodes.clear();
+        highlightedLinks.clear();
+        node.classed("highlighted", false).classed("dimmed", false);
+        link.classed("highlighted", false).classed("dimmed", false);
+    }
+    
+    // Eventos de nodos
+    node.on("mouseover", function(event, d) {
+            showTooltip(event, d);
+        })
+        .on("mouseout", hideTooltip)
+        .on("click", function(event, d) {
+            event.stopPropagation();
+            highlightConnections(d);
+        });
+    
+    // Click en fondo para limpiar
+    svg.on("click", clearHighlight);
+    
+    // ============================================
+    // FUNCIONES DE ARRASTRE
+    // ============================================
+    function dragstarted(event, d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+    }
+    
+    function dragged(event, d) {
+        d.fx = event.x;
+        d.fy = event.y;
+    }
+    
+    function dragended(event, d) {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+    }
+    
+    // ============================================
+    // ACTUALIZACIÓN DE POSICIONES
+    // ============================================
+    simulation.on("tick", () => {
+        link.attr("d", d => {
+            const dx = d.target.x - d.source.x;
+            const dy = d.target.y - d.source.y;
+            const dr = Math.sqrt(dx * dx + dy * dy) * 2;
+            return `M${d.source.x},${d.source.y}A${dr},${dr} 0 0,1 ${d.target.x},${d.target.y}`;
+        });
+        
+        node.attr("transform", d => `translate(${d.x},${d.y})`);
+    });
+    
+    // ============================================
+    // CONTROLES
+    // ============================================
+    d3.select("#zoom-in").on("click", () => {
+        svg.transition().call(zoom.scaleBy, 1.3);
+    });
+    
+    d3.select("#zoom-out").on("click", () => {
+        svg.transition().call(zoom.scaleBy, 0.7);
+    });
+    
+    d3.select("#reset-view").on("click", () => {
+        svg.transition().call(zoom.transform, d3.zoomIdentity);
+    });
+    
+    d3.select("#clear-highlight").on("click", clearHighlight);
+    
+    // ============================================
+    // BÚSQUEDA
+    // ============================================
+    d3.select("#search-input").on("input", function() {
+        const query = this.value.toLowerCase().trim();
+        
+        if (query === "") {
+            clearHighlight();
+            return;
+        }
+        
+        const matchedNode = sampleData.nodes.find(n => 
+            (n.name && n.name.toLowerCase().includes(query)) ||
+            (n.dni && n.dni.includes(query)) ||
+            (n.ruc && n.ruc.includes(query))
+        );
+        
+        if (matchedNode) {
+            highlightConnections(matchedNode);
+            
+            // Centrar vista en el nodo
+            const transform = d3.zoomIdentity
+                .translate(width / 2 - matchedNode.x, height / 2 - matchedNode.y);
+            svg.transition().duration(750).call(zoom.transform, transform);
+        }
+    });
+    
+    // ============================================
+    // FUNCIONES AUXILIARES
+    // ============================================
+    function getTypeLabel(type) {
+        const labels = {
+            congressperson: "Congresista",
+            familiar: "Familiar",
+            entity: "Entidad Contratante",
+            contract: "Contrato"
+        };
+        return labels[type] || type;
+    }
+    
+    function formatMonto(monto) {
+        return `S/ ${monto.toLocaleString("es-PE", { minimumFractionDigits: 2 })}`;
+    }
+    
+    function formatDate(dateStr) {
+        const date = new Date(dateStr);
+        return date.toLocaleDateString("es-PE", { year: "numeric", month: "long", day: "numeric" });
+    }
+    
+    // Centrar inicialmente
+    setTimeout(() => {
+        const bounds = g.node().getBBox();
+        const fullWidth = bounds.width;
+        const fullHeight = bounds.height;
+        const midX = bounds.x + fullWidth / 2;
+        const midY = bounds.y + fullHeight / 2;
+        
+        const scale = 0.85 / Math.max(fullWidth / width, fullHeight / height);
+        const transform = d3.zoomIdentity
+            .translate(width / 2 - scale * midX, height / 2 - scale * midY)
+            .scale(scale);
+        
+        svg.transition().duration(750).call(zoom.transform, transform);
+    }, 1000);
+    
+    // Redimensionar
+    window.addEventListener("resize", () => {
+        const newWidth = window.innerWidth;
+        const newHeight = window.innerHeight;
+        svg.attr("width", newWidth).attr("height", newHeight);
+        simulation.force("center", d3.forceCenter(newWidth / 2, newHeight / 2));
+        simulation.alpha(0.3).restart();
+    });
+    </script>
+</body>
+</html>
