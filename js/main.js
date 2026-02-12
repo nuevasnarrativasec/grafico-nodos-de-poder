@@ -623,52 +623,111 @@ class NetworkVisualization {
         const tooltip = d3.select('#tooltip');
         let content = '';
         
+        const typeLabels = {
+            congressperson: 'CONGRESISTA',
+            familiar: 'FAMILIAR',
+            entity: 'ENTIDAD',
+            contract: 'CONTRATO'
+        };
+        
         switch(d.type) {
             case 'congressperson':
                 content = `
-                    <div class="tooltip-type" style="background: ${CONFIG.colors[d.type]}20; color: ${CONFIG.colors[d.type]}">
-                        Congresista
-                    </div>
+                    <div class="tooltip-type ${d.type}">${typeLabels[d.type]}</div>
                     <div class="tooltip-title">${d.name}</div>
-                    <div class="tooltip-subtitle">${d.party || 'Sin partido'}</div>
-                    <div class="tooltip-detail">DNI: ${d.dni}</div>
-                    <div class="tooltip-detail">Departamento: ${d.department || 'N/A'}</div>
+                    <div class="tooltip-grid">
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">DNI</span>
+                            <span class="tooltip-value">${d.dni}</span>
+                        </div>
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">Partido</span>
+                            <span class="tooltip-value">${d.party || 'N/A'}</span>
+                        </div>
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">Comisión</span>
+                            <span class="tooltip-value">${d.commission || 'N/A'}</span>
+                        </div>
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">Departamento</span>
+                            <span class="tooltip-value">${d.department || 'N/A'}</span>
+                        </div>
+                    </div>
                 `;
                 break;
             case 'familiar':
                 content = `
-                    <div class="tooltip-type" style="background: ${CONFIG.colors[d.type]}20; color: ${CONFIG.colors[d.type]}">
-                        Familiar
-                    </div>
+                    <div class="tooltip-type ${d.type}">${typeLabels[d.type]}</div>
                     <div class="tooltip-title">${d.name}</div>
-                    <div class="tooltip-subtitle">${d.parentesco || 'Parentesco no especificado'}</div>
-                    <div class="tooltip-detail">DNI: ${d.dni}</div>
-                    ${d.ocupacion ? `<div class="tooltip-detail">Ocupación: ${d.ocupacion}</div>` : ''}
-                    ${d.lugarTrabajo ? `<div class="tooltip-detail">Trabajo: ${d.lugarTrabajo}</div>` : ''}
+                    <div class="tooltip-grid">
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">DNI</span>
+                            <span class="tooltip-value">${d.dni}</span>
+                        </div>
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">Parentesco</span>
+                            <span class="tooltip-value">${d.parentesco || 'N/A'}</span>
+                        </div>
+                        ${d.ocupacion ? `
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">Ocupación</span>
+                            <span class="tooltip-value">${d.ocupacion}</span>
+                        </div>` : ''}
+                        ${d.lugarTrabajo ? `
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">Lugar de trabajo</span>
+                            <span class="tooltip-value">${d.lugarTrabajo}</span>
+                        </div>` : ''}
+                    </div>
                 `;
                 break;
             case 'entity':
                 content = `
-                    <div class="tooltip-type" style="background: ${CONFIG.colors[d.type]}20; color: ${CONFIG.colors[d.type]}">
-                        Entidad
-                    </div>
+                    <div class="tooltip-type ${d.type}">${typeLabels[d.type]}</div>
                     <div class="tooltip-title">${d.name}</div>
-                    <div class="tooltip-subtitle">${d.rubro || 'Rubro no especificado'}</div>
-                    <div class="tooltip-detail">RUC: ${d.ruc}</div>
-                    <div class="tooltip-detail">Monto Total: ${this.formatAmount(d.montoTotal)}</div>
-                    <div class="tooltip-detail">Contratos: ${d.numContratos || 0}</div>
+                    <div class="tooltip-grid">
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">RUC</span>
+                            <span class="tooltip-value">${d.ruc}</span>
+                        </div>
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">Rubro</span>
+                            <span class="tooltip-value">${d.rubro || 'N/A'}</span>
+                        </div>
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">Monto Total</span>
+                            <span class="tooltip-value">${this.formatAmount(d.montoTotal)}</span>
+                        </div>
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">N° Contratos</span>
+                            <span class="tooltip-value">${d.numContratos || 0}</span>
+                        </div>
+                    </div>
                 `;
                 break;
             case 'contract':
                 content = `
-                    <div class="tooltip-type" style="background: ${CONFIG.colors[d.type]}20; color: ${CONFIG.colors[d.type]}">
-                        Contrato
-                    </div>
+                    <div class="tooltip-type ${d.type}">${typeLabels[d.type]}</div>
                     <div class="tooltip-title">${this.formatAmount(d.monto)}</div>
-                    <div class="tooltip-subtitle">${d.entidadContratante || 'Entidad no especificada'}</div>
-                    <div class="tooltip-detail">Fecha: ${this.formatDate(d.fecha)}</div>
-                    ${d.vigencia ? `<div class="tooltip-detail">Estado: ${d.vigencia}</div>` : ''}
-                    <div class="tooltip-detail">${d.descripcion || 'Sin descripción'}</div>
+                    <div class="tooltip-grid">
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">Entidad</span>
+                            <span class="tooltip-value">${d.entidadContratante || 'N/A'}</span>
+                        </div>
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">Fecha</span>
+                            <span class="tooltip-value">${this.formatDate(d.fecha)}</span>
+                        </div>
+                        ${d.vigencia ? `
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">Estado</span>
+                            <span class="tooltip-value">${d.vigencia}</span>
+                        </div>` : ''}
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">Descripción</span>
+                            <span class="tooltip-value">${d.descripcion || 'N/A'}</span>
+                        </div>
+                    </div>
                 `;
                 break;
         }
