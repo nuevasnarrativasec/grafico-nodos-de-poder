@@ -3,45 +3,64 @@
 // ============================================
 const CONFIG = {
     nodeRadius: {
-        congressperson: 42,
-        familiar: 30,
-        contract: 26,
-        entity: 28
-    },
-    // Tamaños para formas no circulares
-    nodeSize: {
-        familiar: { width: 50, height: 44 },      // Hexágono
-        contract: { width: 48, height: 32 },      // Rectángulo redondeado
-        entity: { width: 44, height: 44 }         // Rombo
+        congressperson: 40,
+        familiar: 28,
+        entity: 32,
+        contract: 20
     },
     forces: {
-        link: { 
-            distance: { 
-                'congressperson-familiar': 150, 
-                'familiar-contract': 120, 
-                'contract-entity': 90 
-            }, 
-            strength: 0.7 
-        },
-        charge: { congressperson: -800, familiar: -400, contract: -250, entity: -200 },
-        collision: 30
+        link: { distance: { 'congressperson-familiar': 140, 'familiar-contract': 100, 'contract-entity': 90 }, strength: 0.7 },
+        charge: { congressperson: -700, familiar: -350, entity: -280, contract: -120 },
+        collision: 25
     },
     colors: {
         congressperson: '#f59e0b',
         familiar: '#3b82f6',
-        contract: '#10b981',
-        entity: '#8b5cf6'
-    },
-    icons: {
-        congressperson: '👤',
-        familiar: '👥',
-        contract: '📄',
-        entity: '🏢'
+        entity: '#8b5cf6',
+        contract: '#10b981'
     }
 };
 
 // ============================================
-// DATOS DE EJEMPLO - NUEVO ORDEN: Congresista → Familiar → Contrato → Empresa
+// FUNCIONES PARA GENERAR FORMAS SVG
+// ============================================
+
+// Genera path de hexágono
+function getHexagonPath(size) {
+    const points = [];
+    for (let i = 0; i < 6; i++) {
+        const angle = (Math.PI / 3) * i - Math.PI / 2;
+        points.push([
+            size * Math.cos(angle),
+            size * Math.sin(angle)
+        ]);
+    }
+    return points.map((p, i) => (i === 0 ? 'M' : 'L') + p[0] + ',' + p[1]).join(' ') + ' Z';
+}
+
+// Genera path de rombo (diamante)
+function getDiamondPath(size) {
+    return `M 0 ${-size} L ${size} 0 L 0 ${size} L ${-size} 0 Z`;
+}
+
+// Genera path de cuadrado redondeado
+function getRoundedSquarePath(size, radius) {
+    const r = radius || size * 0.2;
+    const s = size;
+    return `M ${-s + r} ${-s}
+            H ${s - r}
+            Q ${s} ${-s} ${s} ${-s + r}
+            V ${s - r}
+            Q ${s} ${s} ${s - r} ${s}
+            H ${-s + r}
+            Q ${-s} ${s} ${-s} ${s - r}
+            V ${-s + r}
+            Q ${-s} ${-s} ${-s + r} ${-s}
+            Z`;
+}
+
+// ============================================
+// DATOS DE EJEMPLO
 // ============================================
 const SAMPLE_DATA = {
     nodes: [
@@ -50,80 +69,36 @@ const SAMPLE_DATA = {
         { id: "C002", type: "congressperson", name: "José Luis Elías Ávalos", dni: "21569935", party: "Podemos Perú", commission: "Comisión de Transportes", department: "Ica", photo: "./img/jose-luis-elias.png" },
         { id: "C003", type: "congressperson", name: "Patricia Rosa Chirinos Venegas", dni: "10280036", party: "Avanza País", commission: "Junta de Portavoces", department: "Callao", photo: "./img/patricia-chirinos.png" },
         
-        // Familiares
+        // Familiares - Ana Zegarra
         { id: "F001", type: "familiar", name: "Hugo Hermilio Alvarado Apaza", dni: "04632989", parentesco: "Padre del Cónyuge", ocupacion: "Pescador Artesanal", congresspersonId: "C001" },
         { id: "F002", type: "familiar", name: "José Alfredo Alvarado Mamani", dni: "40448882", parentesco: "Cuñado(a)", ocupacion: "Chofer", lugarTrabajo: "Transportes Halcon SRL", ruc: "20456789012", congresspersonId: "C001" },
         { id: "F003", type: "familiar", name: "Deisy Paola Alvarado Mamani", dni: "42067814", parentesco: "Cuñado(a)", ocupacion: "Promotora Educativa", lugarTrabajo: "Programa Educación Básica", congresspersonId: "C001" },
+        
+        // Familiares - José Elías
         { id: "F004", type: "familiar", name: "Carlos Elías Mendoza", dni: "21234567", parentesco: "Hermano", ocupacion: "Gerente General", lugarTrabajo: "Constructora del Sur SAC", ruc: "20567891234", congresspersonId: "C002" },
         { id: "F005", type: "familiar", name: "María Elena Ávalos de Elías", dni: "21345678", parentesco: "Madre", ocupacion: "Comerciante", lugarTrabajo: "Distribuidora Ávalos EIRL", ruc: "20123456789", congresspersonId: "C002" },
+        
+        // Familiares - Patricia Chirinos
         { id: "F006", type: "familiar", name: "Ricardo Venegas Pérez", dni: "10345678", parentesco: "Hermano", ocupacion: "Abogado", lugarTrabajo: "Estudio Venegas & Asociados", ruc: "20789012345", congresspersonId: "C003" },
         
-        // Contratos (ahora conectados a familiares)
-        { 
-            id: "CT001", type: "contract", familiarId: "F002",
-            fechaFirma: "2023-05-15", fechaFin: "2024-05-15", vigente: false,
-            descripcion: "Servicio de transporte de materiales para PRONIED", 
-            monto: 320000, entidadContratante: "PRONIED", 
-            documentUrl: "https://osce.gob.pe/doc/123" 
-        },
-        { 
-            id: "CT002", type: "contract", familiarId: "F002",
-            fechaFirma: "2023-08-20", fechaFin: "2025-08-20", vigente: true,
-            descripcion: "Transporte de equipos médicos - MINSA", 
-            monto: 185000, entidadContratante: "MINSA", 
-            documentUrl: "#" 
-        },
-        { 
-            id: "CT003", type: "contract", familiarId: "F002",
-            fechaFirma: "2024-01-10", fechaFin: null, vigente: true,
-            descripcion: "Distribución de materiales educativos", 
-            monto: 245000, entidadContratante: "MINEDU", 
-            documentUrl: "#" 
-        },
-        { 
-            id: "CT004", type: "contract", familiarId: "F004",
-            fechaFirma: "2023-03-10", fechaFin: "2025-12-31", vigente: true,
-            descripcion: "Construcción de puente vehicular - Ica", 
-            monto: 2150000, entidadContratante: "MTC", 
-            documentUrl: "#" 
-        },
-        { 
-            id: "CT005", type: "contract", familiarId: "F004",
-            fechaFirma: "2023-11-05", fechaFin: "2024-11-05", vigente: false,
-            descripcion: "Mejoramiento de carretera regional", 
-            monto: 1850000, entidadContratante: "Gobierno Regional Ica", 
-            documentUrl: "#" 
-        },
-        { 
-            id: "CT006", type: "contract", familiarId: "F005",
-            fechaFirma: "2024-01-15", fechaFin: "2024-12-15", vigente: true,
-            descripcion: "Provisión de alimentos - Qali Warma", 
-            monto: 520000, entidadContratante: "Qali Warma", 
-            documentUrl: "#" 
-        },
-        { 
-            id: "CT007", type: "contract", familiarId: "F006",
-            fechaFirma: "2023-06-20", fechaFin: "2023-12-20", vigente: false,
-            descripcion: "Asesoría legal para proceso de licitación", 
-            monto: 180000, entidadContratante: "ESSALUD", 
-            documentUrl: "#" 
-        },
-        { 
-            id: "CT008", type: "contract", familiarId: "F006",
-            fechaFirma: "2024-02-01", fechaFin: null, vigente: true,
-            descripcion: "Servicios de consultoría jurídica", 
-            monto: 220000, entidadContratante: "Municipalidad del Callao", 
-            documentUrl: "#" 
-        },
+        // Entidades
+        { id: "E001", type: "entity", name: "Transportes Halcon SRL", ruc: "20456789012", rubro: "Transporte de carga", montoTotal: 1250000, numContratos: 8 },
+        { id: "E002", type: "entity", name: "Constructora del Sur SAC", ruc: "20567891234", rubro: "Construcción", montoTotal: 4580000, numContratos: 12 },
+        { id: "E003", type: "entity", name: "Distribuidora Ávalos EIRL", ruc: "20123456789", rubro: "Comercialización", montoTotal: 890000, numContratos: 5 },
+        { id: "E004", type: "entity", name: "Estudio Venegas & Asociados", ruc: "20789012345", rubro: "Servicios legales", montoTotal: 560000, numContratos: 7 },
         
-        // Empresas (ahora conectadas a contratos)
-        { id: "E001", type: "entity", name: "Transportes Halcon SRL", ruc: "20456789012", rubro: "Transporte de carga", montoTotal: 750000, numContratos: 3 },
-        { id: "E002", type: "entity", name: "Constructora del Sur SAC", ruc: "20567891234", rubro: "Construcción", montoTotal: 4000000, numContratos: 2 },
-        { id: "E003", type: "entity", name: "Distribuidora Ávalos EIRL", ruc: "20123456789", rubro: "Comercialización", montoTotal: 520000, numContratos: 1 },
-        { id: "E004", type: "entity", name: "Estudio Venegas & Asociados", ruc: "20789012345", rubro: "Servicios legales", montoTotal: 400000, numContratos: 2 }
+        // Contratos
+        { id: "CT001", type: "contract", entidadId: "E001", fecha: "2023-05-15", descripcion: "Servicio de transporte de materiales para PRONIED", monto: 320000, entidadContratante: "PRONIED", vigencia: "Finalizado oct. 23", documentUrl: "https://osce.gob.pe/doc/123" },
+        { id: "CT002", type: "contract", entidadId: "E001", fecha: "2023-08-20", descripcion: "Transporte de equipos médicos - MINSA", monto: 185000, entidadContratante: "MINSA", vigencia: "Finalizado dic. 23", documentUrl: "#" },
+        { id: "CT003", type: "contract", entidadId: "E001", fecha: "2024-01-10", descripcion: "Distribución de materiales educativos", monto: 245000, entidadContratante: "MINEDU", vigencia: "Vigente desde ene. 24", documentUrl: "#" },
+        { id: "CT004", type: "contract", entidadId: "E002", fecha: "2023-03-10", descripcion: "Construcción de puente vehicular - Ica", monto: 2150000, entidadContratante: "MTC", vigencia: "Finalizado sep. 23", documentUrl: "#" },
+        { id: "CT005", type: "contract", entidadId: "E002", fecha: "2023-11-05", descripcion: "Mejoramiento de carretera regional", monto: 1850000, entidadContratante: "Gobierno Regional Ica", vigencia: "Vigente desde nov. 23", documentUrl: "#" },
+        { id: "CT006", type: "contract", entidadId: "E003", fecha: "2024-01-15", descripcion: "Provisión de alimentos - Qali Warma", monto: 520000, entidadContratante: "Qali Warma", vigencia: "Vigente desde ene. 24", documentUrl: "#" },
+        { id: "CT007", type: "contract", entidadId: "E004", fecha: "2023-06-20", descripcion: "Asesoría legal para proceso de licitación", monto: 180000, entidadContratante: "ESSALUD", vigencia: "Finalizado dic. 23", documentUrl: "#" },
+        { id: "CT008", type: "contract", entidadId: "E004", fecha: "2024-02-01", descripcion: "Servicios de consultoría jurídica", monto: 220000, entidadContratante: "Municipalidad del Callao", vigencia: "Vigente desde ene. 24", documentUrl: "#" }
     ],
     links: [
-        // Congresista → Familiares
+        // Congresista -> Familiares (con flecha)
         { source: "C001", target: "F001", type: "congressperson-familiar" },
         { source: "C001", target: "F002", type: "congressperson-familiar" },
         { source: "C001", target: "F003", type: "congressperson-familiar" },
@@ -131,7 +106,7 @@ const SAMPLE_DATA = {
         { source: "C002", target: "F005", type: "congressperson-familiar" },
         { source: "C003", target: "F006", type: "congressperson-familiar" },
         
-        // Familiares → Contratos (NUEVO ORDEN)
+        // Familiares -> Contratos (línea punteada azul)
         { source: "F002", target: "CT001", type: "familiar-contract" },
         { source: "F002", target: "CT002", type: "familiar-contract" },
         { source: "F002", target: "CT003", type: "familiar-contract" },
@@ -141,7 +116,7 @@ const SAMPLE_DATA = {
         { source: "F006", target: "CT007", type: "familiar-contract" },
         { source: "F006", target: "CT008", type: "familiar-contract" },
         
-        // Contratos → Empresas (NUEVO ORDEN)
+        // Contratos -> Entidades (con flecha verde)
         { source: "CT001", target: "E001", type: "contract-entity" },
         { source: "CT002", target: "E001", type: "contract-entity" },
         { source: "CT003", target: "E001", type: "contract-entity" },
@@ -170,6 +145,7 @@ class NetworkVisualization {
     }
     
     processData(data) {
+        // Crear copias para no mutar datos originales
         return {
             nodes: data.nodes.map(n => ({...n})),
             links: data.links.map(l => ({...l}))
@@ -194,6 +170,7 @@ class NetworkVisualization {
         
         this.g = this.container.append('g');
         
+        // Zoom
         this.zoom = d3.zoom()
             .scaleExtent([0.1, 5])
             .on('zoom', (event) => {
@@ -206,7 +183,33 @@ class NetworkVisualization {
     setupDefs() {
         const defs = this.container.append('defs');
         
-        // Patrones de fotos para congresistas
+        // Marker de flecha gris (para congressperson-familiar)
+        defs.append('marker')
+            .attr('id', 'arrow-gray')
+            .attr('viewBox', '0 -5 10 10')
+            .attr('refX', 8)
+            .attr('refY', 0)
+            .attr('markerWidth', 6)
+            .attr('markerHeight', 6)
+            .attr('orient', 'auto')
+            .append('path')
+            .attr('d', 'M0,-5L10,0L0,5')
+            .attr('fill', '#9ca3af');
+        
+        // Marker de flecha verde (para contract-entity)
+        defs.append('marker')
+            .attr('id', 'arrow-green')
+            .attr('viewBox', '0 -5 10 10')
+            .attr('refX', 8)
+            .attr('refY', 0)
+            .attr('markerWidth', 6)
+            .attr('markerHeight', 6)
+            .attr('orient', 'auto')
+            .append('path')
+            .attr('d', 'M0,-5L10,0L0,5')
+            .attr('fill', '#10b981');
+        
+        // Patrones de fotos
         this.data.nodes
             .filter(n => n.type === 'congressperson' && n.photo)
             .forEach(node => {
@@ -234,27 +237,13 @@ class NetworkVisualization {
             gradient.append('stop')
                 .attr('offset', '0%')
                 .attr('stop-color', color)
-                .attr('stop-opacity', 0.6);
+                .attr('stop-opacity', 0.4);
             
             gradient.append('stop')
                 .attr('offset', '100%')
                 .attr('stop-color', color)
                 .attr('stop-opacity', 0);
         });
-        
-        // Filtro de sombra
-        const filter = defs.append('filter')
-            .attr('id', 'drop-shadow')
-            .attr('x', '-50%')
-            .attr('y', '-50%')
-            .attr('width', '200%')
-            .attr('height', '200%');
-        
-        filter.append('feDropShadow')
-            .attr('dx', 0)
-            .attr('dy', 2)
-            .attr('stdDeviation', 4)
-            .attr('flood-color', 'rgba(0,0,0,0.3)');
     }
     
     setupSimulation() {
@@ -268,8 +257,6 @@ class NetworkVisualization {
             .force('center', d3.forceCenter(this.width / 2, this.height / 2))
             .force('collision', d3.forceCollide()
                 .radius(d => CONFIG.nodeRadius[d.type] + CONFIG.forces.collision))
-            .force('x', d3.forceX(this.width / 2).strength(0.03))
-            .force('y', d3.forceY(this.height / 2).strength(0.03))
             .alphaDecay(0.02)
             .velocityDecay(0.4);
         
@@ -285,37 +272,13 @@ class NetworkVisualization {
             .append('path')
             .attr('class', d => `link link-${d.type}`)
             .attr('data-source', d => d.source.id || d.source)
-            .attr('data-target', d => d.target.id || d.target);
-    }
-    
-    // Función para crear path de hexágono
-    createHexagonPath(size) {
-        const w = size.width / 2;
-        const h = size.height / 2;
-        return `M ${w} 0 L ${w * 0.5} ${-h} L ${-w * 0.5} ${-h} L ${-w} 0 L ${-w * 0.5} ${h} L ${w * 0.5} ${h} Z`;
-    }
-    
-    // Función para crear path de rombo
-    createDiamondPath(size) {
-        const w = size.width / 2;
-        const h = size.height / 2;
-        return `M 0 ${-h} L ${w} 0 L 0 ${h} L ${-w} 0 Z`;
-    }
-    
-    // Función para crear rectángulo redondeado
-    createRoundedRectPath(size, radius = 6) {
-        const w = size.width / 2;
-        const h = size.height / 2;
-        const r = Math.min(radius, w, h);
-        return `M ${-w + r} ${-h} 
-                L ${w - r} ${-h} 
-                Q ${w} ${-h} ${w} ${-h + r}
-                L ${w} ${h - r}
-                Q ${w} ${h} ${w - r} ${h}
-                L ${-w + r} ${h}
-                Q ${-w} ${h} ${-w} ${h - r}
-                L ${-w} ${-h + r}
-                Q ${-w} ${-h} ${-w + r} ${-h} Z`;
+            .attr('data-target', d => d.target.id || d.target)
+            .attr('marker-end', d => {
+                // Agregar flechas solo a ciertos tipos de conexión
+                if (d.type === 'congressperson-familiar') return 'url(#arrow-gray)';
+                if (d.type === 'contract-entity') return 'url(#arrow-green)';
+                return null;
+            });
     }
     
     createNodes() {
@@ -332,182 +295,237 @@ class NetworkVisualization {
                 .on('drag', (event, d) => this.dragged(event, d))
                 .on('end', (event, d) => this.dragEnded(event, d)));
         
-        // Crear diferentes formas según el tipo
+        // Crear formas según el tipo de nodo
         this.nodes.each((d, i, nodes) => {
             const node = d3.select(nodes[i]);
+            const r = CONFIG.nodeRadius[d.type];
+            const color = CONFIG.colors[d.type];
             
             if (d.type === 'congressperson') {
-                // CÍRCULO para congresistas
-                const r = CONFIG.nodeRadius.congressperson;
-                
-                // Anillo exterior
+                // Círculo para congresistas (igual que antes)
                 node.append('circle')
                     .attr('class', 'node-ring')
-                    .attr('r', r + 6);
+                    .attr('r', r + 5);
                 
-                // Círculo principal
                 node.append('circle')
                     .attr('class', 'node-circle')
                     .attr('r', r);
                 
-                // Foto o icono
                 if (d.photo) {
                     node.append('circle')
                         .attr('r', r - 4)
                         .attr('fill', `url(#photo-${d.id})`);
-                } else {
-                    node.append('text')
-                        .attr('class', 'node-icon')
-                        .attr('text-anchor', 'middle')
-                        .attr('dominant-baseline', 'central')
-                        .attr('font-size', '20px')
-                        .text(CONFIG.icons.congressperson);
                 }
-                
             } else if (d.type === 'familiar') {
-                // HEXÁGONO para familiares
-                const size = CONFIG.nodeSize.familiar;
-                const hexPath = this.createHexagonPath(size);
+                // Hexágono para familiares
+                const hexSize = r * 1.1;
                 
-                // Anillo exterior
-                const outerSize = { width: size.width + 12, height: size.height + 10 };
+                // Anillo exterior hexagonal
                 node.append('path')
                     .attr('class', 'node-ring')
-                    .attr('d', this.createHexagonPath(outerSize));
+                    .attr('d', getHexagonPath(hexSize + 5))
+                    .attr('fill', 'none');
                 
                 // Hexágono principal
                 node.append('path')
-                    .attr('class', 'node-shape')
-                    .attr('d', hexPath);
+                    .attr('class', 'node-shape node-hexagon')
+                    .attr('d', getHexagonPath(hexSize))
+                    .attr('fill', color);
                 
-                // Icono
-                node.append('text')
-                    .attr('class', 'node-icon')
-                    .attr('text-anchor', 'middle')
-                    .attr('dominant-baseline', 'central')
-                    .attr('font-size', '16px')
-                    .text(CONFIG.icons.familiar);
-                    
-            } else if (d.type === 'contract') {
-                // RECTÁNGULO REDONDEADO para contratos
-                const size = CONFIG.nodeSize.contract;
-                const rectPath = this.createRoundedRectPath(size, 8);
+                // Ícono SVG de grupo de personas
+                const iconGroup = node.append('g')
+                    .attr('class', 'node-svg-icon')
+                    .attr('transform', 'scale(0.85)');
                 
-                // Anillo exterior
-                const outerSize = { width: size.width + 10, height: size.height + 10 };
-                node.append('path')
-                    .attr('class', 'node-ring')
-                    .attr('d', this.createRoundedRectPath(outerSize, 10));
+                // Persona central
+                iconGroup.append('circle')
+                    .attr('cx', 0)
+                    .attr('cy', -6)
+                    .attr('r', 5)
+                    .attr('fill', 'white');
                 
-                // Rectángulo principal
-                node.append('path')
-                    .attr('class', 'node-shape')
-                    .attr('d', rectPath);
+                iconGroup.append('path')
+                    .attr('d', 'M0 2c-5 0-9 2.5-9 6v3h18v-3c0-3.5-4-6-9-6z')
+                    .attr('fill', 'white');
                 
-                // Indicador de vigencia
-                if (d.vigente) {
-                    node.append('circle')
-                        .attr('class', 'vigencia-indicator vigente')
-                        .attr('cx', size.width / 2 - 4)
-                        .attr('cy', -size.height / 2 + 4)
-                        .attr('r', 5);
-                }
+                // Persona izquierda
+                iconGroup.append('circle')
+                    .attr('cx', -12)
+                    .attr('cy', -3)
+                    .attr('r', 3.5)
+                    .attr('fill', 'white')
+                    .attr('opacity', 0.7);
                 
-                // Icono
-                node.append('text')
-                    .attr('class', 'node-icon')
-                    .attr('text-anchor', 'middle')
-                    .attr('dominant-baseline', 'central')
-                    .attr('font-size', '14px')
-                    .text(CONFIG.icons.contract);
+                iconGroup.append('path')
+                    .attr('d', 'M-12 3c-3.5 0-6 1.5-6 4v2h7v-3c0-1.5 0.5-2.5 1.5-3h-2.5z')
+                    .attr('fill', 'white')
+                    .attr('opacity', 0.7);
+                
+                // Persona derecha
+                iconGroup.append('circle')
+                    .attr('cx', 12)
+                    .attr('cy', -3)
+                    .attr('r', 3.5)
+                    .attr('fill', 'white')
+                    .attr('opacity', 0.7);
+                
+                iconGroup.append('path')
+                    .attr('d', 'M12 3c3.5 0 6 1.5 6 4v2h-7v-3c0-1.5-0.5-2.5-1.5-3h2.5z')
+                    .attr('fill', 'white')
+                    .attr('opacity', 0.7);
                     
             } else if (d.type === 'entity') {
-                // ROMBO para empresas
-                const size = CONFIG.nodeSize.entity;
-                const diamondPath = this.createDiamondPath(size);
+                // Rombo (diamante) para entidades
+                const diamondSize = r * 1.15;
                 
                 // Anillo exterior
-                const outerSize = { width: size.width + 12, height: size.height + 12 };
                 node.append('path')
                     .attr('class', 'node-ring')
-                    .attr('d', this.createDiamondPath(outerSize));
+                    .attr('d', getDiamondPath(diamondSize + 5))
+                    .attr('fill', 'none');
                 
                 // Rombo principal
                 node.append('path')
-                    .attr('class', 'node-shape')
-                    .attr('d', diamondPath);
+                    .attr('class', 'node-shape node-diamond')
+                    .attr('d', getDiamondPath(diamondSize))
+                    .attr('fill', color);
                 
-                // Icono
-                node.append('text')
-                    .attr('class', 'node-icon')
-                    .attr('text-anchor', 'middle')
-                    .attr('dominant-baseline', 'central')
-                    .attr('font-size', '14px')
-                    .text(CONFIG.icons.entity);
+                // Ícono SVG de edificio
+                const iconGroup = node.append('g')
+                    .attr('class', 'node-svg-icon')
+                    .attr('transform', 'scale(0.7)');
+                
+                // Edificio principal
+                iconGroup.append('rect')
+                    .attr('x', -10)
+                    .attr('y', -14)
+                    .attr('width', 20)
+                    .attr('height', 26)
+                    .attr('rx', 1)
+                    .attr('fill', 'white');
+                
+                // Ventanas
+                const windowPositions = [
+                    {x: -7, y: -10}, {x: 1, y: -10},
+                    {x: -7, y: -2}, {x: 1, y: -2}
+                ];
+                
+                windowPositions.forEach(pos => {
+                    iconGroup.append('rect')
+                        .attr('x', pos.x)
+                        .attr('y', pos.y)
+                        .attr('width', 5)
+                        .attr('height', 5)
+                        .attr('fill', color);
+                });
+                
+                // Puerta
+                iconGroup.append('rect')
+                    .attr('x', -3)
+                    .attr('y', 5)
+                    .attr('width', 6)
+                    .attr('height', 8)
+                    .attr('fill', color);
+                    
+            } else if (d.type === 'contract') {
+                // Cuadrado redondeado para contratos
+                const squareSize = r * 1.1;
+                
+                // Anillo exterior
+                node.append('path')
+                    .attr('class', 'node-ring')
+                    .attr('d', getRoundedSquarePath(squareSize + 4, 4))
+                    .attr('fill', 'none');
+                
+                // Cuadrado principal
+                node.append('path')
+                    .attr('class', 'node-shape node-square')
+                    .attr('d', getRoundedSquarePath(squareSize, 4))
+                    .attr('fill', color);
+                
+                // Ícono SVG de documento
+                const iconGroup = node.append('g')
+                    .attr('class', 'node-svg-icon')
+                    .attr('transform', 'scale(0.55)');
+                
+                // Documento base
+                iconGroup.append('rect')
+                    .attr('x', -10)
+                    .attr('y', -14)
+                    .attr('width', 20)
+                    .attr('height', 26)
+                    .attr('rx', 2)
+                    .attr('fill', 'white');
+                
+                // Líneas de texto
+                iconGroup.append('line')
+                    .attr('x1', -6)
+                    .attr('y1', -6)
+                    .attr('x2', 6)
+                    .attr('y2', -6)
+                    .attr('stroke', color)
+                    .attr('stroke-width', 2.5)
+                    .attr('stroke-linecap', 'round');
+                
+                iconGroup.append('line')
+                    .attr('x1', -6)
+                    .attr('y1', 0)
+                    .attr('x2', 6)
+                    .attr('y2', 0)
+                    .attr('stroke', color)
+                    .attr('stroke-width', 2.5)
+                    .attr('stroke-linecap', 'round');
+                
+                iconGroup.append('line')
+                    .attr('x1', -6)
+                    .attr('y1', 6)
+                    .attr('x2', 2)
+                    .attr('y2', 6)
+                    .attr('stroke', color)
+                    .attr('stroke-width', 2.5)
+                    .attr('stroke-linecap', 'round');
             }
             
-            // Etiquetas para todos
-            const labelY = this.getLabelOffset(d.type);
+            // Etiquetas (para todos los tipos)
+            const labelY = r + 14;
+            node.append('text')
+                .attr('class', 'node-label')
+                .attr('y', labelY)
+                .text(this.truncateName(d.name || this.formatAmount(d.monto)));
             
-            // Texto principal
-            if (d.type === 'contract') {
-                // Para contratos: monto + vigencia
+            // Sublabel para todos los tipos incluyendo contratos
+            const sublabel = d.party || d.parentesco || d.rubro || d.vigencia || '';
+            if (sublabel) {
                 node.append('text')
-                    .attr('class', 'node-label')
-                    .attr('y', labelY)
-                    .text(this.formatAmount(d.monto));
-                
-                // Sublabel con vigencia
-                const vigenciaText = this.getVigenciaText(d);
-                node.append('text')
-                    .attr('class', 'node-sublabel vigencia-text')
+                    .attr('class', 'node-sublabel')
                     .attr('y', labelY + 12)
-                    .text(vigenciaText);
-            } else {
-                node.append('text')
-                    .attr('class', 'node-label')
-                    .attr('y', labelY)
-                    .text(this.truncateName(d.name));
-                
-                // Sublabel
-                const sublabel = d.party || d.parentesco || d.rubro || '';
-                if (sublabel) {
-                    node.append('text')
-                        .attr('class', 'node-sublabel')
-                        .attr('y', labelY + 12)
-                        .text(this.truncateName(sublabel, 20));
-                }
+                    .text(this.truncateName(sublabel, 22));
             }
         });
     }
     
-    getLabelOffset(type) {
-        const offsets = {
-            congressperson: CONFIG.nodeRadius.congressperson + 14,
-            familiar: CONFIG.nodeSize.familiar.height / 2 + 14,
-            contract: CONFIG.nodeSize.contract.height / 2 + 14,
-            entity: CONFIG.nodeSize.entity.height / 2 + 14
-        };
-        return offsets[type] || 30;
-    }
-    
-    getVigenciaText(contract) {
-        if (contract.vigente) {
-            if (contract.fechaFin) {
-                return `Vigente hasta ${this.formatDateShort(contract.fechaFin)}`;
-            }
-            return `Vigente desde ${this.formatDateShort(contract.fechaFirma)}`;
-        } else {
-            return `Finalizado ${this.formatDateShort(contract.fechaFin || contract.fechaFirma)}`;
-        }
-    }
-    
     tick() {
         this.links.attr('d', d => {
+            const sourceR = CONFIG.nodeRadius[d.source.type] || 20;
+            const targetR = CONFIG.nodeRadius[d.target.type] || 20;
+            
             const dx = d.target.x - d.source.x;
             const dy = d.target.y - d.source.y;
-            const dr = Math.sqrt(dx * dx + dy * dy) * 1.5;
-            return `M${d.source.x},${d.source.y}A${dr},${dr} 0 0,1 ${d.target.x},${d.target.y}`;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            
+            // Normalizar dirección
+            const nx = dx / dist;
+            const ny = dy / dist;
+            
+            // Ajustar puntos de inicio y fin para que no se superpongan con los nodos
+            const startX = d.source.x + nx * sourceR * 0.8;
+            const startY = d.source.y + ny * sourceR * 0.8;
+            const endX = d.target.x - nx * (targetR + 10); // +10 para espacio de la flecha
+            const endY = d.target.y - ny * (targetR + 10);
+            
+            // Curva suave
+            const dr = dist * 1.5;
+            return `M${startX},${startY}A${dr},${dr} 0 0,1 ${endX},${endY}`;
         });
         
         this.nodes.attr('transform', d => `translate(${d.x},${d.y})`);
@@ -516,6 +534,7 @@ class NetworkVisualization {
     setupEvents() {
         const self = this;
         
+        // Hover y click en nodos
         this.nodes
             .on('mouseenter', function(event, d) {
                 d._fx = d.fx;
@@ -539,23 +558,29 @@ class NetworkVisualization {
                 self.selectNode(d);
             });
         
+        // Click en fondo
         this.container.on('click', () => this.clearSelection());
         
+        // Controles
         d3.select('#zoom-in').on('click', () => this.zoomIn());
         d3.select('#zoom-out').on('click', () => this.zoomOut());
         d3.select('#reset-view').on('click', () => this.resetView());
         d3.select('#clear-selection').on('click', () => this.clearSelection());
         
+        // Sidebar
         d3.select('#sidebar-close').on('click', () => this.closeSidebar());
         
+        // Búsqueda
         d3.select('#search-input').on('input', function() {
             self.search(this.value);
         });
         
+        // Cargar archivo
         d3.select('#file-input').on('change', function() {
             self.loadFile(this.files[0]);
         });
         
+        // Resize
         window.addEventListener('resize', () => this.handleResize());
     }
     
@@ -568,51 +593,27 @@ class NetworkVisualization {
     }
     
     highlightConnections(d) {
-        this.highlightedNodes.clear();
-        this.highlightedLinks.clear();
+        const connected = this.getConnectedNodes(d);
+        connected.add(d.id);
         
-        const findConnections = (nodeId, visited = new Set()) => {
-            if (visited.has(nodeId)) return;
-            visited.add(nodeId);
-            this.highlightedNodes.add(nodeId);
-            
-            this.data.links.forEach(link => {
-                const sourceId = link.source.id || link.source;
-                const targetId = link.target.id || link.target;
-                
-                if (sourceId === nodeId || targetId === nodeId) {
-                    this.highlightedLinks.add(`${sourceId}-${targetId}`);
-                    findConnections(sourceId === nodeId ? targetId : sourceId, visited);
-                }
-            });
-        };
+        // Actualizar nodos
+        this.nodes.classed('highlighted', n => connected.has(n.id));
+        this.nodes.classed('dimmed', n => !connected.has(n.id));
         
-        findConnections(d.id);
-        this.applyHighlight();
-    }
-    
-    applyHighlight() {
-        this.nodes
-            .classed('highlighted', n => this.highlightedNodes.has(n.id))
-            .classed('dimmed', n => this.highlightedNodes.size > 0 && !this.highlightedNodes.has(n.id));
-        
-        this.links
-            .classed('highlighted', l => {
-                const key = `${l.source.id || l.source}-${l.target.id || l.target}`;
-                return this.highlightedLinks.has(key);
-            })
-            .classed('dimmed', l => {
-                if (this.highlightedLinks.size === 0) return false;
-                const key = `${l.source.id || l.source}-${l.target.id || l.target}`;
-                return !this.highlightedLinks.has(key);
-            });
+        // Actualizar links
+        this.links.classed('highlighted', l => 
+            (l.source.id === d.id || l.target.id === d.id)
+        );
+        this.links.classed('dimmed', l => 
+            !(l.source.id === d.id || l.target.id === d.id) &&
+            !(connected.has(l.source.id) && connected.has(l.target.id))
+        );
     }
     
     clearSelection() {
         this.selectedNode = null;
-        this.highlightedNodes.clear();
-        this.highlightedLinks.clear();
-        this.applyHighlight();
+        this.nodes.classed('highlighted', false).classed('dimmed', false);
+        this.links.classed('highlighted', false).classed('dimmed', false);
         this.closeSidebar();
     }
     
@@ -620,111 +621,87 @@ class NetworkVisualization {
     
     showTooltip(event, d) {
         const tooltip = d3.select('#tooltip');
-        let content = `<span class="tooltip-badge ${d.type}">${this.getTypeLabel(d.type)}</span>`;
-        content += `<div class="tooltip-title">${d.name || this.formatAmount(d.monto)}</div>`;
-        content += '<div class="tooltip-grid">';
+        let content = '';
         
-        const rows = this.getTooltipRows(d);
-        rows.forEach(([key, value, highlight]) => {
-            content += `<div class="tooltip-row">
-                <span class="tooltip-key">${key}</span>
-                <span class="tooltip-value${highlight ? ' highlight' : ''}">${value}</span>
-            </div>`;
-        });
-        
-        content += '</div>';
-        
-        if (d.documentUrl && d.documentUrl !== '#') {
-            content += `<a href="${d.documentUrl}" class="tooltip-action" target="_blank">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                    <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
-                Ver documento
-            </a>`;
+        switch(d.type) {
+            case 'congressperson':
+                content = `
+                    <div class="tooltip-type" style="background: ${CONFIG.colors[d.type]}20; color: ${CONFIG.colors[d.type]}">
+                        Congresista
+                    </div>
+                    <div class="tooltip-title">${d.name}</div>
+                    <div class="tooltip-subtitle">${d.party || 'Sin partido'}</div>
+                    <div class="tooltip-detail">DNI: ${d.dni}</div>
+                    <div class="tooltip-detail">Departamento: ${d.department || 'N/A'}</div>
+                `;
+                break;
+            case 'familiar':
+                content = `
+                    <div class="tooltip-type" style="background: ${CONFIG.colors[d.type]}20; color: ${CONFIG.colors[d.type]}">
+                        Familiar
+                    </div>
+                    <div class="tooltip-title">${d.name}</div>
+                    <div class="tooltip-subtitle">${d.parentesco || 'Parentesco no especificado'}</div>
+                    <div class="tooltip-detail">DNI: ${d.dni}</div>
+                    ${d.ocupacion ? `<div class="tooltip-detail">Ocupación: ${d.ocupacion}</div>` : ''}
+                    ${d.lugarTrabajo ? `<div class="tooltip-detail">Trabajo: ${d.lugarTrabajo}</div>` : ''}
+                `;
+                break;
+            case 'entity':
+                content = `
+                    <div class="tooltip-type" style="background: ${CONFIG.colors[d.type]}20; color: ${CONFIG.colors[d.type]}">
+                        Entidad
+                    </div>
+                    <div class="tooltip-title">${d.name}</div>
+                    <div class="tooltip-subtitle">${d.rubro || 'Rubro no especificado'}</div>
+                    <div class="tooltip-detail">RUC: ${d.ruc}</div>
+                    <div class="tooltip-detail">Monto Total: ${this.formatAmount(d.montoTotal)}</div>
+                    <div class="tooltip-detail">Contratos: ${d.numContratos || 0}</div>
+                `;
+                break;
+            case 'contract':
+                content = `
+                    <div class="tooltip-type" style="background: ${CONFIG.colors[d.type]}20; color: ${CONFIG.colors[d.type]}">
+                        Contrato
+                    </div>
+                    <div class="tooltip-title">${this.formatAmount(d.monto)}</div>
+                    <div class="tooltip-subtitle">${d.entidadContratante || 'Entidad no especificada'}</div>
+                    <div class="tooltip-detail">Fecha: ${this.formatDate(d.fecha)}</div>
+                    ${d.vigencia ? `<div class="tooltip-detail">Estado: ${d.vigencia}</div>` : ''}
+                    <div class="tooltip-detail">${d.descripcion || 'Sin descripción'}</div>
+                `;
+                break;
         }
         
         tooltip.html(content);
-        
-        const tooltipNode = tooltip.node();
-        const tooltipRect = tooltipNode.getBoundingClientRect();
-        let left = event.pageX + 20;
-        let top = event.pageY - 10;
-        
-        if (left + tooltipRect.width > window.innerWidth - 20) {
-            left = event.pageX - tooltipRect.width - 20;
-        }
-        if (top + tooltipRect.height > window.innerHeight - 20) {
-            top = window.innerHeight - tooltipRect.height - 20;
-        }
-        if (top < 20) top = 20;
-        
-        tooltip
-            .style('left', `${left}px`)
-            .style('top', `${top}px`)
-            .classed('visible', true);
-    }
-    
-    hideTooltip() {
-        d3.select('#tooltip').classed('visible', false);
+        tooltip.style('opacity', 1);
+        this.updateTooltipPosition(event);
     }
     
     updateTooltipPosition(event) {
         const tooltip = d3.select('#tooltip');
-        if (tooltip.classed('visible')) {
-            const tooltipNode = tooltip.node();
-            const tooltipRect = tooltipNode.getBoundingClientRect();
-            let left = event.pageX + 20;
-            let top = event.pageY - 10;
-            
-            if (left + tooltipRect.width > window.innerWidth - 20) {
-                left = event.pageX - tooltipRect.width - 20;
-            }
-            if (top + tooltipRect.height > window.innerHeight - 20) {
-                top = window.innerHeight - tooltipRect.height - 20;
-            }
-            if (top < 20) top = 20;
-            
-            tooltip
-                .style('left', `${left}px`)
-                .style('top', `${top}px`);
+        const tooltipNode = tooltip.node();
+        const tooltipWidth = tooltipNode.offsetWidth;
+        const tooltipHeight = tooltipNode.offsetHeight;
+        
+        let left = event.clientX + 15;
+        let top = event.clientY + 15;
+        
+        // Ajustar si se sale de la pantalla
+        if (left + tooltipWidth > window.innerWidth - 20) {
+            left = event.clientX - tooltipWidth - 15;
         }
+        if (top + tooltipHeight > window.innerHeight - 20) {
+            top = event.clientY - tooltipHeight - 15;
+        }
+        
+        tooltip
+            .style('left', left + 'px')
+            .style('top', top + 'px');
     }
     
-    getTooltipRows(d) {
-        const rows = [];
-        switch (d.type) {
-            case 'congressperson':
-                rows.push(['DNI', d.dni]);
-                rows.push(['Partido', d.party]);
-                if (d.commission) rows.push(['Comisión', d.commission]);
-                if (d.department) rows.push(['Departamento', d.department]);
-                break;
-            case 'familiar':
-                rows.push(['DNI', d.dni]);
-                rows.push(['Parentesco', d.parentesco]);
-                rows.push(['Ocupación', d.ocupacion]);
-                if (d.lugarTrabajo) rows.push(['Lugar de trabajo', d.lugarTrabajo]);
-                if (d.ruc) rows.push(['RUC empresa', d.ruc]);
-                break;
-            case 'entity':
-                rows.push(['RUC', d.ruc]);
-                rows.push(['Rubro', d.rubro]);
-                rows.push(['Monto total', this.formatAmount(d.montoTotal), true]);
-                rows.push(['N° contratos', d.numContratos]);
-                break;
-            case 'contract':
-                rows.push(['Fecha firma', this.formatDate(d.fechaFirma)]);
-                if (d.fechaFin) {
-                    rows.push(['Fecha fin', this.formatDate(d.fechaFin)]);
-                }
-                rows.push(['Estado', d.vigente ? '✅ Vigente' : '⏹️ Finalizado', true]);
-                rows.push(['Descripción', d.descripcion]);
-                rows.push(['Monto', this.formatAmount(d.monto), true]);
-                rows.push(['Entidad contratante', d.entidadContratante]);
-                break;
-        }
-        return rows;
+    hideTooltip() {
+        d3.select('#tooltip').style('opacity', 0);
     }
     
     // ==================== SIDEBAR ====================
@@ -733,105 +710,143 @@ class NetworkVisualization {
         const sidebar = d3.select('#sidebar');
         const content = d3.select('#sidebar-content');
         
-        let html = `
+        let html = '';
+        const typeLabel = this.getTypeLabel(d.type);
+        const color = CONFIG.colors[d.type];
+        
+        html += `
             <div class="sidebar-header">
-                <span class="sidebar-badge tooltip-badge ${d.type}">${this.getTypeLabel(d.type)}</span>
+                <span class="sidebar-type" style="background: ${color}20; color: ${color}">${typeLabel}</span>
                 <h2 class="sidebar-title">${d.name || this.formatAmount(d.monto)}</h2>
                 <p class="sidebar-subtitle">${d.party || d.parentesco || d.rubro || d.entidadContratante || ''}</p>
             </div>
         `;
         
-        html += '<div class="sidebar-section"><h3 class="sidebar-section-title">Información</h3>';
-        const rows = this.getTooltipRows(d);
-        rows.forEach(([key, value, highlight]) => {
-            html += `<div class="sidebar-stat">
-                <span>${key}</span>
-                <span class="sidebar-stat-value" style="${highlight ? '' : 'color: var(--text-primary)'}">${value}</span>
-            </div>`;
-        });
-        html += '</div>';
-        
-        // Sección especial de vigencia para contratos
-        if (d.type === 'contract') {
-            html += `
-                <div class="sidebar-section">
-                    <h3 class="sidebar-section-title">Vigencia del Contrato</h3>
-                    <div class="vigencia-card ${d.vigente ? 'vigente' : 'finalizado'}">
-                        <div class="vigencia-status">
-                            <span class="vigencia-icon">${d.vigente ? '🟢' : '🔴'}</span>
-                            <span class="vigencia-label">${d.vigente ? 'CONTRATO VIGENTE' : 'CONTRATO FINALIZADO'}</span>
-                        </div>
-                        <div class="vigencia-dates">
-                            <div class="vigencia-date">
-                                <span class="date-label">Inicio:</span>
-                                <span class="date-value">${this.formatDate(d.fechaFirma)}</span>
-                            </div>
-                            ${d.fechaFin ? `
-                            <div class="vigencia-date">
-                                <span class="date-label">Fin:</span>
-                                <span class="date-value">${this.formatDate(d.fechaFin)}</span>
-                            </div>
-                            ` : `
-                            <div class="vigencia-date">
-                                <span class="date-label">Fin:</span>
-                                <span class="date-value">Sin fecha definida</span>
-                            </div>
-                            `}
-                        </div>
+        // Información específica según tipo
+        switch(d.type) {
+            case 'congressperson':
+                html += `
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-section-title">Información</h3>
+                        <div class="sidebar-stat"><span>DNI</span><span class="sidebar-stat-value">${d.dni}</span></div>
+                        <div class="sidebar-stat"><span>Partido</span><span>${d.party || 'N/A'}</span></div>
+                        <div class="sidebar-stat"><span>Comisión</span><span>${d.commission || 'N/A'}</span></div>
+                        <div class="sidebar-stat"><span>Departamento</span><span>${d.department || 'N/A'}</span></div>
                     </div>
-                </div>
-            `;
+                `;
+                break;
+            case 'familiar':
+                html += `
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-section-title">Información</h3>
+                        <div class="sidebar-stat"><span>DNI</span><span class="sidebar-stat-value">${d.dni}</span></div>
+                        <div class="sidebar-stat"><span>Parentesco</span><span>${d.parentesco || 'N/A'}</span></div>
+                        <div class="sidebar-stat"><span>Ocupación</span><span>${d.ocupacion || 'N/A'}</span></div>
+                        ${d.lugarTrabajo ? `<div class="sidebar-stat"><span>Lugar de Trabajo</span><span>${d.lugarTrabajo}</span></div>` : ''}
+                        ${d.ruc ? `<div class="sidebar-stat"><span>RUC</span><span>${d.ruc}</span></div>` : ''}
+                    </div>
+                `;
+                break;
+            case 'entity':
+                html += `
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-section-title">Información</h3>
+                        <div class="sidebar-stat"><span>RUC</span><span class="sidebar-stat-value">${d.ruc}</span></div>
+                        <div class="sidebar-stat"><span>Rubro</span><span>${d.rubro || 'N/A'}</span></div>
+                        <div class="sidebar-stat"><span>Monto Total</span><span class="sidebar-stat-value">${this.formatAmount(d.montoTotal)}</span></div>
+                        <div class="sidebar-stat"><span>N° Contratos</span><span>${d.numContratos || 0}</span></div>
+                    </div>
+                `;
+                break;
+            case 'contract':
+                html += `
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-section-title">Información</h3>
+                        <div class="sidebar-stat"><span>Monto</span><span class="sidebar-stat-value">${this.formatAmount(d.monto)}</span></div>
+                        <div class="sidebar-stat"><span>Fecha</span><span>${this.formatDate(d.fecha)}</span></div>
+                        ${d.vigencia ? `<div class="sidebar-stat"><span>Estado</span><span>${d.vigencia}</span></div>` : ''}
+                        <div class="sidebar-stat"><span>Entidad Contratante</span><span>${d.entidadContratante || 'N/A'}</span></div>
+                    </div>
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-section-title">Descripción</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">${d.descripcion || 'Sin descripción'}</p>
+                    </div>
+                `;
+                break;
         }
         
-        const connections = this.getConnections(d);
+        // Conexiones
+        const connections = this.getDirectConnections(d);
         if (connections.length > 0) {
-            html += '<div class="sidebar-section"><h3 class="sidebar-section-title">Conexiones</h3>';
-            html += '<div class="sidebar-connections">';
+            html += `
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">Conexiones (${connections.length})</h3>
+                    <div class="sidebar-connections">
+            `;
+            
             connections.forEach(conn => {
-                const bgColor = `rgba(${this.hexToRgb(CONFIG.colors[conn.type])}, 0.15)`;
-                const shapeClass = conn.type === 'familiar' ? 'hexagon' : 
-                                   conn.type === 'contract' ? 'rectangle' : 
-                                   conn.type === 'entity' ? 'diamond' : 'circle';
-                html += `<div class="sidebar-connection" data-id="${conn.id}">
-                    <div class="sidebar-connection-icon shape-${shapeClass}" style="background: ${bgColor}">${CONFIG.icons[conn.type]}</div>
-                    <div class="sidebar-connection-info">
-                        <div class="sidebar-connection-name">${conn.name || this.formatAmount(conn.monto)}</div>
-                        <div class="sidebar-connection-type">${this.getTypeLabel(conn.type)}</div>
+                const connColor = CONFIG.colors[conn.type];
+                html += `
+                    <div class="sidebar-connection" data-id="${conn.id}">
+                        <div class="sidebar-connection-icon" style="background: ${connColor}20; color: ${connColor}">
+                            ${conn.type === 'congressperson' ? '👤' : conn.type === 'familiar' ? '👥' : conn.type === 'entity' ? '🏢' : '📄'}
+                        </div>
+                        <div class="sidebar-connection-info">
+                            <div class="sidebar-connection-name">${conn.name || this.formatAmount(conn.monto)}</div>
+                            <div class="sidebar-connection-type">${this.getTypeLabel(conn.type)}</div>
+                        </div>
                     </div>
-                </div>`;
+                `;
             });
-            html += '</div></div>';
+            
+            html += `</div></div>`;
         }
         
         content.html(html);
-        sidebar.classed('visible', true);
+        sidebar.classed('open', true);
         
-        const self = this;
-        content.selectAll('.sidebar-connection').on('click', function() {
-            const id = this.getAttribute('data-id');
-            const node = self.data.nodes.find(n => n.id === id);
-            if (node) self.selectNode(node);
+        // Eventos para conexiones clickeables
+        content.selectAll('.sidebar-connection').on('click', (event) => {
+            const id = event.currentTarget.dataset.id;
+            const node = this.data.nodes.find(n => n.id === id);
+            if (node) this.selectNode(node);
         });
     }
     
     closeSidebar() {
-        d3.select('#sidebar').classed('visible', false);
+        d3.select('#sidebar').classed('open', false);
     }
     
-    getConnections(d) {
-        const connected = [];
+    getDirectConnections(d) {
+        const connections = [];
         this.data.links.forEach(link => {
-            const sourceId = link.source.id || link.source;
-            const targetId = link.target.id || link.target;
-            
-            if (sourceId === d.id) {
-                const node = this.data.nodes.find(n => n.id === targetId);
-                if (node) connected.push(node);
-            } else if (targetId === d.id) {
-                const node = this.data.nodes.find(n => n.id === sourceId);
-                if (node) connected.push(node);
+            if (link.source.id === d.id) {
+                connections.push(link.target);
+            } else if (link.target.id === d.id) {
+                connections.push(link.source);
             }
         });
+        return connections;
+    }
+    
+    getConnectedNodes(d, depth = 2) {
+        const connected = new Set();
+        const queue = [{node: d, level: 0}];
+        
+        while (queue.length > 0) {
+            const {node, level} = queue.shift();
+            if (level > depth) continue;
+            
+            this.data.links.forEach(link => {
+                if (link.source.id === node.id && !connected.has(link.target.id)) {
+                    connected.add(link.target.id);
+                    if (level < depth) queue.push({node: link.target, level: level + 1});
+                } else if (link.target.id === node.id && !connected.has(link.source.id)) {
+                    connected.add(link.source.id);
+                    if (level < depth) queue.push({node: link.source, level: level + 1});
+                }
+            });
+        }
         return connected;
     }
     
@@ -868,6 +883,7 @@ class NetworkVisualization {
         
         if (matches.length > 0) {
             this.selectNode(matches[0]);
+            // Centrar en el nodo
             const node = matches[0];
             const transform = d3.zoomIdentity
                 .translate(this.width / 2 - node.x, this.height / 2 - node.y);
@@ -893,9 +909,11 @@ class NetworkVisualization {
     }
     
     reloadData(data) {
+        // Limpiar
         this.g.selectAll('*').remove();
         this.simulation.stop();
         
+        // Recargar
         this.data = this.processData(data);
         this.setupDefs();
         this.setupSimulation();
@@ -961,7 +979,7 @@ class NetworkVisualization {
         const labels = {
             congressperson: 'Congresista',
             familiar: 'Familiar',
-            entity: 'Empresa',
+            entity: 'Entidad',
             contract: 'Contrato'
         };
         return labels[type] || type;
@@ -976,12 +994,6 @@ class NetworkVisualization {
         if (!dateStr) return 'N/A';
         const date = new Date(dateStr);
         return date.toLocaleDateString('es-PE', { year: 'numeric', month: 'short', day: 'numeric' });
-    }
-    
-    formatDateShort(dateStr) {
-        if (!dateStr) return 'N/A';
-        const date = new Date(dateStr);
-        return date.toLocaleDateString('es-PE', { year: '2-digit', month: 'short' });
     }
     
     truncateName(name, maxLen = 25) {

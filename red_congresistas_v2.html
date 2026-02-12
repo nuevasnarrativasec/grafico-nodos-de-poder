@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red de Conexiones: Congresistas, Familiares, Contratos y Empresas</title>
+    <title>Red de Conexiones: Congresistas, Familiares y Contratos Públicos</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
@@ -19,12 +19,12 @@
     <header class="header">
         <div class="header-left" style="opacity: 0;">
             <h1>Red de Conexiones</h1>
-            <p>Congresistas, Familiares, Contratos y Empresas</p>
+            <p>Congresistas, Familiares y Contratos con el Estado</p>
         </div>
         <div class="header-right">
             <div class="file-input-wrapper">
                 <input type="file" id="file-input" accept=".json">
-                <label for="file-input" class="file-input-btn">📂 Cargar JSON</label>
+                <label for="file-input" class="file-input-btn">📁 Cargar JSON</label>
             </div>
             <div class="search-wrapper">
                 <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -51,23 +51,23 @@
         <div id="sidebar-content"></div>
     </aside>
     
-    <!-- Legend con formas geométricas -->
+    <!-- Legend con nuevas formas -->
     <div class="legend">
         <div class="legend-item">
-            <div class="legend-shape circle"></div>
+            <div class="legend-shape congressperson"></div>
             <span>Congresista</span>
         </div>
         <div class="legend-item">
-            <div class="legend-shape hexagon"></div>
+            <div class="legend-shape familiar"></div>
             <span>Familiar</span>
         </div>
         <div class="legend-item">
-            <div class="legend-shape rectangle"></div>
-            <span>Contrato</span>
+            <div class="legend-shape entity"></div>
+            <span>Entidad</span>
         </div>
         <div class="legend-item">
-            <div class="legend-shape diamond"></div>
-            <span>Empresa</span>
+            <div class="legend-shape contract"></div>
+            <span>Contrato</span>
         </div>
     </div>
     
@@ -82,12 +82,12 @@
             <div class="stat-label">Familiares</div>
         </div>
         <div class="stat-item">
-            <div class="stat-value" id="stat-contracts">0</div>
-            <div class="stat-label">Contratos</div>
+            <div class="stat-value" id="stat-entities">0</div>
+            <div class="stat-label">Entidades</div>
         </div>
         <div class="stat-item">
-            <div class="stat-value" id="stat-entities">0</div>
-            <div class="stat-label">Empresas</div>
+            <div class="stat-value" id="stat-contracts">0</div>
+            <div class="stat-label">Contratos</div>
         </div>
         <div class="stat-item">
             <div class="stat-value" id="stat-total-amount">S/ 0</div>
