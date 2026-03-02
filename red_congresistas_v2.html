@@ -6,7 +6,7 @@
     <title>Red de Conexiones: Congresistas, Familiares y Contratos Públicos</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css?v2">
+    <link rel="stylesheet" href="./css/style.css?v4">
 </head>
 <body>
     <!-- Loader -->
@@ -30,7 +30,9 @@
                 <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
                 </svg>
-                <input type="text" class="search-input" placeholder="Buscar por nombre, DNI o RUC..." id="search-input">
+                <input type="text" class="search-input" placeholder="Buscar congresista, DNI o RUC..." id="search-input" autocomplete="off">
+                <!-- Dropdown de sugerencias -->
+                <div class="search-dropdown" id="search-dropdown"></div>
             </div>
         </div>
     </header>
@@ -51,7 +53,7 @@
         <div id="sidebar-content"></div>
     </aside>
     
-    <!-- Legend con nuevas formas -->
+    <!-- Legend -->
     <div class="legend">
         <div class="legend-item">
             <div class="legend-shape congressperson"></div>
@@ -94,6 +96,11 @@
             <div class="stat-label">Monto Total</div>
         </div>
     </div>
+
+    <!-- Hint -->
+    <div class="hint-label">
+        Haz clic en una cara para <span>expandir su red</span> · Clic en un familiar para ver <span>sus contratos</span>
+    </div>
     
     <!-- Controls -->
     <div class="controls">
@@ -119,6 +126,6 @@
         </button>
     </div>
 
-    <script src="./js/main.js?v2"></script>
+    <script src="./js/main.js?v4"></script>
 </body>
 </html>

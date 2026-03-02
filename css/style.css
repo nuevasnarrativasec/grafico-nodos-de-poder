@@ -406,6 +406,8 @@
         
         /* ==================== SIDEBAR ==================== */
         .sidebar {
+            display: none !important;
+
             position: fixed;
             right: 0;
             top: 0;
@@ -772,4 +774,126 @@
         }
         .file-input-wrapper {
             display: none;
+        }
+        /* ==================== SIDEBAR OPEN STATE ==================== */
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        /* ==================== SEARCH DROPDOWN ==================== */
+        .search-wrapper {
+            position: relative;
+        }
+
+        .search-dropdown {
+            display: none;
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            left: 0;
+            min-width: 320px;
+            background: #1e2330;
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 9999;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+            animation: dropdownIn 0.18s ease;
+        }
+
+        .search-dropdown.open {
+            display: block;
+        }
+
+        @keyframes dropdownIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .search-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.65rem 1rem;
+            cursor: pointer;
+            transition: background 0.15s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .search-dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-dropdown-item:hover {
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        .search-dropdown-icon {
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .search-dropdown-name {
+            font-size: 0.85rem;
+            color: #e5e7eb;
+        }
+
+        .search-dropdown-name mark {
+            background: transparent;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .search-dropdown-empty {
+            padding: 0.75rem 1rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* ==================== CONGRESSPERSON HOVER / EXPAND ==================== */
+        .node-congressperson {
+            cursor: pointer;
+        }
+
+        .node-congressperson:hover .node-circle {
+            stroke: var(--accent-gold) !important;
+            stroke-width: 3px !important;
+        }
+
+        .node-congressperson.expanded .node-circle {
+            stroke: var(--accent-gold) !important;
+            stroke-width: 4px !important;
+            filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.6));
+        }
+
+        .node-congressperson .node-pulse-ring {
+            animation: pulseRing 2.5s ease-out infinite;
+        }
+
+        @keyframes pulseRing {
+            0%   { stroke-width: 2px; stroke-opacity: 0.35; r: 50; }
+            70%  { stroke-width: 1px; stroke-opacity: 0; r: 62; }
+            100% { stroke-width: 1px; stroke-opacity: 0; r: 62; }
+        }
+
+        /* ==================== HINT LABEL ==================== */
+        .hint-label {
+            position: fixed;
+            bottom: 5.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(26, 30, 38, 0.92);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 0.5rem 1.25rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            z-index: 50;
+            pointer-events: none;
+            backdrop-filter: blur(8px);
+        }
+
+        .hint-label span {
+            color: var(--accent-gold);
         }
