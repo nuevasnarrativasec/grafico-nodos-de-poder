@@ -1,4 +1,10 @@
 // ============================================
+// DATOS: cargados desde js/data.js
+// Asegúrate de incluir <script src="./js/data.js"></script>
+// antes de este archivo en el HTML.
+// ============================================
+
+// ============================================
 // CONFIGURACIÓN GLOBAL
 // ============================================
 const CONFIG = {
@@ -61,235 +67,7 @@ function getRoundedSquarePath(size, radius) {
 // ============================================
 // DATOS DE EJEMPLO – 20 CONGRESISTAS
 // ============================================
-const PARTIES = [
-    'Alianza para el Progreso', 'Podemos Perú', 'Avanza País', 'Fuerza Popular',
-    'Acción Popular', 'Somos Perú', 'UPP', 'Integridad y Desarrollo',
-    'Renovación Popular', 'Perú Libre'
-];
-const COMMISSIONS = [
-    'Comisión de Economía', 'Comisión de Transportes', 'Junta de Portavoces',
-    'Comisión de Salud', 'Comisión de Educación', 'Comisión de Justicia',
-    'Comisión de Defensa', 'Comisión de Presupuesto', 'Comisión de Fiscalización',
-    'Comisión de Vivienda'
-];
-const DEPARTMENTS = [
-    'Lima', 'Ica', 'Callao', 'Arequipa', 'La Libertad', 'Cusco',
-    'Piura', 'Ancash', 'Puno', 'Junín', 'Cajamarca', 'Loreto',
-    'Áncash', 'Madre de Dios', 'San Martín', 'Tumbes', 'Ucayali', 'Apurímac', 'Ayacucho', 'Huánuco'
-];
 
-const SAMPLE_DATA = {
-    nodes: [
-        // ── CONGRESISTAS ──────────────────────────────────────────────────────
-        { id: "C001", type: "congressperson", name: "Ana María Zegarra López",       dni: "42628319", party: "Somos Perú",                  commission: "Comisión de Economía",      department: "Lima",          photo: './img/ana-zegarra.png' },
-        { id: "C002", type: "congressperson", name: "José Luis Elías Ávalos",         dni: "21569935", party: "Alianza Para el Progreso",   commission: "Comisión de Transportes",   department: "Ica",           photo: './img/jose-elias.png' },
-        { id: "C003", type: "congressperson", name: "Patricia Rosa Chirinos Venegas", dni: "10280036", party: "Alianza Para el Progreso",   commission: "Junta de Portavoces",       department: "Callao",        photo: './img/patricia-chirinos.png' },
-        { id: "C004", type: "congressperson", name: "Alejandro Soto Reyes",           dni: "23901989", party: "Alianza Para el Progreso",   commission: "Comisión de Presupuesto",   department: "Cusco",         photo: './img/alejandro-soto.png' },
-        { id: "C005", type: "congressperson", name: "Norma Yarrow Lumbreras",         dni: "10806296", party: "Renovación Popular",         commission: "Comisión de Salud",         department: "Lima",          photo: './img/norma-yarrow.png' },
-        { id: "C006", type: "congressperson", name: "Hector Ventura Asencio",         dni: "40242430", party: "Fuerza Popular",             commission: "Comisión de Educación",     department: "Áncash",        photo: './img/hector-ventura.png' },
-        { id: "C007", type: "congressperson", name: "Eduardo Salhuana Cavides",       dni: "05070188", party: "Alianza Para el Progreso",   commission: "Comisión de Justicia",      department: "Lima",          photo: './img/eduardo-salhuana.png' },
-        { id: "C008", type: "congressperson", name: "Roberto Sánchez Palomino",       dni: "16002918", party: "Juntos Por el Perú",         commission: "Comisión de Defensa",       department: "La Libertad",   photo: './img/roberto-sanchez.png' },
-        { id: "C009", type: "congressperson", name: "Magaly Ruiz Rodríguez",          dni: "18032382", party: "Alianza Para el Progreso",   commission: "Comisión de Fiscalización", department: "Piura",         photo: './img/magaly-ruiz.png' },
-        { id: "C010", type: "congressperson", name: "Silvana Robles Espinoza",        dni: "42750152", party: "Juntos Por el Perú",         commission: "Comisión de Vivienda",      department: "Junín",         photo: './img/silvana-robles.png' },
-        { id: "C011", type: "congressperson", name: "Abel Reyes Quispe",              dni: "42377791", party: "Perú Libre",                 commission: "Comisión de Economía",      department: "Puno",          photo: './img/abel-reyes.png' },
-        { id: "C012", type: "congressperson", name: "Adriana Tudela Gutiérrez",       dni: "45591954", party: "Avanza País",                commission: "Comisión de Transportes",   department: "Lima",          photo: './img/adriana-tudela.png' },
-        { id: "C013", type: "congressperson", name: "Jhakeline Ugarte Rivera",        dni: "24711696", party: "Juntos Por el Perú",         commission: "Comisión de Salud",         department: "Arequipa",      photo: './img/katy-ugarte.png' },
-        { id: "C014", type: "congressperson", name: "Rosio Torres Palomino",          dni: "05618705", party: "Alianza Para el Progreso",   commission: "Comisión de Educación",     department: "Ayacucho",      photo: './img/rosio-torres.png' },
-        { id: "C015", type: "congressperson", name: "Cheryl Trigozo Murayari",        dni: "44886100", party: "Renovación Popular",         commission: "Comisión de Justicia",      department: "Loreto",        photo: './img/cheryl-trigozo.png' },
-        { id: "C016", type: "congressperson", name: "Hector Valer Collado",           dni: "25567150", party: "Somos Perú",                 commission: "Comisión de Presupuesto",   department: "Cusco",         photo: './img/hector-valer.png' },
-        { id: "C017", type: "congressperson", name: "Fernando Rospigliosi Capurro",   dni: "07704730", party: "Fuerza Popular",             commission: "Comisión de Defensa",       department: "Lima",          photo: './img/fernando-rospigliosi.png' },
-        { id: "C018", type: "congressperson", name: "Elias Varas Meléndez",           dni: "32923902", party: "Juntos Por el Perú",         commission: "Comisión de Fiscalización", department: "Ancash",        photo: './img/elias-varas.png' },
-        { id: "C019", type: "congressperson", name: "Maria Elena Taipe Coronel",      dni: "41005490", party: "Perú Libre",                 commission: "Comisión de Vivienda",      department: "Cajamarca",     photo: './img/elizabeth-taipe.png' },
-        { id: "C020", type: "congressperson", name: "José Williams Zapata",           dni: "43287528", party: "Avanza País",                commission: "Comisión de Economía",      department: "Lima",          photo: './img/jose-williams.png' },
-
-        // ── FAMILIARES ────────────────────────────────────────────────────────
-        // C001 – Ana Zegarra
-        { id: "F001", type: "familiar", name: "Hugo Hermilio Alvarado Apaza",   dni: "04632989", parentesco: "Padre del Cónyuge", ocupacion: "Pescador Artesanal",  congresspersonId: "C001" },
-        { id: "F002", type: "familiar", name: "José Alfredo Alvarado Mamani",   dni: "40448882", parentesco: "Cuñado",           ocupacion: "Chofer",               lugarTrabajo: "Transportes Halcon SRL",   ruc: "20456789012", congresspersonId: "C001" },
-        { id: "F003", type: "familiar", name: "Deisy Paola Alvarado Mamani",    dni: "42067814", parentesco: "Cuñada",           ocupacion: "Promotora Educativa",  lugarTrabajo: "Programa Educación Básica", congresspersonId: "C001" },
-        // C002 – José Elías
-        { id: "F004", type: "familiar", name: "Carlos Elías Mendoza",           dni: "21234567", parentesco: "Hermano",          ocupacion: "Gerente General",     lugarTrabajo: "Constructora del Sur SAC", ruc: "20567891234", congresspersonId: "C002" },
-        { id: "F005", type: "familiar", name: "María Elena Ávalos de Elías",    dni: "21345678", parentesco: "Madre",            ocupacion: "Comerciante",          lugarTrabajo: "Distribuidora Ávalos EIRL", ruc: "20123456789", congresspersonId: "C002" },
-        // C003 – Patricia Chirinos
-        { id: "F006", type: "familiar", name: "Ricardo Venegas Pérez",          dni: "10345678", parentesco: "Hermano",          ocupacion: "Abogado",              lugarTrabajo: "Estudio Venegas & Asociados", ruc: "20789012345", congresspersonId: "C003" },
-        // C004 – Alejandro Soto
-        { id: "F007", type: "familiar", name: "Lidia Reyes de Soto",            dni: "23456789", parentesco: "Cónyuge",          ocupacion: "Contadora",            lugarTrabajo: "Consorcio Soto & Reyes SAC", ruc: "20234567891", congresspersonId: "C004" },
-        { id: "F008", type: "familiar", name: "Gonzalo Soto Quispe",            dni: "23567890", parentesco: "Hijo",             ocupacion: "Empresario",           lugarTrabajo: "Inversiones Soto EIRL",    ruc: "20345678912", congresspersonId: "C004" },
-        // C005 – Norma Yarrow
-        { id: "F009", type: "familiar", name: "Luis Alberto Yarrow Lira",       dni: "10901234", parentesco: "Hermano",          ocupacion: "Médico",               lugarTrabajo: "Clínica San Felipe SAC",  ruc: "20901234567", congresspersonId: "C005" },
-        // C006 – Hector Ventura
-        { id: "F010", type: "familiar", name: "Carmen Rosa Asencio de Ventura", dni: "40312345", parentesco: "Cónyuge",          ocupacion: "Docente",              lugarTrabajo: "MINEDU – UGEL 01",       congresspersonId: "C006" },
-        { id: "F011", type: "familiar", name: "Miguel Ventura Asencio",         dni: "40423456", parentesco: "Hermano",          ocupacion: "Contratista",          lugarTrabajo: "Constructora Ventura SAC", ruc: "20134567890", congresspersonId: "C006" },
-        // C007 – Eduardo Salhuana
-        { id: "F012", type: "familiar", name: "Raúl Salhuana Paredes",          dni: "05189012", parentesco: "Hermano",          ocupacion: "Abogado",              lugarTrabajo: "Salhuana Abogados SRL",  ruc: "20189012345", congresspersonId: "C007" },
-        // C008 – Roberto Sánchez
-        { id: "F013", type: "familiar", name: "Pedro Sánchez Llanos",           dni: "16123456", parentesco: "Padre",            ocupacion: "Agricultor",           congresspersonId: "C008" },
-        { id: "F014", type: "familiar", name: "Carla Palomino de Sánchez",      dni: "16234567", parentesco: "Cónyuge",          ocupacion: "Ingeniera",            lugarTrabajo: "Constructora Palomino EIRL", ruc: "20456701234", congresspersonId: "C008" },
-        // C009 – Magaly Ruiz
-        { id: "F015", type: "familiar", name: "Jorge Luis Ruiz Chávez",         dni: "18145678", parentesco: "Hermano",          ocupacion: "Gerente Comercial",    lugarTrabajo: "Agro Norte SAC",         ruc: "20512345678", congresspersonId: "C009" },
-        // C010 – Silvana Robles
-        { id: "F016", type: "familiar", name: "Yuri Espinoza Robles",           dni: "42856789", parentesco: "Cónyuge",          ocupacion: "Contador",             lugarTrabajo: "Minera Espinoza SAC",    ruc: "20678901234", congresspersonId: "C010" },
-        // C011 – Abel Reyes
-        { id: "F017", type: "familiar", name: "Dionicia Quispe de Reyes",       dni: "42490123", parentesco: "Madre",            ocupacion: "Comerciante",          lugarTrabajo: "Asociación Comercial Puno", congresspersonId: "C011" },
-        // C012 – Adriana Tudela
-        { id: "F018", type: "familiar", name: "Augusto Gutiérrez Tudela",       dni: "45701234", parentesco: "Padre",            ocupacion: "Empresario",           lugarTrabajo: "Inversiones Gutiérrez SA", ruc: "20712345678", congresspersonId: "C012" },
-        { id: "F019", type: "familiar", name: "Pamela Tudela Rivera",           dni: "45812345", parentesco: "Hermana",          ocupacion: "Consultora",           lugarTrabajo: "Consultores Tudela SAC", ruc: "20823456789", congresspersonId: "C012" },
-        // C013 – Jhakeline Ugarte
-        { id: "F020", type: "familiar", name: "Rolando Rivera Ugarte",          dni: "24823456", parentesco: "Esposo",           ocupacion: "Constructor",          lugarTrabajo: "Obras Rivera EIRL",     ruc: "20934567890", congresspersonId: "C013" },
-        // C014 – Rosio Torres
-        { id: "F021", type: "familiar", name: "Nicanor Torres Huanca",          dni: "05734567", parentesco: "Padre",            ocupacion: "Agropecuario",         congresspersonId: "C014" },
-        // C015 – Cheryl Trigozo
-        { id: "F022", type: "familiar", name: "Eder Murayari Trigozo",          dni: "44990123", parentesco: "Hermano",          ocupacion: "Transportista",        lugarTrabajo: "Trans Amazonas SRL",    ruc: "20045678901", congresspersonId: "C015" },
-        // C016 – Hector Valer
-        { id: "F023", type: "familiar", name: "Sonia Collado de Valer",         dni: "25678901", parentesco: "Cónyuge",          ocupacion: "Contratista",          lugarTrabajo: "Valer Construcciones SAC", ruc: "20156789012", congresspersonId: "C016" },
-        // C017 – Fernando Rospigliosi
-        { id: "F024", type: "familiar", name: "Claudia Capurro de Rospigliosi", dni: "07856789", parentesco: "Cónyuge",          ocupacion: "Empresaria",           lugarTrabajo: "Capurro Inversiones SA", ruc: "20267890123", congresspersonId: "C017" },
-        // C018 – Elias Varas
-        { id: "F025", type: "familiar", name: "David Varas Chávez",             dni: "32967890", parentesco: "Hermano",          ocupacion: "Gerente",              lugarTrabajo: "Ancash Servicios SAC",   ruc: "20378901234", congresspersonId: "C018" },
-        // C019 – Maria Taipe
-        { id: "F026", type: "familiar", name: "Juan Carlos Coronel Taipe",      dni: "41123456", parentesco: "Esposo",           ocupacion: "Ingeniero Civil",      lugarTrabajo: "Coronel & Asociados SAC", ruc: "20489012345", congresspersonId: "C019" },
-        // C020 – José Williams
-        { id: "F027", type: "familiar", name: "Jorge Williams Rodríguez",       dni: "43401234", parentesco: "Hermano",          ocupacion: "Empresario",           lugarTrabajo: "Grupo Williams SAC",     ruc: "20590123456", congresspersonId: "C020" },
-
-        // ── ENTIDADES ─────────────────────────────────────────────────────────
-        { id: "E001", type: "entity", name: "Transportes Halcon SRL",        ruc: "20456789012", rubro: "Transporte de carga",         montoTotal: 1250000, numContratos: 8 },
-        { id: "E002", type: "entity", name: "Constructora del Sur SAC",      ruc: "20567891234", rubro: "Construcción",                montoTotal: 4580000, numContratos: 12 },
-        { id: "E003", type: "entity", name: "Distribuidora Ávalos EIRL",     ruc: "20123456789", rubro: "Comercialización",            montoTotal: 890000,  numContratos: 5 },
-        { id: "E004", type: "entity", name: "Estudio Venegas & Asociados",   ruc: "20789012345", rubro: "Servicios legales",           montoTotal: 560000,  numContratos: 7 },
-        { id: "E005", type: "entity", name: "Consorcio Soto & Reyes SAC",    ruc: "20234567891", rubro: "Infraestructura vial",        montoTotal: 6200000, numContratos: 15 },
-        { id: "E006", type: "entity", name: "Inversiones Soto EIRL",         ruc: "20345678912", rubro: "Inmobiliaria",                montoTotal: 3100000, numContratos: 9 },
-        { id: "E007", type: "entity", name: "Constructora Ventura SAC",      ruc: "20134567890", rubro: "Construcción",                montoTotal: 2750000, numContratos: 10 },
-        { id: "E008", type: "entity", name: "Salhuana Abogados SRL",         ruc: "20189012345", rubro: "Asesoría jurídica",           montoTotal: 480000,  numContratos: 6 },
-        { id: "E009", type: "entity", name: "Constructora Palomino EIRL",    ruc: "20456701234", rubro: "Construcción",                montoTotal: 1890000, numContratos: 8 },
-        { id: "E010", type: "entity", name: "Agro Norte SAC",                ruc: "20512345678", rubro: "Agropecuario",               montoTotal: 720000,  numContratos: 4 },
-        { id: "E011", type: "entity", name: "Inversiones Gutiérrez SA",      ruc: "20712345678", rubro: "Consultoría empresarial",     montoTotal: 2200000, numContratos: 11 },
-        { id: "E012", type: "entity", name: "Obras Rivera EIRL",             ruc: "20934567890", rubro: "Obras civiles",              montoTotal: 1450000, numContratos: 7 },
-        { id: "E013", type: "entity", name: "Trans Amazonas SRL",            ruc: "20045678901", rubro: "Transporte fluvial",         montoTotal: 340000,  numContratos: 5 },
-        { id: "E014", type: "entity", name: "Valer Construcciones SAC",      ruc: "20156789012", rubro: "Edificaciones",              montoTotal: 3800000, numContratos: 14 },
-        { id: "E015", type: "entity", name: "Grupo Williams SAC",            ruc: "20590123456", rubro: "Logística y distribución",   montoTotal: 1950000, numContratos: 9 },
-
-        // ── CONTRATOS ─────────────────────────────────────────────────────────
-        // F002 → E001
-        { id: "CT001", type: "contract", entidadId: "E001", fecha: "2023-05-15", descripcion: "Transporte de materiales para PRONIED", monto: 320000,  entidadContratante: "PRONIED",             vigencia: "Finalizado oct. 2023" },
-        { id: "CT002", type: "contract", entidadId: "E001", fecha: "2024-01-10", descripcion: "Distribución de materiales educativos",  monto: 245000,  entidadContratante: "MINEDU",              vigencia: "Vigente desde ene. 2024" },
-        // F004 → E002
-        { id: "CT003", type: "contract", entidadId: "E002", fecha: "2023-03-10", descripcion: "Construcción puente vehicular – Ica",    monto: 2150000, entidadContratante: "MTC",                 vigencia: "Finalizado sep. 2023" },
-        { id: "CT004", type: "contract", entidadId: "E002", fecha: "2023-11-05", descripcion: "Mejoramiento de carretera regional",     monto: 1850000, entidadContratante: "GR Ica",             vigencia: "Vigente desde nov. 2023" },
-        // F005 → E003
-        { id: "CT005", type: "contract", entidadId: "E003", fecha: "2024-01-15", descripcion: "Provisión de alimentos – Qali Warma",    monto: 520000,  entidadContratante: "Qali Warma",          vigencia: "Vigente desde ene. 2024" },
-        // F006 → E004
-        { id: "CT006", type: "contract", entidadId: "E004", fecha: "2023-06-20", descripcion: "Asesoría legal proceso de licitación",   monto: 180000,  entidadContratante: "ESSALUD",             vigencia: "Finalizado dic. 2023" },
-        { id: "CT007", type: "contract", entidadId: "E004", fecha: "2024-02-01", descripcion: "Consultoría jurídica institucional",     monto: 220000,  entidadContratante: "Municipalidad Callao", vigencia: "Vigente desde feb. 2024" },
-        // F007 → E005
-        { id: "CT008", type: "contract", entidadId: "E005", fecha: "2023-07-01", descripcion: "Construcción vía de evitamiento Cusco",  monto: 3200000, entidadContratante: "GR Cusco",            vigencia: "Vigente desde jul. 2023" },
-        { id: "CT009", type: "contract", entidadId: "E005", fecha: "2024-03-15", descripcion: "Pavimentación avenidas principales",     monto: 1800000, entidadContratante: "Municipalidad Cusco", vigencia: "Vigente desde mar. 2024" },
-        // F008 → E006
-        { id: "CT010", type: "contract", entidadId: "E006", fecha: "2023-09-20", descripcion: "Habilitación urbana Cusco Sur",          monto: 1500000, entidadContratante: "COFOPRI",             vigencia: "Finalizado mar. 2024" },
-        // F011 → E007
-        { id: "CT011", type: "contract", entidadId: "E007", fecha: "2023-04-05", descripcion: "Construcción de losas deportivas Áncash", monto: 980000, entidadContratante: "IPD",                vigencia: "Finalizado nov. 2023" },
-        { id: "CT012", type: "contract", entidadId: "E007", fecha: "2023-12-01", descripcion: "Mejoramiento de pistas y veredas",       monto: 1200000, entidadContratante: "Municipalidad Áncash", vigencia: "Vigente desde dic. 2023" },
-        // F012 → E008
-        { id: "CT013", type: "contract", entidadId: "E008", fecha: "2024-01-20", descripcion: "Asesoría en contrataciones del Estado",  monto: 240000,  entidadContratante: "PCM",                 vigencia: "Vigente desde ene. 2024" },
-        // F014 → E009
-        { id: "CT014", type: "contract", entidadId: "E009", fecha: "2023-05-10", descripcion: "Construcción hospital de campaña",       monto: 890000,  entidadContratante: "MINSA",               vigencia: "Finalizado oct. 2023" },
-        { id: "CT015", type: "contract", entidadId: "E009", fecha: "2024-02-28", descripcion: "Construcción puesto de salud La Libertad", monto: 620000, entidadContratante: "GR La Libertad",     vigencia: "Vigente desde feb. 2024" },
-        // F015 → E010
-        { id: "CT016", type: "contract", entidadId: "E010", fecha: "2023-08-15", descripcion: "Provisión de fertilizantes – Agrorural", monto: 380000,  entidadContratante: "AGRORURAL",           vigencia: "Finalizado ene. 2024" },
-        // F018 → E011
-        { id: "CT017", type: "contract", entidadId: "E011", fecha: "2023-10-01", descripcion: "Consultoría plan de desarrollo regional", monto: 1100000, entidadContratante: "CEPLAN",             vigencia: "Vigente desde oct. 2023" },
-        { id: "CT018", type: "contract", entidadId: "E011", fecha: "2024-04-01", descripcion: "Asesoría en gestión de inversiones",     monto: 750000,  entidadContratante: "MEF",                 vigencia: "Vigente desde abr. 2024" },
-        // F020 → E012
-        { id: "CT019", type: "contract", entidadId: "E012", fecha: "2023-06-05", descripcion: "Construcción mercado de abastos Arequipa", monto: 720000, entidadContratante: "Municipalidad Arequipa", vigencia: "Finalizado dic. 2023" },
-        // F022 → E013
-        { id: "CT020", type: "contract", entidadId: "E013", fecha: "2023-09-01", descripcion: "Transporte fluvial de carga – Loreto",   monto: 180000,  entidadContratante: "DIREPRO Loreto",      vigencia: "Finalizado feb. 2024" },
-        // F023 → E014
-        { id: "CT021", type: "contract", entidadId: "E014", fecha: "2023-07-20", descripcion: "Construcción colegio secundario Cusco",  monto: 2100000, entidadContratante: "MINEDU",              vigencia: "Vigente desde jul. 2023" },
-        { id: "CT022", type: "contract", entidadId: "E014", fecha: "2024-01-05", descripcion: "Ampliación centro de salud Wanchaq",     monto: 1400000, entidadContratante: "GR Cusco",            vigencia: "Vigente desde ene. 2024" },
-        // F027 → E015
-        { id: "CT023", type: "contract", entidadId: "E015", fecha: "2023-11-15", descripcion: "Logística vacunas campaña nacional",     monto: 980000,  entidadContratante: "MINSA",               vigencia: "Finalizado mar. 2024" },
-        { id: "CT024", type: "contract", entidadId: "E015", fecha: "2024-03-01", descripcion: "Distribución insumos programa social",   monto: 740000,  entidadContratante: "MIDIS",               vigencia: "Vigente desde mar. 2024" }
-    ],
-    links: [
-        // Congresistas → Familiares
-        { source: "C001", target: "F001", type: "congressperson-familiar" },
-        { source: "C001", target: "F002", type: "congressperson-familiar" },
-        { source: "C001", target: "F003", type: "congressperson-familiar" },
-        { source: "C002", target: "F004", type: "congressperson-familiar" },
-        { source: "C002", target: "F005", type: "congressperson-familiar" },
-        { source: "C003", target: "F006", type: "congressperson-familiar" },
-        { source: "C004", target: "F007", type: "congressperson-familiar" },
-        { source: "C004", target: "F008", type: "congressperson-familiar" },
-        { source: "C005", target: "F009", type: "congressperson-familiar" },
-        { source: "C006", target: "F010", type: "congressperson-familiar" },
-        { source: "C006", target: "F011", type: "congressperson-familiar" },
-        { source: "C007", target: "F012", type: "congressperson-familiar" },
-        { source: "C008", target: "F013", type: "congressperson-familiar" },
-        { source: "C008", target: "F014", type: "congressperson-familiar" },
-        { source: "C009", target: "F015", type: "congressperson-familiar" },
-        { source: "C010", target: "F016", type: "congressperson-familiar" },
-        { source: "C011", target: "F017", type: "congressperson-familiar" },
-        { source: "C012", target: "F018", type: "congressperson-familiar" },
-        { source: "C012", target: "F019", type: "congressperson-familiar" },
-        { source: "C013", target: "F020", type: "congressperson-familiar" },
-        { source: "C014", target: "F021", type: "congressperson-familiar" },
-        { source: "C015", target: "F022", type: "congressperson-familiar" },
-        { source: "C016", target: "F023", type: "congressperson-familiar" },
-        { source: "C017", target: "F024", type: "congressperson-familiar" },
-        { source: "C018", target: "F025", type: "congressperson-familiar" },
-        { source: "C019", target: "F026", type: "congressperson-familiar" },
-        { source: "C020", target: "F027", type: "congressperson-familiar" },
-        // Familiares → Contratos
-        { source: "F002", target: "CT001", type: "familiar-contract" },
-        { source: "F002", target: "CT002", type: "familiar-contract" },
-        { source: "F004", target: "CT003", type: "familiar-contract" },
-        { source: "F004", target: "CT004", type: "familiar-contract" },
-        { source: "F005", target: "CT005", type: "familiar-contract" },
-        { source: "F006", target: "CT006", type: "familiar-contract" },
-        { source: "F006", target: "CT007", type: "familiar-contract" },
-        { source: "F007", target: "CT008", type: "familiar-contract" },
-        { source: "F007", target: "CT009", type: "familiar-contract" },
-        { source: "F008", target: "CT010", type: "familiar-contract" },
-        { source: "F011", target: "CT011", type: "familiar-contract" },
-        { source: "F011", target: "CT012", type: "familiar-contract" },
-        { source: "F012", target: "CT013", type: "familiar-contract" },
-        { source: "F014", target: "CT014", type: "familiar-contract" },
-        { source: "F014", target: "CT015", type: "familiar-contract" },
-        { source: "F015", target: "CT016", type: "familiar-contract" },
-        { source: "F018", target: "CT017", type: "familiar-contract" },
-        { source: "F018", target: "CT018", type: "familiar-contract" },
-        { source: "F020", target: "CT019", type: "familiar-contract" },
-        { source: "F022", target: "CT020", type: "familiar-contract" },
-        { source: "F023", target: "CT021", type: "familiar-contract" },
-        { source: "F023", target: "CT022", type: "familiar-contract" },
-        { source: "F027", target: "CT023", type: "familiar-contract" },
-        { source: "F027", target: "CT024", type: "familiar-contract" },
-        // Contratos → Entidades
-        { source: "CT001", target: "E001", type: "contract-entity" },
-        { source: "CT002", target: "E001", type: "contract-entity" },
-        { source: "CT003", target: "E002", type: "contract-entity" },
-        { source: "CT004", target: "E002", type: "contract-entity" },
-        { source: "CT005", target: "E003", type: "contract-entity" },
-        { source: "CT006", target: "E004", type: "contract-entity" },
-        { source: "CT007", target: "E004", type: "contract-entity" },
-        { source: "CT008", target: "E005", type: "contract-entity" },
-        { source: "CT009", target: "E005", type: "contract-entity" },
-        { source: "CT010", target: "E006", type: "contract-entity" },
-        { source: "CT011", target: "E007", type: "contract-entity" },
-        { source: "CT012", target: "E007", type: "contract-entity" },
-        { source: "CT013", target: "E008", type: "contract-entity" },
-        { source: "CT014", target: "E009", type: "contract-entity" },
-        { source: "CT015", target: "E009", type: "contract-entity" },
-        { source: "CT016", target: "E010", type: "contract-entity" },
-        { source: "CT017", target: "E011", type: "contract-entity" },
-        { source: "CT018", target: "E011", type: "contract-entity" },
-        { source: "CT019", target: "E012", type: "contract-entity" },
-        { source: "CT020", target: "E013", type: "contract-entity" },
-        { source: "CT021", target: "E014", type: "contract-entity" },
-        { source: "CT022", target: "E014", type: "contract-entity" },
-        { source: "CT023", target: "E015", type: "contract-entity" },
-        { source: "CT024", target: "E015", type: "contract-entity" }
-    ]
-};
 
 // ============================================
 // CLASE PRINCIPAL
@@ -681,6 +459,8 @@ class NetworkVisualization {
             this.selectedNode = null;
             this._dimCongresspersons(null);
             this.closeSidebar();
+            this.hidePinnedPanel();
+            this.updateStats(null);
             // Return to clustered forces
             this._setExpandedForces(false);
             return;
@@ -688,6 +468,10 @@ class NetworkVisualization {
 
         this.expandedCongresspersonId = cid;
         this._dimCongresspersons(cid);
+
+        // Pin congressperson briefly so it stays at center while network expands
+        d.fx = d.x; d.fy = d.y;
+        setTimeout(() => { d.fx = null; d.fy = null; }, 1200);
 
         // Increase repulsion so nodes spread apart to make room
         this._setExpandedForces(true);
@@ -736,7 +520,8 @@ class NetworkVisualization {
             .transition().duration(400).style('opacity', 0.7);
 
         this.selectedNode = d;
-        this.showSidebar(d);
+        this._panToNode(d);
+        this.updateStats(cid);
     }
 
     expandFamiliar(d) {
@@ -795,7 +580,7 @@ class NetworkVisualization {
         });
 
         this.selectedNode = d;
-        this.showSidebar(d);
+        this._panToNode(d);
     }
 
     _collapseNetwork(congresspersonId) {
@@ -867,7 +652,7 @@ class NetworkVisualization {
                     self.expandFamiliar(d);
                 } else {
                     self.selectedNode = d;
-                    self.showSidebar(d);
+                    self._panToNode(d);
                 }
             });
         
@@ -877,6 +662,8 @@ class NetworkVisualization {
                 this.expandedCongresspersonId = null;
                 this._dimCongresspersons(null);
                 this.closeSidebar();
+                this.hidePinnedPanel();
+                this.updateStats(null);
             }
         });
         
@@ -1026,16 +813,10 @@ class NetworkVisualization {
             setTimeout(() => this.expandFamiliar(node), 400);
         } else {
             this.selectedNode = node;
-            this.showSidebar(node);
         }
 
-        // Pan to node
-        setTimeout(() => {
-            const transform = d3.zoomIdentity
-                .translate(this.width / 2 - node.x, this.height / 2 - node.y)
-                .scale(1.2);
-            this.container.transition().duration(600).call(this.zoom.transform, transform);
-        }, 100);
+        // Pan to node (after a short delay to let expansion start)
+        setTimeout(() => this._panToNode(node), 150);
     }
 
     clearSelection() {
@@ -1047,6 +828,8 @@ class NetworkVisualization {
         this._setExpandedForces(false);
         this.selectedNode = null;
         this.closeSidebar();
+        this.hidePinnedPanel();
+        this.updateStats(null);
         document.getElementById('search-input').value = '';
         this.closeSearchDropdown();
     }
@@ -1097,9 +880,9 @@ class NetworkVisualization {
                     <div class="tooltip-type ${d.type}">${typeLabels[d.type]}</div>
                     <div class="tooltip-title">${this.formatAmount(d.monto)}</div>
                     <div class="tooltip-grid">
-                        <div class="tooltip-row"><span class="tooltip-key">Entidad</span><span class="tooltip-value">${d.entidadContratante || 'N/A'}</span></div>
-                        <div class="tooltip-row"><span class="tooltip-key">Fecha</span><span class="tooltip-value">${this.formatDate(d.fecha)}</span></div>
-                        ${d.vigencia ? `<div class="tooltip-row"><span class="tooltip-key">Estado</span><span class="tooltip-value">${d.vigencia}</span></div>` : ''}
+                        <div class="tooltip-row"><span class="tooltip-key">Registros</span><span class="tooltip-value">${d.numContratos || 1} contratos/órdenes</span></div>
+                        <div class="tooltip-row"><span class="tooltip-key">Principal entidad</span><span class="tooltip-value">${d.entidadContratante || 'N/A'}</span></div>
+                        <div class="tooltip-row"><span class="tooltip-key">Último registro</span><span class="tooltip-value">${this.formatDate(d.fecha)}</span></div>
                         <div class="tooltip-row"><span class="tooltip-key">Descripción</span><span class="tooltip-value">${d.descripcion || 'N/A'}</span></div>
                     </div>`;
                 break;
@@ -1121,90 +904,140 @@ class NetworkVisualization {
     
     hideTooltip() { d3.select('#tooltip').style('opacity', 0); }
 
-    // ==================== SIDEBAR ====================
-    
-    showSidebar(d) {
-        const sidebar = d3.select('#sidebar');
-        const content = d3.select('#sidebar-content');
-        const typeLabel = this.getTypeLabel(d.type);
-        const color = CONFIG.colors[d.type];
-        
-        let html = `
-            <div class="sidebar-header">
-                <span class="sidebar-type" style="background:${color}20;color:${color}">${typeLabel}</span>
-                <h2 class="sidebar-title">${d.name || this.formatAmount(d.monto)}</h2>
-                <p class="sidebar-subtitle">${d.party || d.parentesco || d.rubro || d.entidadContratante || ''}</p>
-            </div>`;
-        
-        switch(d.type) {
-            case 'congressperson':
-                html += `<div class="sidebar-section"><h3 class="sidebar-section-title">Información</h3>
-                    <div class="sidebar-stat"><span>DNI</span><span class="sidebar-stat-value">${d.dni}</span></div>
-                    <div class="sidebar-stat"><span>Partido</span><span>${d.party || 'N/A'}</span></div>
-                    <div class="sidebar-stat"><span>Comisión</span><span>${d.commission || 'N/A'}</span></div>
-                    <div class="sidebar-stat"><span>Departamento</span><span>${d.department || 'N/A'}</span></div>
-                </div>`;
-                break;
-            case 'familiar':
-                html += `<div class="sidebar-section"><h3 class="sidebar-section-title">Información</h3>
-                    <div class="sidebar-stat"><span>DNI</span><span class="sidebar-stat-value">${d.dni}</span></div>
-                    <div class="sidebar-stat"><span>Parentesco</span><span>${d.parentesco || 'N/A'}</span></div>
-                    <div class="sidebar-stat"><span>Ocupación</span><span>${d.ocupacion || 'N/A'}</span></div>
-                    ${d.lugarTrabajo ? `<div class="sidebar-stat"><span>Lugar de Trabajo</span><span>${d.lugarTrabajo}</span></div>` : ''}
-                    ${d.ruc ? `<div class="sidebar-stat"><span>RUC</span><span>${d.ruc}</span></div>` : ''}
-                </div>`;
-                break;
-            case 'entity':
-                html += `<div class="sidebar-section"><h3 class="sidebar-section-title">Información</h3>
-                    <div class="sidebar-stat"><span>RUC</span><span class="sidebar-stat-value">${d.ruc}</span></div>
-                    <div class="sidebar-stat"><span>Rubro</span><span>${d.rubro || 'N/A'}</span></div>
-                    <div class="sidebar-stat"><span>Monto Total</span><span class="sidebar-stat-value">${this.formatAmount(d.montoTotal)}</span></div>
-                    <div class="sidebar-stat"><span>N° Contratos</span><span>${d.numContratos || 0}</span></div>
-                </div>`;
-                break;
-            case 'contract':
-                html += `<div class="sidebar-section"><h3 class="sidebar-section-title">Información</h3>
-                    <div class="sidebar-stat"><span>Monto</span><span class="sidebar-stat-value">${this.formatAmount(d.monto)}</span></div>
-                    <div class="sidebar-stat"><span>Fecha</span><span>${this.formatDate(d.fecha)}</span></div>
-                    ${d.vigencia ? `<div class="sidebar-stat"><span>Estado</span><span>${d.vigencia}</span></div>` : ''}
-                    <div class="sidebar-stat"><span>Entidad Contratante</span><span>${d.entidadContratante || 'N/A'}</span></div>
-                </div>
-                <div class="sidebar-section"><h3 class="sidebar-section-title">Descripción</h3>
-                    <p style="font-size:0.85rem;color:var(--text-secondary)">${d.descripcion || 'Sin descripción'}</p>
-                </div>`;
-                break;
-        }
+    // ==================== PANEL POPUP (replaces sidebar) ====================
 
-        // Connections
-        const connections = this.getDirectConnections(d);
-        if (connections.length > 0) {
-            html += `<div class="sidebar-section"><h3 class="sidebar-section-title">Conexiones (${connections.length})</h3><div class="sidebar-connections">`;
-            connections.forEach(conn => {
-                const cc = CONFIG.colors[conn.type];
-                const emoji = conn.type === 'congressperson' ? '👤' : conn.type === 'familiar' ? '👥' : conn.type === 'entity' ? '🏢' : '📄';
-                html += `<div class="sidebar-connection" data-id="${conn.id}">
-                    <div class="sidebar-connection-icon" style="background:${cc}20;color:${cc}">${emoji}</div>
-                    <div class="sidebar-connection-info">
-                        <div class="sidebar-connection-name">${conn.name || this.formatAmount(conn.monto)}</div>
-                        <div class="sidebar-connection-type">${this.getTypeLabel(conn.type)}</div>
-                    </div>
+    _panToNode(node, targetScale = null) {
+        // Get the current zoom state so we never jump to an unexpected scale
+        const currentT = d3.zoomTransform(this.container.node());
+        // Respect the current scale; only apply a gentle zoom-in if currently zoomed out
+        const k = targetScale !== null
+            ? targetScale
+            : Math.max(currentT.k, 0.9);   // never go below 0.9, keep current if already closer
+        const tx = this.width  / 2 - node.x * k;
+        const ty = this.height / 2 - node.y * k;
+        this.container.transition().duration(700).ease(d3.easeCubicInOut)
+            .call(this.zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(k));
+    }
+
+    _buildPanelHTML(d) {
+        const color = CONFIG.colors[d.type];
+        const typeLabel = this.getTypeLabel(d.type).toUpperCase();
+        let html = `
+            <div class="panel-header">
+                <span class="panel-badge" style="background:${color}22;color:${color};border:1px solid ${color}44">${typeLabel}</span>
+                <button class="panel-close" id="panel-close-btn" title="Cerrar">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="panel-title">${d.name || this.formatAmount(d.monto)}</div>`;
+
+        switch(d.type) {
+            case 'congressperson': {
+                const net = this.getCongresspersonNetwork(d.id);
+                const netMonto = [...net.contracts].reduce((sum, cid) => {
+                    const cn = this.data.nodes.find(n => n.id === cid);
+                    return sum + (cn ? cn.monto || 0 : 0);
+                }, 0);
+                html += `
+                <div class="panel-kv-grid">
+                    <div class="panel-kv"><span class="panel-k">DNI</span><span class="panel-v">${d.dni}</span></div>
+                    <div class="panel-kv"><span class="panel-k">Partido</span><span class="panel-v">${d.party || 'N/A'}</span></div>
+                    <div class="panel-kv"><span class="panel-k">Comisión</span><span class="panel-v">${d.commission || 'N/A'}</span></div>
+                    <div class="panel-kv"><span class="panel-k">Departamento</span><span class="panel-v">${d.department || 'N/A'}</span></div>
+                </div>
+                <div class="panel-divider"></div>
+                <div class="panel-summary-row">
+                    <div class="panel-summary-item"><span class="panel-summary-val" style="color:${CONFIG.colors.familiar}">${net.familiars.size}</span><span class="panel-summary-lbl">Familiares</span></div>
+                    <div class="panel-summary-item"><span class="panel-summary-val" style="color:${CONFIG.colors.contract}">${net.contracts.size}</span><span class="panel-summary-lbl">Contratos</span></div>
+                    <div class="panel-summary-item"><span class="panel-summary-val" style="color:${CONFIG.colors.entity}">${net.entities.size}</span><span class="panel-summary-lbl">Entidades</span></div>
+                </div>
+                <div class="panel-total-row"><span class="panel-total-lbl">Monto total de la red</span><span class="panel-total-val">${this.formatAmount(netMonto)}</span></div>`;
+                break;
+            }
+            case 'familiar': {
+                const ctNode = this.data.nodes.find(n => n.id === `CT_${d.ruc}`);
+                html += `
+                <div class="panel-kv-grid">
+                    <div class="panel-kv"><span class="panel-k">RUC/DNI</span><span class="panel-v">${d.ruc || d.dni}</span></div>
+                    <div class="panel-kv"><span class="panel-k">Parentesco</span><span class="panel-v">${d.parentesco || 'N/A'}</span></div>
+                    <div class="panel-kv"><span class="panel-k">Actividad</span><span class="panel-v">${d.ocupacion || 'N/A'}</span></div>
+                    <div class="panel-kv"><span class="panel-k">Principal entidad</span><span class="panel-v">${(d.lugarTrabajo || 'N/A').substring(0,55)}</span></div>
                 </div>`;
-            });
-            html += `</div></div>`;
+                if (ctNode) {
+                    html += `<div class="panel-divider"></div>
+                    <div class="panel-total-row"><span class="panel-total-lbl">Monto total contratado</span><span class="panel-total-val">${this.formatAmount(ctNode.monto)}</span></div>
+                    <div class="panel-total-row" style="margin-top:0.3rem"><span class="panel-total-lbl">N° contratos/órdenes</span><span class="panel-total-val" style="color:var(--text-primary)">${ctNode.numContratos}</span></div>`;
+                }
+                break;
+            }
+            case 'entity': {
+                html += `
+                <div class="panel-kv-grid">
+                    <div class="panel-kv"><span class="panel-k">RUC</span><span class="panel-v">${d.ruc}</span></div>
+                    <div class="panel-kv"><span class="panel-k">Rubro</span><span class="panel-v">${d.rubro || 'N/A'}</span></div>
+                </div>
+                <div class="panel-divider"></div>
+                <div class="panel-total-row"><span class="panel-total-lbl">Monto total contratado</span><span class="panel-total-val">${this.formatAmount(d.montoTotal)}</span></div>
+                <div class="panel-total-row" style="margin-top:0.3rem"><span class="panel-total-lbl">N° contratos/órdenes</span><span class="panel-total-val" style="color:var(--text-primary)">${d.numContratos}</span></div>`;
+                break;
+            }
+            case 'contract': {
+                html += `
+                <div class="panel-kv-grid">
+                    <div class="panel-kv"><span class="panel-k">Principal entidad</span><span class="panel-v">${(d.entidadContratante || 'N/A').substring(0,60)}</span></div>
+                    <div class="panel-kv"><span class="panel-k">Último registro</span><span class="panel-v">${this.formatDate(d.fecha)}</span></div>
+                    <div class="panel-kv"><span class="panel-k">Registros totales</span><span class="panel-v">${d.numContratos}</span></div>
+                </div>
+                <div class="panel-divider"></div>
+                <div class="panel-total-row"><span class="panel-total-lbl">Monto total</span><span class="panel-total-val">${this.formatAmount(d.monto)}</span></div>`;
+
+                if (d.detalles && d.detalles.length > 0) {
+                    html += `<div class="panel-divider"></div><div class="panel-section-title">Detalle de registros</div><div class="panel-scroll-list">`;
+                    d.detalles.forEach(det => {
+                        const tipoColor = det.tipo === 'contrato' ? 'var(--accent-gold)' : 'var(--accent-blue)';
+                        html += `<div class="panel-list-item">
+                            <div class="panel-list-row">
+                                <span class="panel-list-badge" style="background:${tipoColor}22;color:${tipoColor}">${det.tipo.toUpperCase()}</span>
+                                <span class="panel-list-amount">${this.formatAmount(det.monto)}</span>
+                            </div>
+                            <div class="panel-list-entity">${(det.entidad_contratante || '').substring(0,65)}</div>
+                            <div class="panel-list-meta">${this.formatDate(det.fecha)}${det.estado ? ' · ' + det.estado : ''}</div>
+                        </div>`;
+                    });
+                    if (d.detalles.length < d.numContratos) {
+                        html += `<div class="panel-list-more">+ ${d.numContratos - d.detalles.length} registros adicionales no mostrados</div>`;
+                    }
+                    html += `</div>`;
+                }
+                break;
+            }
         }
-        
-        content.html(html);
-        sidebar.classed('open', true);
-        
-        content.selectAll('.sidebar-connection').on('click', (event) => {
-            const id = event.currentTarget.dataset.id;
-            const node = this.data.nodes.find(n => n.id === id);
-            if (node) this.focusNode(node);
+        return html;
+    }
+
+    showPinnedPanel(d) {
+        this.pinnedNode = d;
+        const panel = document.getElementById('node-panel');
+        panel.innerHTML = this._buildPanelHTML(d);
+        panel.classList.add('visible');
+        // Close button
+        document.getElementById('panel-close-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.hidePinnedPanel();
         });
     }
-    
-    closeSidebar() { d3.select('#sidebar').classed('open', false); }
-    
+
+    hidePinnedPanel() {
+        this.pinnedNode = null;
+        const panel = document.getElementById('node-panel');
+        if (panel) panel.classList.remove('visible');
+    }
+
+    closeSidebar() {
+        d3.select('#sidebar').classed('open', false);
+        this.hidePinnedPanel();
+    }
+
     getDirectConnections(d) {
         const conns = [];
         this.data.links.forEach(l => {
@@ -1249,18 +1082,50 @@ class NetworkVisualization {
         this.clearSelection();
     }
     
-    updateStats() {
-        const counts = { congressperson: 0, familiar: 0, entity: 0, contract: 0 };
+    updateStats(congresspersonId = null) {
+        let counts = { congressperson: 0, familiar: 0, entity: 0, contract: 0 };
         let totalAmount = 0;
-        this.data.nodes.forEach(n => {
-            counts[n.type]++;
-            if (n.type === 'contract' && n.monto) totalAmount += n.monto;
-        });
-        d3.select('#stat-congresspersons').text(counts.congressperson);
-        d3.select('#stat-familiars').text(counts.familiar);
-        d3.select('#stat-entities').text(counts.entity);
-        d3.select('#stat-contracts').text(counts.contract);
-        d3.select('#stat-total-amount').text(this.formatAmount(totalAmount));
+
+        if (congresspersonId) {
+            // Show stats only for the selected network
+            const { familiars, contracts, entities } = this.getCongresspersonNetwork(congresspersonId);
+            counts.congressperson = 1;
+            counts.familiar = familiars.size;
+            counts.contract = contracts.size;
+            counts.entity = entities.size;
+            contracts.forEach(cid => {
+                const cn = this.data.nodes.find(n => n.id === cid);
+                if (cn && cn.monto) totalAmount += cn.monto;
+            });
+        } else {
+            this.data.nodes.forEach(n => {
+                counts[n.type]++;
+                if (n.type === 'contract' && n.monto) totalAmount += n.monto;
+            });
+        }
+
+        // Animate number transitions
+        const animate = (sel, val) => {
+            const el = document.getElementById(sel);
+            if (!el) return;
+            const isAmount = sel === 'stat-total-amount';
+            const prev = isAmount ? 0 : parseInt(el.textContent.replace(/\D/g, '')) || 0;
+            const next = isAmount ? val : val;
+            if (isAmount) {
+                el.textContent = this.formatAmount(next);
+            } else {
+                el.textContent = next;
+            }
+            el.style.transform = 'scale(1.15)';
+            el.style.transition = 'transform 0.25s ease';
+            setTimeout(() => { el.style.transform = 'scale(1)'; }, 250);
+        };
+
+        animate('stat-congresspersons', counts.congressperson);
+        animate('stat-familiars', counts.familiar);
+        animate('stat-entities', counts.entity);
+        animate('stat-contracts', counts.contract);
+        animate('stat-total-amount', totalAmount);
     }
 
     // ==================== UTILS ====================
@@ -1305,5 +1170,5 @@ class NetworkVisualization {
 // INICIALIZAR
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
-    window.networkViz = new NetworkVisualization('network-container', SAMPLE_DATA);
+    window.networkViz = new NetworkVisualization('network-container', NETWORK_DATA);
 });
