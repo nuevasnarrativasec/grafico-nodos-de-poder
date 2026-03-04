@@ -159,266 +159,266 @@ const NETWORK_DATA = {
       "type": "congressperson",
       "name": "Marticorena Alfonso",
       "dni": "21456255",
-      "photo": "./img/21456255.jpg"
+      "photo": "./img/jorge-huaman.png"
     },
     {
       "id": "C_21564196",
       "type": "congressperson",
       "name": "Huaman Raul",
       "dni": "21564196",
-      "photo": "./img/21564196.jpg"
+      "photo": "./img/raul-huaman.png"
     },
     {
       "id": "C_22510256",
       "type": "congressperson",
       "name": "Medina Sara",
       "dni": "22510256",
-      "photo": "./img/22510256.jpg"
+      "photo": "./img/elizabeth-medina.png"
     },
     {
       "id": "C_23901989",
       "type": "congressperson",
       "name": "Soto Alejandro",
       "dni": "23901989",
-      "photo": "./img/23901989.jpg"
+      "photo": "./img/alejandro-soto.png"
     },
     {
       "id": "C_23977149",
       "type": "congressperson",
       "name": "Aragon Angel",
       "dni": "23977149",
-      "photo": "./img/23977149.jpg"
+      "photo": "./img/luis-aragon.png"
     },
     {
       "id": "C_25542661",
       "type": "congressperson",
       "name": "Arriola Alberto",
       "dni": "25542661",
-      "photo": "./img/25542661.jpg"
+      "photo": "./img/jose-arriola.png"
     },
     {
       "id": "C_25567150",
       "type": "congressperson",
       "name": "Valer Hector",
       "dni": "25567150",
-      "photo": "./img/25567150.jpg"
+      "photo": "./img/hector-valer.png"
     },
     {
       "id": "C_25700579",
       "type": "congressperson",
       "name": "Davila Neomias",
       "dni": "25700579",
-      "photo": "./img/25700579.jpg"
+      "photo": "./img/pasion-davila.png"
     },
     {
       "id": "C_29299579",
       "type": "congressperson",
       "name": "Paredes Alex",
       "dni": "29299579",
-      "photo": "./img/29299579.jpg"
+      "photo": "./img/alex-paredes.png"
     },
     {
       "id": "C_29423212",
       "type": "congressperson",
       "name": "Medina Esdras",
       "dni": "29423212",
-      "photo": "./img/29423212.jpg"
+      "photo": "./img/esdras-medina.png"
     },
     {
       "id": "C_29632775",
       "type": "congressperson",
       "name": "Quito Jaime",
       "dni": "29632775",
-      "photo": "./img/29632775.jpg"
+      "photo": "./img/bernardo-quito.png"
     },
     {
       "id": "C_32923902",
       "type": "congressperson",
       "name": "Varas Marcial",
       "dni": "32923902",
-      "photo": "./img/32923902.jpg"
+      "photo": "./img/elias-varas.png"
     },
     {
       "id": "C_32971154",
       "type": "congressperson",
       "name": "Chacon Nilza",
       "dni": "32971154",
-      "photo": "./img/32971154.jpg"
+      "photo": "./img/nilza-chacon.png"
     },
     {
       "id": "C_40204874",
       "type": "congressperson",
       "name": "Luque Ruth",
       "dni": "40204874",
-      "photo": "./img/40204874.jpg"
+      "photo": "./img/ruth-luque.png"
     },
     {
       "id": "C_40728264",
       "type": "congressperson",
       "name": "Chiabra Roberto",
       "dni": "40728264",
-      "photo": "./img/40728264.jpg"
+      "photo": "./img/roberto-chiabra.png"
     },
     {
       "id": "C_40858548",
       "type": "congressperson",
       "name": "Paredes Francis",
       "dni": "40858548",
-      "photo": "./img/40858548.jpg"
+      "photo": "./img/francis-paredes.png"
     },
     {
       "id": "C_41005490",
       "type": "congressperson",
       "name": "Taipe Maria",
       "dni": "41005490",
-      "photo": "./img/41005490.jpg"
+      "photo": "./img/elizabeth-taipe.png"
     },
     {
       "id": "C_41187802",
       "type": "congressperson",
       "name": "Gonza Américo",
       "dni": "41187802",
-      "photo": "./img/41187802.jpg"
+      "photo": "./img/americo-gonza.png"
     },
     {
       "id": "C_41258762",
       "type": "congressperson",
       "name": "Limachi Esmeralda",
       "dni": "41258762",
-      "photo": "./img/41258762.jpg"
+      "photo": "./img/esmeralda-limachi.png"
     },
     {
       "id": "C_42134579",
       "type": "congressperson",
       "name": "Palacios Margot",
       "dni": "42134579",
-      "photo": "./img/42134579.jpg"
+      "photo": "./img/margot-palacios.png"
     },
     {
       "id": "C_42335591",
       "type": "congressperson",
       "name": "Juarez Lisbeth",
       "dni": "42335591",
-      "photo": "./img/42335591.jpg"
+      "photo": "./img/heidy-juarez.png"
     },
     {
       "id": "C_42377791",
       "type": "congressperson",
       "name": "Reyes Augusto",
       "dni": "42377791",
-      "photo": "./img/42377791.jpg"
+      "photo": "./img/abel-reyes.png"
     },
     {
       "id": "C_42628319",
       "type": "congressperson",
       "name": "Zegarra Zadith",
       "dni": "42628319",
-      "photo": "./img/42628319.jpg"
+      "photo": "./img/ana-zegarra.png"
     },
     {
       "id": "C_42699423",
       "type": "congressperson",
       "name": "Portalatino Roxana",
       "dni": "42699423",
-      "photo": "./img/42699423.jpg"
+      "photo": "./img/kelly-portalatino.png"
     },
     {
       "id": "C_42750152",
       "type": "congressperson",
       "name": "Robles Emperatriz",
       "dni": "42750152",
-      "photo": "./img/42750152.jpg"
+      "photo": "./img/silvana-robles.png"
     },
     {
       "id": "C_43328757",
       "type": "congressperson",
       "name": "Montoya Jorge",
       "dni": "43328757",
-      "photo": "./img/43328757.jpg"
+      "photo": "./img/jorge-montoya.png"
     },
     {
       "id": "C_44275599",
       "type": "congressperson",
       "name": "Revilla Cesar",
       "dni": "44275599",
-      "photo": "./img/44275599.jpg"
+      "photo": "./img/cesar-revilla.png"
     },
     {
       "id": "C_44649199",
       "type": "congressperson",
       "name": "Bellido Guido",
       "dni": "44649199",
-      "photo": "./img/44649199.jpg"
+      "photo": "./img/guido-bellido.png"
     },
     {
       "id": "C_44756974",
       "type": "congressperson",
       "name": "Amuruz Rosselli",
       "dni": "44756974",
-      "photo": "./img/44756974.jpg"
+      "photo": "./img/rosselli-amuruz.png"
     },
     {
       "id": "C_44807108",
       "type": "congressperson",
       "name": "Castillo Eduardo",
       "dni": "44807108",
-      "photo": "./img/44807108.jpg"
+      "photo": "./img/enrique-castillo.png"
     },
     {
       "id": "C_44886100",
       "type": "congressperson",
       "name": "Trigozo Cheryl",
       "dni": "44886100",
-      "photo": "./img/44886100.jpg"
+      "photo": "./img/cheryl-trigozo.png"
     },
     {
       "id": "C_45209282",
       "type": "congressperson",
       "name": "Muñante Alejandro",
       "dni": "45209282",
-      "photo": "./img/45209282.jpg"
+      "photo": "./img/alejandro-munante.png"
     },
     {
       "id": "C_45382589",
       "type": "congressperson",
       "name": "Alegria Luis",
       "dni": "45382589",
-      "photo": "./img/45382589.jpg"
+      "photo": "./img/arturo-alegria.png"
     },
     {
       "id": "C_46130369",
       "type": "congressperson",
       "name": "Julon Elva",
       "dni": "46130369",
-      "photo": "./img/46130369.jpg"
+      "photo": "./img/edith-julon.png"
     },
     {
       "id": "C_48164963",
       "type": "congressperson",
       "name": "Orue Ariana",
       "dni": "48164963",
-      "photo": "./img/48164963.jpg"
+      "photo": "./img/ariana-orue.png"
     },
     {
       "id": "C_70094373",
       "type": "congressperson",
       "name": "Ramirez Tania",
       "dni": "70094373",
-      "photo": "./img/70094373.jpg"
+      "photo": "./img/tania-ramirez.png"
     },
     {
       "id": "C_70546213",
       "type": "congressperson",
       "name": "Gonzales Diana",
       "dni": "70546213",
-      "photo": "./img/70546213.jpg"
+      "photo": "./img/diana-gonzales.png"
     },
     {
       "id": "C_76030152",
       "type": "congressperson",
       "name": "Barbaran Rosangella",
       "dni": "76030152",
-      "photo": "./img/76030152.jpg"
+      "photo": "./img/rosangela-barbaran.png"
     },
     {
       "id": "F_10001878625",

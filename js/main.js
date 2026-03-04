@@ -469,9 +469,13 @@ class NetworkVisualization {
         this.expandedCongresspersonId = cid;
         this._dimCongresspersons(cid);
 
-        // Pin congressperson briefly so it stays at center while network expands
-        d.fx = d.x; d.fy = d.y;
-        setTimeout(() => { d.fx = null; d.fy = null; }, 1200);
+        // Pin node at its current position so forces can never move it
+        d.fx = d.x;
+        d.fy = d.y;
+        this._pinnedNode = d;
+
+        // Pan viewport to center exactly on this node at a comfortable scale
+        this._centerOnNode(d);
 
         // Increase repulsion so nodes spread apart to make room
         this._setExpandedForces(true);
@@ -520,7 +524,6 @@ class NetworkVisualization {
             .transition().duration(400).style('opacity', 0.7);
 
         this.selectedNode = d;
-        this._panToNode(d);
         this.updateStats(cid);
     }
 
@@ -608,6 +611,13 @@ class NetworkVisualization {
 
         d3.select(`.node[data-id="${congresspersonId}"] .node-glow`)
             .transition().duration(300).style('opacity', 0);
+
+        // Release the pinned node so it can float freely again
+        if (this._pinnedNode) {
+            this._pinnedNode.fx = null;
+            this._pinnedNode.fy = null;
+            this._pinnedNode = null;
+        }
 
         // Restore clustered forces after a short delay (let collapse animation play first)
         setTimeout(() => this._setExpandedForces(false), 300);
@@ -816,7 +826,7 @@ class NetworkVisualization {
         }
 
         // Pan to node (after a short delay to let expansion start)
-        setTimeout(() => this._panToNode(node), 150);
+        setTimeout(() => this._centerOnNode(node), 150);
     }
 
     clearSelection() {
@@ -906,17 +916,19 @@ class NetworkVisualization {
 
     // ==================== PANEL POPUP (replaces sidebar) ====================
 
-    _panToNode(node, targetScale = null) {
-        // Get the current zoom state so we never jump to an unexpected scale
+    _centerOnNode(node, scale = null) {
+        // Center the viewport on a node.
+        // If scale is null, keep current zoom (min 0.75 so node is visible).
         const currentT = d3.zoomTransform(this.container.node());
-        // Respect the current scale; only apply a gentle zoom-in if currently zoomed out
-        const k = targetScale !== null
-            ? targetScale
-            : Math.max(currentT.k, 0.9);   // never go below 0.9, keep current if already closer
+        const k = scale !== null ? scale : Math.max(currentT.k, 0.75);
         const tx = this.width  / 2 - node.x * k;
         const ty = this.height / 2 - node.y * k;
-        this.container.transition().duration(700).ease(d3.easeCubicInOut)
+        this.container.transition().duration(650).ease(d3.easeCubicInOut)
             .call(this.zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(k));
+    }
+
+    _panToNode(node) {
+        this._centerOnNode(node);
     }
 
     _buildPanelHTML(d) {
@@ -1052,8 +1064,11 @@ class NetworkVisualization {
     zoomIn() { this.container.transition().call(this.zoom.scaleBy, 1.4); }
     zoomOut() { this.container.transition().call(this.zoom.scaleBy, 0.7); }
     resetView() {
-        this.container.transition().duration(750)
-            .call(this.zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1));
+        const initialScale = 0.42;
+        const tx = this.width  / 2 * (1 - initialScale);
+        const ty = this.height / 2 * (1 - initialScale);
+        this.container.transition().duration(750).ease(d3.easeCubicInOut)
+            .call(this.zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(initialScale));
     }
     
     loadFile(file) {
@@ -1147,7 +1162,15 @@ class NetworkVisualization {
         this.simulation.alpha(0.3).restart();
     }
     hideLoader() {
-        setTimeout(() => { d3.select('#loader').classed('hidden', true); }, 600);
+        setTimeout(() => {
+            d3.select('#loader').classed('hidden', true);
+            // Zoom out to fit the full network on screen on initial load
+            const initialScale = 0.42;
+            const tx = this.width  / 2 * (1 - initialScale);
+            const ty = this.height / 2 * (1 - initialScale);
+            this.container
+                .call(this.zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(initialScale));
+        }, 650);
     }
     getTypeLabel(type) {
         return { congressperson: 'Congresista', familiar: 'Familiar', entity: 'Entidad', contract: 'Contrato' }[type] || type;
