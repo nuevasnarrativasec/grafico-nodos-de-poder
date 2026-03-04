@@ -12,154 +12,154 @@ const NETWORK_DATA = {
       "type": "congressperson",
       "name": "Mita Alanoca",
       "dni": "00434972",
-      "photo": "./img/00434972.jpg"
+      "photo": "./img/isaac-mita.png"
     },
     {
       "id": "C_01311614",
       "type": "congressperson",
       "name": "Cruz Mamani",
       "dni": "01311614",
-      "photo": "./img/01311614.jpg"
+      "photo": "./img/flavio-cruz.png"
     },
     {
       "id": "C_04647085",
       "type": "congressperson",
       "name": "Victor Cutipa",
       "dni": "04647085",
-      "photo": "./img/04647085.jpg"
+      "photo": "./img/victor-cutipa.png"
     },
     {
       "id": "C_05070188",
       "type": "congressperson",
       "name": "Salhuana Eduardo",
       "dni": "05070188",
-      "photo": "./img/05070188.jpg"
+      "photo": "./img/eduardo-salhuana.png"
     },
     {
       "id": "C_05618705",
       "type": "congressperson",
       "name": "Torres Rosio",
       "dni": "05618705",
-      "photo": "./img/05618705.jpg"
+      "photo": "./img/rosio-torres.png"
     },
     {
       "id": "C_06049853",
       "type": "congressperson",
       "name": "Miguel Ciccia",
       "dni": "06049853",
-      "photo": "./img/06049853.jpg"
+      "photo": "./img/miguel-ciccia.png"
     },
     {
       "id": "C_06783615",
       "type": "congressperson",
       "name": "Cueto Jose",
       "dni": "06783615",
-      "photo": "./img/06783615.jpg"
+      "photo": "./img/jose-cueto.png"
     },
     {
       "id": "C_07246887",
       "type": "congressperson",
       "name": "Luna Leon",
       "dni": "07246887",
-      "photo": "./img/07246887.jpg"
+      "photo": "./img/jose-luna.png"
     },
     {
       "id": "C_07737110",
       "type": "congressperson",
       "name": "Obando Ana",
       "dni": "07737110",
-      "photo": "./img/07737110.jpg"
+      "photo": "./img/ana-obando.png"
     },
     {
       "id": "C_07831436",
       "type": "congressperson",
       "name": "Juarez Patricia",
       "dni": "07831436",
-      "photo": "./img/07831436.jpg"
+      "photo": "./img/patricia-juarez.png"
     },
     {
       "id": "C_08232920",
       "type": "congressperson",
       "name": "Bustamante Ernesto",
       "dni": "08232920",
-      "photo": "./img/08232920.jpg"
+      "photo": "./img/ernesto-bustamante.png"
     },
     {
       "id": "C_08911520",
       "type": "congressperson",
       "name": "Moyano Lupe",
       "dni": "08911520",
-      "photo": "./img/08911520.jpg"
+      "photo": "./img/martha-moyano.png"
     },
     {
       "id": "C_09575873",
       "type": "congressperson",
       "name": "Tello Edgar",
       "dni": "09575873",
-      "photo": "./img/09575873.jpg"
+      "photo": "./img/nivardo-tello.png"
     },
     {
       "id": "C_09980339",
       "type": "congressperson",
       "name": "Lopez Luz",
       "dni": "09980339",
-      "photo": "./img/09980339.jpg"
+      "photo": "./img/jeny-lopez.png"
     },
     {
       "id": "C_10280036",
       "type": "congressperson",
       "name": "Chirinos Rosa",
       "dni": "10280036",
-      "photo": "./img/10280036.jpg"
+      "photo": "./img/patricia-chirinos.png"
     },
     {
       "id": "C_10691398",
       "type": "congressperson",
       "name": "Padilla Rommel",
       "dni": "10691398",
-      "photo": "./img/10691398.jpg"
+      "photo": "./img/javier-padilla.png"
     },
     {
       "id": "C_16002918",
       "type": "congressperson",
       "name": "Sanchez Helbert",
       "dni": "16002918",
-      "photo": "./img/16002918.jpg"
+      "photo": "./img/roberto-sanchez.png"
     },
     {
       "id": "C_16429203",
       "type": "congressperson",
       "name": "Echaiz Margot",
       "dni": "16429203",
-      "photo": "./img/16429203.jpg"
+      "photo": "./img/gladys-echaiz.png"
     },
     {
       "id": "C_16448130",
       "type": "congressperson",
       "name": "Infantes Eliana",
       "dni": "16448130",
-      "photo": "./img/16448130.jpg"
+      "photo": "./img/mery-infantes.png"
     },
     {
       "id": "C_16719182",
       "type": "congressperson",
       "name": "Cordova Jessica",
       "dni": "16719182",
-      "photo": "./img/16719182.jpg"
+      "photo": "./img/jessica-cordova.png"
     },
     {
       "id": "C_17896798",
       "type": "congressperson",
       "name": "Flores Seferino",
       "dni": "17896798",
-      "photo": "./img/17896798.jpg"
+      "photo": "./img/victor-flores.png"
     },
     {
       "id": "C_21456255",
       "type": "congressperson",
       "name": "Marticorena Alfonso",
       "dni": "21456255",
-      "photo": "./img/jorge-huaman.png"
+      "photo": "./img/jorge-marticorena.png"
     },
     {
       "id": "C_21564196",
