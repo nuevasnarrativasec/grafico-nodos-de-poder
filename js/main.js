@@ -805,6 +805,15 @@ class NetworkVisualization {
             this.handleSearchInput(searchInput.value);
         });
 
+        searchInput.addEventListener('focus', () => {
+            // If input is empty, show full alphabetical list; otherwise re-run filter
+            if (!searchInput.value.trim()) {
+                this.showAllCongresspersons();
+            } else {
+                this.handleSearchInput(searchInput.value);
+            }
+        });
+
         searchInput.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 this.closeSearchDropdown();
@@ -833,10 +842,11 @@ class NetworkVisualization {
             ruc: n.ruc || ''
         }));
 
-        // List of congressperson names for dropdown
+        // List of congressperson names for dropdown — sorted alphabetically
         this.congresspersonList = this.data.nodes
             .filter(n => n.type === 'congressperson')
-            .map(n => ({ id: n.id, name: n.name, normName: normalizeText(n.name) }));
+            .map(n => ({ id: n.id, name: n.name, normName: normalizeText(n.name), photo: n.photo || '' }))
+            .sort((a, b) => a.normName.localeCompare(b.normName));
     }
 
     handleSearchInput(value) {
@@ -868,13 +878,19 @@ class NetworkVisualization {
             return;
         }
 
-        // Render dropdown with congressperson names
-        dropdown.innerHTML = matches.slice(0, 8).map(c => `
+        // Render dropdown with congressperson photos and names
+        dropdown.innerHTML = matches.slice(0, 8).map(c => {
+            const avatarHtml = c.photo
+                ? `<img class="search-dropdown-photo" src="${c.photo}" alt="${c.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+                : '';
+            const initials = c.name.split(' ').slice(0, 2).map(w => w[0]).join('');
+            const fallbackHtml = `<span class="search-dropdown-initials" style="${c.photo ? 'display:none' : ''}">${initials}</span>`;
+            return `
             <div class="search-dropdown-item" data-id="${c.id}">
-                <span class="search-dropdown-icon">👤</span>
+                <div class="search-dropdown-avatar">${avatarHtml}${fallbackHtml}</div>
                 <span class="search-dropdown-name">${this._highlightMatch(c.name, value.trim())}</span>
-            </div>
-        `).join('');
+            </div>`;
+        }).join('');
         dropdown.classList.add('open');
 
         // Click on dropdown item
@@ -891,7 +907,38 @@ class NetworkVisualization {
         });
     }
 
+    showAllCongresspersons() {
+        const dropdown = document.getElementById('search-dropdown');
+        dropdown.innerHTML = this.congresspersonList.map(c => {
+            const avatarHtml = c.photo
+                ? `<img class="search-dropdown-photo" src="${c.photo}" alt="${c.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+                : '';
+            const initials = c.name.split(' ').slice(0, 2).map(w => w[0]).join('');
+            const fallbackHtml = `<span class="search-dropdown-initials" style="${c.photo ? 'display:none' : ''}">${initials}</span>`;
+            return `
+            <div class="search-dropdown-item" data-id="${c.id}">
+                <div class="search-dropdown-avatar">${avatarHtml}${fallbackHtml}</div>
+                <span class="search-dropdown-name">${c.name}</span>
+            </div>`;
+        }).join('');
+        dropdown.classList.add('open');
+
+        dropdown.querySelectorAll('.search-dropdown-item').forEach(el => {
+            el.addEventListener('click', () => {
+                const id = el.dataset.id;
+                const node = this.data.nodes.find(n => n.id === id);
+                if (node) {
+                    document.getElementById('search-input').value = node.name;
+                    this.closeSearchDropdown();
+                    this.focusNode(node);
+                }
+            });
+        });
+    }
+
+
     _highlightMatch(name, query) {
+        if (!name || !query) return name;
         const normName = normalizeText(name);
         const normQuery = normalizeText(query);
         const idx = normName.indexOf(normQuery);
@@ -970,7 +1017,7 @@ class NetworkVisualization {
                     <div class="tooltip-grid">
                         <div class="tooltip-row"><span class="tooltip-key">DNI</span><span class="tooltip-value">${d.dni}</span></div>
                         <div class="tooltip-row"><span class="tooltip-key">Partido</span><span class="tooltip-value">${d.party || 'N/A'}</span></div>
-                        <div class="tooltip-row"><span class="tooltip-key">Comisión</span><span class="tooltip-value">${d.commission || 'N/A'}</span></div>
+                        
                         <div class="tooltip-row"><span class="tooltip-key">Departamento</span><span class="tooltip-value">${d.department || 'N/A'}</span></div>
                     </div>`;
                 break;
