@@ -236,23 +236,97 @@ class NetworkVisualization {
         this.simulation.on('tick', () => this.tick());
     }
 
-    // Transition forces between collapsed (clustered) and expanded states
-    _setExpandedForces(isExpanded) {
-        const charge = isExpanded ? CONFIG.forces.chargeExpanded : CONFIG.forces.chargeCollapsed;
-        const coll   = isExpanded ? CONFIG.forces.collisionExpanded : CONFIG.forces.collisionCollapsed;
-        const linkStrength = isExpanded ? CONFIG.forces.link.strength : 0;
+    // ==================== LAYOUT CALCULATOR ====================
 
-        this.simulation
-            .force('charge', d3.forceManyBody()
-                .strength(d => charge[d.type] || (isExpanded ? -160 : -120)))
-            .force('collision', d3.forceCollide()
-                .radius(d => CONFIG.nodeRadius[d.type] + coll))
-            .force('link', d3.forceLink(this.data.links)
-                .id(d => d.id)
-                .distance(d => CONFIG.forces.link.distance[d.type] || 110)
-                .strength(d => d.type === 'congressperson-familiar' ? linkStrength : linkStrength));
+    /**
+     * Compute fixed (x,y) positions for an expanded congressperson network
+     * using concentric rings — no physics, fully deterministic.
+     */
+    _calcNetworkLayout(cx, cy, familiars, contracts, entities) {
+        const positions = {};
 
-        this.simulation.alpha(0.6).restart();
+        const familiarArr = [...familiars];
+        const nFam = familiarArr.length;
+
+        // Ring 1: familiars evenly around the congressperson
+        const famRadius = Math.max(130, nFam * 28);
+        familiarArr.forEach((fid, i) => {
+            const angle = (2 * Math.PI * i / nFam) - Math.PI / 2;
+            positions[fid] = {
+                x: cx + famRadius * Math.cos(angle),
+                y: cy + famRadius * Math.sin(angle),
+                angle
+            };
+        });
+
+        // Ring 2: contracts fanned around each familiar
+        familiarArr.forEach(fid => {
+            const fp = positions[fid];
+            const famContracts = this.data.links
+                .filter(l => (l.source.id || l.source) === fid && l.type === 'familiar-contract')
+                .map(l => l.target.id || l.target)
+                .filter(id => contracts.has(id));
+
+            const nCt = famContracts.length;
+            if (nCt === 0) return;
+
+            const ctRadius = Math.max(100, nCt * 22);
+            const spreadAngle = Math.min(Math.PI * 0.9, nCt * 0.38);
+            const baseAngle = fp.angle; // fan outward from congressperson
+
+            famContracts.forEach((ctId, i) => {
+                const t = nCt === 1 ? 0 : (i / (nCt - 1) - 0.5);
+                const angle = baseAngle + t * spreadAngle;
+                positions[ctId] = {
+                    x: fp.x + ctRadius * Math.cos(angle),
+                    y: fp.y + ctRadius * Math.sin(angle),
+                    angle
+                };
+            });
+        });
+
+        // Ring 3: entities placed beyond their contract
+        [...entities].forEach(eid => {
+            // Find the contract(s) pointing to this entity
+            const srcLink = this.data.links.find(l =>
+                (l.target.id || l.target) === eid && l.type === 'contract-entity'
+            );
+            if (!srcLink) return;
+            const ctId = srcLink.source.id || srcLink.source;
+            const cp = positions[ctId];
+            if (!cp) return;
+            const angle = cp.angle;
+            positions[eid] = {
+                x: cp.x + 90 * Math.cos(angle),
+                y: cp.y + 90 * Math.sin(angle),
+                angle
+            };
+        });
+
+        return positions;
+    }
+
+    // ==================== EXPAND / COLLAPSE ====================
+
+    _pinExpandedNodes(positions) {
+        // Pin each node at its calculated position using fx/fy
+        // The simulation keeps running so tick() redraws links correctly
+        Object.entries(positions).forEach(([id, pos]) => {
+            const node = this.data.nodes.find(n => n.id === id);
+            if (!node) return;
+            node.x = pos.x; node.y = pos.y;
+            node.fx = pos.x; node.fy = pos.y;
+        });
+    }
+
+    _unpinNetworkNodes(nodeIds) {
+        // Release fx/fy so nodes can move freely again in the simulation
+        nodeIds.forEach(id => {
+            const node = this.data.nodes.find(n => n.id === id);
+            if (node && node.type !== 'congressperson') {
+                node.fx = null; node.fy = null;
+            }
+        });
     }
 
     // ==================== GRAPH CREATION ====================
@@ -506,49 +580,41 @@ class NetworkVisualization {
             this.closeSidebar();
             this.hidePinnedPanel();
             this.updateStats(null);
-            this._setExpandedForces(false);
             return;
         }
 
         this.expandedCongresspersonId = cid;
         this._dimCongresspersons(cid);
 
-        d.fx = d.x;
-        d.fy = d.y;
+        // Pin the congressperson in place
+        d.fx = d.x; d.fy = d.y;
         this._pinnedNode = d;
 
         const { familiars, contracts, entities } = this.getCongresspersonNetwork(cid);
-        const allNetworkIds = new Set([...familiars, ...contracts, ...entities]);
+        const positions = this._calcNetworkLayout(d.x, d.y, familiars, contracts, entities);
 
-        // Pre-position all network nodes near the congressperson before revealing them
-        this.data.nodes.forEach(n => {
-            if (allNetworkIds.has(n.id)) {
-                n.x = d.x + (Math.random() - 0.5) * 10;
-                n.y = d.y + (Math.random() - 0.5) * 10;
-                n.vx = 0;
-                n.vy = 0;
-            }
-        });
+        // Pin all network nodes at calculated positions — simulation keeps running
+        // so tick() continuously redraws links correctly
+        this._pinExpandedNodes(positions);
 
-        this._setExpandedForces(true);
-        this._centerOnNode(d);
-
-        const order = [
+        const allNetworkNodes = [
             ...this.data.nodes.filter(n => familiars.has(n.id)),
             ...this.data.nodes.filter(n => contracts.has(n.id)),
             ...this.data.nodes.filter(n => entities.has(n.id))
         ];
 
-        order.forEach(node => {
+        allNetworkNodes.forEach(node => {
             node._visible = true;
+            const pos = positions[node.id];
+            if (!pos) return;
             d3.select(`.node[data-id="${node.id}"]`)
                 .style('pointer-events', 'all')
-                .transition().duration(300)
-                .ease(d3.easeCubicOut)
+                .transition().duration(450).ease(d3.easeCubicOut)
                 .style('opacity', 1)
-                .attr('transform', `translate(${node.x},${node.y}) scale(1)`);
+                .attr('transform', `translate(${pos.x},${pos.y}) scale(1)`);
         });
 
+        // Show links — simulation is still ticking so paths are already correct
         this.links.each(function(l) {
             const src = l.source.id || l.source;
             const tgt = l.target.id || l.target;
@@ -558,15 +624,15 @@ class NetworkVisualization {
                 (contracts.has(src) && entities.has(tgt));
             if (belongs) {
                 d3.select(this)
-                    .transition().delay(150).duration(400)
-                    .style('opacity', 1)
-                    .style('pointer-events', 'all');
+                    .transition().delay(180).duration(350)
+                    .style('opacity', 1).style('pointer-events', 'all');
             }
         });
 
         d3.select(`.node[data-id="${cid}"] .node-glow`)
             .transition().duration(400).style('opacity', 0.7);
 
+        this._centerOnNode(d);
         this.selectedNode = d;
         this.updateStats(cid);
     }
@@ -576,24 +642,21 @@ class NetworkVisualization {
         if (!cid) return;
 
         this.links.transition().duration(200).style('opacity', 0).style('pointer-events', 'none');
-        this.data.nodes.filter(n => n.type !== 'congressperson').forEach(n => { n._visible = false; });
+        this.data.nodes.filter(n => n.type !== 'congressperson').forEach(n => {
+            n._visible = false; n.fx = null; n.fy = null;
+        });
         this.nodes.filter(n => n.type !== 'congressperson')
             .transition().duration(200)
             .style('opacity', 0).style('pointer-events', 'none')
             .attr('transform', n => `translate(${n.x},${n.y}) scale(0)`);
 
+        const congress = this.data.nodes.find(n => n.id === cid);
         const { familiars } = this.getCongresspersonNetwork(cid);
         const { contracts, entities } = this.getCongresspersonNetwork(cid, d.id);
+        const positions = this._calcNetworkLayout(congress.x, congress.y, familiars, contracts, entities);
 
-        // Pre-position contract/entity nodes near the familiar
-        this.data.nodes.forEach(n => {
-            if (contracts.has(n.id) || entities.has(n.id)) {
-                n.x = d.x + (Math.random() - 0.5) * 10;
-                n.y = d.y + (Math.random() - 0.5) * 10;
-                n.vx = 0;
-                n.vy = 0;
-            }
-        });
+        // Pin nodes at calculated positions, simulation stays running
+        this._pinExpandedNodes(positions);
 
         const order = [
             ...this.data.nodes.filter(n => familiars.has(n.id)),
@@ -602,28 +665,28 @@ class NetworkVisualization {
         ];
 
         order.forEach(node => {
+            const pos = positions[node.id];
+            if (!pos) return;
             node._visible = true;
             const isFocus = node.id === d.id;
             d3.select(`.node[data-id="${node.id}"]`)
                 .style('pointer-events', 'all')
-                .transition().duration(300)
-                .ease(d3.easeCubicOut)
+                .transition().duration(350).ease(d3.easeCubicOut)
                 .style('opacity', isFocus ? 1 : 0.55)
-                .attr('transform', `translate(${node.x},${node.y}) scale(${isFocus ? 1.1 : 1})`);
+                .attr('transform', `translate(${pos.x},${pos.y}) scale(${isFocus ? 1.1 : 1})`);
         });
 
         this.links.each(function(l) {
             const src = l.source.id || l.source;
             const tgt = l.target.id || l.target;
-            const belongsFamiliar =
+            const belongs =
                 (src === cid && familiars.has(tgt)) ||
                 (src === d.id && contracts.has(tgt)) ||
                 (contracts.has(src) && entities.has(tgt));
-            if (belongsFamiliar) {
+            if (belongs) {
                 d3.select(this)
-                    .transition().delay(150).duration(400)
-                    .style('opacity', 1)
-                    .style('pointer-events', 'all');
+                    .transition().delay(150).duration(350)
+                    .style('opacity', 1).style('pointer-events', 'all');
             }
         });
 
@@ -664,8 +727,11 @@ class NetworkVisualization {
             this._pinnedNode = null;
         }
 
-        // Restore clustered forces after a short delay (let collapse animation play first)
-        setTimeout(() => this._setExpandedForces(false), 300);
+        // Unpin expanded nodes so simulation can reposition them freely
+        setTimeout(() => {
+            this._unpinNetworkNodes([...allIds]);
+            this.simulation.alpha(0.3).restart();
+        }, 300);
     }
 
     _dimCongresspersons(activeCid) {
