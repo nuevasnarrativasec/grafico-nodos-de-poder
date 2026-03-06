@@ -10,7 +10,7 @@ const NETWORK_DATA = {
     {
       "id": "C_00434972",
       "type": "congressperson",
-      "name": "Mita Alanoca",
+      "name": "Isaac Mita Alanoca",
       "dni": "00434972",
       "party": "Perú Libre",
       "department": "Tacna",
@@ -19,7 +19,7 @@ const NETWORK_DATA = {
     {
       "id": "C_01311614",
       "type": "congressperson",
-      "name": "Cruz Mamani",
+      "name": "Flavio Cruz Mamani",
       "dni": "01311614",
       "party": "Perú Libre",
       "department": "Puno",
@@ -28,7 +28,7 @@ const NETWORK_DATA = {
     {
       "id": "C_04647085",
       "type": "congressperson",
-      "name": "Victor Cutipa",
+      "name": "Victor Cutipa Ccama",
       "dni": "04647085",
       "party": "Juntos por el Perú",
       "department": "Moquegua",
@@ -37,7 +37,7 @@ const NETWORK_DATA = {
     {
       "id": "C_05070188",
       "type": "congressperson",
-      "name": "Salhuana Eduardo",
+      "name": "Eduardo Salhuana Cavides",
       "dni": "05070188",
       "party": "Alianza Para el Progreso",
       "department": "Madre de Dios",
@@ -46,7 +46,7 @@ const NETWORK_DATA = {
     {
       "id": "C_05618705",
       "type": "congressperson",
-      "name": "Torres Rosio",
+      "name": "Rosio Torres Salinas",
       "dni": "05618705",
       "party": "Alianza Para el Progreso",
       "department": "Loreto",
@@ -64,7 +64,7 @@ const NETWORK_DATA = {
     {
       "id": "C_06783615",
       "type": "congressperson",
-      "name": "Cueto Jose",
+      "name": "Jose Cueto",
       "dni": "06783615",
       "party": "Renovación Popular",
       "department": "Lima",
@@ -73,7 +73,7 @@ const NETWORK_DATA = {
     {
       "id": "C_07246887",
       "type": "congressperson",
-      "name": "Luna Leon",
+      "name": "José Luna Gálvez",
       "dni": "07246887",
       "party": "Podemos Perú",
       "department": "Lima",
@@ -82,7 +82,7 @@ const NETWORK_DATA = {
     {
       "id": "C_07737110",
       "type": "congressperson",
-      "name": "Obando Ana",
+      "name": "Ana Obando Morgan",
       "dni": "07737110",
       "party": "Fuerza Popular",
       "department": "Callao",
@@ -91,7 +91,7 @@ const NETWORK_DATA = {
     {
       "id": "C_07831436",
       "type": "congressperson",
-      "name": "Juarez Patricia",
+      "name": "Patricia Juarez Gallegos",
       "dni": "07831436",
       "party": "Fuerza Popular",
       "department": "Lima",
@@ -100,7 +100,7 @@ const NETWORK_DATA = {
     {
       "id": "C_08232920",
       "type": "congressperson",
-      "name": "Bustamante Ernesto",
+      "name": "Ernesto Bustamante Donayre",
       "dni": "08232920",
       "party": "Fuerza Popular",
       "department": "Lima",
@@ -109,7 +109,7 @@ const NETWORK_DATA = {
     {
       "id": "C_08911520",
       "type": "congressperson",
-      "name": "Moyano Lupe",
+      "name": "Martha Moyano Delgado",
       "dni": "08911520",
       "party": "Fuerza Popular",
       "department": "Lima",
@@ -118,7 +118,7 @@ const NETWORK_DATA = {
     {
       "id": "C_09575873",
       "type": "congressperson",
-      "name": "Tello Edgar",
+      "name": "Nivardo Tello",
       "dni": "09575873",
       "party": "Podemos Perú",
       "department": "Lima",
@@ -127,7 +127,7 @@ const NETWORK_DATA = {
     {
       "id": "C_09980339",
       "type": "congressperson",
-      "name": "Lopez Luz",
+      "name": "Jeny Lopez Morales",
       "dni": "09980339",
       "party": "Fuerza Popular",
       "department": "Ucayali",
@@ -136,7 +136,7 @@ const NETWORK_DATA = {
     {
       "id": "C_10280036",
       "type": "congressperson",
-      "name": "Chirinos Rosa",
+      "name": "Patricia Chirinos Venegas",
       "dni": "10280036",
       "party": "Renovación Popular",
       "department": "Callao",
@@ -145,7 +145,7 @@ const NETWORK_DATA = {
     {
       "id": "C_10691398",
       "type": "congressperson",
-      "name": "Padilla Rommel",
+      "name": "Javier Padilla Romero",
       "dni": "10691398",
       "party": "Sí Creo",
       "department": "Lima",
@@ -154,7 +154,7 @@ const NETWORK_DATA = {
     {
       "id": "C_16002918",
       "type": "congressperson",
-      "name": "Sanchez Helbert",
+      "name": "Roberto Sánchez Palomino",
       "dni": "16002918",
       "party": "Juntos Por el Perú",
       "department": "Lima",
@@ -163,7 +163,7 @@ const NETWORK_DATA = {
     {
       "id": "C_16429203",
       "type": "congressperson",
-      "name": "Echaiz Margot",
+      "name": "Gladys Echaiz de Nuñez Izaga",
       "dni": "16429203",
       "party": "Renovación Popular",
       "department": "Lima",
@@ -172,7 +172,7 @@ const NETWORK_DATA = {
     {
       "id": "C_16448130",
       "type": "congressperson",
-      "name": "Infantes Eliana",
+      "name": "Mery Infantes Castañeda",
       "dni": "16448130",
       "party": "Fuerza Popular",
       "department": "Amazonas",
@@ -181,7 +181,7 @@ const NETWORK_DATA = {
     {
       "id": "C_16719182",
       "type": "congressperson",
-      "name": "Cordova Jessica",
+      "name": "Jessica Cordova Lobatón",
       "dni": "16719182",
       "party": "Renovación Popular",
       "department": "Lambayeque",
@@ -190,7 +190,7 @@ const NETWORK_DATA = {
     {
       "id": "C_17896798",
       "type": "congressperson",
-      "name": "Flores Seferino",
+      "name": "Victor Flores Ruiz",
       "dni": "17896798",
       "party": "Fuerza Popular",
       "department": "La Libertad",
@@ -199,7 +199,7 @@ const NETWORK_DATA = {
     {
       "id": "C_21456255",
       "type": "congressperson",
-      "name": "Marticorena Alfonso",
+      "name": "Jorge Marticorena Mendoza",
       "dni": "21456255",
       "party": "Alianza Para el Progreso",
       "department": "Ica",
@@ -208,7 +208,7 @@ const NETWORK_DATA = {
     {
       "id": "C_21564196",
       "type": "congressperson",
-      "name": "Huaman Raul",
+      "name": "Raul Huaman Coronado",
       "dni": "21564196",
       "party": "Fuerza Popular",
       "department": "Ica",
@@ -217,7 +217,7 @@ const NETWORK_DATA = {
     {
       "id": "C_22510256",
       "type": "congressperson",
-      "name": "Medina Sara",
+      "name": "Elizabeth Medina Hermosilla",
       "dni": "22510256",
       "party": "Somos Perú",
       "department": "Huánuco",
@@ -226,7 +226,7 @@ const NETWORK_DATA = {
     {
       "id": "C_23901989",
       "type": "congressperson",
-      "name": "Soto Alejandro",
+      "name": "Alejandro Soto Reyes",
       "dni": "23901989",
       "party": "Alianza Para el Progreso",
       "department": "Cusco",
@@ -235,7 +235,7 @@ const NETWORK_DATA = {
     {
       "id": "C_23977149",
       "type": "congressperson",
-      "name": "Aragon Angel",
+      "name": "Angel Aragon Carreño",
       "dni": "23977149",
       "party": "Avanza País",
       "department": "Cusco",
@@ -244,7 +244,7 @@ const NETWORK_DATA = {
     {
       "id": "C_25542661",
       "type": "congressperson",
-      "name": "Arriola Alberto",
+      "name": "José Arriola Tueros",
       "dni": "25542661",
       "party": "Podemos Perú",
       "department": "Lima",
@@ -253,7 +253,7 @@ const NETWORK_DATA = {
     {
       "id": "C_25567150",
       "type": "congressperson",
-      "name": "Valer Hector",
+      "name": "Héctor Valer Pinto",
       "dni": "25567150",
       "party": "Somos Perú",
       "department": "Lima",
@@ -262,7 +262,7 @@ const NETWORK_DATA = {
     {
       "id": "C_25700579",
       "type": "congressperson",
-      "name": "Davila Neomias",
+      "name": "Pasión Dávila",
       "dni": "25700579",
       "party": "Juntos por el Perú",
       "department": "Pasco",
@@ -271,7 +271,7 @@ const NETWORK_DATA = {
     {
       "id": "C_29299579",
       "type": "congressperson",
-      "name": "Paredes Alex",
+      "name": "Alex Paredes",
       "dni": "29299579",
       "party": "Somos Perú",
       "department": "Arequipa",
@@ -280,7 +280,7 @@ const NETWORK_DATA = {
     {
       "id": "C_29423212",
       "type": "congressperson",
-      "name": "Medina Esdras",
+      "name": "Esdras Medina Minaya",
       "dni": "29423212",
       "party": "Renovación Popular",
       "department": "Arequipa",
@@ -289,7 +289,7 @@ const NETWORK_DATA = {
     {
       "id": "C_29632775",
       "type": "congressperson",
-      "name": "Quito Jaime",
+      "name": "Bernardo Quito Sarmiento",
       "dni": "29632775",
       "party": "Juntos por el Perú",
       "department": "Arequipa",
@@ -298,7 +298,7 @@ const NETWORK_DATA = {
     {
       "id": "C_32923902",
       "type": "congressperson",
-      "name": "Varas Marcial",
+      "name": "Elías Varas",
       "dni": "32923902",
       "party": "Juntos por el Perú",
       "department": "Ancash",
@@ -307,7 +307,7 @@ const NETWORK_DATA = {
     {
       "id": "C_32971154",
       "type": "congressperson",
-      "name": "Chacon Nilza",
+      "name": "Nilza Chacón Trujillo",
       "dni": "32971154",
       "party": "Fuerza Popular",
       "department": "Ancash",
@@ -316,7 +316,7 @@ const NETWORK_DATA = {
     {
       "id": "C_40204874",
       "type": "congressperson",
-      "name": "Luque Ruth",
+      "name": "Ruth Luque",
       "dni": "40204874",
       "party": "Ahora Nación",
       "department": "Cusco",
@@ -325,7 +325,7 @@ const NETWORK_DATA = {
     {
       "id": "C_40728264",
       "type": "congressperson",
-      "name": "Chiabra Roberto",
+      "name": "Roberto Chiabra",
       "dni": "40728264",
       "party": "Unidad Nacional",
       "department": "Lima",
@@ -334,7 +334,7 @@ const NETWORK_DATA = {
     {
       "id": "C_40858548",
       "type": "congressperson",
-      "name": "Paredes Francis",
+      "name": "Francis Paredes Castro",
       "dni": "40858548",
       "party": "Podemos Perú",
       "department": "Ucayali",
@@ -343,7 +343,7 @@ const NETWORK_DATA = {
     {
       "id": "C_41005490",
       "type": "congressperson",
-      "name": "Taipe Maria",
+      "name": "Elizabeth Taipe",
       "dni": "41005490",
       "party": "Perú Libre",
       "department": "Apurímac",
@@ -352,7 +352,7 @@ const NETWORK_DATA = {
     {
       "id": "C_41187802",
       "type": "congressperson",
-      "name": "Gonza Américo",
+      "name": "Américo Gonza",
       "dni": "41187802",
       "party": "Perú Libre",
       "department": "Cajamarca",
@@ -361,7 +361,7 @@ const NETWORK_DATA = {
     {
       "id": "C_41258762",
       "type": "congressperson",
-      "name": "Limachi Esmeralda",
+      "name": "Esmeralda Limachi Quispe",
       "dni": "41258762",
       "party": "Juntos por el Perú",
       "department": "Tacna",
@@ -379,7 +379,7 @@ const NETWORK_DATA = {
     {
       "id": "C_42335591",
       "type": "congressperson",
-      "name": "Juarez Lisbeth",
+      "name": "Heidy Juárez Calle",
       "dni": "42335591",
       "party": "Podemos Perú",
       "department": "Piura",
@@ -388,7 +388,7 @@ const NETWORK_DATA = {
     {
       "id": "C_42377791",
       "type": "congressperson",
-      "name": "Reyes Augusto",
+      "name": "Abel Reyes Cam",
       "dni": "42377791",
       "party": "Perú Libre",
       "department": "Huánuco",
@@ -397,7 +397,7 @@ const NETWORK_DATA = {
     {
       "id": "C_42628319",
       "type": "congressperson",
-      "name": "Zegarra Zadith",
+      "name": "Ana Zegarra",
       "dni": "42628319",
       "party": "Somos Perú",
       "department": "Loreto",
@@ -406,7 +406,7 @@ const NETWORK_DATA = {
     {
       "id": "C_42699423",
       "type": "congressperson",
-      "name": "Portalatino Roxana",
+      "name": "Kelly Portalatino",
       "dni": "42699423",
       "party": "Perú Libre",
       "department": "Ancash",
@@ -415,7 +415,7 @@ const NETWORK_DATA = {
     {
       "id": "C_42750152",
       "type": "congressperson",
-      "name": "Robles Emperatriz",
+      "name": "Silvana Robles",
       "dni": "42750152",
       "party": "Juntos por el Perú",
       "department": "Junín",
@@ -424,7 +424,7 @@ const NETWORK_DATA = {
     {
       "id": "C_43328757",
       "type": "congressperson",
-      "name": "Montoya Jorge",
+      "name": "Jorge Montoya",
       "dni": "43328757",
       "party": "Sí Creo",
       "department": "Lima",
@@ -433,7 +433,7 @@ const NETWORK_DATA = {
     {
       "id": "C_44275599",
       "type": "congressperson",
-      "name": "Revilla Cesar",
+      "name": "César Revilla Villanueva",
       "dni": "44275599",
       "party": "Fuerza Popular",
       "department": "Piura",
@@ -442,7 +442,7 @@ const NETWORK_DATA = {
     {
       "id": "C_44649199",
       "type": "congressperson",
-      "name": "Bellido Guido",
+      "name": "Guido Bellido Ugarte",
       "dni": "44649199",
       "party": "Podemos Perú",
       "department": "Cusco",
@@ -451,7 +451,7 @@ const NETWORK_DATA = {
     {
       "id": "C_44756974",
       "type": "congressperson",
-      "name": "Amuruz Rosselli",
+      "name": "Rosselli Amuruz",
       "dni": "44756974",
       "party": "Avanza País",
       "department": "Lima",
@@ -460,7 +460,7 @@ const NETWORK_DATA = {
     {
       "id": "C_44807108",
       "type": "congressperson",
-      "name": "Castillo Eduardo",
+      "name": "Enrique Castillo Rivas",
       "dni": "44807108",
       "party": "Fuerza Popular",
       "department": "Piura",
@@ -469,7 +469,7 @@ const NETWORK_DATA = {
     {
       "id": "C_44886100",
       "type": "congressperson",
-      "name": "Trigozo Cheryl",
+      "name": "Cheryl Trigozo",
       "dni": "44886100",
       "party": "Renovación Popular",
       "department": "San Martín",
@@ -478,7 +478,7 @@ const NETWORK_DATA = {
     {
       "id": "C_45209282",
       "type": "congressperson",
-      "name": "Muñante Alejandro",
+      "name": "Alejandro Muñante",
       "dni": "45209282",
       "party": "Renovación Popular",
       "department": "Lima",
@@ -487,7 +487,7 @@ const NETWORK_DATA = {
     {
       "id": "C_45382589",
       "type": "congressperson",
-      "name": "Alegria Luis",
+      "name": "Arturo Alegría García",
       "dni": "45382589",
       "party": "Fuerza Popular",
       "department": "San Martín",
@@ -496,7 +496,7 @@ const NETWORK_DATA = {
     {
       "id": "C_46130369",
       "type": "congressperson",
-      "name": "Julon Elva",
+      "name": "Elva Julón Irigoin",
       "dni": "46130369",
       "party": "Alianza Para el Progreso",
       "department": "Cajamarca",
@@ -505,7 +505,7 @@ const NETWORK_DATA = {
     {
       "id": "C_48164963",
       "type": "congressperson",
-      "name": "Orue Ariana",
+      "name": "Ariana Orue",
       "dni": "48164963",
       "party": "Podemos Perú",
       "department": "Callao",
@@ -514,7 +514,7 @@ const NETWORK_DATA = {
     {
       "id": "C_70094373",
       "type": "congressperson",
-      "name": "Ramirez Tania",
+      "name": "Tania Ramírez García",
       "dni": "70094373",
       "party": "Fuerza Popular",
       "department": "Cajamarca",
@@ -523,7 +523,7 @@ const NETWORK_DATA = {
     {
       "id": "C_70546213",
       "type": "congressperson",
-      "name": "Gonzales Diana",
+      "name": "Diana Gonzales",
       "dni": "70546213",
       "party": "Avanza País",
       "department": "Arequipa",
@@ -532,7 +532,7 @@ const NETWORK_DATA = {
     {
       "id": "C_76030152",
       "type": "congressperson",
-      "name": "Barbaran Rosangella",
+      "name": "Rosangella Barbaran",
       "dni": "76030152",
       "party": "Fuerza Popular",
       "department": "Lima",
