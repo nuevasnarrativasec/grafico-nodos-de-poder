@@ -79,7 +79,16 @@ class NetworkVisualization {
         this.width = window.innerWidth;
         this.height = window.innerHeight;
         this.selectedNode = null;
-        this.expandedCongresspersonId = null; // currently expanded congressperson
+        this.expandedCongresspersonId = null;
+
+        // ── Detección de dispositivo móvil / táctil ──
+        this.isMobile = window.matchMedia('(max-width: 768px)').matches
+                     || ('ontouchstart' in window)
+                     || (navigator.maxTouchPoints > 0);
+
+        // Frame counter para throttle de tick en móvil
+        this._tickFrame = 0;
+        this._rafPending = false;
         
         this.init();
     }
@@ -156,13 +165,20 @@ class NetworkVisualization {
         
         this.g = this.container.append('g');
         
+        // En móvil el zoom mínimo es ligeramente mayor para evitar perder nodos
+        const minScale = this.isMobile ? 0.08 : 0.05;
         this.zoom = d3.zoom()
-            .scaleExtent([0.05, 5])
+            .scaleExtent([minScale, 5])
             .on('zoom', (event) => {
                 this.g.attr('transform', event.transform);
             });
         
         this.container.call(this.zoom);
+
+        // Habilitar touch drag sin interferir con el scroll del navegador
+        const svgEl = this.container.node();
+        svgEl.style.touchAction = 'none';
+        svgEl.style.webkitTapHighlightColor = 'transparent';
     }
     
     setupDefs() {
@@ -220,20 +236,47 @@ class NetworkVisualization {
     
     setupSimulation() {
         const charge = CONFIG.forces.chargeCollapsed;
+
+        // En móvil: convergencia más rápida para no bloquear el hilo principal
+        const alphaDecay    = this.isMobile ? 0.05  : 0.025;
+        const velocityDecay = this.isMobile ? 0.65  : 0.45;
+        const collRadius    = this.isMobile
+            ? CONFIG.forces.collisionCollapsed * 0.8
+            : CONFIG.forces.collisionCollapsed;
+
         this.simulation = d3.forceSimulation(this.data.nodes)
             .force('link', d3.forceLink(this.data.links)
                 .id(d => d.id)
                 .distance(d => CONFIG.forces.link.distance[d.type] || 110)
-                .strength(d => d.type === 'congressperson-familiar' ? 0 : CONFIG.forces.link.strength)) // links inactive initially
+                .strength(d => d.type === 'congressperson-familiar' ? 0 : CONFIG.forces.link.strength))
             .force('charge', d3.forceManyBody()
-                .strength(d => charge[d.type] || -120))
+                .strength(d => charge[d.type] || -120)
+                // En móvil, limitar el alcance del forceManyBody para reducir O(n²) cálculos
+                .distanceMax(this.isMobile ? 350 : Infinity))
             .force('center', d3.forceCenter(this.width / 2, this.height / 2))
             .force('collision', d3.forceCollide()
-                .radius(d => CONFIG.nodeRadius[d.type] + CONFIG.forces.collisionCollapsed))
-            .alphaDecay(0.025)
-            .velocityDecay(0.45);
+                .radius(d => CONFIG.nodeRadius[d.type] + collRadius))
+            .alphaDecay(alphaDecay)
+            .velocityDecay(velocityDecay);
         
-        this.simulation.on('tick', () => this.tick());
+        // ── Throttle de renderizado con RAF en móvil ──
+        // Solo pintamos cada 2 ticks de la simulación (≈ 30fps efectivos),
+        // pero la física sigue corriendo cada tick. Esto alivia la GPU en móvil.
+        if (this.isMobile) {
+            this.simulation.on('tick', () => {
+                this._tickFrame++;
+                if (this._tickFrame % 2 !== 0) return;
+                if (!this._rafPending) {
+                    this._rafPending = true;
+                    requestAnimationFrame(() => {
+                        this.tick();
+                        this._rafPending = false;
+                    });
+                }
+            });
+        } else {
+            this.simulation.on('tick', () => this.tick());
+        }
     }
 
     // ==================== LAYOUT CALCULATOR ====================
@@ -744,38 +787,53 @@ class NetworkVisualization {
     
     setupEvents() {
         const self = this;
-        
-        this.nodes
-            .on('mouseenter', function(event, d) {
-                d._fx = d.fx; d._fy = d.fy;
-                d.fx = d.x; d.fy = d.y;
-                self.showTooltip(event, d);
-                if (d.type === 'congressperson') {
-                    d3.select(this).select('.node-glow')
-                        .transition().duration(200).style('opacity', 0.5);
-                }
-            })
-            .on('mouseleave', function(event, d) {
-                d.fx = d._fx; d.fy = d._fy;
-                delete d._fx; delete d._fy;
-                self.hideTooltip();
-                if (d.type === 'congressperson' && d.id !== self.expandedCongresspersonId) {
-                    d3.select(this).select('.node-glow')
-                        .transition().duration(300).style('opacity', 0);
-                }
-            })
-            .on('mousemove', function(event) { self.updateTooltipPosition(event); })
-            .on('click', function(event, d) {
+
+        // ── En escritorio: eventos hover para tooltip ──
+        // En táctil: no hay hover real; el tooltip se muestra brevemente al tocar
+        if (!this.isMobile) {
+            this.nodes
+                .on('mouseenter', function(event, d) {
+                    d._fx = d.fx; d._fy = d.fy;
+                    d.fx = d.x; d.fy = d.y;
+                    self.showTooltip(event, d);
+                    if (d.type === 'congressperson') {
+                        d3.select(this).select('.node-glow')
+                            .transition().duration(200).style('opacity', 0.5);
+                    }
+                })
+                .on('mouseleave', function(event, d) {
+                    d.fx = d._fx; d.fy = d._fy;
+                    delete d._fx; delete d._fy;
+                    self.hideTooltip();
+                    if (d.type === 'congressperson' && d.id !== self.expandedCongresspersonId) {
+                        d3.select(this).select('.node-glow')
+                            .transition().duration(300).style('opacity', 0);
+                    }
+                })
+                .on('mousemove', function(event) { self.updateTooltipPosition(event); });
+        } else {
+            // En móvil: mostrar tooltip brevemente al tocar (se oculta solo)
+            this.nodes.on('touchstart', function(event, d) {
                 event.stopPropagation();
-                if (d.type === 'congressperson') {
-                    self.expandCongressperson(d);
-                } else if (d.type === 'familiar') {
-                    self.expandFamiliar(d);
-                } else {
-                    self.selectedNode = d;
-                    self._panToNode(d);
-                }
-            });
+                self.showTooltip(event.touches[0] || event, d);
+                clearTimeout(self._tooltipTimeout);
+                self._tooltipTimeout = setTimeout(() => self.hideTooltip(), 2200);
+            }, { passive: true });
+        }
+
+        // ── Click / tap: expandir nodos ──
+        this.nodes.on('click', function(event, d) {
+            event.stopPropagation();
+            if (self.isMobile) self.hideTooltip();
+            if (d.type === 'congressperson') {
+                self.expandCongressperson(d);
+            } else if (d.type === 'familiar') {
+                self.expandFamiliar(d);
+            } else {
+                self.selectedNode = d;
+                self._panToNode(d);
+            }
+        });
         
         this.container.on('click', () => {
             if (this.expandedCongresspersonId) {
@@ -795,18 +853,32 @@ class NetworkVisualization {
         d3.select('#sidebar-close').on('click', () => this.closeSidebar());
         d3.select('#file-input').on('change', function() { self.loadFile(this.files[0]); });
         
-        window.addEventListener('resize', () => this.handleResize());
+        // ── Resize y orientación ──
+        let resizeTimer;
+        const onResize = () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => this.handleResize(), 120);
+        };
+        window.addEventListener('resize', onResize);
+        // Cambio de orientación en móvil (landscape ↔ portrait)
+        if (screen.orientation) {
+            screen.orientation.addEventListener('change', () => {
+                setTimeout(() => this.handleResize(), 200);
+            });
+        } else {
+            window.addEventListener('orientationchange', () => {
+                setTimeout(() => this.handleResize(), 300);
+            });
+        }
         
         // Search input with dropdown
         const searchInput = document.getElementById('search-input');
-        const dropdown = document.getElementById('search-dropdown');
 
         searchInput.addEventListener('input', () => {
             this.handleSearchInput(searchInput.value);
         });
 
         searchInput.addEventListener('focus', () => {
-            // If input is empty, show full alphabetical list; otherwise re-run filter
             if (!searchInput.value.trim()) {
                 this.showAllCongresspersons();
             } else {
@@ -829,6 +901,16 @@ class NetworkVisualization {
                 this.closeSearchDropdown();
             }
         });
+
+        // En móvil: cerrar dropdown al tocar fuera
+        if (this.isMobile) {
+            document.addEventListener('touchstart', (e) => {
+                if (!e.target.closest('.search-wrapper')) {
+                    this.closeSearchDropdown();
+                    searchInput.blur();
+                }
+            }, { passive: true });
+        }
     }
 
     // ==================== SEARCH ====================
@@ -1217,10 +1299,10 @@ class NetworkVisualization {
 
     // ==================== CONTROLS ====================
     
-    zoomIn() { this.container.transition().call(this.zoom.scaleBy, 1.4); }
-    zoomOut() { this.container.transition().call(this.zoom.scaleBy, 0.7); }
+    zoomIn() { this.container.transition().call(this.zoom.scaleBy, this.isMobile ? 1.6 : 1.4); }
+    zoomOut() { this.container.transition().call(this.zoom.scaleBy, this.isMobile ? 0.6 : 0.7); }
     resetView() {
-        const initialScale = 0.42;
+        const initialScale = this.isMobile ? 0.28 : 0.42;
         const tx = this.width  / 2 * (1 - initialScale);
         const ty = this.height / 2 * (1 - initialScale);
         this.container.transition().duration(750).ease(d3.easeCubicInOut)
@@ -1312,16 +1394,26 @@ class NetworkVisualization {
         if (!d._fx && !d._fy) { d.fx = null; d.fy = null; }
     }
     handleResize() {
-        this.width = window.innerWidth; this.height = window.innerHeight;
-        this.container.attr('width', this.width).attr('height', this.height);
-        this.simulation.force('center', d3.forceCenter(this.width / 2, this.height / 2));
-        this.simulation.alpha(0.3).restart();
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+        // Recalcular isMobile por si cambió la orientación
+        this.isMobile = window.matchMedia('(max-width: 768px)').matches
+                     || ('ontouchstart' in window)
+                     || (navigator.maxTouchPoints > 0);
+        this.container
+            .attr('width', this.width)
+            .attr('height', this.height);
+        this.simulation
+            .force('center', d3.forceCenter(this.width / 2, this.height / 2))
+            // Alpha bajo para un pequeño reajuste suave, sin agitar toda la red
+            .alpha(0.15)
+            .restart();
     }
     hideLoader() {
         setTimeout(() => {
             d3.select('#loader').classed('hidden', true);
-            // Zoom out to fit the full network on screen on initial load
-            const initialScale = 0.42;
+            // En móvil, zoom inicial más cercano para que los nodos sean más grandes
+            const initialScale = this.isMobile ? 0.28 : 0.42;
             const tx = this.width  / 2 * (1 - initialScale);
             const ty = this.height / 2 * (1 - initialScale);
             this.container
