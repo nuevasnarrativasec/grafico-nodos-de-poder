@@ -15,7 +15,7 @@ const CONFIG = {
         contract: 20
     },
     forces: {
-        link: { distance: { 'congressperson-familiar': 170, 'familiar-contract': 120, 'contract-entity': 100 }, strength: 0.5 },
+        link: { distance: { 'congressperson-familiar': 90, 'familiar-contract': 120, 'contract-entity': 100 }, strength: 0.5 },
         // Collapsed state: weak repulsion so congresspersons cluster together
         chargeCollapsed: { congressperson: -120, familiar: -380, entity: -300, contract: -140 },
         // Expanded state: strong repulsion so the active network spreads out
@@ -85,10 +85,54 @@ class NetworkVisualization {
     }
     
     processData(data) {
-        return {
-            nodes: data.nodes.map(n => ({...n})),
-            links: data.links.map(l => ({...l}))
-        };
+        const nodes = [];
+        const links = [];
+        const ctExpansionMap = new Map();
+
+        data.nodes.forEach(n => {
+            if (n.type === 'contract' && n.detalles && n.detalles.length > 0) {
+                const individualIds = [];
+                n.detalles.forEach((det, i) => {
+                    const newId = `${n.id}_${i}`;
+                    individualIds.push(newId);
+                    nodes.push({
+                        ...n,
+                        id: newId,
+                        monto: det.monto,
+                        fecha: det.fecha,
+                        descripcion: det.descripcion || det.objeto || '',
+                        objeto: det.objeto || '',
+                        entidadContratante: det.entidad_contratante || n.entidadContratante,
+                        estado: det.estado || '',
+                        numContratos: 1,
+                        detalles: [det],
+                        tipo: det.tipo,
+                        _originalCtId: n.id
+                    });
+                });
+                ctExpansionMap.set(n.id, individualIds);
+            } else {
+                nodes.push({...n});
+            }
+        });
+
+        data.links.forEach(l => {
+            const src = typeof l.source === 'object' ? l.source.id : l.source;
+            const tgt = typeof l.target === 'object' ? l.target.id : l.target;
+            if (l.type === 'familiar-contract' && ctExpansionMap.has(tgt)) {
+                ctExpansionMap.get(tgt).forEach(newId => {
+                    links.push({ source: src, target: newId, type: 'familiar-contract' });
+                });
+            } else if (l.type === 'contract-entity' && ctExpansionMap.has(src)) {
+                ctExpansionMap.get(src).forEach(newId => {
+                    links.push({ source: newId, target: tgt, type: 'contract-entity' });
+                });
+            } else {
+                links.push({ source: src, target: tgt, type: l.type });
+            }
+        });
+
+        return { nodes, links };
     }
     
     init() {
@@ -391,6 +435,9 @@ class NetworkVisualization {
             const startY = d.source.y + ny * sourceR * 0.8;
             const endX = d.target.x - nx * (targetR + 10);
             const endY = d.target.y - ny * (targetR + 10);
+            if (d.type === 'congressperson-familiar') {
+                return `M${startX},${startY}L${endX},${endY}`;
+            }
             const dr = dist * 1.5;
             return `M${startX},${startY}A${dr},${dr} 0 0,1 ${endX},${endY}`;
         });
@@ -448,20 +495,17 @@ class NetworkVisualization {
         const cid = d.id;
         const wasExpanded = this.expandedCongresspersonId === cid;
 
-        // Collapse any previously expanded network
         if (this.expandedCongresspersonId) {
             this._collapseNetwork(this.expandedCongresspersonId);
         }
 
         if (wasExpanded) {
-            // Toggle: clicking same one collapses
             this.expandedCongresspersonId = null;
             this.selectedNode = null;
             this._dimCongresspersons(null);
             this.closeSidebar();
             this.hidePinnedPanel();
             this.updateStats(null);
-            // Return to clustered forces
             this._setExpandedForces(false);
             return;
         }
@@ -469,22 +513,26 @@ class NetworkVisualization {
         this.expandedCongresspersonId = cid;
         this._dimCongresspersons(cid);
 
-        // Pin node at its current position so forces can never move it
         d.fx = d.x;
         d.fy = d.y;
         this._pinnedNode = d;
 
-        // Pan viewport to center exactly on this node at a comfortable scale
-        this._centerOnNode(d);
-
-        // Increase repulsion so nodes spread apart to make room
-        this._setExpandedForces(true);
-
         const { familiars, contracts, entities } = this.getCongresspersonNetwork(cid);
         const allNetworkIds = new Set([...familiars, ...contracts, ...entities]);
 
-        // Show nodes with staggered animation
-        let delay = 0;
+        // Pre-position all network nodes near the congressperson before revealing them
+        this.data.nodes.forEach(n => {
+            if (allNetworkIds.has(n.id)) {
+                n.x = d.x + (Math.random() - 0.5) * 10;
+                n.y = d.y + (Math.random() - 0.5) * 10;
+                n.vx = 0;
+                n.vy = 0;
+            }
+        });
+
+        this._setExpandedForces(true);
+        this._centerOnNode(d);
+
         const order = [
             ...this.data.nodes.filter(n => familiars.has(n.id)),
             ...this.data.nodes.filter(n => contracts.has(n.id)),
@@ -493,16 +541,14 @@ class NetworkVisualization {
 
         order.forEach(node => {
             node._visible = true;
-            delay += 60;
             d3.select(`.node[data-id="${node.id}"]`)
-                .transition().delay(delay).duration(400)
+                .style('pointer-events', 'all')
+                .transition().duration(300)
                 .ease(d3.easeCubicOut)
                 .style('opacity', 1)
-                .style('pointer-events', 'all')
                 .attr('transform', `translate(${node.x},${node.y}) scale(1)`);
         });
 
-        // Show relevant links
         this.links.each(function(l) {
             const src = l.source.id || l.source;
             const tgt = l.target.id || l.target;
@@ -512,14 +558,12 @@ class NetworkVisualization {
                 (contracts.has(src) && entities.has(tgt));
             if (belongs) {
                 d3.select(this)
-                    .transition().delay(200).duration(500)
-                    .ease(d3.easeLinear)
+                    .transition().delay(150).duration(400)
                     .style('opacity', 1)
                     .style('pointer-events', 'all');
             }
         });
 
-        // Glow effect on selected congressperson
         d3.select(`.node[data-id="${cid}"] .node-glow`)
             .transition().duration(400).style('opacity', 0.7);
 
@@ -528,26 +572,29 @@ class NetworkVisualization {
     }
 
     expandFamiliar(d) {
-        // When a familiar is selected, only show ITS sub-network
         const cid = d.congresspersonId;
         if (!cid) return;
 
-        // Hide all links first, then show only this familiar's chain
         this.links.transition().duration(200).style('opacity', 0).style('pointer-events', 'none');
-
-        // Hide all non-congressperson nodes
         this.data.nodes.filter(n => n.type !== 'congressperson').forEach(n => { n._visible = false; });
         this.nodes.filter(n => n.type !== 'congressperson')
             .transition().duration(200)
             .style('opacity', 0).style('pointer-events', 'none')
             .attr('transform', n => `translate(${n.x},${n.y}) scale(0)`);
 
-        // Re-expand the congressperson's full familiars but only this familiar's contracts/entities
         const { familiars } = this.getCongresspersonNetwork(cid);
         const { contracts, entities } = this.getCongresspersonNetwork(cid, d.id);
-        const allNetworkIds = new Set([...familiars, ...contracts, ...entities]);
 
-        let delay = 0;
+        // Pre-position contract/entity nodes near the familiar
+        this.data.nodes.forEach(n => {
+            if (contracts.has(n.id) || entities.has(n.id)) {
+                n.x = d.x + (Math.random() - 0.5) * 10;
+                n.y = d.y + (Math.random() - 0.5) * 10;
+                n.vx = 0;
+                n.vy = 0;
+            }
+        });
+
         const order = [
             ...this.data.nodes.filter(n => familiars.has(n.id)),
             ...this.data.nodes.filter(n => contracts.has(n.id)),
@@ -556,17 +603,15 @@ class NetworkVisualization {
 
         order.forEach(node => {
             node._visible = true;
-            delay += 50;
             const isFocus = node.id === d.id;
             d3.select(`.node[data-id="${node.id}"]`)
-                .transition().delay(delay).duration(350)
+                .style('pointer-events', 'all')
+                .transition().duration(300)
                 .ease(d3.easeCubicOut)
                 .style('opacity', isFocus ? 1 : 0.55)
-                .style('pointer-events', 'all')
                 .attr('transform', `translate(${node.x},${node.y}) scale(${isFocus ? 1.1 : 1})`);
         });
 
-        // Show links
         this.links.each(function(l) {
             const src = l.source.id || l.source;
             const tgt = l.target.id || l.target;
@@ -870,7 +915,6 @@ class NetworkVisualization {
                     <div class="tooltip-grid">
                         <div class="tooltip-row"><span class="tooltip-key">DNI</span><span class="tooltip-value">${d.dni}</span></div>
                         <div class="tooltip-row"><span class="tooltip-key">Parentesco</span><span class="tooltip-value">${d.parentesco || 'N/A'}</span></div>
-                        ${d.ocupacion ? `<div class="tooltip-row"><span class="tooltip-key">Ocupación</span><span class="tooltip-value">${d.ocupacion}</span></div>` : ''}
                         ${d.lugarTrabajo ? `<div class="tooltip-row"><span class="tooltip-key">Lugar de trabajo</span><span class="tooltip-value">${d.lugarTrabajo}</span></div>` : ''}
                     </div>`;
                 break;
@@ -885,17 +929,19 @@ class NetworkVisualization {
                         <div class="tooltip-row"><span class="tooltip-key">N° Contratos</span><span class="tooltip-value">${d.numContratos || 0}</span></div>
                     </div>`;
                 break;
-            case 'contract':
+            case 'contract': {
+                const tipoLabel = d.tipo === 'contrato' ? 'CONTRATO' : 'ORDEN DE SERVICIO';
                 content = `
-                    <div class="tooltip-type ${d.type}">${typeLabels[d.type]}</div>
+                    <div class="tooltip-type ${d.type}">${tipoLabel}</div>
                     <div class="tooltip-title">${this.formatAmount(d.monto)}</div>
                     <div class="tooltip-grid">
-                        <div class="tooltip-row"><span class="tooltip-key">Registros</span><span class="tooltip-value">${d.numContratos || 1} contratos/órdenes</span></div>
-                        <div class="tooltip-row"><span class="tooltip-key">Principal entidad</span><span class="tooltip-value">${d.entidadContratante || 'N/A'}</span></div>
-                        <div class="tooltip-row"><span class="tooltip-key">Último registro</span><span class="tooltip-value">${this.formatDate(d.fecha)}</span></div>
-                        <div class="tooltip-row"><span class="tooltip-key">Descripción</span><span class="tooltip-value">${d.descripcion || 'N/A'}</span></div>
+                        <div class="tooltip-row"><span class="tooltip-key">Entidad</span><span class="tooltip-value">${d.entidadContratante || 'N/A'}</span></div>
+                        <div class="tooltip-row"><span class="tooltip-key">Fecha</span><span class="tooltip-value">${this.formatDate(d.fecha)}</span></div>
+                        <div class="tooltip-row"><span class="tooltip-key">Objeto</span><span class="tooltip-value">${d.descripcion || d.objeto || 'N/A'}</span></div>
+                        ${d.estado ? `<div class="tooltip-row"><span class="tooltip-key">Estado</span><span class="tooltip-value">${d.estado}</span></div>` : ''}
                     </div>`;
                 break;
+            }
         }
         
         tooltip.html(content).style('opacity', 1);
@@ -933,7 +979,10 @@ class NetworkVisualization {
 
     _buildPanelHTML(d) {
         const color = CONFIG.colors[d.type];
-        const typeLabel = this.getTypeLabel(d.type).toUpperCase();
+        let typeLabel = this.getTypeLabel(d.type).toUpperCase();
+        if (d.type === 'contract') {
+            typeLabel = d.tipo === 'contrato' ? 'CONTRATO' : (d.tipo === 'orden' ? 'ORDEN DE SERVICIO' : 'CONTRATO/ORDEN');
+        }
         let html = `
             <div class="panel-header">
                 <span class="panel-badge" style="background:${color}22;color:${color};border:1px solid ${color}44">${typeLabel}</span>
@@ -967,18 +1016,27 @@ class NetworkVisualization {
                 break;
             }
             case 'familiar': {
-                const ctNode = this.data.nodes.find(n => n.id === `CT_${d.ruc}`);
+                // Aggregate from individual expanded contract nodes
+                const familiarCtNodes = this.data.nodes.filter(n =>
+                    n.type === 'contract' && n._originalCtId === `CT_${d.ruc}`
+                );
+                const totalMonto = familiarCtNodes.reduce((s, n) => s + (n.monto || 0), 0);
+                const nContratos = familiarCtNodes.filter(n => n.tipo === 'contrato').length;
+                const nOrdenes   = familiarCtNodes.filter(n => n.tipo === 'orden').length;
+                let registrosStr = '';
+                if (nContratos > 0 && nOrdenes > 0) registrosStr = `${nContratos} contrato${nContratos > 1 ? 's' : ''} · ${nOrdenes} orden${nOrdenes > 1 ? 'es' : ''} de servicio`;
+                else if (nContratos > 0) registrosStr = `${nContratos} contrato${nContratos > 1 ? 's' : ''}`;
+                else if (nOrdenes > 0)   registrosStr = `${nOrdenes} orden${nOrdenes > 1 ? 'es' : ''} de servicio`;
                 html += `
                 <div class="panel-kv-grid">
                     <div class="panel-kv"><span class="panel-k">RUC/DNI</span><span class="panel-v">${d.ruc || d.dni}</span></div>
                     <div class="panel-kv"><span class="panel-k">Parentesco</span><span class="panel-v">${d.parentesco || 'N/A'}</span></div>
-                    <div class="panel-kv"><span class="panel-k">Actividad</span><span class="panel-v">${d.ocupacion || 'N/A'}</span></div>
                     <div class="panel-kv"><span class="panel-k">Principal entidad</span><span class="panel-v">${(d.lugarTrabajo || 'N/A').substring(0,55)}</span></div>
                 </div>`;
-                if (ctNode) {
+                if (familiarCtNodes.length > 0) {
                     html += `<div class="panel-divider"></div>
-                    <div class="panel-total-row"><span class="panel-total-lbl">Monto total contratado</span><span class="panel-total-val">${this.formatAmount(ctNode.monto)}</span></div>
-                    <div class="panel-total-row" style="margin-top:0.3rem"><span class="panel-total-lbl">N° contratos/órdenes</span><span class="panel-total-val" style="color:var(--text-primary)">${ctNode.numContratos}</span></div>`;
+                    <div class="panel-total-row"><span class="panel-total-lbl">Monto total contratado</span><span class="panel-total-val">${this.formatAmount(totalMonto)}</span></div>
+                    <div class="panel-total-row" style="margin-top:0.3rem"><span class="panel-total-lbl">Registros</span><span class="panel-total-val" style="color:var(--text-primary)">${registrosStr}</span></div>`;
                 }
                 break;
             }
@@ -994,33 +1052,18 @@ class NetworkVisualization {
                 break;
             }
             case 'contract': {
+                const tipoColor = d.tipo === 'contrato' ? 'var(--accent-gold)' : 'var(--accent-blue)';
+                const tipoLbl   = d.tipo === 'contrato' ? 'CONTRATO' : 'ORDEN DE SERVICIO';
                 html += `
                 <div class="panel-kv-grid">
-                    <div class="panel-kv"><span class="panel-k">Principal entidad</span><span class="panel-v">${(d.entidadContratante || 'N/A').substring(0,60)}</span></div>
-                    <div class="panel-kv"><span class="panel-k">Último registro</span><span class="panel-v">${this.formatDate(d.fecha)}</span></div>
-                    <div class="panel-kv"><span class="panel-k">Registros totales</span><span class="panel-v">${d.numContratos}</span></div>
+                    <div class="panel-kv"><span class="panel-k">Tipo</span><span class="panel-v"><span style="background:${tipoColor}22;color:${tipoColor};padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600">${tipoLbl}</span></span></div>
+                    <div class="panel-kv"><span class="panel-k">Fecha</span><span class="panel-v">${this.formatDate(d.fecha)}</span></div>
+                    <div class="panel-kv"><span class="panel-k">Entidad contratante</span><span class="panel-v">${(d.entidadContratante || 'N/A').substring(0,70)}</span></div>
+                    ${d.estado ? `<div class="panel-kv"><span class="panel-k">Estado</span><span class="panel-v">${d.estado}</span></div>` : ''}
                 </div>
                 <div class="panel-divider"></div>
-                <div class="panel-total-row"><span class="panel-total-lbl">Monto total</span><span class="panel-total-val">${this.formatAmount(d.monto)}</span></div>`;
-
-                if (d.detalles && d.detalles.length > 0) {
-                    html += `<div class="panel-divider"></div><div class="panel-section-title">Detalle de registros</div><div class="panel-scroll-list">`;
-                    d.detalles.forEach(det => {
-                        const tipoColor = det.tipo === 'contrato' ? 'var(--accent-gold)' : 'var(--accent-blue)';
-                        html += `<div class="panel-list-item">
-                            <div class="panel-list-row">
-                                <span class="panel-list-badge" style="background:${tipoColor}22;color:${tipoColor}">${det.tipo.toUpperCase()}</span>
-                                <span class="panel-list-amount">${this.formatAmount(det.monto)}</span>
-                            </div>
-                            <div class="panel-list-entity">${(det.entidad_contratante || '').substring(0,65)}</div>
-                            <div class="panel-list-meta">${this.formatDate(det.fecha)}${det.estado ? ' · ' + det.estado : ''}</div>
-                        </div>`;
-                    });
-                    if (d.detalles.length < d.numContratos) {
-                        html += `<div class="panel-list-more">+ ${d.numContratos - d.detalles.length} registros adicionales no mostrados</div>`;
-                    }
-                    html += `</div>`;
-                }
+                <div class="panel-total-row"><span class="panel-total-lbl">Monto</span><span class="panel-total-val">${this.formatAmount(d.monto)}</span></div>
+                ${d.descripcion ? `<div class="panel-divider"></div><div class="panel-section-title">Objeto / Descripción</div><div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.5;padding:0 0.25rem">${d.descripcion}</div>` : ''}`;
                 break;
             }
         }

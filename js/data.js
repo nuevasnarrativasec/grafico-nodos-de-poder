@@ -13,7 +13,7 @@ const NETWORK_DATA = {
       "name": "Mita Alanoca",
       "dni": "00434972",
       "party": "Perú Libre",
-      "deparment": "Tacna",
+      "department": "Tacna",
       "photo": "./img/isaac-mita.png"
     },
     {
@@ -22,7 +22,7 @@ const NETWORK_DATA = {
       "name": "Cruz Mamani",
       "dni": "01311614",
       "party": "Perú Libre",
-      "deparment": "Puno",
+      "department": "Puno",
       "photo": "./img/flavio-cruz.png"
     },
     {
@@ -31,7 +31,7 @@ const NETWORK_DATA = {
       "name": "Victor Cutipa",
       "dni": "04647085",
       "party": "Juntos por el Perú",
-      "deparment": "Moquegua",
+      "department": "Moquegua",
       "photo": "./img/victor-cutipa.png"
     },
     {
@@ -40,7 +40,7 @@ const NETWORK_DATA = {
       "name": "Salhuana Eduardo",
       "dni": "05070188",
       "party": "Alianza Para el Progreso",
-      "deparment": "Madre de Dios",
+      "department": "Madre de Dios",
       "photo": "./img/eduardo-salhuana.png"
     },
     {
@@ -49,7 +49,7 @@ const NETWORK_DATA = {
       "name": "Torres Rosio",
       "dni": "05618705",
       "party": "Alianza Para el Progreso",
-      "deparment": "Loreto",
+      "department": "Loreto",
       "photo": "./img/rosio-torres.png"
     },
     {
@@ -58,7 +58,7 @@ const NETWORK_DATA = {
       "name": "Miguel Ciccia",
       "dni": "06049853",
       "party": "Renovación Popular",
-      "deparment": "Piura",
+      "department": "Piura",
       "photo": "./img/miguel-ciccia.png"
     },
     {
@@ -67,7 +67,7 @@ const NETWORK_DATA = {
       "name": "Cueto Jose",
       "dni": "06783615",
       "party": "Renovación Popular",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/jose-cueto.png"
     },
     {
@@ -76,7 +76,7 @@ const NETWORK_DATA = {
       "name": "Luna Leon",
       "dni": "07246887",
       "party": "Podemos Perú",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/jose-luna.png"
     },
     {
@@ -85,7 +85,7 @@ const NETWORK_DATA = {
       "name": "Obando Ana",
       "dni": "07737110",
       "party": "Fuerza Popular",
-      "deparment": "Callao",
+      "department": "Callao",
       "photo": "./img/ana-obando.png"
     },
     {
@@ -94,7 +94,7 @@ const NETWORK_DATA = {
       "name": "Juarez Patricia",
       "dni": "07831436",
       "party": "Fuerza Popular",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/patricia-juarez.png"
     },
     {
@@ -103,7 +103,7 @@ const NETWORK_DATA = {
       "name": "Bustamante Ernesto",
       "dni": "08232920",
       "party": "Fuerza Popular",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/ernesto-bustamante.png"
     },
     {
@@ -112,7 +112,7 @@ const NETWORK_DATA = {
       "name": "Moyano Lupe",
       "dni": "08911520",
       "party": "Fuerza Popular",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/martha-moyano.png"
     },
     {
@@ -121,7 +121,7 @@ const NETWORK_DATA = {
       "name": "Tello Edgar",
       "dni": "09575873",
       "party": "Podemos Perú",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/nivardo-tello.png"
     },
     {
@@ -130,7 +130,7 @@ const NETWORK_DATA = {
       "name": "Lopez Luz",
       "dni": "09980339",
       "party": "Fuerza Popular",
-      "deparment": "Ucayali",
+      "department": "Ucayali",
       "photo": "./img/jeny-lopez.png"
     },
     {
@@ -139,7 +139,7 @@ const NETWORK_DATA = {
       "name": "Chirinos Rosa",
       "dni": "10280036",
       "party": "Renovación Popular",
-      "deparment": "Callao",
+      "department": "Callao",
       "photo": "./img/patricia-chirinos.png"
     },
     {
@@ -148,7 +148,7 @@ const NETWORK_DATA = {
       "name": "Padilla Rommel",
       "dni": "10691398",
       "party": "Sí Creo",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/javier-padilla.png"
     },
     {
@@ -157,7 +157,7 @@ const NETWORK_DATA = {
       "name": "Sanchez Helbert",
       "dni": "16002918",
       "party": "Juntos Por el Perú",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/roberto-sanchez.png"
     },
     {
@@ -166,7 +166,7 @@ const NETWORK_DATA = {
       "name": "Echaiz Margot",
       "dni": "16429203",
       "party": "Renovación Popular",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/gladys-echaiz.png"
     },
     {
@@ -175,7 +175,7 @@ const NETWORK_DATA = {
       "name": "Infantes Eliana",
       "dni": "16448130",
       "party": "Fuerza Popular",
-      "deparment": "Amazonas",
+      "department": "Amazonas",
       "photo": "./img/mery-infantes.png"
     },
     {
@@ -184,7 +184,7 @@ const NETWORK_DATA = {
       "name": "Cordova Jessica",
       "dni": "16719182",
       "party": "Renovación Popular",
-      "deparment": "Lambayeque",
+      "department": "Lambayeque",
       "photo": "./img/jessica-cordova.png"
     },
     {
@@ -193,7 +193,7 @@ const NETWORK_DATA = {
       "name": "Flores Seferino",
       "dni": "17896798",
       "party": "Fuerza Popular",
-      "deparment": "La Libertad",
+      "department": "La Libertad",
       "photo": "./img/victor-flores.png"
     },
     {
@@ -202,7 +202,7 @@ const NETWORK_DATA = {
       "name": "Marticorena Alfonso",
       "dni": "21456255",
       "party": "Alianza Para el Progreso",
-      "deparment": "Ica",
+      "department": "Ica",
       "photo": "./img/jorge-marticorena.png"
     },
     {
@@ -211,7 +211,7 @@ const NETWORK_DATA = {
       "name": "Huaman Raul",
       "dni": "21564196",
       "party": "Fuerza Popular",
-      "deparment": "Ica",
+      "department": "Ica",
       "photo": "./img/raul-huaman.png"
     },
     {
@@ -220,7 +220,7 @@ const NETWORK_DATA = {
       "name": "Medina Sara",
       "dni": "22510256",
       "party": "Somos Perú",
-      "deparment": "Huánuco",
+      "department": "Huánuco",
       "photo": "./img/elizabeth-medina.png"
     },
     {
@@ -229,7 +229,7 @@ const NETWORK_DATA = {
       "name": "Soto Alejandro",
       "dni": "23901989",
       "party": "Alianza Para el Progreso",
-      "deparment": "Cusco",
+      "department": "Cusco",
       "photo": "./img/alejandro-soto.png"
     },
     {
@@ -238,7 +238,7 @@ const NETWORK_DATA = {
       "name": "Aragon Angel",
       "dni": "23977149",
       "party": "Avanza País",
-      "deparment": "Cusco",
+      "department": "Cusco",
       "photo": "./img/luis-aragon.png"
     },
     {
@@ -247,7 +247,7 @@ const NETWORK_DATA = {
       "name": "Arriola Alberto",
       "dni": "25542661",
       "party": "Podemos Perú",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/jose-arriola.png"
     },
     {
@@ -256,7 +256,7 @@ const NETWORK_DATA = {
       "name": "Valer Hector",
       "dni": "25567150",
       "party": "Somos Perú",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/hector-valer.png"
     },
     {
@@ -265,7 +265,7 @@ const NETWORK_DATA = {
       "name": "Davila Neomias",
       "dni": "25700579",
       "party": "Juntos por el Perú",
-      "deparment": "Pasco",
+      "department": "Pasco",
       "photo": "./img/pasion-davila.png"
     },
     {
@@ -274,7 +274,7 @@ const NETWORK_DATA = {
       "name": "Paredes Alex",
       "dni": "29299579",
       "party": "Somos Perú",
-      "deparment": "Arequipa",
+      "department": "Arequipa",
       "photo": "./img/alex-paredes.png"
     },
     {
@@ -283,7 +283,7 @@ const NETWORK_DATA = {
       "name": "Medina Esdras",
       "dni": "29423212",
       "party": "Renovación Popular",
-      "deparment": "Arequipa",
+      "department": "Arequipa",
       "photo": "./img/esdras-medina.png"
     },
     {
@@ -292,7 +292,7 @@ const NETWORK_DATA = {
       "name": "Quito Jaime",
       "dni": "29632775",
       "party": "Juntos por el Perú",
-      "deparment": "Arequipa",
+      "department": "Arequipa",
       "photo": "./img/bernardo-quito.png"
     },
     {
@@ -301,7 +301,7 @@ const NETWORK_DATA = {
       "name": "Varas Marcial",
       "dni": "32923902",
       "party": "Juntos por el Perú",
-      "deparment": "Ancash",
+      "department": "Ancash",
       "photo": "./img/elias-varas.png"
     },
     {
@@ -310,7 +310,7 @@ const NETWORK_DATA = {
       "name": "Chacon Nilza",
       "dni": "32971154",
       "party": "Fuerza Popular",
-      "deparment": "Ancash",
+      "department": "Ancash",
       "photo": "./img/nilza-chacon.png"
     },
     {
@@ -319,7 +319,7 @@ const NETWORK_DATA = {
       "name": "Luque Ruth",
       "dni": "40204874",
       "party": "Ahora Nación",
-      "deparment": "Cusco",
+      "department": "Cusco",
       "photo": "./img/ruth-luque.png"
     },
     {
@@ -328,7 +328,7 @@ const NETWORK_DATA = {
       "name": "Chiabra Roberto",
       "dni": "40728264",
       "party": "Unidad Nacional",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/roberto-chiabra.png"
     },
     {
@@ -337,7 +337,7 @@ const NETWORK_DATA = {
       "name": "Paredes Francis",
       "dni": "40858548",
       "party": "Podemos Perú",
-      "deparment": "Ucayali",
+      "department": "Ucayali",
       "photo": "./img/francis-paredes.png"
     },
     {
@@ -346,7 +346,7 @@ const NETWORK_DATA = {
       "name": "Taipe Maria",
       "dni": "41005490",
       "party": "Perú Libre",
-      "deparment": "Apurímac",
+      "department": "Apurímac",
       "photo": "./img/elizabeth-taipe.png"
     },
     {
@@ -355,7 +355,7 @@ const NETWORK_DATA = {
       "name": "Gonza Américo",
       "dni": "41187802",
       "party": "Perú Libre",
-      "deparment": "Cajamarca",
+      "department": "Cajamarca",
       "photo": "./img/americo-gonza.png"
     },
     {
@@ -364,7 +364,7 @@ const NETWORK_DATA = {
       "name": "Limachi Esmeralda",
       "dni": "41258762",
       "party": "Juntos por el Perú",
-      "deparment": "Tacna",
+      "department": "Tacna",
       "photo": "./img/esmeralda-limachi.png"
     },
     {
@@ -373,7 +373,7 @@ const NETWORK_DATA = {
       "name": "Palacios Margot",
       "dni": "42134579",
       "party": "Perú Libre",
-      "deparment": "Ayacucho",
+      "department": "Ayacucho",
       "photo": "./img/margot-palacios.png"
     },
     {
@@ -382,7 +382,7 @@ const NETWORK_DATA = {
       "name": "Juarez Lisbeth",
       "dni": "42335591",
       "party": "Podemos Perú",
-      "deparment": "Piura",
+      "department": "Piura",
       "photo": "./img/heidy-juarez.png"
     },
     {
@@ -391,7 +391,7 @@ const NETWORK_DATA = {
       "name": "Reyes Augusto",
       "dni": "42377791",
       "party": "Perú Libre",
-      "deparment": "Huánuco",
+      "department": "Huánuco",
       "photo": "./img/abel-reyes.png"
     },
     {
@@ -400,7 +400,7 @@ const NETWORK_DATA = {
       "name": "Zegarra Zadith",
       "dni": "42628319",
       "party": "Somos Perú",
-      "deparment": "Loreto",
+      "department": "Loreto",
       "photo": "./img/ana-zegarra.png"
     },
     {
@@ -409,7 +409,7 @@ const NETWORK_DATA = {
       "name": "Portalatino Roxana",
       "dni": "42699423",
       "party": "Perú Libre",
-      "deparment": "Ancash",
+      "department": "Ancash",
       "photo": "./img/kelly-portalatino.png"
     },
     {
@@ -418,7 +418,7 @@ const NETWORK_DATA = {
       "name": "Robles Emperatriz",
       "dni": "42750152",
       "party": "Juntos por el Perú",
-      "deparment": "Junín",
+      "department": "Junín",
       "photo": "./img/silvana-robles.png"
     },
     {
@@ -427,7 +427,7 @@ const NETWORK_DATA = {
       "name": "Montoya Jorge",
       "dni": "43328757",
       "party": "Sí Creo",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/jorge-montoya.png"
     },
     {
@@ -436,7 +436,7 @@ const NETWORK_DATA = {
       "name": "Revilla Cesar",
       "dni": "44275599",
       "party": "Fuerza Popular",
-      "deparment": "Piura",
+      "department": "Piura",
       "photo": "./img/cesar-revilla.png"
     },
     {
@@ -445,7 +445,7 @@ const NETWORK_DATA = {
       "name": "Bellido Guido",
       "dni": "44649199",
       "party": "Podemos Perú",
-      "deparment": "Cusco",
+      "department": "Cusco",
       "photo": "./img/guido-bellido.png"
     },
     {
@@ -454,7 +454,7 @@ const NETWORK_DATA = {
       "name": "Amuruz Rosselli",
       "dni": "44756974",
       "party": "Avanza País",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/rosselli-amuruz.png"
     },
     {
@@ -463,7 +463,7 @@ const NETWORK_DATA = {
       "name": "Castillo Eduardo",
       "dni": "44807108",
       "party": "Fuerza Popular",
-      "deparment": "Piura",
+      "department": "Piura",
       "photo": "./img/enrique-castillo.png"
     },
     {
@@ -472,7 +472,7 @@ const NETWORK_DATA = {
       "name": "Trigozo Cheryl",
       "dni": "44886100",
       "party": "Renovación Popular",
-      "deparment": "San Martín",
+      "department": "San Martín",
       "photo": "./img/cheryl-trigozo.png"
     },
     {
@@ -481,7 +481,7 @@ const NETWORK_DATA = {
       "name": "Muñante Alejandro",
       "dni": "45209282",
       "party": "Renovación Popular",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/alejandro-munante.png"
     },
     {
@@ -490,7 +490,7 @@ const NETWORK_DATA = {
       "name": "Alegria Luis",
       "dni": "45382589",
       "party": "Fuerza Popular",
-      "deparment": "San Martín",
+      "department": "San Martín",
       "photo": "./img/arturo-alegria.png"
     },
     {
@@ -499,7 +499,7 @@ const NETWORK_DATA = {
       "name": "Julon Elva",
       "dni": "46130369",
       "party": "Alianza Para el Progreso",
-      "deparment": "Cajamarca",
+      "department": "Cajamarca",
       "photo": "./img/edith-julon.png"
     },
     {
@@ -508,7 +508,7 @@ const NETWORK_DATA = {
       "name": "Orue Ariana",
       "dni": "48164963",
       "party": "Podemos Perú",
-      "deparment": "Callao",
+      "department": "Callao",
       "photo": "./img/ariana-orue.png"
     },
     {
@@ -517,7 +517,7 @@ const NETWORK_DATA = {
       "name": "Ramirez Tania",
       "dni": "70094373",
       "party": "Fuerza Popular",
-      "deparment": "Cajamarca",
+      "department": "Cajamarca",
       "photo": "./img/tania-ramirez.png"
     },
     {
@@ -526,7 +526,7 @@ const NETWORK_DATA = {
       "name": "Gonzales Diana",
       "dni": "70546213",
       "party": "Avanza País",
-      "deparment": "Arequipa",
+      "department": "Arequipa",
       "photo": "./img/diana-gonzales.png"
     },
     {
@@ -535,7 +535,7 @@ const NETWORK_DATA = {
       "name": "Barbaran Rosangella",
       "dni": "76030152",
       "party": "Fuerza Popular",
-      "deparment": "Lima",
+      "department": "Lima",
       "photo": "./img/rosangela-barbaran.png"
     },
     {
