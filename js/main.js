@@ -852,6 +852,11 @@ class NetworkVisualization {
         d3.select('#clear-selection').on('click', () => this.clearSelection());
         d3.select('#sidebar-close').on('click', () => this.closeSidebar());
         d3.select('#file-input').on('change', function() { self.loadFile(this.files[0]); });
+        d3.select('#disclaimer-btn').on('click', () => this.showDisclaimer());
+        d3.select('#disclaimer-overlay').on('click', (e) => {
+            if (e.target.id === 'disclaimer-overlay') this.hideDisclaimer();
+        });
+        d3.select('#disclaimer-close').on('click', () => this.hideDisclaimer());
         
         // ── Resize y orientación ──
         let resizeTimer;
@@ -1338,9 +1343,11 @@ class NetworkVisualization {
     updateStats(congresspersonId = null) {
         let counts = { congressperson: 0, familiar: 0, entity: 0, contract: 0 };
         let totalAmount = 0;
+        let selectedName = null;
 
         if (congresspersonId) {
-            // Show stats only for the selected network
+            const cp = this.data.nodes.find(n => n.id === congresspersonId);
+            selectedName = cp ? cp.name : null;
             const { familiars, contracts, entities } = this.getCongresspersonNetwork(congresspersonId);
             counts.congressperson = 1;
             counts.familiar = familiars.size;
@@ -1357,28 +1364,60 @@ class NetworkVisualization {
             });
         }
 
-        // Animate number transitions
+        // ── First stat item: name when selected, count otherwise ──
+        const cpStatEl = document.getElementById('stat-congresspersons');
+        const cpLabelEl = cpStatEl ? cpStatEl.nextElementSibling : null;
+        if (cpStatEl) {
+            if (selectedName) {
+                const shortName = this._shortCongressName(selectedName);
+                cpStatEl.textContent = shortName;
+                const len = shortName.length;
+                cpStatEl.style.fontSize = len > 16 ? '0.6rem' : len > 12 ? '0.72rem' : len > 9 ? '0.88rem' : '1.2rem';
+                cpStatEl.style.color = '#000';
+                cpStatEl.style.letterSpacing = '-0.01em';
+                cpStatEl.style.lineHeight = '1.15';
+                if (cpLabelEl) cpLabelEl.textContent = 'Congresista';
+            } else {
+                cpStatEl.textContent = counts.congressperson;
+                cpStatEl.style.fontSize = '';
+                cpStatEl.style.color = '';
+                cpStatEl.style.letterSpacing = '';
+                cpStatEl.style.lineHeight = '';
+                if (cpLabelEl) cpLabelEl.textContent = 'Congresistas';
+            }
+            cpStatEl.style.transform = 'scale(1.12)';
+            cpStatEl.style.transition = 'transform 0.25s ease';
+            setTimeout(() => { cpStatEl.style.transform = 'scale(1)'; }, 250);
+        }
+
+        // Animate number transitions (skip stat-congresspersons, handled above)
         const animate = (sel, val) => {
             const el = document.getElementById(sel);
             if (!el) return;
             const isAmount = sel === 'stat-total-amount';
-            const prev = isAmount ? 0 : parseInt(el.textContent.replace(/\D/g, '')) || 0;
-            const next = isAmount ? val : val;
             if (isAmount) {
-                el.textContent = this.formatAmount(next);
+                el.textContent = this.formatAmount(val);
             } else {
-                el.textContent = next;
+                el.textContent = val;
             }
             el.style.transform = 'scale(1.15)';
             el.style.transition = 'transform 0.25s ease';
             setTimeout(() => { el.style.transform = 'scale(1)'; }, 250);
         };
 
-        animate('stat-congresspersons', counts.congressperson);
         animate('stat-familiars', counts.familiar);
         animate('stat-entities', counts.entity);
         animate('stat-contracts', counts.contract);
         animate('stat-total-amount', totalAmount);
+    }
+
+    _shortCongressName(fullName) {
+        // Abbreviate to fit: keep first 2 words (typically APELLIDO NOMBRE or NOMBRE APELLIDO)
+        if (!fullName) return '';
+        const parts = fullName.trim().split(/\s+/);
+        if (parts.length <= 2) return fullName;
+        // Return first two words – usually covers surname + first name
+        return parts.slice(0, 2).join(' ');
     }
 
     // ==================== UTILS ====================
@@ -1434,6 +1473,23 @@ class NetworkVisualization {
     truncateName(name, maxLen = 25) {
         if (!name) return '';
         return name.length > maxLen ? name.substring(0, maxLen - 2) + '...' : name;
+    }
+    // ==================== DISCLAIMER ====================
+
+    showDisclaimer() {
+        const overlay = document.getElementById('disclaimer-overlay');
+        if (overlay) {
+            overlay.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    hideDisclaimer() {
+        const overlay = document.getElementById('disclaimer-overlay');
+        if (overlay) {
+            overlay.classList.remove('visible');
+            document.body.style.overflow = '';
+        }
     }
 }
 
