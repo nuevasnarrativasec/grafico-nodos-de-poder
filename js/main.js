@@ -238,7 +238,7 @@ class NetworkVisualization {
         const charge = CONFIG.forces.chargeCollapsed;
 
         // En móvil: convergencia más rápida para no bloquear el hilo principal
-        const alphaDecay    = this.isMobile ? 0.05  : 0.025;
+        const alphaDecay    = this.isMobile ? 0.05  : 0.028;
         const velocityDecay = this.isMobile ? 0.65  : 0.45;
         const collRadius    = this.isMobile
             ? CONFIG.forces.collisionCollapsed * 0.8
@@ -257,8 +257,11 @@ class NetworkVisualization {
             .force('collision', d3.forceCollide()
                 .radius(d => CONFIG.nodeRadius[d.type] + collRadius))
             .alphaDecay(alphaDecay)
-            .velocityDecay(velocityDecay);
-        
+            .velocityDecay(velocityDecay)
+            // Stop simulation once physics settle — prevents infinite CPU burn
+            // and the slow floating effect on congressperson nodes
+            .alphaMin(0.001);
+
         // ── Throttle de renderizado con RAF en móvil ──
         // Solo pintamos cada 2 ticks de la simulación (≈ 30fps efectivos),
         // pero la física sigue corriendo cada tick. Esto alivia la GPU en móvil.
@@ -277,6 +280,21 @@ class NetworkVisualization {
         } else {
             this.simulation.on('tick', () => this.tick());
         }
+
+        // ── When physics settle: pin all CP nodes so they stay fixed,
+        //    do a final render pass, then stop the simulation entirely.
+        //    This is the key optimization: no more continuous tick() means
+        //    pan/zoom is pure SVG transform — no JS overhead at all.
+        this.simulation.on('end', () => this._onSimulationEnd());
+    }
+
+    _onSimulationEnd() {
+        // Pin each congressperson at its final physics position
+        this.data.nodes
+            .filter(n => n.type === 'congressperson' && n.fx == null)
+            .forEach(n => { n.fx = n.x; n.fy = n.y; });
+        // One final render so positions are committed to DOM
+        this.tick();
     }
 
     // ==================== LAYOUT CALCULATOR ====================
@@ -636,9 +654,12 @@ class NetworkVisualization {
         const { familiars, contracts, entities } = this.getCongresspersonNetwork(cid);
         const positions = this._calcNetworkLayout(d.x, d.y, familiars, contracts, entities);
 
-        // Pin all network nodes at calculated positions — simulation keeps running
-        // so tick() continuously redraws links correctly
+        // Pin all network nodes at calculated positions
         this._pinExpandedNodes(positions);
+
+        // Commit link paths immediately using pinned positions — no need
+        // to keep the simulation running just to redraw them
+        this.tick();
 
         const allNetworkNodes = [
             ...this.data.nodes.filter(n => familiars.has(n.id)),
@@ -657,7 +678,7 @@ class NetworkVisualization {
                 .attr('transform', `translate(${pos.x},${pos.y}) scale(1)`);
         });
 
-        // Show links — simulation is still ticking so paths are already correct
+        // Fade in links — paths are already correct from the tick() above
         this.links.each(function(l) {
             const src = l.source.id || l.source;
             const tgt = l.target.id || l.target;
@@ -698,8 +719,9 @@ class NetworkVisualization {
         const { contracts, entities } = this.getCongresspersonNetwork(cid, d.id);
         const positions = this._calcNetworkLayout(congress.x, congress.y, familiars, contracts, entities);
 
-        // Pin nodes at calculated positions, simulation stays running
+        // Pin nodes at calculated positions, then commit link paths statically
         this._pinExpandedNodes(positions);
+        this.tick();
 
         const order = [
             ...this.data.nodes.filter(n => familiars.has(n.id)),
@@ -763,17 +785,20 @@ class NetworkVisualization {
         d3.select(`.node[data-id="${congresspersonId}"] .node-glow`)
             .transition().duration(300).style('opacity', 0);
 
-        // Release the pinned node so it can float freely again
+        // Release the pinned congressperson so it can be re-pinned below
         if (this._pinnedNode) {
             this._pinnedNode.fx = null;
             this._pinnedNode.fy = null;
             this._pinnedNode = null;
         }
 
-        // Unpin expanded nodes so simulation can reposition them freely
+        // Unpin expanded nodes — re-pin CP node so it stays exactly where it is
+        // No simulation restart needed: next expand uses deterministic layout anyway
         setTimeout(() => {
             this._unpinNetworkNodes([...allIds]);
-            this.simulation.alpha(0.3).restart();
+            // Re-pin the congressperson at its current position so it doesn't drift
+            const cpNode = this.data.nodes.find(n => n.id === congresspersonId);
+            if (cpNode) { cpNode.fx = cpNode.x; cpNode.fy = cpNode.y; }
         }, 300);
     }
 
@@ -1423,14 +1448,20 @@ class NetworkVisualization {
     // ==================== UTILS ====================
     
     dragStarted(event, d) {
-        if (!event.active) this.simulation.alphaTarget(0.3).restart();
+        if (!event.active) this.simulation.alphaTarget(0.1).restart();
         d.fx = d.x; d.fy = d.y;
         this.hideTooltip();
     }
-    dragged(event, d) { d.fx = event.x; d.fy = event.y; }
+    dragged(event, d) {
+        d.fx = event.x; d.fy = event.y;
+        // Immediately redraw links to the drag position — no need to wait for a tick
+        this.tick();
+    }
     dragEnded(event, d) {
         if (!event.active) this.simulation.alphaTarget(0);
-        if (!d._fx && !d._fy) { d.fx = null; d.fy = null; }
+        // Keep the node pinned at its dropped position so it doesn't drift
+        // (simulation will stop naturally via alphaMin, firing _onSimulationEnd)
+        d.fx = event.x; d.fy = event.y;
     }
     handleResize() {
         this.width = window.innerWidth;
@@ -1442,11 +1473,10 @@ class NetworkVisualization {
         this.container
             .attr('width', this.width)
             .attr('height', this.height);
-        this.simulation
-            .force('center', d3.forceCenter(this.width / 2, this.height / 2))
-            // Alpha bajo para un pequeño reajuste suave, sin agitar toda la red
-            .alpha(0.15)
-            .restart();
+        // Only nudge the force center; all nodes are pinned so this is a no-op
+        // in practice but prevents stale center coordinates
+        this.simulation.force('center', d3.forceCenter(this.width / 2, this.height / 2));
+        this.tick();
     }
     hideLoader() {
         setTimeout(() => {
