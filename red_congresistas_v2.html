@@ -6,7 +6,7 @@
     <title>Red de Conexiones: Congresistas, Familiares y Contratos Públicos</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css?v30">
+    <link rel="stylesheet" href="./css/style.css?v31">
 </head>
 <body>
     <!-- Loader -->
@@ -100,40 +100,28 @@
                 <div class="stat-label">Monto Total</div>
             </div>
         </div>
-        <button class="disclaimer-btn" id="disclaimer-btn" title="Aviso legal">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="#f59e0b" stroke-width="2" stroke-linejoin="round"/>
-                <line x1="12" y1="9" x2="12" y2="13" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="12" cy="17" r="1" fill="#f59e0b"/>
-            </svg>
-        </button>
+
     </div>
 
-    <!-- Disclaimer Modal -->
-    <div class="disclaimer-overlay" id="disclaimer-overlay">
-        <div class="disclaimer-modal">
-            <div class="disclaimer-modal-header">
-                <div class="disclaimer-modal-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="#f59e0b" stroke-width="2" stroke-linejoin="round"/>
-                        <line x1="12" y1="9" x2="12" y2="13" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
-                        <circle cx="12" cy="17" r="1" fill="#f59e0b"/>
-                    </svg>
-                </div>
-                <h2 class="disclaimer-modal-title">Aviso Legal</h2>
-                <button class="disclaimer-close" id="disclaimer-close" title="Cerrar">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                </button>
+    <!-- Disclaimer Acordeón (esquina inferior izquierda) -->
+    <div class="disclaimer-accordion collapsed" id="disclaimer-accordion">
+        <div class="disclaimer-accordion-header" id="disclaimer-accordion-toggle">
+            <div class="disclaimer-accordion-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="#f59e0b" stroke-width="2" stroke-linejoin="round"/>
+                    <line x1="12" y1="9" x2="12" y2="13" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="12" cy="17" r="1" fill="#f59e0b"/>
+                </svg>
             </div>
-            <div class="disclaimer-modal-body">
-                <div class="disclaimer-section">
-                    <h3>Propósito de la herramienta</h3>
-                    <p>El Comercio no está acusando a ningún involucrado en este especial, esta visualización tiene fines informativos y periodísticos. Presenta conexiones entre congresistas de la República del Perú, sus familiares directos y contratos suscritos con entidades del Estado peruano, con el objetivo de promover la transparencia y el control ciudadano.</p>
-                </div>
-            </div>
-            <div class="disclaimer-modal-footer">
-                <button class="disclaimer-footer-btn" id="disclaimer-close-footer">Entendido</button>
-            </div>
+            <!--<span class="disclaimer-accordion-title">Aviso Legal</span>-->
+            <button class="disclaimer-accordion-chevron" id="disclaimer-chevron" title="Expandir / colapsar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+        </div>
+        <div class="disclaimer-accordion-body" id="disclaimer-accordion-body">
+            <p>El Comercio no está acusando a ningún involucrado en este especial, esta visualización tiene fines informativos y periodísticos. Presenta conexiones entre congresistas de la República del Perú, sus familiares directos y contratos suscritos con entidades del Estado peruano, con el objetivo de promover la transparencia y el control ciudadano.</p>
         </div>
     </div>
 
@@ -169,20 +157,16 @@
     <script src="./js/data.js?v30"></script>
     <script src="./js/main.js?v30"></script>
     <script>
-        // Disclaimer footer close (works regardless of viz init timing)
+        // Acordeón disclaimer — toggle independiente del init de la viz
         document.addEventListener('DOMContentLoaded', () => {
-            const footerBtn = document.getElementById('disclaimer-close-footer');
-            if (footerBtn) footerBtn.addEventListener('click', () => {
-                document.getElementById('disclaimer-overlay').classList.remove('visible');
-                document.body.style.overflow = '';
-            });
-            // ESC key closes disclaimer
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    document.getElementById('disclaimer-overlay').classList.remove('visible');
-                    document.body.style.overflow = '';
-                }
-            });
+            const toggle = document.getElementById('disclaimer-accordion-toggle');
+            const accordion = document.getElementById('disclaimer-accordion');
+            if (toggle && accordion) {
+                toggle.addEventListener('click', () => {
+                    accordion.classList.toggle('collapsed');
+                });
+            }
+            // ESC key ya no hace nada (no hay modal)
         });
     </script>
 </body>

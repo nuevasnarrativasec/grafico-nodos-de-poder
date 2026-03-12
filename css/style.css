@@ -567,7 +567,7 @@
             gap: 1rem;
             background: #fff;
             padding: 0.75rem 1.25rem;
-            border-radius: 10px;
+            border-radius: 0;
             border: 1px solid var(--border-subtle);
             backdrop-filter: blur(10px);
             z-index: 50;
@@ -710,178 +710,114 @@
             color: var(--text-muted);
         }
         
-        /* ==================== DISCLAIMER BUTTON ==================== */
-        .disclaimer-btn {
-            width: 42px;
-            height: 42px;
-            background: #1e2330;
-            border: 1px solid rgba(245, 158, 11, 0.25);
-            border-radius: 10px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
+        /* ==================== DISCLAIMER BUTTON (obsoleto — oculto) ==================== */
+        .disclaimer-btn { display: none; }
 
-        .disclaimer-btn:hover {
-            background: #252c3d;
-            border-color: rgba(245, 158, 11, 0.5);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 14px rgba(0,0,0,0.35);
-        }
+        /* ==================== DISCLAIMER MODAL (obsoleto — oculto) ==================== */
+        .disclaimer-overlay { display: none !important; }
 
-        .disclaimer-btn:active {
-            transform: translateY(0);
-        }
-
-        /* ==================== DISCLAIMER MODAL ==================== */
-        .disclaimer-overlay {
+        /* ==================== DISCLAIMER ACORDEÓN ==================== */
+        .disclaimer-accordion {
             position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.25s ease;
-        }
-
-        .disclaimer-overlay.visible {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .disclaimer-modal {
-            background: #1c2030;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            width: 100%;
-            max-width: 520px;
-            max-height: calc(100vh - 3rem);
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 24px 80px rgba(0,0,0,0.6);
-            transform: translateY(12px) scale(0.97);
-            transition: transform 0.3s cubic-bezier(0.34,1.2,0.64,1);
+            bottom: 1.5rem;
+            left: 1.5rem;
+            width: 300px;
+            background: #1e2330;
+            border: 1px solid rgba(245, 158, 11, 0.22);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+            z-index: 200;
             overflow: hidden;
+            transition: box-shadow 0.2s ease;
         }
 
-        .disclaimer-overlay.visible .disclaimer-modal {
-            transform: translateY(0) scale(1);
+        .disclaimer-accordion:hover {
+            box-shadow: 0 10px 38px rgba(0,0,0,0.55);
         }
 
-        .disclaimer-modal-header {
+        /* ── Header siempre visible ── */
+        .disclaimer-accordion-header {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 1.25rem 1.5rem 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            flex-shrink: 0;
+            gap: 0.6rem;
+            padding: 0.75rem 0.85rem;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
-        .disclaimer-modal-icon {
-            width: 36px;
-            height: 36px;
-            background: rgba(245, 158, 11, 0.12);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 8px;
+        .disclaimer-accordion-icon {
+            width: 30px;
+            height: 30px;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.28);
+            border-radius: 7px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
 
-        .disclaimer-modal-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #fff;
+        .disclaimer-accordion-title {
             flex: 1;
-            margin: 0;
-        }
-
-        .disclaimer-close {
-            width: 28px;
-            height: 28px;
-            background: rgba(255,255,255,0.07);
-            border: none;
-            border-radius: 6px;
-            color: var(--text-muted);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.15s ease;
-            flex-shrink: 0;
-        }
-
-        .disclaimer-close:hover {
-            background: rgba(255,255,255,0.14);
-            color: #fff;
-        }
-
-        .disclaimer-modal-body {
-            padding: 1.25rem 1.5rem;
-            overflow-y: auto;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255,255,255,0.15) transparent;
-        }
-
-        .disclaimer-modal-body::-webkit-scrollbar { width: 4px; }
-        .disclaimer-modal-body::-webkit-scrollbar-track { background: transparent; }
-        .disclaimer-modal-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
-
-        .disclaimer-section h3 {
-            font-size: 0.72rem;
+            font-size: 0.8rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--accent-gold);
-            margin-bottom: 0.4rem;
-        }
-
-        .disclaimer-section p {
-            font-size: 0.83rem;
-            color: #c8cdd8;
-            line-height: 1.65;
-        }
-
-        .disclaimer-modal-footer {
-            padding: 1rem 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            display: flex;
-            justify-content: flex-end;
-            flex-shrink: 0;
-        }
-
-        .disclaimer-footer-btn {
-            padding: 0.55rem 1.6rem;
-            background: var(--accent-gold);
-            color: #1a1a1a;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.82rem;
-            font-weight: 700;
-            font-family: inherit;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            color: #f5f5f5;
             letter-spacing: 0.02em;
         }
 
-        .disclaimer-footer-btn:hover {
-            background: var(--accent-gold-light);
-            transform: translateY(-1px);
+        .disclaimer-accordion-chevron {
+            width: 24px;
+            height: 24px;
+            background: rgba(255,255,255,0.06);
+            border: none;
+            border-radius: 5px;
+            color: #9ca3af;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.15s ease, color 0.15s ease, transform 0.3s ease;
+        }
+
+        .disclaimer-accordion-chevron:hover {
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+        }
+
+        /* ── Body expandible ── */
+        .disclaimer-accordion-body {
+            padding: 0 0.85rem 0.85rem;
+            max-height: 200px;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                        padding 0.3s ease,
+                        opacity 0.25s ease;
+            opacity: 1;
+        }
+
+        .disclaimer-accordion-body p {
+            font-size: 0.78rem;
+            color: #b8bec9;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── Estado colapsado ── */
+        .disclaimer-accordion.collapsed .disclaimer-accordion-body {
+            max-height: 0;
+            padding-bottom: 0;
+            opacity: 0;
+        }
+
+        .disclaimer-accordion.collapsed .disclaimer-accordion-chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Separador entre header y body */
+        .disclaimer-accordion:not(.collapsed) .disclaimer-accordion-header {
+            border-bottom: 1px solid rgba(255,255,255,0.07);
         }
 
         /* ==================== ANIMATIONS ==================== */
@@ -1366,6 +1302,10 @@
     transition: transform 0.25s ease;
 }
 
+.disclaimer-accordion.collapsed{
+    width: 7%;
+}
+
 /* =================================================================
    MOBILE RESPONSIVE — OPTIMIZACIONES PARA PANTALLAS PEQUEÑAS
    Breakpoints: 768px (tablet), 600px (móvil), 400px (móvil small)
@@ -1385,13 +1325,13 @@
 }
 
 /* =================================================================
-   TABLET (≤ 768px)
+   TABLET / MÓVIL (≤ 768px)
 ================================================================= */
 @media (max-width: 768px) {
 
-    /* ── Header ── */
+    /* ── Header: solo barra de búsqueda ── */
     .header {
-        padding: 0.65rem 1rem;
+        padding: 0.65rem 0.75rem;
         gap: 0.5rem;
         background: rgba(241, 240, 234, 0.96);
         backdrop-filter: blur(12px);
@@ -1399,9 +1339,13 @@
         border-bottom: 1px solid rgba(0,0,0,0.06);
     }
 
+    .header-left {
+        display: none;  /* ocultar título en móvil */
+    }
+
     .header-right {
+        display: block;
         width: 100%;
-        gap: 0.5rem;
     }
 
     .search-input {
@@ -1416,44 +1360,34 @@
         right: 0;
     }
 
-    /* ── Leyenda: compacta encima de la stats bar ── */
-    .legend {
-        bottom: 6rem;
-        left: 0.75rem;
-        right: auto;
-        transform: none;
-        padding: 0.45rem 0.85rem;
-        gap: 0.4rem 0.75rem;
-        font-size: 0.7rem;
-        border-radius: 8px;
-    }
+    /* ══════════════════════════════════════════════════
+       LAYOUT DE FONDO:
+       Stats bar  →  bottom: 0.5rem  (2 filas)
+       Leyenda    →  bottom: 6.2rem  (encima de stats)
+       Controles  →  bottom: 6.2rem  derecha, apilados ↑
+       Disclaimer →  bottom: 6.2rem  izquierda, abre ↑→
+    ══════════════════════════════════════════════════ */
 
-    .legend-item {
-        font-size: 0.68rem;
-    }
-
-    /* ── Stats wrapper: layout más compacto ── */
+    /* ── Stats wrapper: ancho completo al fondo ── */
     .stats-wrapper {
         left: 0.5rem;
         right: 0.5rem;
         bottom: 0.5rem;
         transform: none;
-        align-items: flex-end;
+        align-items: stretch;
     }
 
-    /* ── Stats bar: layout más compacto ── */
+    /* ── Stats bar: grid 3 col / 2 filas ── */
     .stats-bar {
         flex: 1;
-        padding: 0.5rem 0.85rem;
+        padding: 0.6rem 1rem;
         gap: 0;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        row-gap: 0.1rem;
+        row-gap: 0.15rem;
         border-radius: 10px;
     }
 
-    /* Congresistas | Familiares | Entidades → fila 1 */
-    /* Contratos    | Monto Total (cols 2–3) → fila 2 */
     .stat-item {
         text-align: center;
         padding: 0.2rem 0;
@@ -1483,52 +1417,128 @@
         letter-spacing: 0.05em;
     }
 
-    /* ── Disclaimer btn: ajustar en móvil ── */
-    .disclaimer-btn {
-        width: 38px;
-        height: 38px;
-        border-radius: 8px;
-        flex-shrink: 0;
-        align-self: center;
+    /* ── Leyenda: franja ancha encima de la stats bar ── */
+    .legend {
+        bottom: 7.5rem;
+        left: 0.5rem;
+        right: 0.5rem;
+        transform: none;
+        padding: 0.55rem 1rem;
+        gap: 0.4rem 0.9rem;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        z-index: 49;
     }
 
-    /* ── Disclaimer modal: full-width en móvil ── */
-    .disclaimer-modal {
-        max-width: 100%;
-        border-radius: 16px;
+    .legend-item {
+        font-size: 0.68rem;
     }
 
-    /* ── Controles: encima de la stats bar ── */
+    /* ── Controles: apilados verticalmente en la esquina derecha ── */
     .controls {
-        bottom: 5.8rem;
-        right: 0.75rem;
+        bottom: 10.2rem;
+        right: 0.5rem;
+        flex-direction: column;
         gap: 0.4rem;
+        z-index: 51;
     }
 
     .control-btn {
-        width: 34px;
-        height: 34px;
-        border-radius: 8px;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: #1a1e26;
+        border: 1px solid rgba(255,255,255,0.1);
+        color: #9ca3af;
     }
 
-    /* ── Hint label: oculto en móvil (poco espacio) ── */
+    /* ── Disclaimer acordeón: esquina inferior izquierda ──
+       Colapsado  → 2 botones compactos [⚠] [^]
+       Expandido  → panel crece hacia arriba-derecha    ── */
+    .disclaimer-accordion {
+        bottom: 10.2rem;
+        left: 0.5rem;
+        width: auto;        /* se ajusta al contenido cuando colapsado */
+        flex-direction: column-reverse;  /* body ENCIMA del header */
+        z-index: 51;
+        border-radius: 12px;
+    }
+
+        .disclaimer-accordion.collapsed{
+            width: 25%;
+        }
+
+    /* Ocultar título: solo iconos en móvil */
+    .disclaimer-accordion .disclaimer-accordion-title {
+        display: none;
+    }
+
+    /* Header compacto: solo los 2 botones */
+    .disclaimer-accordion .disclaimer-accordion-header {
+        padding: 0.35rem;
+        gap: 0.35rem;
+        border-bottom: none;
+    }
+
+    /* Línea separadora entre body y header (column-reverse) */
+    .disclaimer-accordion:not(.collapsed) .disclaimer-accordion-header {
+        border-top: 1px solid rgba(255,255,255,0.08);
+        border-bottom: none;
+    }
+
+    /* Iconos del header más grandes y cuadrados */
+    .disclaimer-accordion .disclaimer-accordion-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 9px;
+        flex-shrink: 0;
+    }
+
+    .disclaimer-accordion .disclaimer-accordion-chevron {
+        width: 36px;
+        height: 36px;
+        border-radius: 9px;
+        /* Rotar chevron izquierdo (<) a que apunte arriba (^) → indica expansión hacia arriba */
+        transform: rotate(90deg);
+    }
+
+    /* Colapsado: apunta hacia abajo (v) → indica que hay contenido arriba */
+    .disclaimer-accordion.collapsed .disclaimer-accordion-chevron {
+        transform: rotate(-90deg);
+    }
+
+    /* Body expandido: ancho fijo hacia la derecha */
+    .disclaimer-accordion .disclaimer-accordion-body {
+        width: 280px;
+        max-height: 220px;
+        padding: 0.75rem 0.85rem 0.85rem;
+    }
+
+    /* Colapsado: body se oculta */
+    .disclaimer-accordion.collapsed .disclaimer-accordion-body {
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        opacity: 0;
+    }
+
+    /* ── Hint label: oculto en móvil ── */
     .hint-label {
         display: none;
     }
 
-    /* ── Tooltip: tamaño reducido ── */
+    /* ── Tooltip: más compacto ── */
     .tooltip {
         min-width: 220px;
         max-width: 280px;
         padding: 1rem 1.1rem;
-        font-size: 0.85rem;
     }
 
     .tooltip-title {
         font-size: 1.1rem;
     }
 
-    /* ── Node panel: bottom sheet en móvil ── */
+    /* ── Node panel: bottom sheet ── */
     .node-panel {
         top: auto !important;
         bottom: 0 !important;
@@ -1540,11 +1550,9 @@
         transform: translateY(110%) !important;
         opacity: 1 !important;
         transition: transform 0.38s cubic-bezier(0.34,1.1,0.64,1) !important;
-        padding: 1rem 1.25rem 1.5rem;
+        padding: 2rem 1.25rem 1.5rem;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        /* handle indicator */
-        padding-top: 2rem;
     }
 
     .node-panel::before {
@@ -1563,14 +1571,8 @@
         transform: translateY(0) !important;
     }
 
-    /* Labels de nodo ligeramente más pequeños */
-    .node-label {
-        font-size: 9px;
-    }
-
-    .node-sublabel {
-        font-size: 7.5px;
-    }
+    .node-label   { font-size: 9px; }
+    .node-sublabel { font-size: 7.5px; }
 }
 
 /* =================================================================
@@ -1578,32 +1580,18 @@
 ================================================================= */
 @media (max-width: 480px) {
 
-    .header {
-        padding: 0.5rem 0.75rem;
-    }
-
     .search-input {
         padding: 0.55rem 0.9rem 0.55rem 2.2rem;
         font-size: 0.82rem;
     }
 
     .legend {
-        top: inherit;
-        padding: 0.4rem 0.65rem;
-        gap: 0.35rem 0.6rem;
-        width: 85%;
-        height: auto;
+        padding: 0.45rem 0.65rem;
+        gap: 0.3rem 0.6rem;
     }
 
     .legend-item span {
         font-size: 0.63rem;
-    }
-
-    /* Stats bar más compacta */
-    .stats-bar {
-        left: 0.35rem;
-        right: 0.35rem;
-        padding: 0.4rem 0.65rem;
     }
 
     .stat-value {
@@ -1614,30 +1602,18 @@
         font-size: 0.48rem;
     }
 
-    /* Monto total: valor ligeramente más pequeño */
     .stat-item:nth-child(5) .stat-value {
         font-size: 0.78rem;
         letter-spacing: -0.01em;
     }
 
-    .controls {
-        bottom: 5.5rem;
-        right: 0.5rem;
-    }
-
     .control-btn {
-        width: 32px;
-        height: 32px;
+        width: 34px;
+        height: 34px;
     }
 
-    /* Node labels: aún más compactos */
-    .node-label {
-        font-size: 8px;
-    }
-
-    .node-sublabel {
-        font-size: 7px;
-    }
+    .node-label   { font-size: 8px; }
+    .node-sublabel { font-size: 7px; }
 }
 
 /* =================================================================
@@ -1672,7 +1648,6 @@
     }
 
     .stats-bar {
-        /* En landscape, una sola fila horizontal compacta */
         grid-template-columns: repeat(5, 1fr);
         padding: 0.35rem 0.75rem;
         row-gap: 0;
@@ -1690,32 +1665,28 @@
         margin-top: 0;
     }
 
-    .stat-value {
-        font-size: 0.85rem;
-    }
+    .stat-value { font-size: 0.85rem; }
+    .stat-label { font-size: 0.48rem; }
 
-    .stat-label {
-        font-size: 0.48rem;
+    .legend {
+        bottom: 2.8rem;
+        left: 0.5rem;
+        right: 0.5rem;
+        transform: none;
+        padding: 0.3rem 0.75rem;
+        gap: 0.3rem 0.7rem;
     }
 
     .controls {
-        bottom: 3rem;
+        bottom: 2.8rem;
         right: 0.5rem;
+        flex-direction: column;
     }
 
-    .hint-label {
-        display: none;
+    .disclaimer-accordion {
+        bottom: 2.8rem;
     }
 
-    .legend {
-        bottom: 3.5rem;
-        left: 0.5rem;
-        transform: none;
-        padding: 0.3rem 0.6rem;
-        gap: 0.3rem 0.6rem;
-    }
-
-    .node-panel {
-        max-height: 80vw;
-    }
+    .hint-label { display: none; }
+    .node-panel { max-height: 80vw; }
 }

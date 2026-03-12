@@ -877,11 +877,16 @@ class NetworkVisualization {
         d3.select('#clear-selection').on('click', () => this.clearSelection());
         d3.select('#sidebar-close').on('click', () => this.closeSidebar());
         d3.select('#file-input').on('change', function() { self.loadFile(this.files[0]); });
-        d3.select('#disclaimer-btn').on('click', () => this.showDisclaimer());
-        d3.select('#disclaimer-overlay').on('click', (e) => {
-            if (e.target.id === 'disclaimer-overlay') this.hideDisclaimer();
-        });
-        d3.select('#disclaimer-close').on('click', () => this.hideDisclaimer());
+        // ── Disclaimer acordeón: el toggle vive en el HTML inline script,
+        //    pero vinculamos el chevron button también desde aquí por robustez ──
+        const disclaimerChevron = document.getElementById('disclaimer-chevron');
+        const disclaimerAccordion = document.getElementById('disclaimer-accordion');
+        if (disclaimerChevron && disclaimerAccordion) {
+            disclaimerChevron.addEventListener('click', (e) => {
+                e.stopPropagation();
+                disclaimerAccordion.classList.toggle('collapsed');
+            });
+        }
         
         // ── Resize y orientación ──
         let resizeTimer;
@@ -1507,19 +1512,15 @@ class NetworkVisualization {
     // ==================== DISCLAIMER ====================
 
     showDisclaimer() {
-        const overlay = document.getElementById('disclaimer-overlay');
-        if (overlay) {
-            overlay.classList.add('visible');
-            document.body.style.overflow = 'hidden';
-        }
+        // Toggle del acordeón (el header ya tiene su propio listener inline,
+        // pero mantenemos este método por compatibilidad con llamadas externas)
+        const acc = document.getElementById('disclaimer-accordion');
+        if (acc) acc.classList.remove('collapsed');
     }
 
     hideDisclaimer() {
-        const overlay = document.getElementById('disclaimer-overlay');
-        if (overlay) {
-            overlay.classList.remove('visible');
-            document.body.style.overflow = '';
-        }
+        const acc = document.getElementById('disclaimer-accordion');
+        if (acc) acc.classList.add('collapsed');
     }
 }
 
