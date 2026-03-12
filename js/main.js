@@ -8,6 +8,11 @@
 // CONFIGURACIÓN GLOBAL
 // ============================================
 const CONFIG = {
+    // ── Dispersión de congresistas ──────────────────────────────────────────
+    // Controla qué tan separados aparecen los nodos de congresistas entre sí.
+    // Rango recomendado: 0.5 (muy juntos) → 3.0 (muy separados). Default: 1.0
+    spread: 0.6,
+    // ───────────────────────────────────────────────────────────────────────
     nodeRadius: {
         congressperson: 40,
         familiar: 28,
@@ -250,7 +255,13 @@ class NetworkVisualization {
                 .distance(d => CONFIG.forces.link.distance[d.type] || 110)
                 .strength(d => d.type === 'congressperson-familiar' ? 0 : CONFIG.forces.link.strength))
             .force('charge', d3.forceManyBody()
-                .strength(d => charge[d.type] || -120)
+                .strength(d => {
+                    const base = charge[d.type] || -120;
+                    // Escalar la repulsión de CP según CONFIG.spread (al cuadrado → sensación más lineal)
+                    return d.type === 'congressperson'
+                        ? base * CONFIG.spread * CONFIG.spread
+                        : base;
+                })
                 // En móvil, limitar el alcance del forceManyBody para reducir O(n²) cálculos
                 .distanceMax(this.isMobile ? 350 : Infinity))
             .force('center', d3.forceCenter(this.width / 2, this.height / 2))
