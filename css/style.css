@@ -1586,9 +1586,11 @@
     }
 
     .legend {
-        top: 3.5rem;
+        top: inherit;
         padding: 0.4rem 0.65rem;
         gap: 0.35rem 0.6rem;
+        width: 85%;
+        height: auto;
     }
 
     .legend-item span {
