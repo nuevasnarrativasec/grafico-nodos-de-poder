@@ -696,6 +696,9 @@ class NetworkVisualization {
         const positions = this._calcNetworkLayout(d.x, d.y, familiars, contracts, entities);
         this._pinExpandedNodes(positions);
 
+        // Empujar congresistas inactivos que solapen con la red desplegada
+        this._pushAwayInactiveCPs(cid, positions);
+
         // Actualizar selecciones cacheadas para tick()
         const allIds = new Set([...familiars, ...contracts, ...entities]);
         const expandedNodes = this.data.nodes.filter(n => allIds.has(n.id));
@@ -799,6 +802,9 @@ class NetworkVisualization {
         const { familiars, contracts, entities } = this.getCongresspersonNetwork(congresspersonId);
         const allIds = new Set([...familiars, ...contracts, ...entities]);
 
+        // Restaurar CPs que fueron desplazados durante el expand
+        this._restoreInactiveCPs();
+
         // Limpiar selecciones cacheadas — tick() no actualizará nada hasta próximo expand
         this._visibleLinks = null;
         this._expandedSel  = null;
@@ -847,6 +853,81 @@ class NetworkVisualization {
         this.nodes.filter(d => d.type === 'congressperson')
             .transition().duration(300)
             .style('opacity', d => activeCid === null ? 1 : (d.id === activeCid ? 1 : 0.35));
+    }
+
+    /**
+     * Empuja los congresistas inactivos que caen dentro del área de la red expandida.
+     * Guarda sus posiciones originales para restaurarlas en collapse.
+     * @param {string}  activeCid  — id del CP expandido
+     * @param {object}  positions  — mapa id→{x,y} de los nodos de la red
+     */
+    _pushAwayInactiveCPs(activeCid, positions) {
+        // 1. Calcular bounding box de todos los nodos de la red + padding generoso
+        const pts = Object.values(positions);
+        if (pts.length === 0) return;
+
+        const PAD = 90; // holgura extra alrededor de la red
+        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+        pts.forEach(p => {
+            minX = Math.min(minX, p.x); maxX = Math.max(maxX, p.x);
+            minY = Math.min(minY, p.y); maxY = Math.max(maxY, p.y);
+        });
+        minX -= PAD; maxX += PAD; minY -= PAD; maxY += PAD;
+
+        // Centro de la red expandida
+        const cx = (minX + maxX) / 2;
+        const cy = (minY + maxY) / 2;
+
+        this._displacedCPs = []; // reset
+
+        this.data.nodes
+            .filter(n => n.type === 'congressperson' && n.id !== activeCid)
+            .forEach(n => {
+                // ¿Cae el nodo dentro del bbox?
+                if (n.x >= minX && n.x <= maxX && n.y >= minY && n.y <= maxY) {
+                    // Guardar posición original
+                    this._displacedCPs.push({ node: n, ox: n.x, oy: n.y, ofx: n.fx, ofy: n.fy });
+
+                    // Vector desde centro de la red hasta el nodo, normalizado
+                    const dx = n.x - cx || 1;
+                    const dy = n.y - cy || 0;
+                    const len = Math.sqrt(dx * dx + dy * dy) || 1;
+
+                    // Empujar el nodo hasta el borde del bbox + un margen extra
+                    // Calculamos qué tan lejos hay que llegar para salir del bbox
+                    const halfW = (maxX - minX) / 2;
+                    const halfH = (maxY - minY) / 2;
+                    // Escalar para que salga del bbox
+                    const scaleX = Math.abs(dx) > 0 ? halfW / Math.abs(dx) : Infinity;
+                    const scaleY = Math.abs(dy) > 0 ? halfH / Math.abs(dy) : Infinity;
+                    const scale  = Math.min(scaleX, scaleY) * 1.25; // 25% fuera del borde
+
+                    const tx = cx + dx * scale;
+                    const ty = cy + dy * scale;
+
+                    // Pinear en nueva posición
+                    n.fx = tx; n.fy = ty;
+                    n.x  = tx; n.y  = ty;
+
+                    // Animar suavemente
+                    this._nodeMap.get(n.id)
+                        ?.transition().duration(500).ease(d3.easeCubicOut)
+                        .attr('transform', `translate(${tx},${ty})`);
+                }
+            });
+    }
+
+    /** Restaura los congresistas que fueron empujados durante un expand. */
+    _restoreInactiveCPs() {
+        if (!this._displacedCPs || this._displacedCPs.length === 0) return;
+        this._displacedCPs.forEach(({ node, ox, oy, ofx, ofy }) => {
+            node.fx = ofx; node.fy = ofy;
+            node.x  = ox;  node.y  = oy;
+            this._nodeMap.get(node.id)
+                ?.transition().duration(400).ease(d3.easeCubicOut)
+                .attr('transform', `translate(${ox},${oy})`);
+        });
+        this._displacedCPs = [];
     }
 
     // ==================== EVENTS ====================
