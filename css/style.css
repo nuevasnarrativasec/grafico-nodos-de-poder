@@ -139,25 +139,25 @@
         /* ==================== NODES ==================== */
         .node {
             cursor: pointer;
-            transition: opacity 0.4s ease, transform 0.2s ease;
+            transition: opacity 0.4s ease;
         }
         
         .node:hover .node-circle,
         .node:hover .node-shape {
-            filter: drop-shadow(0 0 12px currentColor);
+            opacity: 0.82;
         }
         
         .node-ring {
             fill: none;
             stroke-width: 2px;
             opacity: 0;
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease, stroke 0.3s ease;
         }
         
         .node-circle,
         .node-shape {
             stroke: none;
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease;
         }
         
         /* Congresista - Círculo con borde gris */
@@ -182,7 +182,7 @@
             opacity: 0;
         }
         .node-familiar:hover .node-hexagon {
-            filter: drop-shadow(0 0 12px var(--accent-blue));
+            opacity: 0.82;
         }
         
         /* Entidad - Rombo/Diamante sin borde */
@@ -196,7 +196,7 @@
             opacity: 0;
         }
         .node-entity:hover .node-diamond {
-            filter: drop-shadow(0 0 12px var(--accent-purple));
+            opacity: 0.82;
         }
         
         /* Contrato - Cuadrado redondeado sin borde */
@@ -210,7 +210,7 @@
             opacity: 0;
         }
         .node-contract:hover .node-square {
-            filter: drop-shadow(0 0 12px var(--accent-green));
+            opacity: 0.82;
         }
         
         /* Ícono SVG dentro de nodos */
@@ -221,12 +221,11 @@
         /* Estados */
         .node.highlighted .node-circle,
         .node.highlighted .node-shape {
-            filter: drop-shadow(0 0 12px currentColor);
+            opacity: 0.9;
         }
         
         .node.highlighted .node-ring {
             opacity: 0.6;
-            animation: pulse-ring-active 1.5s ease-out infinite;
         }
         
         .node.dimmed {
@@ -236,17 +235,14 @@
         .node-label {
             font-size: 10px;
             font-weight: 600;
-            /*fill: var(--text-primary);*/
             fill: #4a4a4a;
             text-anchor: middle;
             pointer-events: none;
-            /*text-shadow: 0 1px 3px rgba(0,0,0,0.8);*/
         }
         
         .node-sublabel {
             font-size: 8px;
             font-weight: 400;
-            /*fill: var(--text-secondary);*/
             fill: #4a4a4a;
             text-anchor: middle;
             pointer-events: none;
@@ -261,12 +257,11 @@
         .link {
             fill: none;
             stroke-linecap: round;
-            transition: all 0.4s ease;
+            transition: opacity 0.4s ease, stroke-opacity 0.4s ease;
         }
         
         .link.highlighted {
             stroke-width: 3px !important;
-            filter: drop-shadow(0 0 4px currentColor);
         }
         
         .link.dimmed {
@@ -569,7 +564,6 @@
             padding: 0.75rem 1.25rem;
             border-radius: 0;
             border: 1px solid var(--border-subtle);
-            backdrop-filter: blur(10px);
             z-index: 50;
             white-space: nowrap;
         }
@@ -690,7 +684,6 @@
             padding: 0.6rem 1.5rem;
             border-radius: 10px;
             border: 1px solid var(--border-subtle);
-            backdrop-filter: blur(10px);
         }
         
         .stat-item {
@@ -1021,10 +1014,16 @@
             filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.6));
         }
 
-        /* pulseRing eliminado — la animación CSS infinita en todos los
-           nodos de congresistas ralentizaba el pan/zoom */
         .node-congressperson .node-pulse-ring {
-            display: none;
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: pulseRing 2.5s ease-out infinite;
+        }
+
+        @keyframes pulseRing {
+            0%   { transform: scale(1);    opacity: 0.35; }
+            70%  { transform: scale(1.28); opacity: 0; }
+            100% { transform: scale(1.28); opacity: 0; }
         }
 
         /* ==================== HINT LABEL ==================== */
@@ -1041,7 +1040,6 @@
             color: var(--text-muted);
             z-index: 50;
             pointer-events: none;
-            backdrop-filter: blur(8px);
 
             display: none;
 
@@ -1310,6 +1308,12 @@
     will-change: transform;
 }
 
+/* ── Promover el grupo SVG principal a su propia capa GPU ──
+   Pan/zoom se vuelven operaciones de compositor puro, sin repaints */
+#network-container > g {
+    will-change: transform;
+}
+
 /* ── Evitar tap highlight en iOS + habilitar touch drag ── */
 #network-container {
     touch-action: none;
@@ -1327,9 +1331,7 @@
     .header {
         padding: 0.65rem 0.75rem;
         gap: 0.5rem;
-        background: rgba(241, 240, 234, 0.96);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: rgba(241, 240, 234, 0.98);
         border-bottom: 1px solid rgba(0,0,0,0.06);
     }
 
