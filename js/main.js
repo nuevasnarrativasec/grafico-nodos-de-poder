@@ -958,20 +958,20 @@ class NetworkVisualization {
                     }
                 })
                 .on('mousemove', function(event) { self.updateTooltipPosition(event); });
+        } else {
+            // En móvil: mostrar tooltip brevemente al tocar (se oculta solo)
+            this.nodes.on('touchstart', function(event, d) {
+                event.stopPropagation();
+                self.showTooltip(event.touches[0] || event, d);
+                clearTimeout(self._tooltipTimeout);
+                self._tooltipTimeout = setTimeout(() => self.hideTooltip(), 2200);
+            }, { passive: true });
         }
 
-        // ── Click / tap: expandir nodos + tooltip en móvil ──
+        // ── Click / tap: expandir nodos ──
         this.nodes.on('click', function(event, d) {
             event.stopPropagation();
-
-            if (self.isMobile) {
-                // En móvil usar changedTouches para la posición del tap
-                const touch = (event.changedTouches && event.changedTouches[0]) || event;
-                self.showTooltip(touch, d);
-                clearTimeout(self._tooltipTimeout);
-                self._tooltipTimeout = setTimeout(() => self.hideTooltip(), 2800);
-            }
-
+            if (self.isMobile) self.hideTooltip();
             if (d.type === 'congressperson') {
                 self.expandCongressperson(d);
             } else if (d.type === 'familiar') {
