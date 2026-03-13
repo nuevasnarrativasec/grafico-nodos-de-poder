@@ -169,14 +169,17 @@ class NetworkVisualization {
         
         // En móvil el zoom mínimo es ligeramente mayor para evitar perder nodos
         const minScale = this.isMobile ? 0.08 : 0.05;
+
+        // Cache raw DOM element — acceso directo sin overhead de D3 selection
+        this._gEl = this.g.node();
+
         this.zoom = d3.zoom()
             .scaleExtent([minScale, 5])
             .on('zoom', (event) => {
+                // CSS transform → ruta compositor puro, cero repaints/layouts
+                // Acceso directo al DOM: evita el overhead de D3 selection en el hot path
                 const { x, y, k } = event.transform;
-                // CSS transform → compositor-only path, cero repaints durante pan/zoom
-                this.g
-                    .style('transform', `translate(${x}px,${y}px) scale(${k})`)
-                    .style('transform-origin', '0 0');
+                this._gEl.style.transform = `translate(${x}px,${y}px) scale(${k})`;
             });
         
         this.container.call(this.zoom);
@@ -404,11 +407,16 @@ class NetworkVisualization {
             .enter()
             .append('g')
             .attr('class', d => `node node-${d.type}`)
-            .attr('data-id', d => d.id)
-            .call(d3.drag()
+            .attr('data-id', d => d.id);
+
+        // En móvil: sin drag en nodos — evita que el pan compita con drag
+        // y elimina el restart de la simulación que dispara ticks masivos
+        if (!this.isMobile) {
+            this.nodes.call(d3.drag()
                 .on('start', (event, d) => this.dragStarted(event, d))
-                .on('drag', (event, d) => this.dragged(event, d))
-                .on('end', (event, d) => this.dragEnded(event, d)));
+                .on('drag',  (event, d) => this.dragged(event, d))
+                .on('end',   (event, d) => this.dragEnded(event, d)));
+        }
 
         this.nodes.each((d, i, nodes) => {
             const node = d3.select(nodes[i]);
@@ -534,6 +542,21 @@ class NetworkVisualization {
     }
 
     tick() {
+        // En móvil: throttle via RAF para no saturar el hilo principal
+        // Las mutaciones SVG solo ocurren una vez por frame de display (16ms)
+        if (this.isMobile) {
+            if (this._rafPending) return;
+            this._rafPending = true;
+            requestAnimationFrame(() => {
+                this._rafPending = false;
+                this._doTick();
+            });
+        } else {
+            this._doTick();
+        }
+    }
+
+    _doTick() {
         // _visibleLinks y _cpSel son cacheados; solo se recalculan en expand/collapse
         if (this._visibleLinks) {
             this._visibleLinks.attr('d', d => this._linkPath(d));
@@ -1574,19 +1597,18 @@ class NetworkVisualization {
     // ==================== UTILS ====================
     
     dragStarted(event, d) {
-        if (!event.active) this.simulation.alphaTarget(0.1).restart();
+        // NO reiniciar la simulación: los nodos están pineados (fx/fy),
+        // reiniciarla dispara una tormenta de ticks con mutaciones DOM en cada frame
         d.fx = d.x; d.fy = d.y;
         this.hideTooltip();
     }
     dragged(event, d) {
         d.fx = event.x; d.fy = event.y;
-        // Immediately redraw links to the drag position — no need to wait for a tick
-        this.tick();
+        // Redibujar links al drag position — sin esperar tick de simulación
+        this._doTick();
     }
     dragEnded(event, d) {
-        if (!event.active) this.simulation.alphaTarget(0);
-        // Keep the node pinned at its dropped position so it doesn't drift
-        // (simulation will stop naturally via alphaMin, firing _onSimulationEnd)
+        // Mantener el nodo pineado donde lo soltaron
         d.fx = event.x; d.fy = event.y;
     }
     handleResize() {
@@ -1607,8 +1629,7 @@ class NetworkVisualization {
     hideLoader() {
         setTimeout(() => {
             d3.select('#loader').classed('hidden', true);
-            // En móvil, zoom inicial más cercano para que los nodos sean más grandes
-            const initialScale = this.isMobile ? 0.48 : 0.42;
+            const initialScale = this.isMobile ? 0.38 : 0.42;
             const tx = this.width  / 2 * (1 - initialScale);
             const ty = this.height / 2 * (1 - initialScale);
             this.container

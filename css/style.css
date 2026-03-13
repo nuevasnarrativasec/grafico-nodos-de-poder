@@ -121,11 +121,13 @@
             pointer-events: none;
         }
         
-        /* ==================== SVG CONTAINER ==================== */
+        /* contain: layout style → el browser no necesita recalcular layout fuera del SVG
+           cuando cambian nodos internos (animaciones de expand/collapse) */
         #network-container {
             width: 100vw;
             height: 100vh;
             cursor: grab;
+            contain: layout style;
             background: 
                 radial-gradient(ellipse at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
@@ -1291,16 +1293,22 @@
    Breakpoints: 768px (tablet), 600px (móvil), 400px (móvil small)
 ================================================================= */
 
-/* ── GPU acceleration para todos los nodos ── */
+/* ── GPU acceleration solo donde importa ──
+   will-change en CADA nodo crea docenas de compositing layers → memory pressure en móvil.
+   Solo el grupo raíz necesita su propia capa GPU (es lo que se transforma en pan/zoom). */
 .node {
-    will-change: transform;
+    /* sin will-change: el compositor maneja el grupo completo como una sola capa */
 }
 
-/* ── Promover el grupo SVG principal a su propia capa GPU ──
-   Pan/zoom se aplican como CSS transform → compositor puro, sin repaints */
+/* ── Grupo SVG principal: UNA sola capa GPU para todo el grafo ──
+   - transform-origin fijo aquí → no se muta en cada evento zoom
+   - backface-visibility: hidden → hint adicional al compositor
+   - contain: layout style → aisla el árbol del layout del resto del documento */
 #network-container > g {
     will-change: transform;
     transform-origin: 0 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 /* ── Evitar tap highlight en iOS + habilitar touch drag ── */
