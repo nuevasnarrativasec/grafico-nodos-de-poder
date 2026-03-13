@@ -172,7 +172,11 @@ class NetworkVisualization {
         this.zoom = d3.zoom()
             .scaleExtent([minScale, 5])
             .on('zoom', (event) => {
-                this.g.attr('transform', event.transform);
+                const { x, y, k } = event.transform;
+                // CSS transform → compositor-only path, cero repaints durante pan/zoom
+                this.g
+                    .style('transform', `translate(${x}px,${y}px) scale(${k})`)
+                    .style('transform-origin', '0 0');
             });
         
         this.container.call(this.zoom);
@@ -436,15 +440,6 @@ class NetworkVisualization {
             .attr('r', r + 18)
             .attr('fill', `url(#glow-congressperson)`)
             .style('opacity', 0);
-
-        // Outer ring (pulse animation)
-        node.append('circle')
-            .attr('class', 'node-pulse-ring')
-            .attr('r', r + 8)
-            .attr('fill', 'none')
-            .attr('stroke', color)
-            .attr('stroke-width', 1.5)
-            .attr('stroke-opacity', 0.3);
 
         // Inner ring
         node.append('circle')
@@ -1459,7 +1454,7 @@ class NetworkVisualization {
     zoomIn() { this.container.transition().call(this.zoom.scaleBy, this.isMobile ? 1.6 : 1.4); }
     zoomOut() { this.container.transition().call(this.zoom.scaleBy, this.isMobile ? 0.6 : 0.7); }
     resetView() {
-        const initialScale = this.isMobile ? 0.28 : 0.42;
+        const initialScale = this.isMobile ? 0.38 : 0.42;
         const tx = this.width  / 2 * (1 - initialScale);
         const ty = this.height / 2 * (1 - initialScale);
         this.container.transition().duration(750).ease(d3.easeCubicInOut)
@@ -1613,7 +1608,7 @@ class NetworkVisualization {
         setTimeout(() => {
             d3.select('#loader').classed('hidden', true);
             // En móvil, zoom inicial más cercano para que los nodos sean más grandes
-            const initialScale = this.isMobile ? 0.28 : 0.42;
+            const initialScale = this.isMobile ? 0.38 : 0.42;
             const tx = this.width  / 2 * (1 - initialScale);
             const ty = this.height / 2 * (1 - initialScale);
             this.container
