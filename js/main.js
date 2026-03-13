@@ -1608,7 +1608,7 @@ class NetworkVisualization {
         setTimeout(() => {
             d3.select('#loader').classed('hidden', true);
             // En móvil, zoom inicial más cercano para que los nodos sean más grandes
-            const initialScale = this.isMobile ? 0.38 : 0.42;
+            const initialScale = this.isMobile ? 0.48 : 0.42;
             const tx = this.width  / 2 * (1 - initialScale);
             const ty = this.height / 2 * (1 - initialScale);
             this.container
