@@ -1386,19 +1386,17 @@
         padding: 0.2rem 0;
     }
 
-    .stat-item:nth-child(4) {
-        grid-column: 1;
+    /* Segunda fila: items 4, 5, 6 */
+    .stat-item:nth-child(4),
+    .stat-item:nth-child(5),
+    .stat-item:nth-child(6) {
         border-top: 1px solid rgba(0,0,0,0.07);
         padding-top: 0.35rem;
         margin-top: 0.15rem;
     }
 
-    .stat-item:nth-child(5) {
-        grid-column: 2 / 4;
-        border-top: 1px solid rgba(0,0,0,0.07);
-        padding-top: 0.35rem;
-        margin-top: 0.15rem;
-    }
+    /* Monto Total ocupa las 3 columnas de la segunda fila si solo hay 4 items normales… */
+    /* En 6-item layout: cada uno ocupa 1 col normalmente */
 
     .stat-value {
         font-size: 1rem;
@@ -1641,7 +1639,7 @@
     }
 
     .stats-bar {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         padding: 0.35rem 0.75rem;
         row-gap: 0;
     }
@@ -1651,7 +1649,8 @@
     }
 
     .stat-item:nth-child(4),
-    .stat-item:nth-child(5) {
+    .stat-item:nth-child(5),
+    .stat-item:nth-child(6) {
         grid-column: auto;
         border-top: none;
         padding-top: 0.2rem;

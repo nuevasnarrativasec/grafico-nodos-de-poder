@@ -1,6 +1,6 @@
 // ============================================
 // DATOS: cargados desde js/data.js
-// Asegúrate de incluir <script src="./js/data.js"></script>
+// Asegúrate de incluir <script src="./js/data_v3.js"></script>
 // antes de este archivo en el HTML.
 // ============================================
 
@@ -94,53 +94,14 @@ class NetworkVisualization {
     }
     
     processData(data) {
-        const nodes = [];
-        const links = [];
-        const ctExpansionMap = new Map();
-
-        data.nodes.forEach(n => {
-            if (n.type === 'contract' && n.detalles && n.detalles.length > 0) {
-                const individualIds = [];
-                n.detalles.forEach((det, i) => {
-                    const newId = `${n.id}_${i}`;
-                    individualIds.push(newId);
-                    nodes.push({
-                        ...n,
-                        id: newId,
-                        monto: det.monto,
-                        fecha: det.fecha,
-                        descripcion: det.descripcion || det.objeto || '',
-                        objeto: det.objeto || '',
-                        entidadContratante: det.entidad_contratante || n.entidadContratante,
-                        estado: det.estado || '',
-                        numContratos: 1,
-                        detalles: [det],
-                        tipo: det.tipo,
-                        _originalCtId: n.id
-                    });
-                });
-                ctExpansionMap.set(n.id, individualIds);
-            } else {
-                nodes.push({...n});
-            }
-        });
-
-        data.links.forEach(l => {
-            const src = typeof l.source === 'object' ? l.source.id : l.source;
-            const tgt = typeof l.target === 'object' ? l.target.id : l.target;
-            if (l.type === 'familiar-contract' && ctExpansionMap.has(tgt)) {
-                ctExpansionMap.get(tgt).forEach(newId => {
-                    links.push({ source: src, target: newId, type: 'familiar-contract' });
-                });
-            } else if (l.type === 'contract-entity' && ctExpansionMap.has(src)) {
-                ctExpansionMap.get(src).forEach(newId => {
-                    links.push({ source: newId, target: tgt, type: 'contract-entity' });
-                });
-            } else {
-                links.push({ source: src, target: tgt, type: l.type });
-            }
-        });
-
+        // Los nodos ya vienen en formato final (un nodo por par familiar-entidad).
+        // Solo normalizamos los links para garantizar que source/target sean strings.
+        const nodes = data.nodes.map(n => ({...n}));
+        const links = data.links.map(l => ({
+            source: typeof l.source === 'object' ? l.source.id : l.source,
+            target: typeof l.target === 'object' ? l.target.id : l.target,
+            type: l.type
+        }));
         return { nodes, links };
     }
     
@@ -538,7 +499,8 @@ class NetworkVisualization {
 
         const labelY = sq + 16;
         node.append('text').attr('class', 'node-label').attr('y', labelY).text(this.formatAmount(d.monto));
-        if (d.vigencia) node.append('text').attr('class', 'node-sublabel').attr('y', labelY + 13).text(this.truncateName(d.vigencia, 20));
+        const tipoShort = d.tipo === 'contrato' ? 'Contrato' : d.tipo === 'orden' ? 'Orden S.' : 'Mixto';
+        node.append('text').attr('class', 'node-sublabel').attr('y', labelY + 13).text(tipoShort);
     }
 
     tick() {
@@ -1283,7 +1245,7 @@ class NetworkVisualization {
                     <div class="tooltip-type ${d.type}">${typeLabels[d.type]}</div>
                     <div class="tooltip-title">${d.name}</div>
                     <div class="tooltip-grid">
-                        <div class="tooltip-row"><span class="tooltip-key">DNI</span><span class="tooltip-value">${d.dni}</span></div>
+                        <div class="tooltip-row"><span class="tooltip-key">RUC</span><span class="tooltip-value">${d.ruc || 'N/A'}</span></div>
                         <div class="tooltip-row"><span class="tooltip-key">Parentesco</span><span class="tooltip-value">${d.parentesco || 'N/A'}</span></div>
                         ${d.lugarTrabajo ? `<div class="tooltip-row"><span class="tooltip-key">Lugar de trabajo</span><span class="tooltip-value">${d.lugarTrabajo}</span></div>` : ''}
                     </div>`;
@@ -1293,22 +1255,23 @@ class NetworkVisualization {
                     <div class="tooltip-type ${d.type}">${typeLabels[d.type]}</div>
                     <div class="tooltip-title">${d.name}</div>
                     <div class="tooltip-grid">
-                        <div class="tooltip-row"><span class="tooltip-key">RUC</span><span class="tooltip-value">${d.ruc}</span></div>
-                        <div class="tooltip-row"><span class="tooltip-key">Rubro</span><span class="tooltip-value">${d.rubro || 'N/A'}</span></div>
                         <div class="tooltip-row"><span class="tooltip-key">Monto Total</span><span class="tooltip-value">${this.formatAmount(d.montoTotal)}</span></div>
-                        <div class="tooltip-row"><span class="tooltip-key">N° Contratos</span><span class="tooltip-value">${d.numContratos || 0}</span></div>
                     </div>`;
                 break;
             case 'contract': {
-                const tipoLabel = d.tipo === 'contrato' ? 'CONTRATO' : 'ORDEN DE SERVICIO';
+                const tipoLabel = d.tipo === 'contrato' ? 'CONTRATO'
+                    : d.tipo === 'orden' ? 'ORDEN DE SERVICIO'
+                    : 'CONTRATOS Y ÓRDENES';
+                const detalleStr = [
+                    d.numContratos ? `${d.numContratos} contrato${d.numContratos > 1 ? 's' : ''}` : '',
+                    d.numOrdenes   ? `${d.numOrdenes} orden${d.numOrdenes > 1 ? 'es' : ''} de servicio` : ''
+                ].filter(Boolean).join(' · ');
                 content = `
                     <div class="tooltip-type ${d.type}">${tipoLabel}</div>
                     <div class="tooltip-title">${this.formatAmount(d.monto)}</div>
                     <div class="tooltip-grid">
                         <div class="tooltip-row"><span class="tooltip-key">Entidad</span><span class="tooltip-value">${d.entidadContratante || 'N/A'}</span></div>
-                        <div class="tooltip-row"><span class="tooltip-key">Fecha</span><span class="tooltip-value">${this.formatDate(d.fecha)}</span></div>
-                        <div class="tooltip-row"><span class="tooltip-key">Objeto</span><span class="tooltip-value">${d.descripcion || d.objeto || 'N/A'}</span></div>
-                        ${d.estado ? `<div class="tooltip-row"><span class="tooltip-key">Estado</span><span class="tooltip-value">${d.estado}</span></div>` : ''}
+                        ${detalleStr ? `<div class="tooltip-row"><span class="tooltip-key">Registros</span><span class="tooltip-value">${detalleStr}</span></div>` : ''}
                     </div>`;
                 break;
             }
@@ -1365,45 +1328,49 @@ class NetworkVisualization {
         switch(d.type) {
             case 'congressperson': {
                 const net = this.getCongresspersonNetwork(d.id);
-                const netMonto = [...net.contracts].reduce((sum, cid) => {
+                let netMonto = 0, netContratos = 0, netOrdenes = 0;
+                net.contracts.forEach(cid => {
                     const cn = this.data.nodes.find(n => n.id === cid);
-                    return sum + (cn ? cn.monto || 0 : 0);
-                }, 0);
+                    if (!cn) return;
+                    netMonto     += cn.monto || 0;
+                    netContratos += cn.numContratos || 0;
+                    netOrdenes   += cn.numOrdenes   || 0;
+                });
                 html += `
                 <div class="panel-kv-grid">
                     <div class="panel-kv"><span class="panel-k">DNI</span><span class="panel-v">${d.dni}</span></div>
                     <div class="panel-kv"><span class="panel-k">Partido</span><span class="panel-v">${d.party || 'N/A'}</span></div>
-                    <div class="panel-kv"><span class="panel-k">Comisión</span><span class="panel-v">${d.commission || 'N/A'}</span></div>
                     <div class="panel-kv"><span class="panel-k">Departamento</span><span class="panel-v">${d.department || 'N/A'}</span></div>
                 </div>
                 <div class="panel-divider"></div>
                 <div class="panel-summary-row">
                     <div class="panel-summary-item"><span class="panel-summary-val" style="color:${CONFIG.colors.familiar}">${net.familiars.size}</span><span class="panel-summary-lbl">Familiares</span></div>
-                    <div class="panel-summary-item"><span class="panel-summary-val" style="color:${CONFIG.colors.contract}">${net.contracts.size}</span><span class="panel-summary-lbl">Contratos</span></div>
+                    <div class="panel-summary-item"><span class="panel-summary-val" style="color:${CONFIG.colors.contract}">${netContratos}</span><span class="panel-summary-lbl">Contratos</span></div>
+                    <div class="panel-summary-item"><span class="panel-summary-val" style="color:var(--accent-blue)">${netOrdenes}</span><span class="panel-summary-lbl">Órdenes</span></div>
                     <div class="panel-summary-item"><span class="panel-summary-val" style="color:${CONFIG.colors.entity}">${net.entities.size}</span><span class="panel-summary-lbl">Entidades</span></div>
                 </div>
                 <div class="panel-total-row"><span class="panel-total-lbl">Monto total de la red</span><span class="panel-total-val">${this.formatAmount(netMonto)}</span></div>`;
                 break;
             }
             case 'familiar': {
-                // Aggregate from individual expanded contract nodes
-                const familiarCtNodes = this.data.nodes.filter(n =>
-                    n.type === 'contract' && n._originalCtId === `CT_${d.ruc}`
-                );
-                const totalMonto = familiarCtNodes.reduce((s, n) => s + (n.monto || 0), 0);
-                const nContratos = familiarCtNodes.filter(n => n.tipo === 'contrato').length;
-                const nOrdenes   = familiarCtNodes.filter(n => n.tipo === 'orden').length;
-                let registrosStr = '';
-                if (nContratos > 0 && nOrdenes > 0) registrosStr = `${nContratos} contrato${nContratos > 1 ? 's' : ''} · ${nOrdenes} orden${nOrdenes > 1 ? 'es' : ''} de servicio`;
-                else if (nContratos > 0) registrosStr = `${nContratos} contrato${nContratos > 1 ? 's' : ''}`;
-                else if (nOrdenes > 0)   registrosStr = `${nOrdenes} orden${nOrdenes > 1 ? 'es' : ''} de servicio`;
+                // Get contract nodes linked from this familiar
+                const famCtIds = this.data.links
+                    .filter(l => (l.source.id || l.source) === d.id && l.type === 'familiar-contract')
+                    .map(l => l.target.id || l.target);
+                const famCtNodes = this.data.nodes.filter(n => famCtIds.includes(n.id));
+                const totalMonto  = famCtNodes.reduce((s, n) => s + (n.monto || 0), 0);
+                const nContratos  = famCtNodes.reduce((s, n) => s + (n.numContratos || 0), 0);
+                const nOrdenes    = famCtNodes.reduce((s, n) => s + (n.numOrdenes   || 0), 0);
+                const registrosStr = [
+                    nContratos ? `${nContratos} contrato${nContratos > 1 ? 's' : ''}` : '',
+                    nOrdenes   ? `${nOrdenes} orden${nOrdenes > 1 ? 'es' : ''} de servicio` : ''
+                ].filter(Boolean).join(' · ');
                 html += `
                 <div class="panel-kv-grid">
-                    <div class="panel-kv"><span class="panel-k">RUC/DNI</span><span class="panel-v">${d.ruc || d.dni}</span></div>
+                    <div class="panel-kv"><span class="panel-k">RUC/DNI</span><span class="panel-v">${d.ruc || d.dni || 'N/A'}</span></div>
                     <div class="panel-kv"><span class="panel-k">Parentesco</span><span class="panel-v">${d.parentesco || 'N/A'}</span></div>
-                    <div class="panel-kv"><span class="panel-k">Principal entidad</span><span class="panel-v">${(d.lugarTrabajo || 'N/A').substring(0,55)}</span></div>
                 </div>`;
-                if (familiarCtNodes.length > 0) {
+                if (famCtNodes.length > 0) {
                     html += `<div class="panel-divider"></div>
                     <div class="panel-total-row"><span class="panel-total-lbl">Monto total contratado</span><span class="panel-total-val">${this.formatAmount(totalMonto)}</span></div>
                     <div class="panel-total-row" style="margin-top:0.3rem"><span class="panel-total-lbl">Registros</span><span class="panel-total-val" style="color:var(--text-primary)">${registrosStr}</span></div>`;
@@ -1422,18 +1389,45 @@ class NetworkVisualization {
                 break;
             }
             case 'contract': {
-                const tipoColor = d.tipo === 'contrato' ? 'var(--accent-gold)' : 'var(--accent-blue)';
-                const tipoLbl   = d.tipo === 'contrato' ? 'CONTRATO' : 'ORDEN DE SERVICIO';
+                const tipoColor = d.tipo === 'contrato' ? 'var(--accent-gold)'
+                    : d.tipo === 'orden' ? 'var(--accent-blue)' : 'var(--accent-green)';
+                const tipoLbl = d.tipo === 'contrato' ? 'CONTRATO'
+                    : d.tipo === 'orden' ? 'ORDEN DE SERVICIO' : 'CONTRATOS Y ÓRDENES';
+                const registrosStr = [
+                    d.numContratos ? `${d.numContratos} contrato${d.numContratos > 1 ? 's' : ''}` : '',
+                    d.numOrdenes   ? `${d.numOrdenes} orden${d.numOrdenes > 1 ? 'es' : ''} de servicio` : ''
+                ].filter(Boolean).join(' · ');
                 html += `
                 <div class="panel-kv-grid">
                     <div class="panel-kv"><span class="panel-k">Tipo</span><span class="panel-v"><span style="background:${tipoColor}22;color:${tipoColor};padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600">${tipoLbl}</span></span></div>
-                    <div class="panel-kv"><span class="panel-k">Fecha</span><span class="panel-v">${this.formatDate(d.fecha)}</span></div>
-                    <div class="panel-kv"><span class="panel-k">Entidad contratante</span><span class="panel-v">${(d.entidadContratante || 'N/A').substring(0,70)}</span></div>
-                    ${d.estado ? `<div class="panel-kv"><span class="panel-k">Estado</span><span class="panel-v">${d.estado}</span></div>` : ''}
+                    <div class="panel-kv"><span class="panel-k">Entidad contratante</span><span class="panel-v">${(d.entidadContratante || 'N/A').substring(0,80)}</span></div>
+                    ${registrosStr ? `<div class="panel-kv"><span class="panel-k">Registros</span><span class="panel-v">${registrosStr}</span></div>` : ''}
                 </div>
                 <div class="panel-divider"></div>
-                <div class="panel-total-row"><span class="panel-total-lbl">Monto</span><span class="panel-total-val">${this.formatAmount(d.monto)}</span></div>
-                ${d.descripcion ? `<div class="panel-divider"></div><div class="panel-section-title">Objeto / Descripción</div><div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.5;padding:0 0.25rem">${d.descripcion}</div>` : ''}`;
+                <div class="panel-total-row"><span class="panel-total-lbl">Monto total</span><span class="panel-total-val">${this.formatAmount(d.monto)}</span></div>`;
+                // List individual details if available
+                if (d.detalles && d.detalles.length > 0) {
+                    const shown = d.detalles.slice(0, 6);
+                    const more  = d.detalles.length - shown.length;
+                    html += `<div class="panel-divider"></div>
+                    <div class="panel-section-title">Detalle de registros</div>
+                    <div class="panel-scroll-list">`;
+                    shown.forEach(det => {
+                        const bc = det.tipo === 'contrato' ? 'var(--accent-gold)' : 'var(--accent-blue)';
+                        const bl = det.tipo === 'contrato' ? 'CONTRATO' : 'ORDEN';
+                        html += `
+                        <div class="panel-list-item">
+                            <div class="panel-list-row">
+                                <span class="panel-list-badge" style="background:${bc}22;color:${bc}">${bl}</span>
+                                <span class="panel-list-amount">${this.formatAmount(det.monto)}</span>
+                            </div>
+                            ${det.descripcion ? `<div class="panel-list-entity">${det.descripcion.substring(0,90)}</div>` : ''}
+                            <div class="panel-list-meta">${det.fecha ? this.formatDate(det.fecha) : ''}${det.estado ? ' · ' + det.estado : ''}</div>
+                        </div>`;
+                    });
+                    if (more > 0) html += `<div class="panel-list-more">+${more} registros más</div>`;
+                    html += `</div>`;
+                }
                 break;
             }
         }
@@ -1515,7 +1509,7 @@ class NetworkVisualization {
     }
     
     updateStats(congresspersonId = null) {
-        let counts = { congressperson: 0, familiar: 0, entity: 0, contract: 0 };
+        let counts = { congressperson: 0, familiar: 0, entity: 0, contratos: 0, ordenes: 0 };
         let totalAmount = 0;
         let selectedName = null;
 
@@ -1525,16 +1519,20 @@ class NetworkVisualization {
             const { familiars, contracts, entities } = this.getCongresspersonNetwork(congresspersonId);
             counts.congressperson = 1;
             counts.familiar = familiars.size;
-            counts.contract = contracts.size;
             counts.entity = entities.size;
             contracts.forEach(cid => {
                 const cn = this.data.nodes.find(n => n.id === cid);
-                if (cn && cn.monto) totalAmount += cn.monto;
+                if (!cn) return;
+                counts.contratos += cn.numContratos || 0;
+                counts.ordenes   += cn.numOrdenes   || 0;
+                if (cn.monto) totalAmount += cn.monto;
             });
         } else {
             this.data.nodes.forEach(n => {
-                counts[n.type]++;
-                if (n.type === 'contract' && n.monto) totalAmount += n.monto;
+                if (n.type !== 'contract') { counts[n.type] = (counts[n.type] || 0) + 1; return; }
+                counts.contratos += n.numContratos || 0;
+                counts.ordenes   += n.numOrdenes   || 0;
+                if (n.monto) totalAmount += n.monto;
             });
         }
 
@@ -1564,24 +1562,20 @@ class NetworkVisualization {
             setTimeout(() => { cpStatEl.style.transform = 'scale(1)'; }, 250);
         }
 
-        // Animate number transitions (skip stat-congresspersons, handled above)
+        // Animate number transitions
         const animate = (sel, val) => {
             const el = document.getElementById(sel);
             if (!el) return;
-            const isAmount = sel === 'stat-total-amount';
-            if (isAmount) {
-                el.textContent = this.formatAmount(val);
-            } else {
-                el.textContent = val;
-            }
+            el.textContent = sel === 'stat-total-amount' ? this.formatAmount(val) : val;
             el.style.transform = 'scale(1.15)';
             el.style.transition = 'transform 0.25s ease';
             setTimeout(() => { el.style.transform = 'scale(1)'; }, 250);
         };
 
-        animate('stat-familiars', counts.familiar);
-        animate('stat-entities', counts.entity);
-        animate('stat-contracts', counts.contract);
+        animate('stat-familiars',    counts.familiar);
+        animate('stat-entities',     counts.entity);
+        animate('stat-contracts',    counts.contratos);
+        animate('stat-ordenes',      counts.ordenes);
         animate('stat-total-amount', totalAmount);
     }
 
