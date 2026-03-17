@@ -3,524 +3,524 @@ const NETWORK_DATA = {
         {
             "id": "CP_05618705",
             "type": "congressperson",
-            "name": "Torres Rosio",
+            "name": "Rosio Torres Salinas",
             "dni": "05618705",
-            "party": "",
-            "department": "",
+            "party": "Alianza Para el Progreso",
+            "department": "Loreto",
             "photo": "./img/rosio-torres.png"
         },
         {
             "id": "CP_40728264",
             "type": "congressperson",
-            "name": "Chiabra Roberto",
+            "name": "Roberto Chiabra",
             "dni": "40728264",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Unidad Nacional",
+            "department": "Lima",
+            "photo": "./img/roberto-chiabra.png"
         },
         {
             "id": "CP_07831436",
             "type": "congressperson",
-            "name": "Juarez Patricia",
+            "name": "Patricia Juarez Gallegos",
             "dni": "07831436",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Fuerza Popular",
+            "department": "Lima",
+            "photo": "./img/patricia-juarez.png"
         },
         {
             "id": "CP_32971154",
             "type": "congressperson",
-            "name": "Chacon Nilza",
+            "name": "Nilza Chacón Trujillo",
             "dni": "32971154",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Fuerza Popular",
+            "department": "Ancash",
+            "photo": "./img/nilza-chacon.png"
         },
         {
             "id": "CP_01311614",
             "type": "congressperson",
-            "name": "Cruz Mamani",
+            "name": "Flavio Cruz Mamani",
             "dni": "01311614",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Perú Libre",
+            "department": "Puno",
+            "photo": "./img/flavio-cruz.png"
         },
         {
             "id": "CP_42628319",
             "type": "congressperson",
-            "name": "Zegarra Zadith",
+            "name": "Ana Zegarra",
             "dni": "42628319",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Somos Perú",
+            "department": "Loreto",
+            "photo": "./img/ana-zegarra.png"
         },
         {
             "id": "CP_06049853",
             "type": "congressperson",
             "name": "Miguel Ciccia",
             "dni": "06049853",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Renovación Popular",
+            "department": "Piura",
+            "photo": "./img/miguel-ciccia.png"
         },
         {
             "id": "CP_41005490",
             "type": "congressperson",
-            "name": "Taipe Maria",
+            "name": "Elizabeth Taipe",
             "dni": "41005490",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Perú Libre",
+            "department": "Apurímac",
+            "photo": "./img/elizabeth-taipe.png"
         },
         {
             "id": "CP_44649199",
             "type": "congressperson",
-            "name": "Bellido Guido",
+            "name": "Guido Bellido Ugarte",
             "dni": "44649199",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Podemos Perú",
+            "department": "Cusco",
+            "photo": "./img/guido-bellido.png"
         },
         {
             "id": "CP_40858548",
             "type": "congressperson",
-            "name": "Paredes Francis",
+            "name": "Francis Paredes Castro",
             "dni": "40858548",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Podemos Perú",
+            "department": "Ucayali",
+            "photo": "./img/francis-paredes.png"
         },
         {
             "id": "CP_42377791",
             "type": "congressperson",
-            "name": "Reyes Augusto",
+            "name": "Abel Reyes Cam",
             "dni": "42377791",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Perú Libre",
+            "department": "Huánuco",
+            "photo": "./img/abel-reyes.png"
         },
         {
             "id": "CP_29423212",
             "type": "congressperson",
-            "name": "Medina Esdras",
+            "name": "Esdras Medina Minaya",
             "dni": "29423212",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Renovación Popular",
+            "department": "Arequipa",
+            "photo": "./img/esdras-medina.png"
         },
         {
             "id": "CP_16002918",
             "type": "congressperson",
-            "name": "Sanchez Helbert",
+            "name": "Roberto Sánchez Palomino",
             "dni": "16002918",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Juntos Por el Perú",
+            "department": "Lima",
+            "photo": "./img/roberto-sanchez.png"
         },
         {
             "id": "CP_44886100",
             "type": "congressperson",
-            "name": "Trigozo Cheryl",
+            "name": "Cheryl Trigozo",
             "dni": "44886100",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Renovación Popular",
+            "department": "San Martín",
+            "photo": "./img/cheryl-trigozo.png"
         },
         {
             "id": "CP_23901989",
             "type": "congressperson",
-            "name": "Soto Alejandro",
+            "name": "Alejandro Soto Reyes",
             "dni": "23901989",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Alianza Para el Progreso",
+            "department": "Cusco",
+            "photo": "./img/alejandro-soto.png"
         },
         {
             "id": "CP_44807108",
             "type": "congressperson",
-            "name": "Castillo Eduardo",
+            "name": "Enrique Castillo Rivas",
             "dni": "44807108",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Fuerza Popular",
+            "department": "Piura",
+            "photo": "./img/enrique-castillo.png"
         },
         {
             "id": "CP_29632775",
             "type": "congressperson",
-            "name": "Quito Jaime",
+            "name": "Bernardo Quito Sarmiento",
             "dni": "29632775",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Juntos por el Perú",
+            "department": "Arequipa",
+            "photo": "./img/bernardo-quito.png"
         },
         {
             "id": "CP_41258762",
             "type": "congressperson",
-            "name": "Limachi Esmeralda",
+            "name": "Esmeralda Limachi Quispe",
             "dni": "41258762",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Juntos por el Perú",
+            "department": "Tacna",
+            "photo": "./img/esmeralda-limachi.png"
         },
         {
             "id": "CP_44275599",
             "type": "congressperson",
-            "name": "Revilla Cesar",
+            "name": "César Revilla Villanueva",
             "dni": "44275599",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Fuerza Popular",
+            "department": "Piura",
+            "photo": "./img/cesar-revilla.png"
         },
         {
             "id": "CP_42134579",
             "type": "congressperson",
             "name": "Palacios Margot",
             "dni": "42134579",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Perú Libre",
+            "department": "Ayacucho",
+            "photo": "./img/margot-palacios.png"
         },
         {
             "id": "CP_29299579",
             "type": "congressperson",
-            "name": "Paredes Alex",
+            "name": "Alex Paredes",
             "dni": "29299579",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Somos Perú",
+            "department": "Arequipa",
+            "photo": "./img/alex-paredes.png"
         },
         {
             "id": "CP_10691398",
             "type": "congressperson",
-            "name": "Padilla Rommel",
+            "name": "Javier Padilla Romero",
             "dni": "10691398",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Sí Creo",
+            "department": "Lima",
+            "photo": "./img/javier-padilla.png"
         },
         {
             "id": "CP_32923902",
             "type": "congressperson",
-            "name": "Varas Marcial",
+            "name": "Elías Varas",
             "dni": "32923902",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Juntos por el Perú",
+            "department": "Ancash",
+            "photo": "./img/elias-varas.png"
         },
         {
             "id": "CP_43328757",
             "type": "congressperson",
-            "name": "Montoya Jorge",
+            "name": "Jorge Montoya",
             "dni": "43328757",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Sí Creo",
+            "department": "Lima",
+            "photo": "./img/jorge-montoya.png"
         },
         {
             "id": "CP_70546213",
             "type": "congressperson",
-            "name": "Gonzales Diana",
+            "name": "Diana Gonzales",
             "dni": "70546213",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Avanza País",
+            "department": "Arequipa",
+            "photo": "./img/diana-gonzales.png"
         },
         {
             "id": "CP_76030152",
             "type": "congressperson",
-            "name": "Barbaran Rosangella",
+            "name": "Rosangella Barbaran",
             "dni": "76030152",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Fuerza Popular",
+            "department": "Lima",
+            "photo": "./img/rosangela-barbaran.png"
         },
         {
             "id": "CP_22510256",
             "type": "congressperson",
-            "name": "Medina Sara",
+            "name": "Elizabeth Medina Hermosilla",
             "dni": "22510256",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Somos Perú",
+            "department": "Huánuco",
+            "photo": "./img/elizabeth-medina.png"
         },
         {
             "id": "CP_40204874",
             "type": "congressperson",
-            "name": "Luque Ruth",
+            "name": "Ruth Luque",
             "dni": "40204874",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Ahora Nación",
+            "department": "Cusco",
+            "photo": "./img/ruth-luque.png"
         },
         {
             "id": "CP_70094373",
             "type": "congressperson",
-            "name": "Ramirez Tania",
+            "name": "Tania Ramírez García",
             "dni": "70094373",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Fuerza Popular",
+            "department": "Cajamarca",
+            "photo": "./img/tania-ramirez.png"
         },
         {
             "id": "CP_25567150",
             "type": "congressperson",
-            "name": "Valer Hector",
+            "name": "Héctor Valer Pinto",
             "dni": "25567150",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Somos Perú",
+            "department": "Lima",
+            "photo": "./img/hector-valer.png"
         },
         {
             "id": "CP_42699423",
             "type": "congressperson",
-            "name": "Portalatino Roxana",
+            "name": "Kelly Portalatino",
             "dni": "42699423",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Perú Libre",
+            "department": "Ancash",
+            "photo": "./img/kelly-portalatino.png"
         },
         {
             "id": "CP_17896798",
             "type": "congressperson",
-            "name": "Flores Seferino",
+            "name": "Victor Flores Ruiz",
             "dni": "17896798",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Fuerza Popular",
+            "department": "La Libertad",
+            "photo": "./img/victor-flores.png"
         },
         {
             "id": "CP_25542661",
             "type": "congressperson",
-            "name": "Arriola Alberto",
+            "name": "José Arriola Tueros",
             "dni": "25542661",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Podemos Perú",
+            "department": "Lima",
+            "photo": "./img/jose-arriola.png"
         },
         {
             "id": "CP_46130369",
             "type": "congressperson",
-            "name": "Julon Elva",
+            "name": "Elva Julón Irigoin",
             "dni": "46130369",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Alianza Para el Progreso",
+            "department": "Cajamarca",
+            "photo": "./img/edith-julon.png"
         },
         {
             "id": "CP_21564196",
             "type": "congressperson",
-            "name": "Huaman Raul",
+            "name": "Raul Huaman Coronado",
             "dni": "21564196",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Fuerza Popular",
+            "department": "Ica",
+            "photo": "./img/raul-huaman.png"
         },
         {
             "id": "CP_00434972",
             "type": "congressperson",
-            "name": "Mita Alanoca",
+            "name": "Isaac Mita Alanoca",
             "dni": "00434972",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Perú Libre",
+            "department": "Tacna",
+            "photo": "./img/isaac-mita.png"
         },
         {
             "id": "CP_45382589",
             "type": "congressperson",
-            "name": "Alegria Luis",
+            "name": "Arturo Alegría García",
             "dni": "45382589",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Fuerza Popular",
+            "department": "San Martín",
+            "photo": "./img/arturo-alegria.png"
         },
         {
             "id": "CP_07737110",
             "type": "congressperson",
-            "name": "Obando Ana",
+            "name": "Ana Obando Morgan",
             "dni": "07737110",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Fuerza Popular",
+            "department": "Callao",
+            "photo": "./img/ana-obando.png"
         },
         {
             "id": "CP_08232920",
             "type": "congressperson",
-            "name": "Bustamante Ernesto",
+            "name": "Ernesto Bustamante Donayre",
             "dni": "08232920",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Fuerza Popular",
+            "department": "Lima",
+            "photo": "./img/ernesto-bustamante.png"
         },
         {
             "id": "CP_41187802",
             "type": "congressperson",
-            "name": "Gonza Américo",
+            "name": "Américo Gonza",
             "dni": "41187802",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Perú Libre",
+            "department": "Cajamarca",
+            "photo": "./img/americo-gonza.png"
         },
         {
             "id": "CP_42750152",
             "type": "congressperson",
-            "name": "Robles Emperatriz",
+            "name": "Silvana Robles",
             "dni": "42750152",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Juntos por el Perú",
+            "department": "Junín",
+            "photo": "./img/silvana-robles.png"
         },
         {
             "id": "CP_09575873",
             "type": "congressperson",
-            "name": "Tello Edgar",
+            "name": "Nivardo Tello",
             "dni": "09575873",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Podemos Perú",
+            "department": "Lima",
+            "photo": "./img/nivardo-tello.png"
         },
         {
             "id": "CP_09980339",
             "type": "congressperson",
-            "name": "Lopez Luz",
+            "name": "Jeny Lopez Morales",
             "dni": "09980339",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Fuerza Popular",
+            "department": "Ucayali",
+            "photo": "./img/jeny-lopez.png"
         },
         {
             "id": "CP_25700579",
             "type": "congressperson",
-            "name": "Davila Neomias",
+            "name": "Pasión Dávila",
             "dni": "25700579",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Juntos por el Perú",
+            "department": "Pasco",
+            "photo": "./img/pasion-davila.png"
         },
         {
             "id": "CP_10280036",
             "type": "congressperson",
-            "name": "Chirinos Rosa",
+            "name": "Patricia Chirinos Venegas",
             "dni": "10280036",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Renovación Popular",
+            "department": "Callao",
+            "photo": "./img/patricia-chirinos.png"
         },
         {
             "id": "CP_04647085",
             "type": "congressperson",
-            "name": "Victor Cutipa",
+            "name": "Victor Cutipa Ccama",
             "dni": "04647085",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Juntos por el Perú",
+            "department": "Moquegua",
+            "photo": "./img/victor-cutipa.png"
         },
         {
             "id": "CP_16448130",
             "type": "congressperson",
-            "name": "Infantes Eliana",
+            "name": "Mery Infantes Castañeda",
             "dni": "16448130",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Fuerza Popular",
+            "department": "Amazonas",
+            "photo": "./img/mery-infantes.png"
         },
         {
             "id": "CP_07246887",
             "type": "congressperson",
-            "name": "Luna Leon",
+            "name": "José Luna Gálvez",
             "dni": "07246887",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Podemos Perú",
+            "department": "Lima",
+            "photo": "./img/jose-luna.png"
         },
         {
             "id": "CP_16429203",
             "type": "congressperson",
-            "name": "Echaiz Margot",
+            "name": "Gladys Echaiz de Nuñez Izaga",
             "dni": "16429203",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Renovación Popular",
+            "department": "Lima",
+            "photo": "./img/gladys-echaiz.png"
         },
         {
             "id": "CP_45209282",
             "type": "congressperson",
-            "name": "Muñante Alejandro",
+            "name": "Alejandro Muñante",
             "dni": "45209282",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Renovación Popular",
+            "department": "Lima",
+            "photo": "./img/alejandro-munante.png"
         },
         {
             "id": "CP_21456255",
             "type": "congressperson",
-            "name": "Marticorena Alfonso",
+            "name": "Jorge Marticorena Mendoza",
             "dni": "21456255",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Alianza Para el Progreso",
+            "department": "Ica",
+            "photo": "./img/jorge-marticorena.png"
         },
         {
             "id": "CP_23977149",
             "type": "congressperson",
-            "name": "Aragon Angel",
+            "name": "Angel Aragon Carreño",
             "dni": "23977149",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Avanza País",
+            "department": "Cusco",
+            "photo": "./img/luis-aragon.png"
         },
         {
             "id": "CP_48164963",
             "type": "congressperson",
-            "name": "Orue Ariana",
+            "name": "Ariana Orue",
             "dni": "48164963",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Podemos Perú",
+            "department": "Callao",
+            "photo": "./img/ariana-orue.png"
         },
-        {
+        /*{
             "id": "CP_05070188",
             "type": "congressperson",
-            "name": "Salhuana Eduardo",
+            "name": "Eduardo Salhuana Cavides",
             "dni": "05070188",
-            "party": "",
-            "department": "",
-            "photo": ""
-        },
-        {
+            "party": "Alianza Para el Progreso",
+            "department": "Madre de Dios",
+            "photo": "./img/eduardo-salhuana.png"
+        },*/
+        /*{
             "id": "CP_42335591",
             "type": "congressperson",
-            "name": "Juarez Lisbeth",
+            "name": "Heidy Juárez Calle",
             "dni": "42335591",
-            "party": "",
-            "department": "",
-            "photo": ""
-        },
-        {
+            "party": "Podemos Perú",
+            "department": "Piura",
+            "photo": "./img/heidy-juarez.png"
+        },*/
+        /*{
             "id": "CP_16719182",
             "type": "congressperson",
-            "name": "Cordova Jessica",
+            "name": "Jessica Cordova Lobatón",
             "dni": "16719182",
-            "party": "",
-            "department": "",
-            "photo": ""
-        },
+            "party": "Renovación Popular",
+            "department": "Lambayeque",
+            "photo": "./img/jessica-cordova.png"
+        },*/
         {
             "id": "CP_44756974",
             "type": "congressperson",
-            "name": "Amuruz Rosselli",
+            "name": "Rosselli Amuruz",
             "dni": "44756974",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Avanza País",
+            "department": "Lima",
+            "photo": "./img/rosselli-amuruz.png"
         },
         {
             "id": "CP_06783615",
             "type": "congressperson",
-            "name": "Cueto Jose",
+            "name": "Jose Cueto",
             "dni": "06783615",
-            "party": "",
-            "department": "",
-            "photo": ""
+            "party": "Renovación Popular",
+            "department": "Lima",
+            "photo": "./img/jose-cueto.png"
         },
         {
             "id": "FAM_05618705_10053878488",

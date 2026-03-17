@@ -94,15 +94,62 @@ class NetworkVisualization {
     }
     
     processData(data) {
-        // Los nodos ya vienen en formato final (un nodo por par familiar-entidad).
-        // Solo normalizamos los links para garantizar que source/target sean strings.
         const nodes = data.nodes.map(n => ({...n}));
         const links = data.links.map(l => ({
             source: typeof l.source === 'object' ? l.source.id : l.source,
             target: typeof l.target === 'object' ? l.target.id : l.target,
             type: l.type
         }));
-        return { nodes, links };
+
+        // ── Dividir nodos contract con múltiples detalles en nodos individuales ──
+        // Cada orden/contrato debe ser su propio nodo enlazado a la entidad.
+        const splitNodes  = [];
+        const splitLinks  = [];
+        const removeNodes = new Set();
+        const removeLinkIdxs = new Set();
+
+        nodes.forEach(n => {
+            if (n.type !== 'contract') return;
+            const detalles = n.detalles || [];
+            if (detalles.length <= 1) return; // ya es individual, no tocar
+
+            removeNodes.add(n.id);
+
+            // Recolectar links originales y marcarlos para eliminación
+            const famLinks = [];
+            const entLinks = [];
+            links.forEach((l, idx) => {
+                if (l.target === n.id && l.type === 'familiar-contract') {
+                    famLinks.push({...l}); removeLinkIdxs.add(idx);
+                }
+                if (l.source === n.id && l.type === 'contract-entity') {
+                    entLinks.push({...l}); removeLinkIdxs.add(idx);
+                }
+            });
+
+            // Crear un nodo por cada detalle
+            detalles.forEach((det, i) => {
+                const newId = `${n.id}_d${i}`;
+                const tipoNorm = (det.tipo === 'contrato') ? 'contrato' : 'orden';
+                splitNodes.push({
+                    id:                 newId,
+                    type:               'contract',
+                    tipo:               tipoNorm,
+                    monto:              det.monto || 0,
+                    numContratos:       tipoNorm === 'contrato' ? 1 : 0,
+                    numOrdenes:         tipoNorm === 'orden'    ? 1 : 0,
+                    entidadContratante: det.entidad_contratante || n.entidadContratante,
+                    detalles:           [det]
+                });
+                // Reproducir familiar→contract y contract→entity por cada nuevo nodo
+                famLinks.forEach(fl => splitLinks.push({ source: fl.source, target: newId, type: 'familiar-contract' }));
+                entLinks.forEach(el => splitLinks.push({ source: newId, target: el.target, type: 'contract-entity' }));
+            });
+        });
+
+        const finalNodes = nodes.filter(n => !removeNodes.has(n.id)).concat(splitNodes);
+        const finalLinks = links.filter((_, i) => !removeLinkIdxs.has(i)).concat(splitLinks);
+        return { nodes: finalNodes, links: finalLinks };
     }
     
     init() {
@@ -294,20 +341,33 @@ class NetworkVisualization {
             });
         });
 
-        // Ring 3: entities placed beyond their contract
+        // Ring 3: entities placed beyond their contract(s)
+        // Usar SOLO los contracts de esta red (contracts.has) para evitar
+        // que datos de otras redes desplacen la entidad fuera del canvas.
+        // Si la entidad tiene varios contratos de esta red, se promedia su posición.
         [...entities].forEach(eid => {
-            // Find the contract(s) pointing to this entity
-            const srcLink = this.data.links.find(l =>
-                (l.target.id || l.target) === eid && l.type === 'contract-entity'
+            const myCtLinks = this.data.links.filter(l =>
+                (l.target.id || l.target) === eid &&
+                l.type === 'contract-entity' &&
+                contracts.has(l.source.id || l.source)
             );
-            if (!srcLink) return;
-            const ctId = srcLink.source.id || srcLink.source;
-            const cp = positions[ctId];
-            if (!cp) return;
-            const angle = cp.angle;
+            if (myCtLinks.length === 0) return;
+
+            let sumX = 0, sumY = 0, count = 0;
+            myCtLinks.forEach(l => {
+                const ctId = l.source.id || l.source;
+                const cp = positions[ctId];
+                if (!cp) return;
+                sumX += cp.x; sumY += cp.y; count++;
+            });
+            if (count === 0) return;
+
+            const avgX = sumX / count;
+            const avgY = sumY / count;
+            const angle = Math.atan2(avgY - cy, avgX - cx);
             positions[eid] = {
-                x: cp.x + 90 * Math.cos(angle),
-                y: cp.y + 90 * Math.sin(angle),
+                x: avgX + 90 * Math.cos(angle),
+                y: avgY + 90 * Math.sin(angle),
                 angle
             };
         });
@@ -532,6 +592,9 @@ class NetworkVisualization {
     }
 
     _linkPath(d) {
+        // Guard: si el nodo aún no fue posicionado, no dibujar el trazo
+        if (d.source.x == null || d.source.y == null ||
+            d.target.x == null || d.target.y == null) return '';
         const sourceR = CONFIG.nodeRadius[d.source.type] || 20;
         const targetR = CONFIG.nodeRadius[d.target.type] || 20;
         const dx = d.target.x - d.source.x;
@@ -785,6 +848,9 @@ class NetworkVisualization {
         // Restaurar CPs que fueron desplazados durante el expand
         this._restoreInactiveCPs();
 
+        // Guardar referencia ANTES de limpiar para poder usarla en la transición
+        const cachedLinks = this._visibleLinks;
+
         // Limpiar selecciones cacheadas — tick() no actualizará nada hasta próximo expand
         this._visibleLinks = null;
         this._expandedSel  = null;
@@ -801,8 +867,8 @@ class NetworkVisualization {
         });
 
         // Ocultar todos los links de esta red en una sola pasada
-        if (this._visibleLinks) {
-            this._visibleLinks
+        if (cachedLinks) {
+            cachedLinks
                 .transition().duration(200).style('opacity', 0).style('pointer-events', 'none');
         } else {
             // Fallback: la selección ya fue limpiada arriba, usar el filtro directo
@@ -832,7 +898,9 @@ class NetworkVisualization {
     _dimCongresspersons(activeCid) {
         this.nodes.filter(d => d.type === 'congressperson')
             .transition().duration(300)
-            .style('opacity', d => activeCid === null ? 1 : (d.id === activeCid ? 1 : 0.35));
+            .style('opacity', d => activeCid === null ? 1 : (d.id === activeCid ? 1 : 0.08))
+            .style('filter',  d => activeCid === null ? 'none' : (d.id === activeCid ? 'none' : 'grayscale(1)'))
+            .style('pointer-events', d => activeCid === null ? 'all' : (d.id === activeCid ? 'all' : 'none'));
     }
 
     /**
@@ -1222,7 +1290,31 @@ class NetworkVisualization {
     }
 
     // ==================== TOOLTIP ====================
-    
+
+    /**
+     * Calcula monto y conteo de una entidad SOLO dentro de la red activa.
+     * Usa _visibleLinks (ya filtrados por expand) para sumar exclusivamente
+     * los contratos visibles que apuntan a esta entidad.
+     * Si no hay red activa, devuelve los valores globales del nodo.
+     */
+    _getEntityContextualStats(entityId) {
+        if (!this._visibleLinks) {
+            const n = this.data.nodes.find(x => x.id === entityId);
+            return { monto: n ? (n.montoTotal || 0) : 0, count: n ? (n.numContratos || 0) : 0 };
+        }
+        let monto = 0, count = 0;
+        this._visibleLinks.each(lk => {
+            const tgt = lk.target.id || lk.target;
+            if (tgt !== entityId || lk.type !== 'contract-entity') return;
+            const ctId  = lk.source.id || lk.source;
+            const ctNode = this.data.nodes.find(x => x.id === ctId);
+            if (!ctNode) return;
+            monto += ctNode.monto || 0;
+            count += (ctNode.numContratos || 0) + (ctNode.numOrdenes || 0);
+        });
+        return { monto, count };
+    }
+
     showTooltip(event, d) {
         const tooltip = d3.select('#tooltip');
         let content = '';
@@ -1250,14 +1342,16 @@ class NetworkVisualization {
                         ${d.lugarTrabajo ? `<div class="tooltip-row"><span class="tooltip-key">Lugar de trabajo</span><span class="tooltip-value">${d.lugarTrabajo}</span></div>` : ''}
                     </div>`;
                 break;
-            case 'entity':
+            case 'entity': {
+                const entStats = this._getEntityContextualStats(d.id);
                 content = `
                     <div class="tooltip-type ${d.type}">${typeLabels[d.type]}</div>
                     <div class="tooltip-title">${d.name}</div>
                     <div class="tooltip-grid">
-                        <div class="tooltip-row"><span class="tooltip-key">Monto Total</span><span class="tooltip-value">${this.formatAmount(d.montoTotal)}</span></div>
+                        <div class="tooltip-row"><span class="tooltip-key">Monto en esta red</span><span class="tooltip-value">${this.formatAmount(entStats.monto)}</span></div>
                     </div>`;
                 break;
+            }
             case 'contract': {
                 const tipoLabel = d.tipo === 'contrato' ? 'CONTRATO'
                     : d.tipo === 'orden' ? 'ORDEN DE SERVICIO'
@@ -1384,8 +1478,8 @@ class NetworkVisualization {
                     <div class="panel-kv"><span class="panel-k">Rubro</span><span class="panel-v">${d.rubro || 'N/A'}</span></div>
                 </div>
                 <div class="panel-divider"></div>
-                <div class="panel-total-row"><span class="panel-total-lbl">Monto total contratado</span><span class="panel-total-val">${this.formatAmount(d.montoTotal)}</span></div>
-                <div class="panel-total-row" style="margin-top:0.3rem"><span class="panel-total-lbl">N° contratos/órdenes</span><span class="panel-total-val" style="color:var(--text-primary)">${d.numContratos}</span></div>`;
+                <div class="panel-total-row"><span class="panel-total-lbl">Monto en esta red</span><span class="panel-total-val">${this.formatAmount(this._getEntityContextualStats(d.id).monto)}</span></div>
+                <div class="panel-total-row" style="margin-top:0.3rem"><span class="panel-total-lbl">N° contratos/órdenes</span><span class="panel-total-val" style="color:var(--text-primary)">${this._getEntityContextualStats(d.id).count}</span></div>`;
                 break;
             }
             case 'contract': {
