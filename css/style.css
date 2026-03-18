@@ -683,7 +683,7 @@
             display: flex;
             gap: 0.9rem;
             background: #fff;
-            padding: 0.6rem 1.5rem;
+            padding: 0.6rem 1.1rem;
             border-radius: 10px;
             border: 1px solid var(--border-subtle);
         }
