@@ -676,6 +676,7 @@
             align-items: center;
             gap: 0.5rem;
             z-index: 50;
+            width: 60%;
         }
 
         /* ==================== STATS BAR ==================== */
@@ -683,9 +684,10 @@
             display: flex;
             gap: 0.9rem;
             background: #fff;
-            padding: 0.6rem 1.1rem;
+            padding: 0.6rem 0.5rem;
             border-radius: 10px;
             border: 1px solid var(--border-subtle);
+            margin: 0 auto;
         }
         
         .stat-item {
@@ -1368,6 +1370,7 @@
         bottom: 0.5rem;
         transform: none;
         align-items: stretch;
+        width: auto;
     }
 
     /* ── Stats bar: grid 3 col / 2 filas ── */
@@ -1586,7 +1589,7 @@
     }
 
     .stat-value {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     .stat-label {
@@ -1625,7 +1628,7 @@
     }
 
     .legend {
-        display: none; /* demasiado estrecho — ocultar */
+        /*display: none; */ /* demasiado estrecho — ocultar */
     }
 }
 
