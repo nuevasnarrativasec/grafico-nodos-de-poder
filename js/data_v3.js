@@ -1953,10 +1953,10 @@ const NETWORK_DATA = {
         {
             "id": "CT_03663",
             "type": "contract",
-            "tipo": "contrato",
-            "monto": 623084.44,
+            "tipo": "mixto",
+            "monto": 641964.44,
             "numContratos": 1,
-            "numOrdenes": 0,
+            "numOrdenes": 1,
             "entidadContratante": "MUNICIPALIDAD DISTRITAL DE SAN BARTOLO",
             "detalles": [
                 {
@@ -1966,6 +1966,15 @@ const NETWORK_DATA = {
                     "descripcion": "CONTRATACIÓN DE LA EJECUCIÓN DE LA OBRA: ¿MEJORAMIENTO DEL SERVICIO DE ESPACIOS PUBLICOS URBANOS EN EL PARQUE MIGUEL GRA",
                     "objeto": "EJECUCIÓN DE OBRA",
                     "estado": "Contratado",
+                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE SAN BARTOLO"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 18880.0,
+                    "fecha": "2024-03-05",
+                    "descripcion": "SERVICIO ESPECIALIZADO DE LEVANTAMIENTO TOPOGRAFICO, SOLICITADO POR LA SUBGERENCIA DE OBRAS PUBLICAS",
+                    "objeto": "SERVICIO",
+                    "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE SAN BARTOLO"
                 }
             ]
@@ -1987,6 +1996,26 @@ const NETWORK_DATA = {
                     "objeto": "EJECUCIÓN DE OBRA",
                     "estado": "Contratado",
                     "entidad_contratante": "FONDO METROPOLITANO DE INVERSIONES"
+                }
+            ]
+        },
+        {
+            "id": "CT_00001",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 39400.0,
+            "numContratos": 0,
+            "numOrdenes": 1,
+            "entidadContratante": "MUNICIPALIDAD DISTRITAL DE PUEBLO LIBRE - LIMA",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 39400.0,
+                    "fecha": "2023-05-03",
+                    "descripcion": "SERVICIO DE MANTENIMIENTO",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE PUEBLO LIBRE - LIMA"
                 }
             ]
         },
@@ -23340,9 +23369,17 @@ const NETWORK_DATA = {
             "id": "ENT_64733",
             "type": "entity",
             "name": "MUNICIPALIDAD DISTRITAL DE SAN BARTOLO",
-            "montoTotal": 662489.1399999999,
+            "montoTotal": 681369.14,
             "numContratos": 1,
-            "numOrdenes": 2
+            "numOrdenes": 3
+        },
+        {
+            "id": "ENT_00001",
+            "type": "entity",
+            "name": "MUNICIPALIDAD DISTRITAL DE PUEBLO LIBRE - LIMA",
+            "montoTotal": 39400.0,
+            "numContratos": 0,
+            "numOrdenes": 1
         },
         {
             "id": "ENT_92339",
@@ -25725,6 +25762,16 @@ const NETWORK_DATA = {
         {
             "source": "CT_94915",
             "target": "ENT_92339",
+            "type": "contract-entity"
+        },
+        {
+            "source": "FAM_05618705_20548938768",
+            "target": "CT_00001",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_00001",
+            "target": "ENT_00001",
             "type": "contract-entity"
         },
         {
