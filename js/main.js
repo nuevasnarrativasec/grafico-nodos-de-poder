@@ -1372,16 +1372,54 @@ class NetworkVisualization {
         }
         
         tooltip.html(content).style('opacity', 1);
-        this.updateTooltipPosition(event);
+        // En móvil diferimos un frame para que el browser calcule offsetWidth/Height
+        // antes de posicionar (evita que el tooltip aparezca en la esquina 0,0)
+        if (this.isMobile) {
+            requestAnimationFrame(() => this.updateTooltipPosition(event));
+        } else {
+            this.updateTooltipPosition(event);
+        }
     }
 
     updateTooltipPosition(event) {
         const tooltip = d3.select('#tooltip');
-        const node = tooltip.node();
-        const tw = node.offsetWidth, th = node.offsetHeight;
-        let left = event.clientX + 15, top = event.clientY + 15;
-        if (left + tw > window.innerWidth - 20) left = event.clientX - tw - 15;
-        if (top + th > window.innerHeight - 20) top = event.clientY - th - 15;
+        const el = tooltip.node();
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const margin = 12;
+
+        // offsetWidth/offsetHeight pueden ser 0 si el browser aún no hizo layout;
+        // usamos un fallback razonable para el primer frame.
+        const tw = el.offsetWidth  || (this.isMobile ? 240 : 280);
+        const th = el.offsetHeight || 120;
+
+        const cx = event.clientX ?? 0;
+        const cy = event.clientY ?? 0;
+
+        let left, top;
+
+        if (this.isMobile) {
+            // En móvil: centrar horizontalmente — el tooltip es casi tan ancho como la pantalla
+            // y seguir el dedo con offset lateral casi siempre lo cortaría.
+            left = (vw - tw) / 2;
+
+            // Intentar colocar debajo del toque; si no cabe, colocar encima
+            top = cy + 28;
+            if (top + th > vh - margin) top = cy - th - 24;
+
+            // Clamping final: nunca salir del viewport
+            left = Math.max(margin, Math.min(left, vw - tw - margin));
+            top  = Math.max(margin, Math.min(top,  vh - th - margin));
+        } else {
+            // Desktop: seguir el cursor con offset, luego clampar los 4 lados
+            left = cx + 15;
+            top  = cy + 15;
+            if (left + tw > vw - margin) left = cx - tw - 15;
+            if (top  + th > vh - margin) top  = cy - th - 15;
+            left = Math.max(margin, left);
+            top  = Math.max(margin, top);
+        }
+
         tooltip.style('left', left + 'px').style('top', top + 'px');
     }
     
