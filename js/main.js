@@ -896,11 +896,17 @@ class NetworkVisualization {
     }
 
     _dimCongresspersons(activeCid) {
+        const isMobile = this.isMobile;
         this.nodes.filter(d => d.type === 'congressperson')
             .transition().duration(300)
             .style('opacity', d => activeCid === null ? 1 : (d.id === activeCid ? 1 : 0.08))
             .style('filter',  d => activeCid === null ? 'none' : (d.id === activeCid ? 'none' : 'grayscale(1)'))
-            .style('pointer-events', d => activeCid === null ? 'all' : (d.id === activeCid ? 'all' : 'none'));
+            // En móvil los CPs inactivos conservan pointer-events para que el tap
+            // sobre otro congresista cierre la red abierta y abra la nueva.
+            .style('pointer-events', d => {
+                if (activeCid === null || d.id === activeCid) return 'all';
+                return isMobile ? 'all' : 'none';
+            });
     }
 
     /**
@@ -1019,7 +1025,16 @@ class NetworkVisualization {
         // ── Click / tap: expandir nodos ──
         this.nodes.on('click', function(event, d) {
             event.stopPropagation();
-            if (self.isMobile) self.hideTooltip();
+            if (self.isMobile) {
+                // En móvil el tooltip ya se mostró en touchstart.
+                // Solo procesamos el toque en el congresista (expand/collapse);
+                // los demás nodos muestran info solo via tooltip, sin side-effects.
+                if (d.type === 'congressperson') {
+                    self.hideTooltip();
+                    self.expandCongressperson(d);
+                }
+                return;
+            }
             if (d.type === 'congressperson') {
                 self.expandCongressperson(d);
             } else if (d.type === 'familiar') {
@@ -1031,6 +1046,11 @@ class NetworkVisualization {
         });
         
         this.container.on('click', () => {
+            // En móvil: el colapso solo ocurre al tocar el nodo congresista.
+            // Tocar el fondo o cualquier otro nodo NO debe cerrar la red,
+            // ya que en táctil la precisión es baja y genera cierres accidentales.
+            if (this.isMobile) return;
+
             if (this.expandedCongresspersonId) {
                 this._collapseNetwork(this.expandedCongresspersonId);
                 this.expandedCongresspersonId = null;
