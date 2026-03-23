@@ -21,7 +21,7 @@ const NETWORK_DATA = {
         {
             "id": "CP_07831436",
             "type": "congressperson",
-            "name": "Patricia Juarez Gallegos",
+            "name": "Patricia Juárez Gallegos",
             "dni": "07831436",
             "party": "Fuerza Popular",
             "department": "Lima",
@@ -228,7 +228,7 @@ const NETWORK_DATA = {
         {
             "id": "CP_76030152",
             "type": "congressperson",
-            "name": "Rosangella Barbaran",
+            "name": "Rosangella Barbarán",
             "dni": "76030152",
             "party": "Fuerza Popular",
             "department": "Lima",
@@ -282,7 +282,7 @@ const NETWORK_DATA = {
         {
             "id": "CP_17896798",
             "type": "congressperson",
-            "name": "Victor Flores Ruiz",
+            "name": "Víctor Flores Ruiz",
             "dni": "17896798",
             "party": "Fuerza Popular",
             "department": "La Libertad",
@@ -309,7 +309,7 @@ const NETWORK_DATA = {
         {
             "id": "CP_21564196",
             "type": "congressperson",
-            "name": "Raul Huaman Coronado",
+            "name": "Raúl Huamán Coronado",
             "dni": "21564196",
             "party": "Fuerza Popular",
             "department": "Ica",
@@ -381,7 +381,7 @@ const NETWORK_DATA = {
         {
             "id": "CP_09980339",
             "type": "congressperson",
-            "name": "Jeny Lopez Morales",
+            "name": "Jeny López Morales",
             "dni": "09980339",
             "party": "Fuerza Popular",
             "department": "Ucayali",
@@ -435,7 +435,7 @@ const NETWORK_DATA = {
         {
             "id": "CP_16429203",
             "type": "congressperson",
-            "name": "Gladys Echaiz de Nuñez Izaga",
+            "name": "Gladys Echaíz de Nuñez Izaga",
             "dni": "16429203",
             "party": "Renovación Popular",
             "department": "Lima",
@@ -462,7 +462,7 @@ const NETWORK_DATA = {
         {
             "id": "CP_23977149",
             "type": "congressperson",
-            "name": "Angel Aragon Carreño",
+            "name": "Angel Aragón Carreño",
             "dni": "23977149",
             "party": "Avanza País",
             "department": "Cusco",
@@ -471,7 +471,7 @@ const NETWORK_DATA = {
         {
             "id": "CP_48164963",
             "type": "congressperson",
-            "name": "Ariana Orue",
+            "name": "Ariana Orué",
             "dni": "48164963",
             "party": "Podemos Perú",
             "department": "Callao",
@@ -516,7 +516,7 @@ const NETWORK_DATA = {
         {
             "id": "CP_06783615",
             "type": "congressperson",
-            "name": "Jose Cueto",
+            "name": "José Cueto",
             "dni": "06783615",
             "party": "Renovación Popular",
             "department": "Lima",
@@ -525,7 +525,7 @@ const NETWORK_DATA = {
         {
             "id": "FAM_05618705_10053878488",
             "type": "familiar",
-            "name": "Jose Ricardo Celis Salinas",
+            "name": "José Ricardo Celis Salinas",
             "ruc": "10053878488",
             "parentesco": "PRIMO(A)",
             "congresspersonId": "CP_05618705"
