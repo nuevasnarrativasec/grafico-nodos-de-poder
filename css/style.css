@@ -51,15 +51,15 @@
         .header {
             position: fixed;
             top: 0;
-            left: 0;
             right: 0;
             z-index: 100;
             padding: 1rem 2rem;
-            /*background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(10,12,16,0.95) 70%, transparent 100%);*/
             background-color: transparent;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: end;
+            width: fit-content;
+            right: 0;
         }
         
         .header-left h1 {
@@ -1332,6 +1332,7 @@
         gap: 0.5rem;
         background: rgba(241, 240, 234, 0.98);
         border-bottom: 1px solid rgba(0,0,0,0.06);
+        width: 100%;
     }
 
     .header-left {
