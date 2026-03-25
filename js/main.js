@@ -1380,11 +1380,22 @@ class NetworkVisualization {
                     d.numContratos ? `${d.numContratos} contrato${d.numContratos > 1 ? 's' : ''}` : '',
                     d.numOrdenes   ? `${d.numOrdenes} orden${d.numOrdenes > 1 ? 'es' : ''} de servicio` : ''
                 ].filter(Boolean).join(' · ');
+                const fechas = (d.detalles || []).map(det => det.fecha).filter(Boolean).sort();
+                const fechaStr = fechas.length === 0 ? 'N/A'
+                    : fechas.length === 1 ? this.formatDate(fechas[0])
+                    : `${this.formatDate(fechas[0])} – ${this.formatDate(fechas[fechas.length - 1])}`;
                 content = `
                     <div class="tooltip-type ${d.type}">${tipoLabel}</div>
                     <div class="tooltip-title">${this.formatAmount(d.monto)}</div>
                     <div class="tooltip-grid">
-                        <div class="tooltip-row"><span class="tooltip-key">Entidad</span><span class="tooltip-value">${d.entidadContratante || 'N/A'}</span></div>
+                        <div class="tooltip-row">
+                        <span class="tooltip-key">Fecha</span>
+                            <span class="tooltip-value">${fechaStr}</span>
+                        </div>
+                        <div class="tooltip-row">
+                            <span class="tooltip-key">Entidad</span>
+                            <span class="tooltip-value">${d.entidadContratante || 'N/A'}</span>
+                        </div>
                         ${detalleStr ? `<div class="tooltip-row"><span class="tooltip-key">Registros</span><span class="tooltip-value">${detalleStr}</span></div>` : ''}
                     </div>`;
                 break;
@@ -1791,7 +1802,7 @@ class NetworkVisualization {
     }
     formatDate(dateStr) {
         if (!dateStr) return 'N/A';
-        return new Date(dateStr).toLocaleDateString('es-PE', { year: 'numeric', month: 'short', day: 'numeric' });
+        return new Date(dateStr).toLocaleDateString('es-PE', { year: 'numeric', month: 'long', day: 'numeric' });
     }
     truncateName(name, maxLen = 25) {
         if (!name) return '';
