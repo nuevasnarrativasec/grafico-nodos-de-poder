@@ -807,6 +807,9 @@
                 font-weight: 900;
             }
 
+        /* ── Oculto hasta que se seleccione un congresista ── */
+        .disclaimer-accordion.hidden { display: none !important; }
+
         /* ── Estado colapsado ── */
         .disclaimer-accordion.collapsed .disclaimer-accordion-body {
             max-height: 0;

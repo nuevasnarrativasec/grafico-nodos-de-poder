@@ -725,10 +725,12 @@ class NetworkVisualization {
             this.closeSidebar();
             this.hidePinnedPanel();
             this.updateStats(null);
+            document.getElementById('disclaimer-accordion')?.classList.add('hidden');
             return;
         }
 
         this.expandedCongresspersonId = cid;
+        document.getElementById('disclaimer-accordion')?.classList.remove('hidden');
         this._dimCongresspersons(cid);
 
         // Pin the congressperson in place
@@ -1058,6 +1060,7 @@ class NetworkVisualization {
                 this.closeSidebar();
                 this.hidePinnedPanel();
                 this.updateStats(null);
+                document.getElementById('disclaimer-accordion')?.classList.add('hidden');
             }
         });
         
@@ -1305,6 +1308,7 @@ class NetworkVisualization {
         this.closeSidebar();
         this.hidePinnedPanel();
         this.updateStats(null);
+        document.getElementById('disclaimer-accordion')?.classList.add('hidden');
         document.getElementById('search-input').value = '';
         this.closeSearchDropdown();
     }
