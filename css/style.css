@@ -653,6 +653,9 @@
             justify-content: center;
             transition: all 0.2s ease;
         }
+            #reset-view{
+                display: none;
+            }
         
         .control-btn:hover {
             background: var(--bg-elevated);
