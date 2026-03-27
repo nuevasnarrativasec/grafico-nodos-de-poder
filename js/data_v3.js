@@ -477,33 +477,6 @@ const NETWORK_DATA = {
             "department": "Callao",
             "photo": "./img/ariana-orue.png"
         },
-        /*{
-            "id": "CP_05070188",
-            "type": "congressperson",
-            "name": "Eduardo Salhuana Cavides",
-            "dni": "05070188",
-            "party": "Alianza Para el Progreso",
-            "department": "Madre de Dios",
-            "photo": "./img/eduardo-salhuana.png"
-        },*/
-        /*{
-            "id": "CP_42335591",
-            "type": "congressperson",
-            "name": "Heidy Juárez Calle",
-            "dni": "42335591",
-            "party": "Podemos Perú",
-            "department": "Piura",
-            "photo": "./img/heidy-juarez.png"
-        },*/
-        /*{
-            "id": "CP_16719182",
-            "type": "congressperson",
-            "name": "Jessica Cordova Lobatón",
-            "dni": "16719182",
-            "party": "Renovación Popular",
-            "department": "Lambayeque",
-            "photo": "./img/jessica-cordova.png"
-        },*/
         {
             "id": "CP_44756974",
             "type": "congressperson",
@@ -19485,53 +19458,6 @@ const NETWORK_DATA = {
             ]
         },
         {
-            "id": "CT_07342",
-            "type": "contract",
-            "tipo": "orden",
-            "monto": 36880.0,
-            "numContratos": 0,
-            "numOrdenes": 4,
-            "entidadContratante": "GOBIERNO REGIONAL DE AREQUIPA-TRABAJO",
-            "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 4740.0,
-                    "fecha": "2025-11-04",
-                    "descripcion": "SERVICIO DE ALQUILER DE LOCAL Y ALIMENTACION",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE AREQUIPA-TRABAJO"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 8280.0,
-                    "fecha": "2025-11-24",
-                    "descripcion": "SERVICIO DE COFFE BREAK Y ALMUERZO",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE AREQUIPA-TRABAJO"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 5820.0,
-                    "fecha": "2025-11-24",
-                    "descripcion": "SERVICIO DE ALQUILER DE AUDITORIO",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE AREQUIPA-TRABAJO"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 18040.0,
-                    "fecha": "2025-11-27",
-                    "descripcion": "SERVICIO DE ALQUILER DE LOCAL Y ALIMENTACION",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE AREQUIPA-TRABAJO"
-                }
-            ]
-        },
-        {
             "id": "CT_06058",
             "type": "contract",
             "tipo": "orden",
@@ -19640,26 +19566,6 @@ const NETWORK_DATA = {
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE SAN BARTOLO"
-                }
-            ]
-        },
-        {
-            "id": "CT_58304",
-            "type": "contract",
-            "tipo": "orden",
-            "monto": 40797.73,
-            "numContratos": 0,
-            "numOrdenes": 1,
-            "entidadContratante": "MINISTERIO DE LA PRODUCCIÓN",
-            "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 40797.73,
-                    "fecha": "2024-04-05",
-                    "descripcion": "CONTRATAR EL SERVICIO DE ALOJAMIENTO, SALA DE CONFERENCIA Y ALIMENTACIÓN PARA EL DESARROLLO DEL TA",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MINISTERIO DE LA PRODUCCIÓN"
                 }
             ]
         },
@@ -21428,26 +21334,6 @@ const NETWORK_DATA = {
             ]
         },
         {
-            "id": "CT_19369",
-            "type": "contract",
-            "tipo": "orden",
-            "monto": 540.08,
-            "numContratos": 0,
-            "numOrdenes": 1,
-            "entidadContratante": "SUPERINTENDENCIA DE BANCA, SEGUROS Y AFP",
-            "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 540.08,
-                    "fecha": "2024-12-10",
-                    "descripcion": "SERVICIO DE ALOJAMIENTO Y ALIMENTACION",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "SUPERINTENDENCIA DE BANCA, SEGUROS Y AFP"
-                }
-            ]
-        },
-        {
             "id": "CT_77033",
             "type": "contract",
             "tipo": "orden",
@@ -21634,26 +21520,6 @@ const NETWORK_DATA = {
                     "objeto": "BIEN",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE PUEBLO NUEVO DE COLAN"
-                }
-            ]
-        },
-        {
-            "id": "CT_42034",
-            "type": "contract",
-            "tipo": "orden",
-            "monto": 5500.0,
-            "numContratos": 0,
-            "numOrdenes": 1,
-            "entidadContratante": "AGENCIA DE PROMOCION DE LA INVERSION PRIVADA - PROINVERSION",
-            "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 5500.0,
-                    "fecha": "2022-12-12",
-                    "descripcion": "SERVICIO DE ALQUILER DE LOCAL Y SERVICIO DE ALIMENTACIÓN PARA EL TALLER DE PLANEAMIENTO 2023 DE LA DID",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "AGENCIA DE PROMOCION DE LA INVERSION PRIVADA - PROINVERSION"
                 }
             ]
         },
@@ -23131,26 +22997,6 @@ const NETWORK_DATA = {
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "CONSEJO NACIONAL DE CIENCIA, TECNOLOGIA E INNOVACION TECNOLOGICA"
-                }
-            ]
-        },
-        {
-            "id": "CT_50425",
-            "type": "contract",
-            "tipo": "orden",
-            "monto": 41400.0,
-            "numContratos": 0,
-            "numOrdenes": 1,
-            "entidadContratante": "MUNICIPALIDAD METROPOLITANA DE LIMA",
-            "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 41400.0,
-                    "fecha": "2022-10-26",
-                    "descripcion": "Servicio De Organizacion De Eventos",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD METROPOLITANA DE LIMA"
                 }
             ]
         },
@@ -25350,14 +25196,6 @@ const NETWORK_DATA = {
             "numOrdenes": 4
         },
         {
-            "id": "ENT_05011",
-            "type": "entity",
-            "name": "AGENCIA DE PROMOCION DE LA INVERSION PRIVADA - PROINVERSION",
-            "montoTotal": 5500.0,
-            "numContratos": 0,
-            "numOrdenes": 1
-        },
-        {
             "id": "ENT_05777",
             "type": "entity",
             "name": "MUNICIPALIDAD DISTRITAL DE COPORAQUE - ESPINAR",
@@ -25570,14 +25408,6 @@ const NETWORK_DATA = {
             "type": "entity",
             "name": "CONSEJO NACIONAL DE CIENCIA, TECNOLOGIA E INNOVACION TECNOLOGICA",
             "montoTotal": 12980.0,
-            "numContratos": 0,
-            "numOrdenes": 1
-        },
-        {
-            "id": "ENT_39001",
-            "type": "entity",
-            "name": "MUNICIPALIDAD METROPOLITANA DE LIMA",
-            "montoTotal": 41400.0,
             "numContratos": 0,
             "numOrdenes": 1
         },
@@ -29140,16 +28970,6 @@ const NETWORK_DATA = {
             "type": "contract-entity"
         },
         {
-            "source": "FAM_44756974_20604690685",
-            "target": "CT_07342",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_07342",
-            "target": "ENT_29704",
-            "type": "contract-entity"
-        },
-        {
             "source": "FAM_32971154_20603140401",
             "target": "CT_06058",
             "type": "familiar-contract"
@@ -29172,16 +28992,6 @@ const NETWORK_DATA = {
         {
             "source": "CT_72771",
             "target": "ENT_64733",
-            "type": "contract-entity"
-        },
-        {
-            "source": "FAM_44756974_20604690685",
-            "target": "CT_58304",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_58304",
-            "target": "ENT_34330",
             "type": "contract-entity"
         },
         {
@@ -29560,16 +29370,6 @@ const NETWORK_DATA = {
             "type": "contract-entity"
         },
         {
-            "source": "FAM_44756974_20604690685",
-            "target": "CT_19369",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_19369",
-            "target": "ENT_91533",
-            "type": "contract-entity"
-        },
-        {
             "source": "FAM_07831436_20510037562",
             "target": "CT_77033",
             "type": "familiar-contract"
@@ -29622,16 +29422,6 @@ const NETWORK_DATA = {
         {
             "source": "CT_10390",
             "target": "ENT_44159",
-            "type": "contract-entity"
-        },
-        {
-            "source": "FAM_44756974_20604690685",
-            "target": "CT_42034",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_42034",
-            "target": "ENT_05011",
             "type": "contract-entity"
         },
         {
@@ -30137,16 +29927,6 @@ const NETWORK_DATA = {
         {
             "source": "CT_22644",
             "target": "ENT_83388",
-            "type": "contract-entity"
-        },
-        {
-            "source": "FAM_44756974_20604690685",
-            "target": "CT_50425",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_50425",
-            "target": "ENT_39001",
             "type": "contract-entity"
         },
         {
