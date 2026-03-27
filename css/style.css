@@ -1463,12 +1463,12 @@
     }
 
         .disclaimer-accordion.collapsed{
-            width: 25%;
+            width: 47%;
         }
 
     /* Ocultar título: solo iconos en móvil */
     .disclaimer-accordion .disclaimer-accordion-title {
-        display: none;
+        /*display: none;*/
     }
 
     /* Header compacto: solo los 2 botones */
