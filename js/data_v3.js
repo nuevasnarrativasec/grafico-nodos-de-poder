@@ -158,7 +158,7 @@ const NETWORK_DATA = {
             "type": "congressperson",
             "name": "Esmeralda Limachi Quispe",
             "dni": "41258762",
-            "party": "Juntos por el Perú",
+            "party": "Perú Primero",
             "department": "Tacna",
             "photo": "./img/esmeralda-limachi.png"
         },
@@ -176,7 +176,7 @@ const NETWORK_DATA = {
             "type": "congressperson",
             "name": "Palacios Margot",
             "dni": "42134579",
-            "party": "Perú Libre",
+            "party": "Juntos por el Perú",
             "department": "Ayacucho",
             "photo": "./img/margot-palacios.png"
         },
@@ -194,7 +194,7 @@ const NETWORK_DATA = {
             "type": "congressperson",
             "name": "Javier Padilla Romero",
             "dni": "10691398",
-            "party": "Sí Creo",
+            "party": "Partido SíCreo",
             "department": "Lima",
             "photo": "./img/javier-padilla.png"
         },
@@ -212,7 +212,7 @@ const NETWORK_DATA = {
             "type": "congressperson",
             "name": "Jorge Montoya",
             "dni": "43328757",
-            "party": "Sí Creo",
+            "party": "Partido SíCreo",
             "department": "Lima",
             "photo": "./img/jorge-montoya.png"
         },

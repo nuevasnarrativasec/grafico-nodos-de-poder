@@ -1347,7 +1347,7 @@ class NetworkVisualization {
                     <div class="tooltip-title">${d.name}</div>
                     <div class="tooltip-grid">
                         <div class="tooltip-row"><span class="tooltip-key">DNI</span><span class="tooltip-value">${d.dni}</span></div>
-                        <div class="tooltip-row"><span class="tooltip-key">Partido</span><span class="tooltip-value">${d.party || 'N/A'}</span></div>
+                        <div class="tooltip-row"><span class="tooltip-key">Partido por el que postula</span><span class="tooltip-value">${d.party || 'N/A'}</span></div>
                         
                         <div class="tooltip-row"><span class="tooltip-key">Departamento</span><span class="tooltip-value">${d.department || 'N/A'}</span></div>
                     </div>`;
@@ -1502,7 +1502,7 @@ class NetworkVisualization {
                 html += `
                 <div class="panel-kv-grid">
                     <div class="panel-kv"><span class="panel-k">DNI</span><span class="panel-v">${d.dni}</span></div>
-                    <div class="panel-kv"><span class="panel-k">Partido</span><span class="panel-v">${d.party || 'N/A'}</span></div>
+                    <div class="panel-kv"><span class="panel-k">Partido por el que postula</span><span class="panel-v">${d.party || 'N/A'}</span></div>
                     <div class="panel-kv"><span class="panel-k">Departamento</span><span class="panel-v">${d.department || 'N/A'}</span></div>
                 </div>
                 <div class="panel-divider"></div>
