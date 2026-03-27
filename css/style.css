@@ -800,6 +800,9 @@
             line-height: 1.6;
             margin: 0;
         }
+            .disclaimer-accordion-body p strong{
+                font-weight: 900;
+            }
 
         /* ── Estado colapsado ── */
         .disclaimer-accordion.collapsed .disclaimer-accordion-body {
