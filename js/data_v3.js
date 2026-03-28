@@ -952,6 +952,14 @@ const NETWORK_DATA = {
             "congresspersonId": "CP_44275599"
         },
         {
+            "id": "FAM_44275599_10442755995",
+            "type": "familiar",
+            "name": "César Revilla Villanueva",
+            "ruc": "10442755995",
+            "parentesco": "EL DECLARANTE",
+            "congresspersonId": "CP_44275599"
+        },
+        {
             "id": "FAM_00434972_10004462489",
             "type": "familiar",
             "name": "Cesar Augusto Mita Hualpa",
@@ -23108,6 +23116,26 @@ const NETWORK_DATA = {
             ]
         },
         {
+            "id": "CT_99697",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 3600.0,
+            "numContratos": 0,
+            "numOrdenes": 1,
+            "entidadContratante": "UNIVERSIDAD NACIONAL DE PIURA",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 3600.0,
+                    "fecha": "2023-02-20",
+                    "descripcion": "P.P. N° 0186-2023-UP-OPYPTO-UNP LOCACIÓN DE SERVICIOS COMO APOYO OPERATIVO DEPORTES",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "UNIVERSIDAD NACIONAL DE PIURA"
+                }
+            ]
+        },
+        {
             "id": "ENT_57651",
             "type": "entity",
             "name": "SERVICIO DE AGUA POTABLE Y ALCANTARILLADO MUNICIPAL DE HUANCAYO",
@@ -23551,9 +23579,9 @@ const NETWORK_DATA = {
             "id": "ENT_22492",
             "type": "entity",
             "name": "UNIVERSIDAD NACIONAL DE PIURA",
-            "montoTotal": 31229.03,
+            "montoTotal": 34829.03,
             "numContratos": 0,
-            "numOrdenes": 5
+            "numOrdenes": 6
         },
         {
             "id": "ENT_44830",
@@ -26602,6 +26630,21 @@ const NETWORK_DATA = {
         {
             "source": "CT_67834",
             "target": "ENT_36498",
+            "type": "contract-entity"
+        },
+        {
+            "source": "CP_44275599",
+            "target": "FAM_44275599_10442755995",
+            "type": "congressperson-familiar"
+        },
+        {
+            "source": "FAM_44275599_10442755995",
+            "target": "CT_99697",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_99697",
+            "target": "ENT_22492",
             "type": "contract-entity"
         },
         {
