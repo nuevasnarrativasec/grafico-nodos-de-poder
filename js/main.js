@@ -1823,15 +1823,19 @@ class NetworkVisualization {
         const acc      = document.getElementById('disclaimer-accordion');
         const body     = document.getElementById('disclaimer-accordion-body');
         const titleEl  = document.querySelector('.disclaimer-accordion-title');
+        const verMasEl = document.getElementById('disclaimer-ver-mas');
 
         if (!acc) return;
 
-        // Texto del descargo: específico del congresista o texto por defecto
-        const text = (typeof DISCLAIMERS !== 'undefined' && DISCLAIMERS[cid])
+        // Resolver entrada: string o { html, linkDescargos }
+        const entry = (typeof DISCLAIMERS !== 'undefined' && DISCLAIMERS[cid])
             ? DISCLAIMERS[cid]
             : (typeof DISCLAIMERS !== 'undefined' && DISCLAIMERS._default)
                 ? DISCLAIMERS._default
                 : '<p><strong>El Comercio</strong> contactó al congresista para recoger sus descargos; sin embargo, hasta la publicación de este especial no se obtuvo respuesta.</p>';
+
+        const html          = (typeof entry === 'object') ? (entry.html || '')         : entry;
+        const linkDescargos = (typeof entry === 'object') ? (entry.linkDescargos || null) : null;
 
         // Actualizar título con nombre abreviado del congresista
         if (titleEl) {
@@ -1840,7 +1844,17 @@ class NetworkVisualization {
         }
 
         // Inyectar contenido en el body
-        if (body) body.innerHTML = text;
+        if (body) body.innerHTML = html;
+
+        // Mostrar u ocultar el enlace "VER OTROS DESCARGOS"
+        if (verMasEl) {
+            if (linkDescargos) {
+                verMasEl.href = linkDescargos;
+                verMasEl.classList.add('visible');
+            } else {
+                verMasEl.classList.remove('visible');
+            }
+        }
 
         // Mostrar y auto-desplegar
         acc.classList.remove('hidden');
@@ -1853,12 +1867,14 @@ class NetworkVisualization {
     _closeDisclaimer() {
         const acc     = document.getElementById('disclaimer-accordion');
         const titleEl = document.querySelector('.disclaimer-accordion-title');
+        const verMasEl = document.getElementById('disclaimer-ver-mas');
 
         if (acc) {
             acc.classList.add('collapsed');
             acc.classList.add('hidden');
         }
-        if (titleEl) titleEl.textContent = 'DESCARGOS';
+        if (titleEl) titleEl.textContent = 'Respuesta del congresista';
+        if (verMasEl) verMasEl.classList.remove('visible');
     }
 
     /** @deprecated — usar _openDisclaimer / _closeDisclaimer */

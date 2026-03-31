@@ -717,25 +717,54 @@
         .disclaimer-overlay { display: none !important; }
 
         /* ==================== DISCLAIMER ACORDEÓN ==================== */
+        /* ── Shell de posicionamiento ── */
         .disclaimer-accordion {
             position: fixed;
             bottom: 1.5rem;
             left: 1.5rem;
             width: 300px;
-            background:  rgba(19, 19, 19, 0.75);
+            /*background: rgba(19, 19, 19, 0.75);*/
             border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.45);
             z-index: 200;
+            overflow: hidden;
+            /*transition: box-shadow 0.2s ease;*/
+        }
+
+        /* ── Enlace "VER OTROS DESCARGOS" — sobre el card ── */
+        .disclaimer-ver-mas {
+            display: none;          /* oculto por defecto; JS lo muestra con .visible */
+            align-self: flex-end;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: #000;
+            text-decoration: none;
+            padding-bottom: 0.42rem;
+            padding-right: 0.15rem;
+            white-space: nowrap;
+            transition: color 0.15s ease;
+            text-align: right;
+        }
+        .disclaimer-ver-mas.visible { display: block; }
+        .disclaimer-ver-mas:hover { color: #111827; text-decoration: underline; }
+
+        /* ── Card visual ── */
+        .disclaimer-accordion-card {
+            border-radius: 12px;
             overflow: hidden;
             transition: box-shadow 0.2s ease;
         }
+        .disclaimer-accordion-card:hover {
+            /*box-shadow: 0 10px 38px rgba(0,0,0,0.55);*/
+        }
 
-        .disclaimer-accordion:hover {
-            box-shadow: 0 10px 38px rgba(0,0,0,0.55);
+        .disclaimer-accordion:hover .disclaimer-accordion-card {
+            /*box-shadow: 0 10px 38px rgba(0,0,0,0.55);*/
         }
 
         /* ── Header siempre visible ── */
         .disclaimer-accordion-header {
+            background: rgba(19, 19, 19, 0.85);
             display: flex;
             align-items: center;
             gap: 0.6rem;
@@ -787,6 +816,7 @@
 
         /* ── Body expandible ── */
         .disclaimer-accordion-body {
+            background: rgba(19, 19, 19, 0.85);
             padding: 0 0.85rem 0.85rem;
             max-height: 200px;
             overflow: hidden;
@@ -1464,16 +1494,24 @@
         width: auto;        /* se ajusta al contenido cuando colapsado */
         flex-direction: column-reverse;  /* body ENCIMA del header */
         z-index: 51;
+    }
+
+    /* Card visual: border-radius en mobile */
+    .disclaimer-accordion-card {
         border-radius: 12px;
     }
 
+    /* Ocultar enlace "ver más" en móvil — no aplica en esa UX */
+    .disclaimer-ver-mas { /*display: none !important; */}
+
         .disclaimer-accordion.collapsed{
-            width: 55%;
+            width: 57%;
         }
 
     /* Ocultar título: solo iconos en móvil */
     .disclaimer-accordion .disclaimer-accordion-title {
         /*display: none;*/
+        font-size: .9rem;
     }
 
     /* Header compacto: solo los 2 botones */
@@ -1576,10 +1614,6 @@
 
     .node-label   { font-size: 9px; }
     .node-sublabel { font-size: 7.5px; }
-
-    .disclaimer-accordion-title{
-        font-size: .9rem;
-    }
 }
 
 /* =================================================================

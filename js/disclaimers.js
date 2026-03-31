@@ -1,16 +1,20 @@
 // ============================================================
 // DESCARGOS POR CONGRESISTA
-// Mapea el ID del congresista (CP_DNI) al HTML de su descargo.
-// Editar este archivo para actualizar los textos del acordeón.
+// Mapea el ID del congresista (CP_DNI) al contenido del acordeón.
 //
-// TEXTO POR DEFECTO (sin respuesta):
-//   "<p><strong>El Comercio</strong> contactó al congresista para
-//    recoger sus descargos; sin embargo, hasta la publicación de
-//    este especial no se obtuvo respuesta.</p>"
+// DOS FORMATOS:
 //
-// FORMATO SUGERIDO (con respuesta):
-//   "<p>En comunicación con <strong>El Comercio</strong>, el
-//    congresista señaló que ...</p>"
+// 1) Solo texto (sin enlace "VER OTROS DESCARGOS"):
+//    "CP_XXXXX": `<p>...</p>`,
+//
+// 2) Con enlace hacia una sección de la landing:
+//    "CP_XXXXX": {
+//        html:          `<p>...</p>`,
+//        linkDescargos: '#seccion-descargos'   // ID o URL del ancla
+//    },
+//
+// El enlace aparece sobre el card, alineado a la derecha,
+// solo cuando está definido linkDescargos.
 // ============================================================
 
 const DISCLAIMERS = {
@@ -19,7 +23,10 @@ const DISCLAIMERS = {
     "CP_05618705": `<p><strong>El Comercio</strong> contactó a la congresista para recoger sus descargos; sin embargo, hasta la publicación de este especial no se obtuvo respuesta.</p>`,
 
     // Roberto Chiabra
-    "CP_40728264": `<p><strong>El Comercio</strong> contactó al congresista para recoger sus descargos; sin embargo, hasta la publicación de este especial no se obtuvo respuesta.</p>`,
+    "CP_40728264": {
+        html:          `<p><strong>El Comercio</strong> contactó a la congresista para recoger sus descargos; sin embargo, hasta la publicación de este especial no se obtuvo respuesta.</p>`,
+        linkDescargos: '#seccion-descargos'
+    },
 
     // Patricia Juárez Gallegos
     "CP_07831436": `<p><strong>El Comercio</strong> contactó a la congresista para recoger sus descargos; sin embargo, hasta la publicación de este especial no se obtuvo respuesta.</p>`,
