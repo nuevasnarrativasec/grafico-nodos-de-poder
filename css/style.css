@@ -734,16 +734,20 @@
         .disclaimer-ver-mas {
             display: none;          /* oculto por defecto; JS lo muestra con .visible */
             align-self: flex-end;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 700;
-            letter-spacing: 0.08em;
             color: #000;
             text-decoration: none;
-            padding-bottom: 0.42rem;
-            padding-right: 0.15rem;
             white-space: nowrap;
             transition: color 0.15s ease;
             text-align: right;
+            width: fit-content;
+            background: #edc208;
+            box-sizing: border-box;
+            padding: 10px;
+            border-radius: 10px;
+            letter-spacing: .5px;
+            margin-bottom: 10px;
         }
         .disclaimer-ver-mas.visible { display: block; }
         .disclaimer-ver-mas:hover { color: #111827; text-decoration: underline; }
