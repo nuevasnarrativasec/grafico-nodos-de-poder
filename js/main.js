@@ -725,12 +725,12 @@ class NetworkVisualization {
             this.closeSidebar();
             this.hidePinnedPanel();
             this.updateStats(null);
-            document.getElementById('disclaimer-accordion')?.classList.add('hidden');
+            this._closeDisclaimer();
             return;
         }
 
         this.expandedCongresspersonId = cid;
-        document.getElementById('disclaimer-accordion')?.classList.remove('hidden');
+        this._openDisclaimer(cid, d.name);
         this._dimCongresspersons(cid);
 
         // Pin the congressperson in place
@@ -1060,7 +1060,7 @@ class NetworkVisualization {
                 this.closeSidebar();
                 this.hidePinnedPanel();
                 this.updateStats(null);
-                document.getElementById('disclaimer-accordion')?.classList.add('hidden');
+                this._closeDisclaimer();
             }
         });
         
@@ -1308,7 +1308,7 @@ class NetworkVisualization {
         this.closeSidebar();
         this.hidePinnedPanel();
         this.updateStats(null);
-        document.getElementById('disclaimer-accordion')?.classList.add('hidden');
+        this._closeDisclaimer();
         document.getElementById('search-input').value = '';
         this.closeSearchDropdown();
     }
@@ -1814,17 +1814,56 @@ class NetworkVisualization {
     }
     // ==================== DISCLAIMER ====================
 
-    showDisclaimer() {
-        // Toggle del acordeón (el header ya tiene su propio listener inline,
-        // pero mantenemos este método por compatibilidad con llamadas externas)
-        const acc = document.getElementById('disclaimer-accordion');
-        if (acc) acc.classList.remove('collapsed');
+    /**
+     * Muestra el acordeón, lo auto-despliega y carga el texto del congresista.
+     * @param {string} cid   — ID del congresista (CP_DNI)
+     * @param {string} name  — Nombre completo del congresista
+     */
+    _openDisclaimer(cid, name) {
+        const acc      = document.getElementById('disclaimer-accordion');
+        const body     = document.getElementById('disclaimer-accordion-body');
+        const titleEl  = document.querySelector('.disclaimer-accordion-title');
+
+        if (!acc) return;
+
+        // Texto del descargo: específico del congresista o texto por defecto
+        const text = (typeof DISCLAIMERS !== 'undefined' && DISCLAIMERS[cid])
+            ? DISCLAIMERS[cid]
+            : (typeof DISCLAIMERS !== 'undefined' && DISCLAIMERS._default)
+                ? DISCLAIMERS._default
+                : '<p><strong>El Comercio</strong> contactó al congresista para recoger sus descargos; sin embargo, hasta la publicación de este especial no se obtuvo respuesta.</p>';
+
+        // Actualizar título con nombre abreviado del congresista
+        if (titleEl) {
+            const shortName = this._shortCongressName(name).toUpperCase();
+            titleEl.textContent = `Respuesta del congresista`;
+        }
+
+        // Inyectar contenido en el body
+        if (body) body.innerHTML = text;
+
+        // Mostrar y auto-desplegar
+        acc.classList.remove('hidden');
+        acc.classList.remove('collapsed');
     }
 
-    hideDisclaimer() {
-        const acc = document.getElementById('disclaimer-accordion');
-        if (acc) acc.classList.add('collapsed');
+    /**
+     * Colapsa y oculta el acordeón; restaura el título genérico.
+     */
+    _closeDisclaimer() {
+        const acc     = document.getElementById('disclaimer-accordion');
+        const titleEl = document.querySelector('.disclaimer-accordion-title');
+
+        if (acc) {
+            acc.classList.add('collapsed');
+            acc.classList.add('hidden');
+        }
+        if (titleEl) titleEl.textContent = 'DESCARGOS';
     }
+
+    /** @deprecated — usar _openDisclaimer / _closeDisclaimer */
+    showDisclaimer() { this._openDisclaimer(this.expandedCongresspersonId || '', ''); }
+    hideDisclaimer()  { this._closeDisclaimer(); }
 }
 
 // ============================================
