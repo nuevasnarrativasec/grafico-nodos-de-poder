@@ -822,7 +822,7 @@
 
         /* Separador entre header y body */
         .disclaimer-accordion:not(.collapsed) .disclaimer-accordion-header {
-            border-bottom: 1px solid rgba(255,255,255,0.07);
+            /*border-bottom: 1px solid rgba(255,255,255,0.07);*/
         }
 
         /* ==================== ANIMATIONS ==================== */
