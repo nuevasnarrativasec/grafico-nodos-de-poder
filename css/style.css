@@ -734,7 +734,7 @@
         .disclaimer-ver-mas {
             display: none;          /* oculto por defecto; JS lo muestra con .visible */
             align-self: flex-end;
-            font-size: 0.65rem;
+            font-size: 0.9rem;
             font-weight: 700;
             letter-spacing: 0.08em;
             color: #000;
