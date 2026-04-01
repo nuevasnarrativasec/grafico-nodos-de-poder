@@ -1012,7 +1012,7 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_24264",
             "type": "contract",
             "tipo": "mixto",
-            "monto": 197975.80000000002,
+            "monto": 197975.8,
             "numContratos": 1,
             "numOrdenes": 12,
             "entidadContratante": "MUNICIPALIDAD DISTRITAL DE ALTO PICHIGUA",
@@ -1140,7 +1140,7 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_60311",
             "type": "contract",
             "tipo": "mixto",
-            "monto": 1989600.4000000001,
+            "monto": 1989600.4,
             "numContratos": 1,
             "numOrdenes": 2,
             "entidadContratante": "MUNICIPALIDAD PROVINCIAL DE CASTROVIRREYNA",
@@ -4364,7 +4364,7 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_58644",
             "type": "contract",
             "tipo": "orden",
-            "monto": 27232.600000000002,
+            "monto": 27232.6,
             "numContratos": 0,
             "numOrdenes": 20,
             "entidadContratante": "GOBIERNO REGIONAL DE LORETO - ORGANISMO PUBLICO INFRAESTRUCTURA PARA LA PRODUCTIVIDAD",
@@ -4745,7 +4745,7 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_68037",
             "type": "contract",
             "tipo": "orden",
-            "monto": 69562.99999999999,
+            "monto": 69563.0,
             "numContratos": 0,
             "numOrdenes": 29,
             "entidadContratante": "MUNICIPALIDAD DISTRITAL DE YAVARI",
@@ -6199,20 +6199,11 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_16769",
             "type": "contract",
             "tipo": "orden",
-            "monto": 61500.0,
+            "monto": 36500.0,
             "numContratos": 0,
-            "numOrdenes": 2,
+            "numOrdenes": 1,
             "entidadContratante": "MUNICIPALIDAD DISTRITAL DE MIRAFLORES - LIMA",
             "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 25000.0,
-                    "fecha": "2021-02-01",
-                    "descripcion": "SERVICIO DE ASESORIA  ESPECIALIZADA  EN MATERIA  DE DERECHO  ADMINISTRATIVO EN EL MARCO DE LA CONTRATACION DEL SERVICIO ",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE MIRAFLORES - LIMA"
-                },
                 {
                     "tipo": "orden",
                     "monto": 36500.0,
@@ -6228,9 +6219,9 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_06156",
             "type": "contract",
             "tipo": "orden",
-            "monto": 650141.0,
+            "monto": 541537.0,
             "numContratos": 0,
-            "numOrdenes": 236,
+            "numOrdenes": 189,
             "entidadContratante": "MUNICIPALIDAD PROVINCIAL DE ICA",
             "detalles": [
                 {
@@ -6247,51 +6238,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 1020.0,
                     "fecha": "2024-02-01",
                     "descripcion": "SERVICIO DE IMPRESIÓN DE FORMATOS DE ACTAS DE FISCALIZACIÓN PARA LA SGDEL",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 4200.0,
-                    "fecha": "2021-07-01",
-                    "descripcion": "SERVICIO DE IMPRESION DE PAPELETAS IRNT PARA LA SUB GERENCIA DE TRANSPORTE Y TRANSITO DE LA MUNICIPALIDAD PROVINCIAL DE ",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 1060.0,
-                    "fecha": "2021-07-01",
-                    "descripcion": "SERVICIO DE IMPRESION DE ACTAS DE INTERNAMIENTO Y ORDENES DE SALIDA PARA EL FUNCIONAMIENTO DEL DEPOSITO MUNICIPAL DE ICA",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 350.0,
-                    "fecha": "2021-07-01",
-                    "descripcion": "SERVICIO DE IMPRESION DE PLACA RECORDATORIA PARA LA OBRA MEJORAMIENTO DEL PARQUE ABRAHAM VALDELOMAR EN LA CIUDAD DE ICA",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 8225.0,
-                    "fecha": "2021-07-01",
-                    "descripcion": "SERVCIO DE IMPRESION DE PASACALLES, AFICHES, VOLANTES, BANNER PARA EL SIMULACRO FAMILIAR DEL DIA 29 DE JUNIO 2021 EN LA ",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 120.0,
-                    "fecha": "2021-07-01",
-                    "descripcion": "SERVICIO DE IMPRESION EN EGENERAL DE BANNER PARA EL AREA DE DIFUSION DE LA SUB GERENCIA DE SERENAZGO",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
@@ -6325,27 +6271,9 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 1960.0,
-                    "fecha": "2025-12-02",
-                    "descripcion": "ADQUISICION DE PAPEL AUTOCOPIATIVO PARA ATENCION A LAS DIFERENTES OFICINAS DE LA ENTIDAD",
-                    "objeto": "BIEN",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 900.0,
                     "fecha": "2024-10-03",
                     "descripcion": "CONTRATACION DE SERVICIO DE IMPRESION DE STICKER ADHESIVOS PARA LOS VEHICULOS DE TRANSPORTE PUBLICO",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 1650.0,
-                    "fecha": "2021-05-04",
-                    "descripcion": "SERVICIO DE ESCANEO DE 11 TOMOS POR UN TOTAL DE 4125 HOJAS REQUERIDO POR ADMINISTRACION",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
@@ -6568,15 +6496,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 6000.0,
-                    "fecha": "2021-05-06",
-                    "descripcion": "SERVICIO DE IMPRESION DE SEÑALETICAS PARA EL DISTANCIAMIENTO QUE DEBE EXISTIR EN PISOS POR LA VACUNACION DEL ADULTO MAYO",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 200.0,
                     "fecha": "2023-06-06",
                     "descripcion": "SERVICIO DE IMPRESION DE BANNER PARA LA CAMPAÑA DE CERTIFICACION A LAS PERSONAS CON DISCAPACIDAD REQUERIDO POR EL AREA F",
@@ -6589,15 +6508,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 24000.0,
                     "fecha": "2023-10-06",
                     "descripcion": "CONTRATACION DE SERVICIO DE INSTALACION DE LOGOTIPO, PARA LAS 10 UNIDADES VEHICULARES PARA EL A",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 670.0,
-                    "fecha": "2021-06-07",
-                    "descripcion": "SERVICIO DE IMPRESION DE CEDULA DE NOTIFICACION PARA EL CUMPLIMIENTO DE LAS ACTIDADES DE LA GERENCIA",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
@@ -6847,15 +6757,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 2100.0,
-                    "fecha": "2021-07-12",
-                    "descripcion": "SERVCIO DE IMPRESION DE 15 MILLARES DE HOJAS MENBRETADAS",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 620.0,
                     "fecha": "2023-07-12",
                     "descripcion": "SERVICIOS DE IMPRESIÓN DE 2 MILLARES DE FICHAS DE CONSTATACIÓN DE CARACTERÍSTICAS TRANSPORTE DE TRABAJADORES PARA LA SUB",
@@ -6910,15 +6811,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 2640.0,
-                    "fecha": "2021-01-13",
-                    "descripcion": "SERVICIO A TODO COSTO PARA LA IMPRESION DE PASACALLES PARA LA DIFUSION DE PISTAS Y VEREDAS EN EL CENTRO DE LA CIUDAD DE ",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 170.0,
                     "fecha": "2024-02-13",
                     "descripcion": "SERVICIO DE IMPRESION DE ACTAS DE SITRUACION VEHICULAR QUE SE PONE A DISPOSICION PARA LA SUBGERENCIA",
@@ -6955,15 +6847,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 180.0,
-                    "fecha": "2021-07-13",
-                    "descripcion": "SERVICIO DE IMPRESION DE CARTEL VINIL PARA LA ENTREGA DEL SELLO SAFE TRAVELS PARA LA CIUDAD DE ICA",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 17600.0,
                     "fecha": "2023-10-13",
                     "descripcion": "SERVICIO DE SEÑALIZACION DE PROHIBICION EN EL RELLENO SANITARIO",
@@ -6976,15 +6859,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 3210.0,
                     "fecha": "2024-12-13",
                     "descripcion": "SERVICIO DE IMPRESIÓN DE FORMATOS PARA EL ÁREA DE FISCALIZACIÓN, ADSCRITA A LA SUB GERENCIA DE DESA",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 3720.0,
-                    "fecha": "2021-06-14",
-                    "descripcion": "SERVICIO DE IMPRESION DE NOTIFICACIONES CONTROL DESPACHO, PESADO DE GANADO, BANNER, LETREROS Y OTROS PARA EL CAMAL MUNIC",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
@@ -7072,28 +6946,10 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 360.0,
-                    "fecha": "2021-04-15",
-                    "descripcion": "SERVICIO DE IMPRESION DE 02 PASACALLES  CON LEMA OBRA CONCLUIDA EN LA CIUDAD DE ICA",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 300.0,
                     "fecha": "2023-06-15",
                     "descripcion": "ADQUISICIÓN DE 100 LLAVEROS PARA ACTIVIDAD PSICOLÓGICA RECREATIVA DEL CENTRO INTEGRAL DE ATENCIÓN AL ADULTO MAYOR DE LA ",
                     "objeto": "BIEN",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 100.0,
-                    "fecha": "2021-07-15",
-                    "descripcion": "SERVICIO DE IMPRESION EN GENERAL DE BANNER PARA EL AREA DE DIFUSION DE LA SUB GERENCIA DE SERENAZGO Y POLICIAQ MUNICIPAL",
-                    "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
                 },
@@ -7111,24 +6967,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 4500.0,
                     "fecha": "2023-01-16",
                     "descripcion": "SERVICIO DE IMPRESIONES",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 2010.0,
-                    "fecha": "2021-02-16",
-                    "descripcion": "SERVICIO DE IMPRESION DE ACTAS, NOTIFICACIONES. LIQUIDACIONES Y AFICHES PARA EL AREA FUNCIONAL",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 120.0,
-                    "fecha": "2021-02-16",
-                    "descripcion": "SERVICIO DE IMPRESION DE BANNER SUSPENDIENDO LA ATENCION DE MESA DE PARTES Y SE ATENDERA VIA VI",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
@@ -7315,15 +7153,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 1880.0,
-                    "fecha": "2025-05-19",
-                    "descripcion": "CONTRATACION DE SERVICIOS DE IMPRESION",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 5280.0,
                     "fecha": "2024-07-19",
                     "descripcion": "SERVICIO DE IMPRESIÓN DE LOGOTIPO (STICKERS) PARAS 11 UNIDADES DE MOTOS LINEALES PARA EL ÁREA FUNCIONAL DE SERENAZGO ADS",
@@ -7387,15 +7216,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 3150.0,
-                    "fecha": "2025-09-19",
-                    "descripcion": "SERVICIO DE DISEÑO IMPRESION DE STICKERS AUTOADHESIVO PARA LA TOMA DE INVENTARIO",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 680.0,
                     "fecha": "2021-11-19",
                     "descripcion": "SERVICIO DE IMPRESION DE BANNER PUBLICITARIO DE 5,00 X 3,00 MTS. CON EL FIN DE DESARROLLAR EL PROYECTO ICA CULTURA VIVA ",
@@ -7417,42 +7237,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 5500.0,
                     "fecha": "2024-12-19",
                     "descripcion": "CONTRATACION DE SERVICIO DE IMPRESION DE ACTAS DE CONTROL PARA LA SUBGERENCIA DE TRANSPORTE Y TRANSI",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 2640.0,
-                    "fecha": "2021-01-20",
-                    "descripcion": "SERVICIO DE IMPRESION A FULL COLOR DE 12 PASACALLES DONDE SE INDICA EL NO TRANSPORTE DE VEHICUL",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 3950.0,
-                    "fecha": "2021-01-20",
-                    "descripcion": "SERVICIO DE IMPRESION DE FORMULARIOS PARA EL CUIMPLIMEITNO DE LAS ACTIVIDADES DElL AREA DE SANC",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 1490.0,
-                    "fecha": "2021-01-20",
-                    "descripcion": "SERVICIO DE IMPRESION DE FORMULARIOS PARA EL CUIMPLIMEITNO DE LAS ACTIVIDADES DE LA SUB GERENCI",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 2805.0,
-                    "fecha": "2021-01-20",
-                    "descripcion": "SERVICIO DE IMPRESION DE FORMULARIOS PARA EL CUIMPLIMEITNO DE LAS ACTIVIDADES DE LA SUB GERENCI",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
@@ -7684,37 +7468,10 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 2300.0,
-                    "fecha": "2021-04-22",
-                    "descripcion": "SERVICIO0 DE IMPRESION DE BANNER PARA COLOARA A LA UNIDAD MOVIL FURGON DE LA POLICIA MUNICIPAL Y FISCALIZACION",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 7750.0,
                     "fecha": "2022-07-22",
                     "descripcion": "POR EL SERVICIO DE IMPRESION PARA INFORMAR LOS NUMEROS TELEFONICOS PARA ATENCION AL PUBLICO, SOLICITADO POR LA SUB GEREN",
                     "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 450.0,
-                    "fecha": "2025-07-22",
-                    "descripcion": "SERVICIO DE ELABORACION E IMPRESION DE BANNER PARA LA AGENCIA DE HUACACHINA",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 1470.0,
-                    "fecha": "2025-07-22",
-                    "descripcion": "ADQUISICION DE MODULO ITINERANTE MATERIAL PVC SOLICITADO POR LA AGENCIA DE HUACACHINA",
-                    "objeto": "BIEN",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
                 },
@@ -7801,15 +7558,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 850.0,
-                    "fecha": "2021-02-24",
-                    "descripcion": "SERVICIO DE IMPRESION DE FORMULARIOS PARA EL CUMPLIMIENTO DE LAS ACTIVIDADES DE LA SUB GERENCIA",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 1925.0,
                     "fecha": "2024-06-24",
                     "descripcion": "CONTRATACION DE SERVICIO DE IMPRESION",
@@ -7819,27 +7567,9 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 3450.0,
-                    "fecha": "2025-07-24",
-                    "descripcion": "CONTRATACION DE SERVICIO DE IMPRESION DE CEDULAS DE NOTIFICACION PARA LA GERENCIA DE TRANSPORTE Y MO",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 290.0,
                     "fecha": "2022-08-24",
                     "descripcion": "POR EL SERVICIO DE IMPRESION DE BANNER  PARA ACTIVIDAD, SOLICITADO POR OMAPED DE LA SUB GERENCI",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 2700.0,
-                    "fecha": "2021-05-25",
-                    "descripcion": "SERVICIO DE IMPRESION DE FORMATOS PARA EL CUMPLIMIENTO DE LAS ACTIVIDADES 2 Y 3 PROGRAMADAS POR LA GERENCIA",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
@@ -7873,54 +7603,9 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 300.0,
-                    "fecha": "2021-02-26",
-                    "descripcion": "SERVICIO DE IMPRESION DE FORMATOS PARA LA APLICACION DE LA ORDENANZA MUNICIPAL N° 001-2020-MPI",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 4830.0,
-                    "fecha": "2021-02-26",
-                    "descripcion": "SERVCIIO DE IMPRESIONES EN GENERAL PARA EL MERCADO MUNICIPAL TEMPORAL BIOSEGURO QHATU ICA 2021",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 700.0,
-                    "fecha": "2021-02-26",
-                    "descripcion": "ADQUISICION DE PAPEL MEMBRETADO PARA EL CUMPLIMIENTO DE LAS ACTIVIDAES PROGRAMADAS",
-                    "objeto": "BIEN",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 4573.0,
-                    "fecha": "2021-03-26",
-                    "descripcion": "SERVICIO DE IMPRESION DE CARPETAS DE RECUPERACION PARA LOS ALUMNOS DE LA I.E. EZEQUIEL SANCHEZ GUERRERO",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 870.0,
                     "fecha": "2024-03-26",
                     "descripcion": "SERVICIO DE IMPRESIÓN E INSTALACIÓN DE 3 PASACALLES PROMOCIONALES PARA LA FERIA DE COMERCIANTES EN EL CAMPO FERIAL POR F",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 5700.0,
-                    "fecha": "2021-04-26",
-                    "descripcion": "SERVICIO DE IMPRESION DE REVISTA INSTITUCIONAL EN A4 HORTIZONTAL DE 20 PAGINAS EN PAPEL MATE COUCHE FULL COLOR",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
@@ -8017,45 +7702,9 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 173.0,
-                    "fecha": "2021-01-27",
-                    "descripcion": "SERVICIO DE IMPRESION DE BANNER PARA SENSIBILIZAR Y CONCIENTIZAR A LA POBLACION EN TEMAS AMBIEN",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 450.0,
-                    "fecha": "2021-01-27",
-                    "descripcion": "ADQUISICION DE VOLANTES INFORMTIVOS PARA EDUCACION AMBIENTAL",
-                    "objeto": "BIEN",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 2900.0,
-                    "fecha": "2021-01-27",
-                    "descripcion": "ADQUISICION DE PÁPEL MEMBRETADO PARA LA EMISION DE LAS PARTIDAS DE NACIMIENTO POR LA SUB GERENC",
-                    "objeto": "BIEN",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 2800.0,
                     "fecha": "2024-03-27",
                     "descripcion": "SERVICIO DE IMPESIÓN DE 20 MILLARES DE FORMATOS DE OCURRENCIAS PARA LA SGSCPM",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 1429.0,
-                    "fecha": "2021-07-27",
-                    "descripcion": "ADQUISICION DE MATERIALES PARA LA INSTALACION DE LA PLANTA DE OXIGENO EN EL ESTADIO PICASO PERA",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
@@ -8116,15 +7765,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 6004.0,
-                    "fecha": "2021-01-28",
-                    "descripcion": "SERVICIO DE IMPRESION  A FULL COLOR DE VINIL + PVC, BANNER PARA SER COLOCADO POR LA EMERGENCIA",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 1034.0,
                     "fecha": "2024-02-28",
                     "descripcion": "SERVICIO DE IMPRESION DE INSTRUMENTOS DE TRABAJOS DE LA SUBGERENCIA DE CONTROL AMBIENTAL Y SALUBRIDA",
@@ -8137,33 +7777,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 600.0,
                     "fecha": "2023-03-28",
                     "descripcion": "SERVICIO DE ELABORACION E IMPRESION DE UNA GIGANTOGRAFIA Y 02 BANNER ROLL SCRIM PARA LA ACTIVIDAD DENOMINADA DIA MUDIAL ",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 1560.0,
-                    "fecha": "2021-05-28",
-                    "descripcion": "SERVICIO DE IMPRESION DE MANUELAES DE DISPOSITIVOS DE CONTROL DE TRANSITO, DISEÑO GEOMETRICO VIAL DE LA PROVINCIA DE ICA",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 1560.0,
-                    "fecha": "2021-05-28",
-                    "descripcion": "SERVICIO DE IMPRESION DE KARDEX Y HOJAS MEMBRETADAS PARA LOS DIFERENTES CENTROS DE COSTO DE LA MUNICIPALIDAD PROVINCIAL ",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 2680.0,
-                    "fecha": "2021-05-28",
-                    "descripcion": "SERVICIO DE IMPRESION DE BANNER PARA COLOCAR  A LA UNIDAD MOVIL FURGON DE LA POLICIA MUNICIPAL",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
@@ -8210,24 +7823,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "fecha": "2021-12-28",
                     "descripcion": "ADQUISCION DE BANDEROLA PARA PASACALLE DENOMINADO \"LA CALLE NO ES SU LUGAR\"",
                     "objeto": "BIEN",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 5360.0,
-                    "fecha": "2021-03-29",
-                    "descripcion": "SERVICIO DE IMPRESION DE VOLANTES INFORMATIVOS RESPECTOA A LA TENENCIA RESPONSABLE DE CANES Y EL REGISTRO MUNIICPAL DE C",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 180.0,
-                    "fecha": "2021-03-29",
-                    "descripcion": "SERVICIO DE IMPRRESION DE VOLANTES INFORMATIVOS POR EL DIA MUNDIAL DEL AGUA",
-                    "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
                 },
@@ -8314,24 +7909,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 405.0,
-                    "fecha": "2021-06-30",
-                    "descripcion": "SERVICIO DE IMPRESION DE FORMULARIOS PARA EL CUMPLIMIENTO DE LAS ACTIVIDADES DE LAS INSPECCIONES DEL AREA FUNCIONAL DE C",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 700.0,
-                    "fecha": "2025-09-30",
-                    "descripcion": "CONTRATACION DE SERVICIO DE IMPRESIONDE FORMATO DE AVISO DE NOTIFICACION PARA LA GERENCIA DE TRANSPO",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 265.0,
                     "fecha": "2023-10-30",
                     "descripcion": "SERVICIO DE IMPRESION DE TALONARIOS DE LIQUIDACION DE PAGO Y DE ACTAS DE INSPECCION",
@@ -8345,15 +7922,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "fecha": "2023-10-30",
                     "descripcion": "SERVICIO DE IMPRESION Y COLOCACION DE STICKERS EN LAS UNIDADES COMPACTADORAS DE RECOLECCION Y TRANSPORTE DE RESIDUOS SOL",
                     "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 6500.0,
-                    "fecha": "2025-10-31",
-                    "descripcion": "ADQUISICION DE 50 MILLARES DE PAPEL MENBRETADO",
-                    "objeto": "BIEN",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE ICA"
                 }
@@ -8718,9 +8286,9 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_91904",
             "type": "contract",
             "tipo": "orden",
-            "monto": 238292.55,
+            "monto": 224879.55,
             "numContratos": 0,
-            "numOrdenes": 31,
+            "numOrdenes": 29,
             "entidadContratante": "MUNICIPALIDAD DISTRITAL DE PUEBLO NUEVO - ICA",
             "detalles": [
                 {
@@ -8860,15 +8428,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 1200.0,
-                    "fecha": "2021-03-16",
-                    "descripcion": "DOS VALVULAS DE 160 MM, FIERRO FUNDIDO",
-                    "objeto": "BIEN",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE PUEBLO NUEVO - ICA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 1350.0,
                     "fecha": "2022-02-17",
                     "descripcion": "30 MC AFIRMADO",
@@ -8989,15 +8548,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 6350.0,
                     "fecha": "2021-12-23",
                     "descripcion": "ALQUILER DE NIVEL TOPOGRÁFICO,CAMIÓN VOLQUET, ANDAMIO METÁLICO,COMPACTADOR,RETROEXCAVADORA,VIBRADOR DE CONCRETO,MÁQUINA ",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE PUEBLO NUEVO - ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 12213.0,
-                    "fecha": "2021-05-31",
-                    "descripcion": "MANTENIMIENTO DE VÍA LOS LEONES - TRAMO PUEBLO NUEVO -PONGO GRANDE , DISTRITO DE PUEBLO NUEVO - ICA.",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE PUEBLO NUEVO - ICA"
@@ -9174,38 +8724,11 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_87912",
             "type": "contract",
             "tipo": "orden",
-            "monto": 96090.0,
+            "monto": 39600.0,
             "numContratos": 0,
-            "numOrdenes": 4,
+            "numOrdenes": 1,
             "entidadContratante": "FONDO MIVIVIENDA S.A.",
             "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 25000.0,
-                    "fecha": "2021-06-02",
-                    "descripcion": "CONTRAT. DE ESTUDIO DE ABOGADOS ESPECIALIZADOS P/ASESORÍA LEGAL en relación a las afirmaciones e imputaciones legales re",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "FONDO MIVIVIENDA S.A."
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 25000.0,
-                    "fecha": "2021-03-09",
-                    "descripcion": "CONTRATACIÓN DE CONSULTORÍA EXTERNA EN MATERIA LEGAL - VRAEM, El plazo de entrega del Informe 15 días, contados a partir",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "FONDO MIVIVIENDA S.A."
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 6490.0,
-                    "fecha": "2021-07-09",
-                    "descripcion": "Contratación por ampliación de actividades de la orden de servicio 202106-000003. Plazo de ejecución: hasta 7 días calen",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "FONDO MIVIVIENDA S.A."
-                },
                 {
                     "tipo": "orden",
                     "monto": 39600.0,
@@ -9574,29 +9097,11 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_12114",
             "type": "contract",
             "tipo": "orden",
-            "monto": 245442.0,
+            "monto": 215842.0,
             "numContratos": 0,
-            "numOrdenes": 71,
+            "numOrdenes": 54,
             "entidadContratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL",
             "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 800.0,
-                    "fecha": "2021-07-02",
-                    "descripcion": "SERVICIO DE IMPRESION DE BANNER PARA LA DIRECCION REGIONAL DE TRABAJO Y PROMOCION DEL EMPLEO",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 220.0,
-                    "fecha": "2021-07-06",
-                    "descripcion": "SERVICIO DE IMPRESION PARA LA GERENCIA REGIONAL DE DESARROLLO SOCIAL",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
                 {
                     "tipo": "orden",
                     "monto": 3100.0,
@@ -9626,15 +9131,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 5700.0,
-                    "fecha": "2021-06-08",
-                    "descripcion": "SERVICIO DE IMPRESIONES PARA LA DIRECCIÓN DEL ARCHIVO REGIONAL DE ICA",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 3008.0,
                     "fecha": "2022-08-08",
                     "descripcion": "SERVICIO DE IMPRESION DE BANNERS ANIVERSARIO DE ICA 459 AÑOS - DIRCETUR",
@@ -9647,15 +9143,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 1252.0,
                     "fecha": "2023-11-08",
                     "descripcion": "SERVICIO DE IMPRESION DE FOTOCHETS CON CINTAS GRABADAS GRUESAS,PARA LOS TRABAJADORES DE LA DIRE",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 590.0,
-                    "fecha": "2021-03-09",
-                    "descripcion": "SERVICIO DE IMPRESIONES DE FORMATOS DIVERSOS - DRTPE",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
@@ -9692,24 +9179,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 320.0,
                     "fecha": "2021-11-12",
                     "descripcion": "SERVICIO DE IMPRESION DE VOLANTES PARA LA DIRECCION REGIONAL DE TRABAJO Y PROMOCION DEL EMPLEO",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 5000.0,
-                    "fecha": "2021-04-14",
-                    "descripcion": "SERVCIO IMPRESION DE MATERIALES DIVERSOS - DRTPE",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 5560.0,
-                    "fecha": "2021-05-14",
-                    "descripcion": "SERVICIO DE IMPRESIONES DE MEDIOS LOGISTICOS - DREM GORE ICA",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
@@ -9833,15 +9302,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 5560.0,
-                    "fecha": "2021-06-17",
-                    "descripcion": "IMPRESION DE AFICHES Y BANNERS",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 365.0,
                     "fecha": "2021-09-17",
                     "descripcion": "SERVICIO DE IMPRESION DE MATERIALES PARA CONTROL DE ASISTENCIA",
@@ -9869,15 +9329,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 85.0,
-                    "fecha": "2021-06-18",
-                    "descripcion": "SERVICIO DE IMPRESION",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 900.0,
                     "fecha": "2021-08-18",
                     "descripcion": "ADQUISICION DE GIGANTOGRAFIA",
@@ -9887,36 +9338,9 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 490.0,
-                    "fecha": "2021-05-19",
-                    "descripcion": "SERVICIO DE IMPRESION DE BANER PARA LA OFICINA DE IMAGEN INSTITUCIONAL",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 39600.0,
                     "fecha": "2023-06-20",
                     "descripcion": "SERVICIO DE IMPRESIONES EN GENERAL",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 100.0,
-                    "fecha": "2021-07-20",
-                    "descripcion": "SERVICIO DE CONFECCION DE STICKERS - SCR",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 100.0,
-                    "fecha": "2021-07-20",
-                    "descripcion": "SERVICIO DE ELABORACION DE TARJETAS PERSONALES",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
@@ -9936,15 +9360,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "fecha": "2021-12-22",
                     "descripcion": "SERVICIO DE COFECCION E IMPRESION DE LOGO, SEÑALIZACIONES Y ENCUADERNACION DE LIBRETA VEHICULAR",
                     "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 960.0,
-                    "fecha": "2021-03-23",
-                    "descripcion": "(20) MEDALLAS DIA INTERNACIONAL DE LA MUJER - GRDS",
-                    "objeto": "BIEN",
                     "estado": "",
                     "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
                 },
@@ -10004,15 +9419,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 360.0,
-                    "fecha": "2021-03-25",
-                    "descripcion": "SERVICIO DE IMPRESION - GRDS",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 23600.0,
                     "fecha": "2022-05-25",
                     "descripcion": "SERVICIO DE IMPRESION DE BOLETOS PARA EL AREA DE CONSERVACION REGIONAL LAGUNA DE HUACACHINA DEL",
@@ -10052,24 +9458,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 1490.0,
                     "fecha": "2022-08-25",
                     "descripcion": "SERVICIO DE IMPRESION DE BANNER - ORII",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 2400.0,
-                    "fecha": "2021-07-26",
-                    "descripcion": "SERVICIO DE IMPRESIONES PARA LA SUBGERENCIA DE TESORERIA",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 695.0,
-                    "fecha": "2021-05-27",
-                    "descripcion": "SERVICIO DE IMPRESIONES PARA LA DIRECCIÓN REGIONAL DE LA PRODUCCIÓN ICA.",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
@@ -10157,15 +9545,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 80.0,
-                    "fecha": "2021-06-30",
-                    "descripcion": "SERVICIO DE IMPRESIONES",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 890.0,
                     "fecha": "2022-06-30",
                     "descripcion": "SERVICIO DE IMPRESION DE GIGANTOGRAFIA, BANNER (ROLLER) CAMPAÑA DE SALUD - GRDS GORE ICA",
@@ -10208,15 +9587,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 900.0,
-                    "fecha": "2021-03-31",
-                    "descripcion": "servicio de impresion de sticker de inventario - GRAF/CEI",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE ICA SEDE CENTRAL"
                 }
             ]
         },
@@ -10224,9 +9594,9 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_41047",
             "type": "contract",
             "tipo": "orden",
-            "monto": 373646.0,
+            "monto": 344146.0,
             "numContratos": 0,
-            "numOrdenes": 12,
+            "numOrdenes": 11,
             "entidadContratante": "EMPRESA ACTIVOS MINEROS SAC",
             "detalles": [
                 {
@@ -10303,15 +9673,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 29500.0,
-                    "fecha": "2021-03-19",
-                    "descripcion": "ASESORÍA Y ANALISIS LEGAL RESPECTO A LA NATURALEZA JURÍDICA DEL INFORME\nTÉCNICO LEGAL N° 001-2021-G.R.P.DRAP-OAJ EMITIDO",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "EMPRESA ACTIVOS MINEROS SAC"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 32000.0,
                     "fecha": "2021-08-24",
                     "descripcion": "ASESORIA Y ANALISIS LEGAL RESPECTO A LA NATURALEZA JURIDÍCA DEL DIA\nOTORGADO A LA EMPRESA CERRO DE PASCO RESOURCES PARA ",
@@ -10343,20 +9704,11 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_21174",
             "type": "contract",
             "tipo": "orden",
-            "monto": 394610.0,
+            "monto": 297720.0,
             "numContratos": 0,
-            "numOrdenes": 13,
+            "numOrdenes": 10,
             "entidadContratante": "PERUPETRO S.A.",
             "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 28890.0,
-                    "fecha": "2021-06-03",
-                    "descripcion": "Contratación de un estudio jurídico para brindar el servicio de asesoría legal en materia de Derecho Administrativo y Co",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "PERUPETRO S.A."
-                },
                 {
                     "tipo": "orden",
                     "monto": 41400.0,
@@ -10422,15 +9774,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 35000.0,
-                    "fecha": "2021-01-22",
-                    "descripcion": "SERVICIO DE ASESORÍA LEGAL A PERUPETRO S.A., RELACIONADO A LA SOLICITUD ARBITRAL CORRESPONDIENTE A LA EMPRESA SERVICIOS ",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "PERUPETRO S.A."
-                },
-                {
-                    "tipo": "orden",
                     "monto": 8000.0,
                     "fecha": "2022-01-24",
                     "descripcion": "Elaboración de informe de análisis legal en relación al requerimiento de información realizado por OSINERGMIN mediante e",
@@ -10455,15 +9798,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "PERUPETRO S.A."
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 33000.0,
-                    "fecha": "2021-03-30",
-                    "descripcion": "Contratación del servicio de asesoría legal en el proceso de liquidación de la empresa Maple Gas Corporation S.A.",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "PERUPETRO S.A."
                 }
             ]
         },
@@ -10471,9 +9805,9 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_19207",
             "type": "contract",
             "tipo": "orden",
-            "monto": 594679.96,
+            "monto": 530999.96,
             "numContratos": 0,
-            "numOrdenes": 23,
+            "numOrdenes": 20,
             "entidadContratante": "EMPRESA REGIONAL DE SERVICIO PÚBLICO DE ELECTRICIDAD ELECTRO SUR ESTE S.A.A.",
             "detalles": [
                 {
@@ -10508,15 +9842,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 11000.0,
                     "fecha": "2023-02-06",
                     "descripcion": "CONTRATACIÓN DEL SERVICIO PARA LA ELABOR",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "EMPRESA REGIONAL DE SERVICIO PÚBLICO DE ELECTRICIDAD ELECTRO SUR ESTE S.A.A."
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 16000.0,
-                    "fecha": "2021-07-07",
-                    "descripcion": "ELABORACION DE INFORME LEGAL",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "EMPRESA REGIONAL DE SERVICIO PÚBLICO DE ELECTRICIDAD ELECTRO SUR ESTE S.A.A."
@@ -10604,15 +9929,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 18880.0,
-                    "fecha": "2021-02-23",
-                    "descripcion": "SERVICIO ASESORIA LEGAL",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "EMPRESA REGIONAL DE SERVICIO PÚBLICO DE ELECTRICIDAD ELECTRO SUR ESTE S.A.A."
-                },
-                {
-                    "tipo": "orden",
                     "monto": 14000.0,
                     "fecha": "2024-03-26",
                     "descripcion": "SERVICIO DE CAPACITACIÓN \"HOSTIGAMIENTO",
@@ -10673,15 +9989,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "EMPRESA REGIONAL DE SERVICIO PÚBLICO DE ELECTRICIDAD ELECTRO SUR ESTE S.A.A."
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 28800.0,
-                    "fecha": "2025-10-31",
-                    "descripcion": "SERVICIO LEGAL PARA LA ELABORACIÓN DE UN",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "EMPRESA REGIONAL DE SERVICIO PÚBLICO DE ELECTRICIDAD ELECTRO SUR ESTE S.A.A."
                 }
             ]
         },
@@ -10709,9 +10016,9 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_85736",
             "type": "contract",
             "tipo": "orden",
-            "monto": 71660.0,
+            "monto": 71010.0,
             "numContratos": 0,
-            "numOrdenes": 11,
+            "numOrdenes": 9,
             "entidadContratante": "MUNICIPALIDAD DISTRITAL DE LIVITACA",
             "detalles": [
                 {
@@ -10770,15 +10077,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 250.0,
-                    "fecha": "2021-06-15",
-                    "descripcion": "TRANSPORTE PARA TRASLADO DE GANADO VACUNO",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE LIVITACA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 885.0,
                     "fecha": "2022-05-17",
                     "descripcion": "ADQUISICIÓN DE COMBUSTIBLE",
@@ -10801,15 +10099,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "fecha": "2022-05-19",
                     "descripcion": "ADQUISICIÓN DE COMBUSTIBLE DIESEL B5 S-50 (PETROLEO) Y GASOHOL 90 PLUS",
                     "objeto": "BIEN",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE LIVITACA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 400.0,
-                    "fecha": "2021-06-22",
-                    "descripcion": "TRANSPORTE PARA TRASLADO DE GANADO",
-                    "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE LIVITACA"
                 }
@@ -11546,9 +10835,9 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_94599",
             "type": "contract",
             "tipo": "orden",
-            "monto": 75247.55,
+            "monto": 61324.55,
             "numContratos": 0,
-            "numOrdenes": 3,
+            "numOrdenes": 2,
             "entidadContratante": "MUNICIPALIDAD DISTRITAL DE SANTIAGO - ICA",
             "detalles": [
                 {
@@ -11566,15 +10855,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "fecha": "2021-09-14",
                     "descripcion": "ALQUILER DE MAQUINARIAS Y EQUIPO",
                     "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE SANTIAGO - ICA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 13923.0,
-                    "fecha": "2021-05-20",
-                    "descripcion": "COMPRA DE ALCOHOL 70°",
-                    "objeto": "BIEN",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE SANTIAGO - ICA"
                 }
@@ -11799,9 +11079,9 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_96864",
             "type": "contract",
             "tipo": "orden",
-            "monto": 11618.4,
+            "monto": 11553.4,
             "numContratos": 0,
-            "numOrdenes": 10,
+            "numOrdenes": 9,
             "entidadContratante": "EMPRESA PRESTADORA DE SERVICIOS DE SANEAMIENTO MARAÑON S.A.",
             "detalles": [
                 {
@@ -11869,15 +11149,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 65.0,
-                    "fecha": "2021-01-25",
-                    "descripcion": "TUBO PVC DE 110 MM",
-                    "objeto": "BIEN",
-                    "estado": "",
-                    "entidad_contratante": "EMPRESA PRESTADORA DE SERVICIOS DE SANEAMIENTO MARAÑON S.A."
-                },
-                {
-                    "tipo": "orden",
                     "monto": 3280.0,
                     "fecha": "2022-04-26",
                     "descripcion": "TAPON PVC 110 PVC",
@@ -11900,9 +11171,9 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_35079",
             "type": "contract",
             "tipo": "orden",
-            "monto": 80864.40000000001,
+            "monto": 57135.59,
             "numContratos": 0,
-            "numOrdenes": 4,
+            "numOrdenes": 3,
             "entidadContratante": "BANCO DE LA NACION",
             "detalles": [
                 {
@@ -11928,15 +11199,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 16949.15,
                     "fecha": "2023-06-26",
                     "descripcion": "SERVICIO LEGAL EXTERNO PARA LA ABSOLUCIÓN DE CONSULTAS RELACIONADAS A LA VARIACIÓN Y/O INCREMENTO DE LOS MONTOS DE CONTR",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "BANCO DE LA NACION"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 23728.81,
-                    "fecha": "2021-04-28",
-                    "descripcion": "SERVICIO DE CONSULTORIA LEGAL EXTRNA RELACIONADA AL DECRETO DE URGENCIA N° 035-2021.TIEMPO DE EJECUCION:02 DIAS HABILES.",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "BANCO DE LA NACION"
@@ -11967,20 +11229,11 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_42905",
             "type": "contract",
             "tipo": "orden",
-            "monto": 329999.99,
+            "monto": 232799.99,
             "numContratos": 0,
-            "numOrdenes": 10,
+            "numOrdenes": 7,
             "entidadContratante": "EMPRESA DE GENERACION ELECTRICA DE AREQUIPA S.A. - EGASA",
             "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 17000.0,
-                    "fecha": "2021-02-10",
-                    "descripcion": "SERVICIO DE ASESORÍA LEGAL ESPECIALIZADA EN CONTRATACIÓN PÚBLICA, PARA ANALIZAR SI SE HA GENERADO UNA CAUSAL DE NULIDAD ",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "EMPRESA DE GENERACION ELECTRICA DE AREQUIPA S.A. - EGASA"
-                },
                 {
                     "tipo": "orden",
                     "monto": 41000.0,
@@ -11995,15 +11248,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 26000.0,
                     "fecha": "2024-09-13",
                     "descripcion": "SERVICIO DE ELABORACIÓN DE INFORME LEGAL EXPERTO SOBRE LA VIGENCIA DE LA CERTIFICACIÓN AMBIENTAL DEL PROYECTO QUE SE ENC",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "EMPRESA DE GENERACION ELECTRICA DE AREQUIPA S.A. - EGASA"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 41200.0,
-                    "fecha": "2025-06-16",
-                    "descripcion": "SERVICIO DE CONSULTORÍA LEGAL PARA LA ELABORACIÓN DEL INFORME LEGAL SOBRE ALTERNATIVAS DE CONTINUIDAD O SALIDA DEL PROYE",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "EMPRESA DE GENERACION ELECTRICA DE AREQUIPA S.A. - EGASA"
@@ -12037,15 +11281,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                 },
                 {
                     "tipo": "orden",
-                    "monto": 39000.0,
-                    "fecha": "2025-09-26",
-                    "descripcion": "SERVICIOS DE ASESORÍA LEGAL ESPECIALIZADA PARA LA EMISIÓN DE INFORME LEGAL SOBRE LOS EFECTOS DE LA RESOLUCIÓN VICEMINIST",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "EMPRESA DE GENERACION ELECTRICA DE AREQUIPA S.A. - EGASA"
-                },
-                {
-                    "tipo": "orden",
                     "monto": 41200.0,
                     "fecha": "2024-12-26",
                     "descripcion": "CONTRATACIÓN DEL SERVICIO DE ASESORÍA LEGAL PARA \"ELABORACIÓN DE UN INFORME DE DEBIDA DILIGENCIA EN EL MARCO DEL PROCESO",
@@ -12068,9 +11303,9 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_99696",
             "type": "contract",
             "tipo": "orden",
-            "monto": 32235.0,
+            "monto": 2235.0,
             "numContratos": 0,
-            "numOrdenes": 3,
+            "numOrdenes": 2,
             "entidadContratante": "CORPORACION FINANCIERA DE DESARROLLO S.A.",
             "detalles": [
                 {
@@ -12087,15 +11322,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 1350.0,
                     "fecha": "2024-01-17",
                     "descripcion": "Servicio de acceso al sistema de inteligencia comercial via web para funcionarios de cofide.",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "CORPORACION FINANCIERA DE DESARROLLO S.A."
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 30000.0,
-                    "fecha": "2021-05-28",
-                    "descripcion": "Servicio de asesoría legal especializado en derecho administrativo, bancario y/o financiero",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "CORPORACION FINANCIERA DE DESARROLLO S.A."
@@ -12164,9 +11390,9 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_12052",
             "type": "contract",
             "tipo": "orden",
-            "monto": 178000.0,
+            "monto": 107600.0,
             "numContratos": 0,
-            "numOrdenes": 7,
+            "numOrdenes": 3,
             "entidadContratante": "SERVICIO DE AGUA POTABLE Y ALCANTARILLADO DE LIMA - SEDAPAL",
             "detalles": [
                 {
@@ -12192,42 +11418,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 36800.0,
                     "fecha": "2022-05-19",
                     "descripcion": "CONS.ELAB.RECURS.IMPUG.SUNASS",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "SERVICIO DE AGUA POTABLE Y ALCANTARILLADO DE LIMA - SEDAPAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 17600.0,
-                    "fecha": "2021-04-23",
-                    "descripcion": "PAT.LEG.ELIZABETH AMABLE Z.Ampliac.Audit",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "SERVICIO DE AGUA POTABLE Y ALCANTARILLADO DE LIMA - SEDAPAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 17600.0,
-                    "fecha": "2021-04-23",
-                    "descripcion": "PAT.LEG.ANTONIO ANGULO-Ampliac.Auditoria",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "SERVICIO DE AGUA POTABLE Y ALCANTARILLADO DE LIMA - SEDAPAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 17600.0,
-                    "fecha": "2021-04-23",
-                    "descripcion": "PAT.LEG. ESTUARDO ABRAHAMZON.Ampliac.Aud",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "SERVICIO DE AGUA POTABLE Y ALCANTARILLADO DE LIMA - SEDAPAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 17600.0,
-                    "fecha": "2021-04-23",
-                    "descripcion": "PAT.LEG.POLO AGUERO S.Ampliac.Auditoria",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "SERVICIO DE AGUA POTABLE Y ALCANTARILLADO DE LIMA - SEDAPAL"
@@ -12305,61 +11495,16 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_62274",
             "type": "contract",
             "tipo": "orden",
-            "monto": 32457.189999999995,
+            "monto": 10323.09,
             "numContratos": 0,
-            "numOrdenes": 7,
+            "numOrdenes": 2,
             "entidadContratante": "SEGURO SOCIAL DE SALUD",
             "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 1487.92,
-                    "fecha": "2021-04-16",
-                    "descripcion": "Tobramicina 60 mg/mL x 5 mL",
-                    "objeto": "BIEN",
-                    "estado": "",
-                    "entidad_contratante": "SEGURO SOCIAL DE SALUD"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 8835.17,
-                    "fecha": "2021-03-19",
-                    "descripcion": "Lenalidomida 10 mg",
-                    "objeto": "BIEN",
-                    "estado": "",
-                    "entidad_contratante": "SEGURO SOCIAL DE SALUD"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 1487.92,
-                    "fecha": "2021-05-20",
-                    "descripcion": "Tobramicina 60 mg/mL x 5 mL",
-                    "objeto": "BIEN",
-                    "estado": "",
-                    "entidad_contratante": "SEGURO SOCIAL DE SALUD"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 8835.17,
-                    "fecha": "2021-04-21",
-                    "descripcion": "Lenalidomida 10 mg",
-                    "objeto": "BIEN",
-                    "estado": "",
-                    "entidad_contratante": "SEGURO SOCIAL DE SALUD"
-                },
                 {
                     "tipo": "orden",
                     "monto": 8835.17,
                     "fecha": "2022-09-22",
                     "descripcion": "Lenalidomida 10 mg",
-                    "objeto": "BIEN",
-                    "estado": "",
-                    "entidad_contratante": "SEGURO SOCIAL DE SALUD"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 1487.92,
-                    "fecha": "2021-03-23",
-                    "descripcion": "Tobramicina 60 mg/mL x 5 mL",
                     "objeto": "BIEN",
                     "estado": "",
                     "entidad_contratante": "SEGURO SOCIAL DE SALUD"
@@ -12379,9 +11524,9 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_79583",
             "type": "contract",
             "tipo": "orden",
-            "monto": 144400.0,
+            "monto": 114400.0,
             "numContratos": 0,
-            "numOrdenes": 4,
+            "numOrdenes": 3,
             "entidadContratante": "SOCIEDAD ELECTRICA DEL SUR OESTE S.A.",
             "detalles": [
                 {
@@ -12407,15 +11552,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 41000.0,
                     "fecha": "2024-04-26",
                     "descripcion": "GG/AL-0046-2024 SERVICIO DE ASESORÍA LEGAL ESPECIALIZADA PARA LA REVISIÓN Y ANÁLISIS DE PROPUESTA COMERCIAL",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "SOCIEDAD ELECTRICA DEL SUR OESTE S.A."
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 30000.0,
-                    "fecha": "2025-10-29",
-                    "descripcion": "GG/AL-0070-2025 - SERVICIO DE ASESORIA Y PATROCINIO ESPECIALIZADO EN PROCESO CONSTITUCIONAL DE AMPARO Y PROCESO CAUTELAR",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "SOCIEDAD ELECTRICA DEL SUR OESTE S.A."
@@ -12495,9 +11631,9 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_02181",
             "type": "contract",
             "tipo": "orden",
-            "monto": 63760.0,
+            "monto": 44880.0,
             "numContratos": 0,
-            "numOrdenes": 5,
+            "numOrdenes": 3,
             "entidadContratante": "INSTITUTO GEOLOGICO, MINERO Y METALURGICO",
             "detalles": [
                 {
@@ -12505,24 +11641,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "monto": 26000.0,
                     "fecha": "2022-03-21",
                     "descripcion": "SERVICIOS DE UN ESTUDIO DE ABOGADOS QUE CUENTE CON PROFESIONALES DE PRESTIGIO Y TRAYECTORIA PROFESIONAL, CON EXPERIENCIA",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "INSTITUTO GEOLOGICO, MINERO Y METALURGICO"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 11800.0,
-                    "fecha": "2021-01-22",
-                    "descripcion": "OS 00111 / ANULADO SEGUN INFORME 1092-2020-INGEMMET/OA-UL\nCONTRATACIÓN DE LOS SERVICIOS DE ASESORÍA LEGAL EXTERNA PARA L",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "INSTITUTO GEOLOGICO, MINERO Y METALURGICO"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 7080.0,
-                    "fecha": "2021-01-22",
-                    "descripcion": "OS 00119 / ANULADO SEGUN INFORME 1092-2020-INGEMMET/OA-UL\nCONTRATACION DEL SERVICIO DE ASESORIA LEGAL EXTERNA PARA DEFEN",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "INSTITUTO GEOLOGICO, MINERO Y METALURGICO"
@@ -12591,20 +11709,11 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_60306",
             "type": "contract",
             "tipo": "orden",
-            "monto": 20160.0,
+            "monto": 13440.0,
             "numContratos": 0,
-            "numOrdenes": 2,
+            "numOrdenes": 1,
             "entidadContratante": "MINISTERIO DE TRANSPORTES Y COMUNICACIONES",
             "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 6720.0,
-                    "fecha": "2021-02-23",
-                    "descripcion": "SERVICIO DE DEFENSA Y ASESORIA LEGAL PARA EX DIRECTORA GENERAL DE LA DIRECCION GENERAL DE CONCESIONES EN TRANSPORTES, DE",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MINISTERIO DE TRANSPORTES Y COMUNICACIONES"
-                },
                 {
                     "tipo": "orden",
                     "monto": 13440.0,
@@ -12620,34 +11729,16 @@ const NETWORK_DATA_IMPEDIDOS = {
             "id": "CT_76580",
             "type": "contract",
             "tipo": "orden",
-            "monto": 15624.300000000001,
+            "monto": 2000.1,
             "numContratos": 0,
-            "numOrdenes": 3,
+            "numOrdenes": 1,
             "entidadContratante": "GOBIERNO REGIONAL DE LIMA - HOSPITAL HUACHO-HUAURA-OYON Y SERVICIOS  BASICOS  DE  SALUD",
             "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 5376.0,
-                    "fecha": "2021-07-23",
-                    "descripcion": "SERVICIOS PRESTADOS A LOS PACIENTES",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE LIMA - HOSPITAL HUACHO-HUAURA-OYON Y SERVICIOS  BASICOS  DE  SALUD"
-                },
                 {
                     "tipo": "orden",
                     "monto": 2000.1,
                     "fecha": "2021-08-24",
                     "descripcion": "SERVICIOS PRESTADOS A LOS PACIENTES",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "GOBIERNO REGIONAL DE LIMA - HOSPITAL HUACHO-HUAURA-OYON Y SERVICIOS  BASICOS  DE  SALUD"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 8248.2,
-                    "fecha": "2025-12-30",
-                    "descripcion": "PRESTACION DE SERVICIOS A LOS PACIENTES",
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "GOBIERNO REGIONAL DE LIMA - HOSPITAL HUACHO-HUAURA-OYON Y SERVICIOS  BASICOS  DE  SALUD"
