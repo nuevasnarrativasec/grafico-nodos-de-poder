@@ -194,5 +194,13 @@
             }
         });
     </script>
+
+    <script>
+        document.getElementById('disclaimer-ver-mas').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.parent.postMessage({ action: 'scrollTo', target: '#box-descargos' }, '*');
+});
+
+    </script>
 </body>
 </html>
