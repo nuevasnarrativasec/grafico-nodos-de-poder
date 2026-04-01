@@ -1912,9 +1912,11 @@ class NetworkVisualization {
             }
         }
 
-        // Mostrar y auto-desplegar
+        // Mostrar; auto-desplegar solo en desktop
         acc.classList.remove('hidden');
-        acc.classList.remove('collapsed');
+        if (window.innerWidth > 768) {
+            acc.classList.remove('collapsed');
+        }
     }
 
     /**
