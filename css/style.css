@@ -822,12 +822,10 @@
         .disclaimer-accordion-body {
             background: rgba(19, 19, 19, 0.85);
             padding: 0 0.85rem 0.85rem;
-            /*max-height: 200px;*/
-            overflow: hidden;
-            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                        padding 0.3s ease,
-                        opacity 0.25s ease;
+            max-height: 400px;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease, opacity 0.25s ease;
             opacity: 1;
+            overflow-y: scroll;
         }
 
         .disclaimer-accordion-body p {
