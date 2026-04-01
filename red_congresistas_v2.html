@@ -177,6 +177,21 @@
                 });
             }
             // ESC key ya no hace nada (no hay modal)
+
+            // Scroll suave al hacer clic en "VER OTRAS RESPUESTAS"
+            const verMasEl = document.getElementById('disclaimer-ver-mas');
+            if (verMasEl) {
+                verMasEl.addEventListener('click', (e) => {
+                    const href = verMasEl.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        const target = document.querySelector(href);
+                        if (target) {
+                            e.preventDefault();
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                });
+            }
         });
     </script>
 </body>
