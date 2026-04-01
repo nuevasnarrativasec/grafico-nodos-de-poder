@@ -21,7 +21,7 @@ const DISCLAIMERS = {
 
     // Rosio Torres Salinas
     "CP_05618705": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><strong>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
@@ -33,7 +33,7 @@ const DISCLAIMERS = {
 
     // Patricia Juárez Gallegos
     "CP_07831436": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
@@ -45,61 +45,61 @@ const DISCLAIMERS = {
 
     // Flavio Cruz Mamani
     "CP_01311614": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Ana Zegarra
     "CP_42628319": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Miguel Ciccia
     "CP_06049853": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Elizabeth Taipe
     "CP_41005490": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Guido Bellido Ugarte
     "CP_44649199": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Francis Paredes Castro
     "CP_40858548": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Abel Reyes Cam
     "CP_42377791": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Esdras Medina Minaya
     "CP_29423212": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Roberto Sánchez Palomino
     "CP_16002918": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Cheryl Trigozo
     "CP_44886100": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
@@ -111,13 +111,13 @@ const DISCLAIMERS = {
 
     // Enrique Castillo Rivas
     "CP_44807108": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Bernardo Quito Sarmiento
     "CP_29632775": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
@@ -135,19 +135,19 @@ const DISCLAIMERS = {
 
     // Palacios Margot
     "CP_42134579": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Alex Paredes
     "CP_29299579": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Javier Padilla Romero
     "CP_10691398": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
@@ -159,7 +159,7 @@ const DISCLAIMERS = {
 
     // Jorge Montoya
     "CP_43328757": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
@@ -171,25 +171,25 @@ const DISCLAIMERS = {
 
     // Rosangella Barbarán
     "CP_76030152": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Elizabeth Medina Hermosilla
     "CP_22510256": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Ruth Luque
     "CP_40204874": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Tania Ramírez García
     "CP_70094373": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
@@ -207,7 +207,7 @@ const DISCLAIMERS = {
 
     // Víctor Flores Ruiz
     "CP_17896798": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
@@ -231,7 +231,7 @@ const DISCLAIMERS = {
 
     // Isaac Mita Alanoca
     "CP_00434972": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
@@ -243,31 +243,31 @@ const DISCLAIMERS = {
 
     // Ana Obando Morgan
     "CP_07737110": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Ernesto Bustamante Donayre
     "CP_08232920": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Américo Gonza
     "CP_41187802": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Silvana Robles
     "CP_42750152": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Nivardo Tello
     "CP_09575873": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
@@ -279,7 +279,7 @@ const DISCLAIMERS = {
 
     // Pasión Dávila
     "CP_25700579": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
@@ -291,19 +291,19 @@ const DISCLAIMERS = {
 
     // Victor Cutipa Ccama
     "CP_04647085": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // Mery Infantes Castañeda
     "CP_16448130": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
     // José Luna Gálvez
     "CP_07246887": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
@@ -315,7 +315,7 @@ const DISCLAIMERS = {
 
     // Alejandro Muñante
     "CP_45209282": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
@@ -327,7 +327,7 @@ const DISCLAIMERS = {
 
     // Angel Aragón Carreño
     "CP_23977149": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
@@ -339,7 +339,7 @@ const DISCLAIMERS = {
 
     // Rosselli Amuruz
     "CP_44756974": {
-        html: `<p>El Comercio solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
+        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
         linkDescargos: '#box-descargos'
     },
 
