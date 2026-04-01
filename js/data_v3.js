@@ -540,7 +540,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Mariluz Cruz Mamani",
             "ruc": "10013337638",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_01311614"
         },
         {
@@ -548,7 +548,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Diznarda Zegarra Flores",
             "ruc": "10067991112",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_42628319"
         },
         {
@@ -580,7 +580,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Rebeca Torres Ugarte",
             "ruc": "20602862942",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_44649199"
         },
         {
@@ -596,7 +596,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Luis Miguel Ciccia Vasquez",
             "ruc": "20102427891",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_06049853"
         },
         {
@@ -612,7 +612,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Fausto Cirilo Torres Salinas",
             "ruc": "10101804785",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_05618705"
         },
         {
@@ -684,7 +684,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Vittorio Felipe Limachi Quispe",
             "ruc": "10436179150",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_41258762"
         },
         {
@@ -692,7 +692,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Jose David Revilla Villanueva",
             "ruc": "10416024770",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_44275599"
         },
         {
@@ -724,7 +724,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Guillermo Enrique Chiabra Leon",
             "ruc": "10255908842",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_40728264"
         },
         {
@@ -740,7 +740,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Hector Renan Padilla Rojas",
             "ruc": "10079631812",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_10691398"
         },
         {
@@ -796,7 +796,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Julio Cesar Revilla Villanueva",
             "ruc": "10028762173",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_44275599"
         },
         {
@@ -812,7 +812,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Noemi Eladia Medina Minaya",
             "ruc": "10404080429",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_29423212"
         },
         {
@@ -820,7 +820,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Luz Marleny Luque Ibarra",
             "ruc": "10240021485",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_40204874"
         },
         {
@@ -836,7 +836,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Doris Lidia Garcia Hernandez",
             "ruc": "10278410361",
-            "parentesco": "MADRE DEL DECLARANTE",
+            "parentesco": "MADRE DEL CONGRESISTA",
             "congresspersonId": "CP_70094373"
         },
         {
@@ -868,7 +868,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Jose Antonio Ramirez Garcia",
             "ruc": "10278406356",
-            "parentesco": "PADRE DEL DECLARANTE",
+            "parentesco": "PADRE DEL CONGRESISTA",
             "congresspersonId": "CP_70094373"
         },
         {
@@ -924,7 +924,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Elva Rosa Diaz Delgado",
             "ruc": "10274086446",
-            "parentesco": "ABUELA PATERNA DEL DECLARANTE",
+            "parentesco": "ABUELA PATERNA DEL CONGRESISTA",
             "congresspersonId": "CP_46130369"
         },
         {
@@ -952,19 +952,11 @@ const NETWORK_DATA = {
             "congresspersonId": "CP_44275599"
         },
         {
-            "id": "FAM_44275599_10442755995",
-            "type": "familiar",
-            "name": "César Revilla Villanueva",
-            "ruc": "10442755995",
-            "parentesco": "EL DECLARANTE",
-            "congresspersonId": "CP_44275599"
-        },
-        {
             "id": "FAM_00434972_10004462489",
             "type": "familiar",
             "name": "Cesar Augusto Mita Hualpa",
             "ruc": "10004462489",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_00434972"
         },
         {
@@ -980,7 +972,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Victor Antonio Alegria Garcia",
             "ruc": "10418662463",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_45382589"
         },
         {
@@ -988,7 +980,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Susana Virginia Padilla Rojas",
             "ruc": "10404191476",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_10691398"
         },
         {
@@ -1004,7 +996,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Luis Alberto Bustamante Donayr",
             "ruc": "10077721857",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_08232920"
         },
         {
@@ -1012,7 +1004,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Teobaldo Gonza Castillo",
             "ruc": "10461778122",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_41187802"
         },
         {
@@ -1036,7 +1028,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Edgar Esteban Cruz Mamani",
             "ruc": "10013191480",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_01311614"
         },
         {
@@ -1044,7 +1036,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Victor Alegria Gonzales",
             "ruc": "10084311443",
-            "parentesco": "PADRE DEL DECLARANTE",
+            "parentesco": "PADRE DEL CONGRESISTA",
             "congresspersonId": "CP_45382589"
         },
         {
@@ -1052,7 +1044,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Elizabeth Eunice Medina Minaya",
             "ruc": "10296813686",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_29423212"
         },
         {
@@ -1116,7 +1108,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Luis Lopez Morales",
             "ruc": "10001878625",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_09980339"
         },
         {
@@ -1172,7 +1164,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "William Ricardo Sanchez Palomi",
             "ruc": "10157478287",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_16002918"
         },
         {
@@ -1284,7 +1276,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Sadith Saboya Tuanama",
             "ruc": "10055822960",
-            "parentesco": "MADRE DEL DECLARANTE",
+            "parentesco": "MADRE DEL CONGRESISTA",
             "congresspersonId": "CP_42628319"
         },
         {
@@ -1308,7 +1300,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Cesar Augusto Luna Galvez",
             "ruc": "10083253954",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_07246887"
         },
         {
@@ -1316,7 +1308,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Fanel Taipe Coronado",
             "ruc": "10417143756",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_41005490"
         },
         {
@@ -1372,7 +1364,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Martha Gonza Castillo",
             "ruc": "10410842357",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_41187802"
         },
         {
@@ -1460,7 +1452,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Shirley Alexandra Orue Medina",
             "ruc": "10742480351",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_48164963"
         },
         {
@@ -1492,7 +1484,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Esther Aurora Guevara Montes",
             "ruc": "10106432860",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_09575873"
         },
         {
@@ -1516,7 +1508,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Giannia Lizeth Guevara Montes",
             "ruc": "10106535600",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_09575873"
         },
         {
@@ -1540,7 +1532,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Luis Alberto Muñante Barrios",
             "ruc": "10443242975",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_45209282"
         },
         {
@@ -1572,7 +1564,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Lastenia Mendoza De Marticorena",
             "ruc": "20600293622",
-            "parentesco": "MADRE DEL DECLARANTE",
+            "parentesco": "MADRE DEL CONGRESISTA",
             "congresspersonId": "CP_21456255"
         },
         {
@@ -1612,7 +1604,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Jose Antonio Ramirez Garcia",
             "ruc": "20539020570",
-            "parentesco": "PADRE DEL DECLARANTE",
+            "parentesco": "PADRE DEL CONGRESISTA",
             "congresspersonId": "CP_70094373"
         },
         {
@@ -1620,7 +1612,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Roger Amuruz Gallegos",
             "ruc": "20604690685",
-            "parentesco": "PADRE DEL DECLARANTE",
+            "parentesco": "PADRE DEL CONGRESISTA",
             "congresspersonId": "CP_44756974"
         },
         {
@@ -1644,7 +1636,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Silas Medina Minaya",
             "ruc": "20602258140",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_29423212"
         },
         {
@@ -1668,7 +1660,7 @@ const NETWORK_DATA = {
             "type": "familiar",
             "name": "Cesar Enrique Bustamante Donayre",
             "ruc": "20300831215",
-            "parentesco": "HERMANO(A) DEL DECLARANTE",
+            "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_08232920"
         },
         {
@@ -26634,13 +26626,8 @@ const NETWORK_DATA = {
         },
         {
             "source": "CP_44275599",
-            "target": "FAM_44275599_10442755995",
-            "type": "congressperson-familiar"
-        },
-        {
-            "source": "FAM_44275599_10442755995",
             "target": "CT_99697",
-            "type": "familiar-contract"
+            "type": "congressperson-contract"
         },
         {
             "source": "CT_99697",

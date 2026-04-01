@@ -15,7 +15,7 @@ const CONFIG = {
         contract: 20
     },
     forces: {
-        link: { distance: { 'congressperson-familiar': 90, 'familiar-contract': 120, 'contract-entity': 100 }, strength: 0.5 },
+        link: { distance: { 'congressperson-familiar': 90, 'congressperson-contract': 200, 'familiar-contract': 120, 'contract-entity': 100 }, strength: 0.5 },
         // Collapsed state: weak repulsion so congresspersons cluster together
         chargeCollapsed: { congressperson: -120, familiar: -380, entity: -300, contract: -140 },
         // Expanded state: strong repulsion so the active network spreads out
@@ -341,6 +341,38 @@ class NetworkVisualization {
             });
         });
 
+        // Ring 2b: direct congressperson-contract (no familiar)
+        // Place in the largest angular gap between familiars to avoid overlaps
+        const positionedContracts = new Set(Object.keys(positions));
+        const directContracts = [...contracts].filter(id => !positionedContracts.has(id));
+        const nDirect = directContracts.length;
+        if (nDirect > 0) {
+            const dcRadius = Math.max(130, nFam * 28) + 130;
+            // Find the angular midpoint of the largest gap between familiar angles
+            let baseAngle = -Math.PI / 2;
+            if (familiarArr.length > 0) {
+                const famAngles = familiarArr.map(fid => positions[fid].angle).sort((a, b) => a - b);
+                let maxGap = 0;
+                let gapMid = famAngles[0];
+                for (let j = 0; j < famAngles.length; j++) {
+                    const a1 = famAngles[j];
+                    const a2 = j + 1 < famAngles.length ? famAngles[j + 1] : famAngles[0] + 2 * Math.PI;
+                    const gap = a2 - a1;
+                    if (gap > maxGap) { maxGap = gap; gapMid = a1 + gap / 2; }
+                }
+                baseAngle = gapMid;
+            }
+            const spreadStep = nDirect > 1 ? (Math.PI * 0.4) / (nDirect - 1) : 0;
+            directContracts.forEach((ctId, i) => {
+                const angle = baseAngle + (i - (nDirect - 1) / 2) * spreadStep;
+                positions[ctId] = {
+                    x: cx + dcRadius * Math.cos(angle),
+                    y: cy + dcRadius * Math.sin(angle),
+                    angle
+                };
+            });
+        }
+
         // Ring 3: entities placed beyond their contract(s)
         // Usar SOLO los contracts de esta red (contracts.has) para evitar
         // que datos de otras redes desplacen la entidad fuera del canvas.
@@ -412,6 +444,7 @@ class NetworkVisualization {
             .attr('data-target', d => d.target.id || d.target)
             .attr('marker-end', d => {
                 if (d.type === 'congressperson-familiar') return 'url(#arrow-gray)';
+                if (d.type === 'congressperson-contract') return 'url(#arrow-gray)';
                 if (d.type === 'contract-entity') return 'url(#arrow-green)';
                 return null;
             })
@@ -605,7 +638,7 @@ class NetworkVisualization {
         const startY = d.source.y + ny * sourceR * 0.8;
         const endX   = d.target.x - nx * (targetR + 10);
         const endY   = d.target.y - ny * (targetR + 10);
-        if (d.type === 'congressperson-familiar') {
+        if (d.type === 'congressperson-familiar' || d.type === 'congressperson-contract') {
             return `M${startX},${startY}L${endX},${endY}`;
         }
         const dr = dist * 1.5;
@@ -665,6 +698,16 @@ class NetworkVisualization {
                                 .forEach(l2 => entities.add(l2.target.id || l2.target));
                         });
                 });
+                // Direct congressperson-contract links (no familiar intermediary)
+                this.data.links
+                    .filter(l => (l.source.id || l.source) === cp.id && l.type === 'congressperson-contract')
+                    .forEach(l => {
+                        const ctId = l.target.id || l.target;
+                        contracts.add(ctId);
+                        this.data.links
+                            .filter(l2 => (l2.source.id || l2.source) === ctId && l2.type === 'contract-entity')
+                            .forEach(l2 => entities.add(l2.target.id || l2.target));
+                    });
                 this._networkIndex.set(cp.id, {
                     familiars: new Set(familiars),
                     contracts,
@@ -706,6 +749,18 @@ class NetworkVisualization {
                         .forEach(l2 => entities.add(l2.target.id || l2.target));
                 });
         });
+        // Direct congressperson-contract links (no familiar intermediary)
+        if (!familiarId) {
+            this.data.links
+                .filter(l => (l.source.id || l.source) === congresspersonId && l.type === 'congressperson-contract')
+                .forEach(l => {
+                    const ctId = l.target.id || l.target;
+                    contracts.add(ctId);
+                    this.data.links
+                        .filter(l2 => (l2.source.id || l2.source) === ctId && l2.type === 'contract-entity')
+                        .forEach(l2 => entities.add(l2.target.id || l2.target));
+                });
+        }
 
         return { familiars: new Set(targetFamiliars), contracts, entities };
     }
@@ -754,6 +809,7 @@ class NetworkVisualization {
             const src = l.source.id || l.source;
             const tgt = l.target.id || l.target;
             return (src === cid && familiars.has(tgt)) ||
+                   (src === cid && contracts.has(tgt)) ||
                    (familiars.has(src) && contracts.has(tgt)) ||
                    (contracts.has(src) && entities.has(tgt));
         });
