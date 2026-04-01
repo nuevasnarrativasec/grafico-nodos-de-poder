@@ -33,6 +33,11 @@
                 <input type="text" class="search-input" placeholder="Buscar congresista, DNI o RUC..." id="search-input" autocomplete="off">
                 <!-- Dropdown de sugerencias -->
                 <div class="search-dropdown" id="search-dropdown"></div>
+                <!-- Filtro de familiares -->
+                <select class="filter-select" id="filter-familiares">
+                    <option value="todos">Todos los familiares</option>
+                    <option value="impedidos">Familiares con impedimentos de contratos</option>
+                </select>
             </div>
         </div>
     </header>
@@ -164,6 +169,7 @@
     </div>
 
     <script src="./js/data_v3.js?v60"></script>
+    <script src="./js/data_v4.js?v60"></script>
     <script src="./js/disclaimers.js?v60"></script>
     <script src="./js/main.js?v60"></script>
     <script>
@@ -201,6 +207,46 @@
     window.parent.postMessage({ action: 'scrollTo', target: '#box-descargos' }, '*');
 });
 
+    </script>
+
+    <script>
+        // Filtro de familiares — recarga la visualización con el dataset correspondiente
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterSelect = document.getElementById('filter-familiares');
+            if (!filterSelect) return;
+
+            filterSelect.addEventListener('change', () => {
+                const data = filterSelect.value === 'impedidos'
+                    ? NETWORK_DATA_IMPEDIDOS
+                    : NETWORK_DATA;
+
+                // Detener simulación anterior
+                if (window.networkViz && window.networkViz.simulation) {
+                    window.networkViz.simulation.stop();
+                }
+
+                // Limpiar SVG
+                const svg = document.getElementById('network-container');
+                while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+                // Cerrar disclaimer y panel si están abiertos
+                const acc = document.getElementById('disclaimer-accordion');
+                if (acc) { acc.classList.add('collapsed'); acc.classList.add('hidden'); }
+                const panel = document.getElementById('node-panel');
+                if (panel) panel.classList.remove('visible');
+
+                // Limpiar buscador
+                const searchInput = document.getElementById('search-input');
+                if (searchInput) searchInput.value = '';
+
+                // Mostrar loader brevemente
+                const loader = document.getElementById('loader');
+                if (loader) loader.classList.remove('hidden');
+
+                // Reinicializar visualización
+                window.networkViz = new NetworkVisualization('network-container', data);
+            });
+        });
     </script>
 </body>
 </html>
