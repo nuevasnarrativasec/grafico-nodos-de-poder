@@ -60,6 +60,7 @@
             justify-content: end;
             width: 25%;
             right: 0;
+            justify-content: flex-start;
         }
         
         .header-left h1 {
@@ -83,6 +84,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            width: 100%;
         }
         
         /* ==================== SEARCH ==================== */
@@ -115,7 +117,7 @@
         .search-icon {
             position: absolute;
             left: 0.8rem;
-            top: 12%;
+            top: 50%;
             transform: translateY(-50%);
             color: var(--text-muted);
             pointer-events: none;
@@ -123,13 +125,15 @@
 
         .filter-btns {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 0.4rem;
-            margin-top: 0.4rem;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 100;
         }
 
         .filter-btn {
-            flex: 1;
             padding: 0.45rem 0.6rem;
             background: #fff;
             border: 1px solid var(--border-subtle);
@@ -141,6 +145,7 @@
             text-align: left;
             cursor: pointer;
             transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+            width: 37%;
         }
 
         .filter-btn:hover {
@@ -982,6 +987,7 @@
         /* ==================== SEARCH DROPDOWN ==================== */
         .search-wrapper {
             position: relative;
+            width: 100%;
         }
 
         .search-dropdown {
@@ -1420,7 +1426,20 @@
     }
 
     .header-right {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.4rem;
+    }
+
+    .filter-btns {
+        position: static;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.4rem;
+    }
+
+    .filter-btn {
         width: 100%;
     }
 

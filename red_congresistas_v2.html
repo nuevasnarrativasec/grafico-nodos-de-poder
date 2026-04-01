@@ -26,6 +26,11 @@
                 <input type="file" id="file-input" accept=".json">
                 <label for="file-input" class="file-input-btn">📁 Cargar JSON</label>
             </div>
+            <!-- Filtro de familiares -->
+            <div class="filter-btns" id="filter-familiares">
+                <button class="filter-btn" data-value="todos">Otros contratos de familiares identificados</button>
+                <button class="filter-btn" data-value="impedidos">Contratos de familiares comprendidos en la normativa vigente en el periodo analizado</button>
+            </div>
             <div class="search-wrapper">
                 <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -33,11 +38,6 @@
                 <input type="text" class="search-input" placeholder="Buscar congresista, DNI o RUC..." id="search-input" autocomplete="off">
                 <!-- Dropdown de sugerencias -->
                 <div class="search-dropdown" id="search-dropdown"></div>
-                <!-- Filtro de familiares -->
-                <div class="filter-btns" id="filter-familiares">
-                    <button class="filter-btn active" data-value="todos">Otros contratos de familiares identificados</button>
-                    <button class="filter-btn" data-value="impedidos">Contratos de familiares comprendidos en la normativa vigente en el periodo analizado</button>
-                </div>
             </div>
         </div>
     </header>
