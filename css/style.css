@@ -115,7 +115,7 @@
         .search-icon {
             position: absolute;
             left: 0.8rem;
-            top: 17%;
+            top: 12%;
             transform: translateY(-50%);
             color: var(--text-muted);
             pointer-events: none;
