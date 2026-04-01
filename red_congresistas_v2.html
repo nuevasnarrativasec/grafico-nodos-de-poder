@@ -34,10 +34,10 @@
                 <!-- Dropdown de sugerencias -->
                 <div class="search-dropdown" id="search-dropdown"></div>
                 <!-- Filtro de familiares -->
-                <select class="filter-select" id="filter-familiares">
-                    <option value="todos">Ver todos los familiares</option>
-                    <option value="impedidos">Ver familiares con impedimentos de contratos</option>
-                </select>
+                <div class="filter-btns" id="filter-familiares">
+                    <button class="filter-btn active" data-value="todos">Otros contratos de familiares identificados</button>
+                    <button class="filter-btn" data-value="impedidos">Contratos de familiares comprendidos en la normativa vigente en el periodo analizado</button>
+                </div>
             </div>
         </div>
     </header>
@@ -212,13 +212,11 @@
     <script>
         // Filtro de familiares — recarga la visualización con el dataset correspondiente
         document.addEventListener('DOMContentLoaded', () => {
-            const filterSelect = document.getElementById('filter-familiares');
-            if (!filterSelect) return;
+            const filterContainer = document.getElementById('filter-familiares');
+            if (!filterContainer) return;
 
-            filterSelect.addEventListener('change', () => {
-                const data = filterSelect.value === 'impedidos'
-                    ? NETWORK_DATA_IMPEDIDOS
-                    : NETWORK_DATA;
+            function applyFilter(value) {
+                const data = value === 'impedidos' ? NETWORK_DATA_IMPEDIDOS : NETWORK_DATA;
 
                 // Detener simulación anterior
                 if (window.networkViz && window.networkViz.simulation) {
@@ -245,6 +243,14 @@
 
                 // Reinicializar visualización
                 window.networkViz = new NetworkVisualization('network-container', data);
+            }
+
+            filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    applyFilter(btn.dataset.value);
+                });
             });
         });
     </script>
