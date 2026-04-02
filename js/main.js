@@ -1944,5 +1944,5 @@ class NetworkVisualization {
 // INICIALIZAR
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
-    window.networkViz = new NetworkVisualization('network-container', NETWORK_DATA);
+    window.networkViz = new NetworkVisualization('network-container', NETWORK_DATA_IMPEDIDOS);
 });
