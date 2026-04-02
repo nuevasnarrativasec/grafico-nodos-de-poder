@@ -145,7 +145,7 @@
             text-align: left;
             cursor: pointer;
             transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-            width: 28%;
+            width: 32%;
         }
 
         .filter-btn:hover {
