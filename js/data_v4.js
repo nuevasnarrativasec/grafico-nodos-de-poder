@@ -379,14 +379,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             "photo": "./img/jose-cueto.png"
         },
         {
-            "id": "FAM_40728264_20545256992",
-            "type": "familiar",
-            "name": "Anibal Quiroga Leon",
-            "ruc": "20545256992",
-            "parentesco": "YERNO",
-            "congresspersonId": "CP_40728264"
-        },
-        {
             "id": "FAM_01311614_10013337638",
             "type": "familiar",
             "name": "Mariluz Cruz Mamani",
@@ -537,14 +529,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             "ruc": "10240021485",
             "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_40204874"
-        },
-        {
-            "id": "FAM_40728264_10078648398",
-            "type": "familiar",
-            "name": "Anibal Gonzalo Raul Quiroga Le",
-            "ruc": "10078648398",
-            "parentesco": "YERNO",
-            "congresspersonId": "CP_40728264"
         },
         {
             "id": "FAM_70094373_10278410361",
@@ -929,26 +913,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             "ruc": "20300831215",
             "parentesco": "HERMANO(A) DEL CONGRESISTA",
             "congresspersonId": "CP_08232920"
-        },
-        {
-            "id": "CT_74043",
-            "type": "contract",
-            "tipo": "contrato",
-            "monto": 54347.82,
-            "numContratos": 1,
-            "numOrdenes": 0,
-            "entidadContratante": "ORGANISMO SUPERVISOR DE INVERSION PRIVADA EN TELECOMUNICACIONES",
-            "detalles": [
-                {
-                    "tipo": "contrato",
-                    "monto": 54347.82,
-                    "fecha": "2021-11-11",
-                    "descripcion": "Contratación del servicio de Defensa Legal en procedimiento administrativo disciplinario",
-                    "objeto": "SERVICIO",
-                    "estado": "Contratado",
-                    "entidad_contratante": "ORGANISMO SUPERVISOR DE INVERSION PRIVADA EN TELECOMUNICACIONES"
-                }
-            ]
         },
         {
             "id": "CT_08253",
@@ -2023,35 +1987,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             ]
         },
         {
-            "id": "CT_22677",
-            "type": "contract",
-            "tipo": "orden",
-            "monto": 27200.0,
-            "numContratos": 0,
-            "numOrdenes": 2,
-            "entidadContratante": "EJERCITO PERUANO",
-            "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 8800.0,
-                    "fecha": "2021-11-26",
-                    "descripcion": "CONTRATACION DE SERVICIO ESPECIALIZADO DE DEFENSA LEGAL PARA\nPERSONAL MILITAR INVESTIGADO CARPETA FISCAL 31-2018 (GRAL D",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "EJERCITO PERUANO"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 18400.0,
-                    "fecha": "2023-09-11",
-                    "descripcion": "CONTRATACION DE SERVICIO DE DEFENSA LEGAL EN EL PROCESO PENAL\nSEGUIDO ANTE LA FISCALIA ESPECIALIZADA EN DELITOS DE CORRU",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "EJERCITO PERUANO"
-                }
-            ]
-        },
-        {
             "id": "CT_21820",
             "type": "contract",
             "tipo": "orden",
@@ -2969,53 +2904,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             ]
         },
         {
-            "id": "CT_77488",
-            "type": "contract",
-            "tipo": "orden",
-            "monto": 80650.0,
-            "numContratos": 0,
-            "numOrdenes": 4,
-            "entidadContratante": "ORGANISMO DE EVALUACION Y FISCALIZACION AMBIENTAL",
-            "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 3250.0,
-                    "fecha": "2022-02-02",
-                    "descripcion": "Servicio De Apoyo Legal",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "ORGANISMO DE EVALUACION Y FISCALIZACION AMBIENTAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 15000.0,
-                    "fecha": "2023-12-15",
-                    "descripcion": "Servicio De Elaboracion De Informes Sobre Procesos Judiciales En Materia Constitucional",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "ORGANISMO DE EVALUACION Y FISCALIZACION AMBIENTAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 31200.0,
-                    "fecha": "2025-03-27",
-                    "descripcion": "Servicio De Defensa Judicial De La Entidad",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "ORGANISMO DE EVALUACION Y FISCALIZACION AMBIENTAL"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 31200.0,
-                    "fecha": "2025-03-27",
-                    "descripcion": "Servicio Especializado En Derecho Constitucional",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "ORGANISMO DE EVALUACION Y FISCALIZACION AMBIENTAL"
-                }
-            ]
-        },
-        {
             "id": "CT_06471",
             "type": "contract",
             "tipo": "orden",
@@ -3861,26 +3749,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             ]
         },
         {
-            "id": "CT_34885",
-            "type": "contract",
-            "tipo": "orden",
-            "monto": 1080.0,
-            "numContratos": 0,
-            "numOrdenes": 1,
-            "entidadContratante": "UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS",
-            "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 1080.0,
-                    "fecha": "2022-09-07",
-                    "descripcion": "Pares Académicos Externos por participación en el Concurso de Admisión a la\nCarrera Docente 2021",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS"
-                }
-            ]
-        },
-        {
             "id": "CT_59192",
             "type": "contract",
             "tipo": "orden",
@@ -4601,26 +4469,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             ]
         },
         {
-            "id": "CT_26496",
-            "type": "contract",
-            "tipo": "orden",
-            "monto": 6521.72,
-            "numContratos": 0,
-            "numOrdenes": 1,
-            "entidadContratante": "SEGURO INTEGRAL DE SALUD",
-            "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 6521.72,
-                    "fecha": "2023-03-02",
-                    "descripcion": "PAGO DE GASTOS ARBITRALES",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "SEGURO INTEGRAL DE SALUD"
-                }
-            ]
-        },
-        {
             "id": "CT_86276",
             "type": "contract",
             "tipo": "orden",
@@ -4718,26 +4566,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DEL ALTO AMAZONAS - YURIMAGUAS"
-                }
-            ]
-        },
-        {
-            "id": "CT_12801",
-            "type": "contract",
-            "tipo": "orden",
-            "monto": 35000.0,
-            "numContratos": 0,
-            "numOrdenes": 1,
-            "entidadContratante": "MINISTERIO DE TRANSPORTES Y COMUNICACIONES",
-            "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 35000.0,
-                    "fecha": "2023-06-06",
-                    "descripcion": "ASESORÍA Y/O DEFENSA LEGAL PARA ENTIDADES PÚBLICAS EN EL MARCO DE CONTROVERSIAS CONTRACTUALES N",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MINISTERIO DE TRANSPORTES Y COMUNICACIONES"
                 }
             ]
         },
@@ -5142,26 +4970,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "objeto": "BIEN",
                     "estado": "",
                     "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE CAYNA"
-                }
-            ]
-        },
-        {
-            "id": "CT_41480",
-            "type": "contract",
-            "tipo": "orden",
-            "monto": 25000.0,
-            "numContratos": 0,
-            "numOrdenes": 1,
-            "entidadContratante": "ORGANISMO SUPERVISOR DE LA INVERSION EN INFRAESTRUCTURA DE TRANSPORTE DE USO PUBLICO",
-            "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 25000.0,
-                    "fecha": "2023-07-19",
-                    "descripcion": "SERVICIO LEGAL ESPECIALIZADO PARA LA PRESIDENCIA DEL CONSEJO DIRECTIVO, QUE EFECTÚE EL ANÁLISIS E INFORME CORRESPONDIENT",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "ORGANISMO SUPERVISOR DE LA INVERSION EN INFRAESTRUCTURA DE TRANSPORTE DE USO PUBLICO"
                 }
             ]
         },
@@ -11628,44 +11436,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             ]
         },
         {
-            "id": "CT_02181",
-            "type": "contract",
-            "tipo": "orden",
-            "monto": 44880.0,
-            "numContratos": 0,
-            "numOrdenes": 3,
-            "entidadContratante": "INSTITUTO GEOLOGICO, MINERO Y METALURGICO",
-            "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 26000.0,
-                    "fecha": "2022-03-21",
-                    "descripcion": "SERVICIOS DE UN ESTUDIO DE ABOGADOS QUE CUENTE CON PROFESIONALES DE PRESTIGIO Y TRAYECTORIA PROFESIONAL, CON EXPERIENCIA",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "INSTITUTO GEOLOGICO, MINERO Y METALURGICO"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 11800.0,
-                    "fecha": "2022-01-26",
-                    "descripcion": "DERIVADA DE LA AOS 00277-2021, ANAULADA SEGÚN INFORME N°1311-2021-INGEMMEET/OA-UL",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "INSTITUTO GEOLOGICO, MINERO Y METALURGICO"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 7080.0,
-                    "fecha": "2022-01-26",
-                    "descripcion": "DERIVADA DE LA AOS 00276-2021, ANAULADA SEGÚN INFORME N°1311-2021-INGEMMEET/OA-UL",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "INSTITUTO GEOLOGICO, MINERO Y METALURGICO"
-                }
-            ]
-        },
-        {
             "id": "CT_32723",
             "type": "contract",
             "tipo": "orden",
@@ -11682,26 +11452,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "ORGANISMO SUPERVISOR DE LA INVERSION EN ENERGIA Y MINERIA"
-                }
-            ]
-        },
-        {
-            "id": "CT_82278",
-            "type": "contract",
-            "tipo": "orden",
-            "monto": 19500.0,
-            "numContratos": 0,
-            "numOrdenes": 1,
-            "entidadContratante": "MUNICIPALIDAD DISTRITAL DE SAN ISIDRO - LIMA",
-            "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 19500.0,
-                    "fecha": "2023-12-22",
-                    "descripcion": "SERVICIO DE ASESORIA JURIDICA EN GESTION MUNICIPAL",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE SAN ISIDRO - LIMA"
                 }
             ]
         },
@@ -11742,44 +11492,6 @@ const NETWORK_DATA_IMPEDIDOS = {
                     "objeto": "SERVICIO",
                     "estado": "",
                     "entidad_contratante": "GOBIERNO REGIONAL DE LIMA - HOSPITAL HUACHO-HUAURA-OYON Y SERVICIOS  BASICOS  DE  SALUD"
-                }
-            ]
-        },
-        {
-            "id": "CT_67867",
-            "type": "contract",
-            "tipo": "orden",
-            "monto": 89000.0,
-            "numContratos": 0,
-            "numOrdenes": 3,
-            "entidadContratante": "EMPRESA DE ELECTRICIDAD DEL PERÚ S.A. - ELECTROPERU",
-            "detalles": [
-                {
-                    "tipo": "orden",
-                    "monto": 11800.0,
-                    "fecha": "2022-03-25",
-                    "descripcion": "Se requiere contratar los servicios de un abogado y/o de un estudio de abogados (en adelante \"EL ABOGADO\"), con el fin q",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "EMPRESA DE ELECTRICIDAD DEL PERÚ S.A. - ELECTROPERU"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 36000.0,
-                    "fecha": "2022-03-27",
-                    "descripcion": "Se requiere contratar los servicios de un abogado y/o de un estudio de abogados (en adelante \"EL ABOGADO\"), con el fin q",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "EMPRESA DE ELECTRICIDAD DEL PERÚ S.A. - ELECTROPERU"
-                },
-                {
-                    "tipo": "orden",
-                    "monto": 41200.0,
-                    "fecha": "2024-05-28",
-                    "descripcion": "Se requiere contratar los servicios de un Abogado y/o Estudio de abogados, con el fin de que ejerza la defensa y el patr",
-                    "objeto": "SERVICIO",
-                    "estado": "",
-                    "entidad_contratante": "EMPRESA DE ELECTRICIDAD DEL PERÚ S.A. - ELECTROPERU"
                 }
             ]
         },
@@ -12358,14 +12070,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             "numOrdenes": 1
         },
         {
-            "id": "ENT_82769",
-            "type": "entity",
-            "name": "UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS",
-            "montoTotal": 151560.0,
-            "numContratos": 0,
-            "numOrdenes": 28
-        },
-        {
             "id": "ENT_15947",
             "type": "entity",
             "name": "IAFAS DE LA MARINA DE GUERRA DEL PERU",
@@ -12502,14 +12206,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             "numOrdenes": 1
         },
         {
-            "id": "ENT_02853",
-            "type": "entity",
-            "name": "SEGURO INTEGRAL DE SALUD",
-            "montoTotal": 6521.72,
-            "numContratos": 0,
-            "numOrdenes": 1
-        },
-        {
             "id": "ENT_26682",
             "type": "entity",
             "name": "SERVICIO DE AGUA POTABLE Y ALCANTARILLADO DE LIMA - SEDAPAL",
@@ -12550,14 +12246,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             "numOrdenes": 2
         },
         {
-            "id": "ENT_50069",
-            "type": "entity",
-            "name": "ORGANISMO SUPERVISOR DE LA INVERSION EN INFRAESTRUCTURA DE TRANSPORTE DE USO PUBLICO",
-            "montoTotal": 25000.0,
-            "numContratos": 0,
-            "numOrdenes": 1
-        },
-        {
             "id": "ENT_97379",
             "type": "entity",
             "name": "MUNICIPALIDAD DISTRITAL DE RIMAC",
@@ -12588,14 +12276,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             "montoTotal": 30500.0,
             "numContratos": 0,
             "numOrdenes": 9
-        },
-        {
-            "id": "ENT_50875",
-            "type": "entity",
-            "name": "MUNICIPALIDAD DISTRITAL DE SAN ISIDRO - LIMA",
-            "montoTotal": 39500.0,
-            "numContratos": 0,
-            "numOrdenes": 6
         },
         {
             "id": "ENT_79763",
@@ -12966,14 +12646,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             "numOrdenes": 2
         },
         {
-            "id": "ENT_74611",
-            "type": "entity",
-            "name": "INSTITUTO GEOLOGICO, MINERO Y METALURGICO",
-            "montoTotal": 63760.0,
-            "numContratos": 0,
-            "numOrdenes": 5
-        },
-        {
             "id": "ENT_66330",
             "type": "entity",
             "name": "ORGANISMO SUPERVISOR DE LA INVERSION EN ENERGIA Y MINERIA",
@@ -12986,14 +12658,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             "type": "entity",
             "name": "GOBIERNO REGIONAL DE LIMA - HOSPITAL HUACHO-HUAURA-OYON Y SERVICIOS  BASICOS  DE  SALUD",
             "montoTotal": 15624.300000000001,
-            "numContratos": 0,
-            "numOrdenes": 3
-        },
-        {
-            "id": "ENT_51411",
-            "type": "entity",
-            "name": "EMPRESA DE ELECTRICIDAD DEL PERÚ S.A. - ELECTROPERU",
-            "montoTotal": 89000.0,
             "numContratos": 0,
             "numOrdenes": 3
         },
@@ -13859,21 +13523,6 @@ const NETWORK_DATA_IMPEDIDOS = {
     ],
     "links": [
         {
-            "source": "CP_40728264",
-            "target": "FAM_40728264_20545256992",
-            "type": "congressperson-familiar"
-        },
-        {
-            "source": "FAM_40728264_20545256992",
-            "target": "CT_74043",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_74043",
-            "target": "ENT_59369",
-            "type": "contract-entity"
-        },
-        {
             "source": "CP_01311614",
             "target": "FAM_01311614_10013337638",
             "type": "congressperson-familiar"
@@ -14199,21 +13848,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             "type": "contract-entity"
         },
         {
-            "source": "CP_40728264",
-            "target": "FAM_40728264_10078648398",
-            "type": "congressperson-familiar"
-        },
-        {
-            "source": "FAM_40728264_10078648398",
-            "target": "CT_22677",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_22677",
-            "target": "ENT_17113",
-            "type": "contract-entity"
-        },
-        {
             "source": "CP_70094373",
             "target": "FAM_70094373_10278410361",
             "type": "congressperson-familiar"
@@ -14376,16 +14010,6 @@ const NETWORK_DATA_IMPEDIDOS = {
         {
             "source": "CT_07775",
             "target": "ENT_64586",
-            "type": "contract-entity"
-        },
-        {
-            "source": "FAM_40728264_10078648398",
-            "target": "CT_77488",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_77488",
-            "target": "ENT_88810",
             "type": "contract-entity"
         },
         {
@@ -14684,16 +14308,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             "type": "contract-entity"
         },
         {
-            "source": "FAM_40728264_10078648398",
-            "target": "CT_34885",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_34885",
-            "target": "ENT_82769",
-            "type": "contract-entity"
-        },
-        {
             "source": "FAM_42377791_10404575371",
             "target": "CT_59192",
             "type": "familiar-contract"
@@ -14909,16 +14523,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             "type": "contract-entity"
         },
         {
-            "source": "FAM_40728264_10078648398",
-            "target": "CT_26496",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_26496",
-            "target": "ENT_02853",
-            "type": "contract-entity"
-        },
-        {
             "source": "CP_42628319",
             "target": "FAM_42628319_10055822960",
             "type": "congressperson-familiar"
@@ -14931,16 +14535,6 @@ const NETWORK_DATA_IMPEDIDOS = {
         {
             "source": "CT_86276",
             "target": "ENT_32493",
-            "type": "contract-entity"
-        },
-        {
-            "source": "FAM_40728264_10078648398",
-            "target": "CT_12801",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_12801",
-            "target": "ENT_10043",
             "type": "contract-entity"
         },
         {
@@ -14986,16 +14580,6 @@ const NETWORK_DATA_IMPEDIDOS = {
         {
             "source": "CT_44347",
             "target": "ENT_93334",
-            "type": "contract-entity"
-        },
-        {
-            "source": "FAM_40728264_10078648398",
-            "target": "CT_41480",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_41480",
-            "target": "ENT_50069",
             "type": "contract-entity"
         },
         {
@@ -15719,16 +15303,6 @@ const NETWORK_DATA_IMPEDIDOS = {
             "type": "contract-entity"
         },
         {
-            "source": "FAM_40728264_20545256992",
-            "target": "CT_02181",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_02181",
-            "target": "ENT_74611",
-            "type": "contract-entity"
-        },
-        {
             "source": "FAM_07831436_20510037562",
             "target": "CT_32723",
             "type": "familiar-contract"
@@ -15736,16 +15310,6 @@ const NETWORK_DATA_IMPEDIDOS = {
         {
             "source": "CT_32723",
             "target": "ENT_66330",
-            "type": "contract-entity"
-        },
-        {
-            "source": "FAM_40728264_20545256992",
-            "target": "CT_82278",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_82278",
-            "target": "ENT_50875",
             "type": "contract-entity"
         },
         {
@@ -15771,16 +15335,6 @@ const NETWORK_DATA_IMPEDIDOS = {
         {
             "source": "CT_76580",
             "target": "ENT_32426",
-            "type": "contract-entity"
-        },
-        {
-            "source": "FAM_40728264_20545256992",
-            "target": "CT_67867",
-            "type": "familiar-contract"
-        },
-        {
-            "source": "CT_67867",
-            "target": "ENT_51411",
             "type": "contract-entity"
         },
         {
