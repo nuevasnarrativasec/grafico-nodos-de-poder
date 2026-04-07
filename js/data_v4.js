@@ -13020,6 +13020,841 @@ const NETWORK_DATA_IMPEDIDOS = {
             "montoTotal": 40655.0,
             "numContratos": 0,
             "numOrdenes": 2
+        },
+        {
+            "id": "CP_44807108",
+            "type": "congressperson",
+            "name": "Enrique Castillo Rivas",
+            "dni": "44807108",
+            "party": "Fuerza Popular",
+            "department": "Piura",
+            "photo": "./img/enrique-castillo.png"
+        },
+        {
+            "id": "FAM_44807108_10445475497",
+            "type": "familiar",
+            "name": "Manuel Fernando Castillo Rivas",
+            "ruc": "10445475497",
+            "parentesco": "PRIMO(A)",
+            "congresspersonId": "CP_44807108"
+        },
+        {
+            "id": "FAM_44807108_10444664393",
+            "type": "familiar",
+            "name": "Jose Carlos Castro Rivas",
+            "ruc": "10444664393",
+            "parentesco": "PRIMO(A)",
+            "congresspersonId": "CP_44807108"
+        },
+        {
+            "id": "CT_06078",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 8000.0,
+            "numContratos": 0,
+            "numOrdenes": 2,
+            "entidadContratante": "PROGRAMA NACIONAL DE ALIMENTACION ESCOLAR QALI WARMA",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 2000.0,
+                    "fecha": "2021-08-19",
+                    "descripcion": "SERVICIOS DE UN PROFESIONAL EN GESTIÓN OPERATIVA RELACIONADA A LAS TRANSFERENCIAS",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "PROGRAMA NACIONAL DE ALIMENTACION ESCOLAR QALI WARMA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 6000.0,
+                    "fecha": "2021-10-06",
+                    "descripcion": "Profesional en gestión operativa relacionada a las transferencias de recursos de los Comités de",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "PROGRAMA NACIONAL DE ALIMENTACION ESCOLAR QALI WARMA"
+                }
+            ]
+        },
+        {
+            "id": "CT_83736",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 43000.0,
+            "numContratos": 0,
+            "numOrdenes": 8,
+            "entidadContratante": "PROGRAMA NACIONAL DE ALIMENTACION ESCOLAR QALI WARMA",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 6000.0,
+                    "fecha": "2023-02-01",
+                    "descripcion": "SERVICIO DE UN PROFESIONAL EN GESTION DOCUMENTARIA VINCULADA A LA IDENTIFICACION DE OPORTUNIDADES DE MEJORA EN LA UNIDAD",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "PROGRAMA NACIONAL DE ALIMENTACION ESCOLAR QALI WARMA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 6000.0,
+                    "fecha": "2023-05-17",
+                    "descripcion": "SERVICIO DE UN PROFESIONAL EN GESTION DOCUMENTARIA VINCULADA A LA IDENTIFICACION DE OPORTUNIDAD",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "PROGRAMA NACIONAL DE ALIMENTACION ESCOLAR QALI WARMA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 4000.0,
+                    "fecha": "2023-08-31",
+                    "descripcion": "CONTRATACIÓN DEL SERVICIO DE UNA PERSONA NATURAL PARA IDENTIFICAR LAS OPORTUNIDADES DE MEJORA CON LA FINALIDAD DE FORTAL",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "PROGRAMA NACIONAL DE ALIMENTACION ESCOLAR QALI WARMA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 4000.0,
+                    "fecha": "2023-11-21",
+                    "descripcion": "SERVICIO DE APOYO ADMINISTRATIVO PARA GESTIÓN OPERATIVA RELACIONADA CON LAS TRANSFERENCIAS DE RECURSOS DE LOS COMITÉS DE",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "PROGRAMA NACIONAL DE ALIMENTACION ESCOLAR QALI WARMA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 6000.0,
+                    "fecha": "2024-01-23",
+                    "descripcion": "SERVICIO PARA IDENTIFICAR LAS OPORTUNIDAD DE MEJORA Y FORTALECER LAS CAPACIDADES EN LA UT PIURA",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "PROGRAMA NACIONAL DE ALIMENTACION ESCOLAR QALI WARMA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 6000.0,
+                    "fecha": "2024-04-24",
+                    "descripcion": "SERVICIO ES BRINDAR SOPORTE A LA GESTIÓN A FIN DE IDENTIFICAR DE OPORTUNIDADES DE MEJORA",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "PROGRAMA NACIONAL DE ALIMENTACION ESCOLAR QALI WARMA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 6000.0,
+                    "fecha": "2024-07-31",
+                    "descripcion": "SERVICIO TECNICO Y ADMINISTRATIVO",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "PROGRAMA NACIONAL DE ALIMENTACION ESCOLAR QALI WARMA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 5000.0,
+                    "fecha": "2024-10-30",
+                    "descripcion": "REQUERIMIENTO DE LA CONTRATACIÓN DEL SERVICIO DE UN PROFESIONAL PARA.IDENTIFICAR LAS OPORTUNIDAD DE",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "PROGRAMA NACIONAL DE ALIMENTACION ESCOLAR QALI WARMA"
+                }
+            ]
+        },
+        {
+            "id": "CT_10637",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 7500.0,
+            "numContratos": 0,
+            "numOrdenes": 1,
+            "entidadContratante": "PROGRAMA NACIONAL DE  ALIMENTACIÓN ESCOLAR COMUNITARIA WASI MIKUNA",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 7500.0,
+                    "fecha": "2025-01-16",
+                    "descripcion": "SERVICIO DE AUXILIAR ADMINISTRATIVO UT PIURA",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "PROGRAMA NACIONAL DE  ALIMENTACIÓN ESCOLAR COMUNITARIA WASI MIKUNA"
+                }
+            ]
+        },
+        {
+            "id": "ENT_95218",
+            "type": "entity",
+            "name": "PROGRAMA NACIONAL DE ALIMENTACION ESCOLAR QALI WARMA",
+            "montoTotal": 51000.0,
+            "numContratos": 0,
+            "numOrdenes": 10
+        },
+        {
+            "id": "ENT_17912",
+            "type": "entity",
+            "name": "PROGRAMA NACIONAL DE  ALIMENTACIÓN ESCOLAR COMUNITARIA WASI MIKUNA",
+            "montoTotal": 7500.0,
+            "numContratos": 0,
+            "numOrdenes": 1
+        },
+        {
+            "id": "CP_70546213",
+            "type": "congressperson",
+            "name": "Diana Gonzales",
+            "dni": "70546213",
+            "party": "Avanza País",
+            "department": "Arequipa",
+            "photo": "./img/diana-gonzales.png"
+        },
+        {
+            "id": "FAM_70546213_10430272093",
+            "type": "familiar",
+            "name": "Jaqueline Fiorella Delgado Del",
+            "ruc": "10430272093",
+            "parentesco": "PRIMO(A)",
+            "congresspersonId": "CP_70546213"
+        },
+        {
+            "id": "FAM_70546213_10295299997",
+            "type": "familiar",
+            "name": "Carlo Armando Delgado Sanchez",
+            "ruc": "10295299997",
+            "parentesco": "PRIMO(A)",
+            "congresspersonId": "CP_70546213"
+        },
+        {
+            "id": "FAM_70546213_10715692932",
+            "type": "familiar",
+            "name": "Carmen Alicia Delgado Angulo",
+            "ruc": "10715692932",
+            "parentesco": "PRIMO(A)",
+            "congresspersonId": "CP_70546213"
+        },
+        {
+            "id": "FAM_70546213_10295494251",
+            "type": "familiar",
+            "name": "Edward Maximo Gonzales Puertas",
+            "ruc": "10295494251",
+            "parentesco": "TIO (A)",
+            "congresspersonId": "CP_70546213"
+        },
+        {
+            "id": "CT_52665",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 7500.0,
+            "numContratos": 0,
+            "numOrdenes": 1,
+            "entidadContratante": "MUNICIPALIDAD DISTRITAL DE LA VILLA DE CAYMA",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 7500.0,
+                    "fecha": "2021-10-19",
+                    "descripcion": "SERVICIO NO PERSONAL VIA LOCACION DE 01 ESPECIALISTA EN FISCALIZACION Y LIQUIDACION TRIBUTARIA DE GOBIERNO LOCAL",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE LA VILLA DE CAYMA"
+                }
+            ]
+        },
+        {
+            "id": "CT_89730",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 1000.0,
+            "numContratos": 0,
+            "numOrdenes": 1,
+            "entidadContratante": "MUNICIPALIDAD DISTRITAL DE LA CAPILLA",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 1000.0,
+                    "fecha": "2022-01-26",
+                    "descripcion": "POR EL SERVICIO DE ASESORIA ADMINISTRATIVA DE ALCALDIA Y GERENCIA MUNICIPAL CORRESPONDIENTE DESDE 17 A 31 DE ENERO",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE LA CAPILLA"
+                }
+            ]
+        },
+        {
+            "id": "CT_87236",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 4000.0,
+            "numContratos": 0,
+            "numOrdenes": 1,
+            "entidadContratante": "MUNICIPALIDAD DISTRITAL DE YANAHUARA",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 4000.0,
+                    "fecha": "2023-01-13",
+                    "descripcion": "SERVICIO DE ABSOLUCIÓN DE CONSULTAS Y FORMULACIÓN DE RECOMENDACIONES DE ADMINISTRATIVOS Y JURÍDICOS.\nDEBERÁ PRESTAR EL S",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE YANAHUARA"
+                }
+            ]
+        },
+        {
+            "id": "CT_98984",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 3000.0,
+            "numContratos": 0,
+            "numOrdenes": 1,
+            "entidadContratante": "MUNICIPALIDAD DISTRITAL DE SOCABAYA",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 3000.0,
+                    "fecha": "2024-08-05",
+                    "descripcion": "SERVICIO DE VIGILANTE PARA LA UNIDAD DE RECURSOS HUMANOS, DE LA MUNICIPALIDAD DISTRITAL DE SOCABAYA, PROVINCIA DE AREQUI",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE SOCABAYA"
+                }
+            ]
+        },
+        {
+            "id": "ENT_24698",
+            "type": "entity",
+            "name": "MUNICIPALIDAD DISTRITAL DE LA VILLA DE CAYMA",
+            "montoTotal": 7500.0,
+            "numContratos": 0,
+            "numOrdenes": 1
+        },
+        {
+            "id": "ENT_54481",
+            "type": "entity",
+            "name": "MUNICIPALIDAD DISTRITAL DE LA CAPILLA",
+            "montoTotal": 1000.0,
+            "numContratos": 0,
+            "numOrdenes": 1
+        },
+        {
+            "id": "ENT_34859",
+            "type": "entity",
+            "name": "MUNICIPALIDAD DISTRITAL DE YANAHUARA",
+            "montoTotal": 4000.0,
+            "numContratos": 0,
+            "numOrdenes": 1
+        },
+        {
+            "id": "ENT_55931",
+            "type": "entity",
+            "name": "MUNICIPALIDAD DISTRITAL DE SOCABAYA",
+            "montoTotal": 3000.0,
+            "numContratos": 0,
+            "numOrdenes": 1
+        },
+        {
+            "id": "CP_04647085",
+            "type": "congressperson",
+            "name": "Victor Cutipa Ccama",
+            "dni": "04647085",
+            "party": "Juntos por el Perú",
+            "department": "Moquegua",
+            "photo": "./img/victor-cutipa.png"
+        },
+        {
+            "id": "FAM_04647085_10440608324",
+            "type": "familiar",
+            "name": "Medalit Milagros Cutipa Pare",
+            "ruc": "10440608324",
+            "parentesco": "SOBRINO(A)",
+            "congresspersonId": "CP_04647085"
+        },
+        {
+            "id": "FAM_04647085_10735435260",
+            "type": "familiar",
+            "name": "Leslie Gabriela Mamani Cutipa",
+            "ruc": "10735435260",
+            "parentesco": "SOBRINO(A)",
+            "congresspersonId": "CP_04647085"
+        },
+        {
+            "id": "FAM_04647085_10745801744",
+            "type": "familiar",
+            "name": "Ariadna Geraldine Cutipa Pare",
+            "ruc": "10745801744",
+            "parentesco": "SOBRINO(A)",
+            "congresspersonId": "CP_04647085"
+        },
+        {
+            "id": "FAM_04647085_10730622088",
+            "type": "familiar",
+            "name": "Alejandra Gabriell Cutipa Zega",
+            "ruc": "10730622088",
+            "parentesco": "SOBRINO(A)",
+            "congresspersonId": "CP_04647085"
+        },
+        {
+            "id": "FAM_04647085_10710767101",
+            "type": "familiar",
+            "name": "Jose David Cutipa Zegarra",
+            "ruc": "10710767101",
+            "parentesco": "SOBRINO(A)",
+            "congresspersonId": "CP_04647085"
+        },
+        {
+            "id": "FAM_04647085_10701881937",
+            "type": "familiar",
+            "name": "Silvana Maria De Los Angeles M",
+            "ruc": "10701881937",
+            "parentesco": "SOBRINO(A)",
+            "congresspersonId": "CP_04647085"
+        },
+        {
+            "id": "CT_39997",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 23550.0,
+            "numContratos": 0,
+            "numOrdenes": 12,
+            "entidadContratante": "MUNICIPALIDAD PROVINCIAL DE MARISCAL NIETO - MOQUEGUA",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 1500.0,
+                    "fecha": "2023-02-16",
+                    "descripcion": "SERVICIO DE RECEPCION, DERIVACION Y TRAMITE DE DOCUMENTOS ADMINISTRATIVOS PARA EL PROYECTO MEJORAMIENTO Y AMPLIACION DEL",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE MARISCAL NIETO - MOQUEGUA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 1800.0,
+                    "fecha": "2023-03-03",
+                    "descripcion": "SERVICIO DE DERIVACION, REGISTREO Y TRAMITE DE DOCUMENTOS ADMINISTRATIVOS PARA EL PROYECTO CREACION DE LOS SERVICIOS CIV",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE MARISCAL NIETO - MOQUEGUA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 1800.0,
+                    "fecha": "2023-04-04",
+                    "descripcion": "SERVICIO DE APOYO ADMINISTRATIVO DE DERIVACION, REGISTREO Y TRAMITE DE DOCUMENTOS ADMINISTRATIVOS PARA EL PROYECTO MANTE",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE MARISCAL NIETO - MOQUEGUA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 1800.0,
+                    "fecha": "2023-05-10",
+                    "descripcion": "SERVICIO DE APOYO ADMINISTRATIVO DE DERIVACION, REGISTREO Y TRAMITE DE DOCUMENTOS ADMINISTRATIVOS PARA EL PROYECTO MANTE",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE MARISCAL NIETO - MOQUEGUA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2100.0,
+                    "fecha": "2023-06-07",
+                    "descripcion": "SERVICIO DE DERIVACION, REGISTREO Y TRAMITE DE DOCUMENTOS ADMINISTRATIVOS EN LA SUB GERENCIA DE PERSONAL Y BIENESTAR SOC",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE MARISCAL NIETO - MOQUEGUA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2000.0,
+                    "fecha": "2023-07-06",
+                    "descripcion": "SERVICIO DE REGISTRO Y SEGUIMIENTO DE DOCUMENTOS ADMINISTRATIVOS EN LA SUB GERENCIA DE PERSONAL Y BIENESTAR SOCIAL PARA ",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE MARISCAL NIETO - MOQUEGUA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2000.0,
+                    "fecha": "2023-08-08",
+                    "descripcion": "SERVICIO DE REGISTRO Y SEGUIMIENTO DE DOCUMENTOS ADMINISTRATIVOS EN LA SUB GERENCIA DE PERSONAL Y BIENESTAR SOCIAL PARA ",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE MARISCAL NIETO - MOQUEGUA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 1800.0,
+                    "fecha": "2023-09-01",
+                    "descripcion": "SERVICIO DE REGISTRO Y SEGUIMIENTO DE DOCUMENTOS ADMINISTRATIVOS EN LA SUB GERENCIA DE PERSONAL Y BIENESTAR SOCIAL PARA ",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE MARISCAL NIETO - MOQUEGUA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2000.0,
+                    "fecha": "2023-10-10",
+                    "descripcion": "SERVICIO DE REGISTRO Y SEGUIMIENTO DE DOCUMENTOS ADMINISTRATIVOS EN LA SUB GERENCIA DE PERSONAL Y BIENESTAR SOCIAL PARA ",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE MARISCAL NIETO - MOQUEGUA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 1350.0,
+                    "fecha": "2025-02-25",
+                    "descripcion": "SERVICIO DE ACTUALIZACIÓN Y ELABORACIÓN DE PLANOS",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE MARISCAL NIETO - MOQUEGUA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2700.0,
+                    "fecha": "2025-03-24",
+                    "descripcion": "SERVICIO DE LIMPIEZA DE MALEZA",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE MARISCAL NIETO - MOQUEGUA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2700.0,
+                    "fecha": "2025-04-09",
+                    "descripcion": "SERVICIO DE AGUA POTABLE Y ALCANTARILLADO",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD PROVINCIAL DE MARISCAL NIETO - MOQUEGUA"
+                }
+            ]
+        },
+        {
+            "id": "CT_94623",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 1050.0,
+            "numContratos": 0,
+            "numOrdenes": 1,
+            "entidadContratante": "GOBIERNO REGIONAL DE MOQUEGUA UNIDAD EJECUTORA SUB REGION DE DESARROLLO ILO Nº 003",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 1050.0,
+                    "fecha": "2023-03-06",
+                    "descripcion": "SERVICIO DE MANO NO CALIFICADA",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "GOBIERNO REGIONAL DE MOQUEGUA UNIDAD EJECUTORA SUB REGION DE DESARROLLO ILO Nº 003"
+                }
+            ]
+        },
+        {
+            "id": "CT_06174",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 28000.0,
+            "numContratos": 0,
+            "numOrdenes": 8,
+            "entidadContratante": "GOBIERNO REGIONAL DE TACNA SEDE CENTRAL",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 3500.0,
+                    "fecha": "2024-02-12",
+                    "descripcion": "SERVICIO DE ASISTENCIA TECNICA DE OBRAS - (SUP) MANT. ESTABLECIMIENTOS DE SALUD EN TACNA Y JORGE BASADRE - QUINTO PAQUET",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "GOBIERNO REGIONAL DE TACNA SEDE CENTRAL"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 3500.0,
+                    "fecha": "2024-03-05",
+                    "descripcion": "SERVICIO DE ASISTENCIA TÉCNICA EN MANTENIMIENTO DE INFRAESTRUCTURA - (SUP) MANT DE LOS ESTABLECIMIENTOS DE SALUD DE TACN",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "GOBIERNO REGIONAL DE TACNA SEDE CENTRAL"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 3500.0,
+                    "fecha": "2024-04-04",
+                    "descripcion": "SERVICIO DE ASISTENCIA TECNICA EN INGENIERIA - (SUP) PLAN DE MANT DE LOS ESTABLECIMIENTOS DE SALUD TACNA Y JORGE BASADRE",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "GOBIERNO REGIONAL DE TACNA SEDE CENTRAL"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 3500.0,
+                    "fecha": "2024-05-02",
+                    "descripcion": "SERVICIO DE ASISTENCIA TECNICA EN INGENIERIA-(SUP) PLAN DE MANT. DE LOS ESTABLECIMIENTOS DE SALUD TACNA Y JORGE BASADRE ",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "GOBIERNO REGIONAL DE TACNA SEDE CENTRAL"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 3500.0,
+                    "fecha": "2024-06-04",
+                    "descripcion": "SERVICIO DE ASISTENCIA TECNICA EN INGENIERIA - (SUP) MANTENIMIENTO DE ZONAS VULNERABLES ANTE EL DEFICIT HIDRICO EN LAS C",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "GOBIERNO REGIONAL DE TACNA SEDE CENTRAL"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 3500.0,
+                    "fecha": "2024-07-03",
+                    "descripcion": "(SUP) MANTENIMIENTO DE ZONAS VULNERABLES ANTE EL D",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "GOBIERNO REGIONAL DE TACNA SEDE CENTRAL"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 3500.0,
+                    "fecha": "2025-03-04",
+                    "descripcion": "SERVICIO DE ASISTENCIA TECNICA EN INGENIERIA - (SUP) MANT. DE INFRA. CONST.  PARA INST. Y ESC. PUBLICAS DE NIVEL SUPERIO",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "GOBIERNO REGIONAL DE TACNA SEDE CENTRAL"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 3500.0,
+                    "fecha": "2025-04-02",
+                    "descripcion": "SERVICIO DE ASISTENCIA TECNICA EN INGENIERIA - (SUP). MANT. DE INFRA. CONSTRUIDA PARA I.E. PUBLICAS DE NIVEL SUPERIOR DE",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "GOBIERNO REGIONAL DE TACNA SEDE CENTRAL"
+                }
+            ]
+        },
+        {
+            "id": "CT_22043",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 9500.0,
+            "numContratos": 0,
+            "numOrdenes": 1,
+            "entidadContratante": "MUNICIPALIDAD DISTRITAL DE COCACHACRA",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 9500.0,
+                    "fecha": "2024-02-20",
+                    "descripcion": "SERVICIO DE MOLDEADO DE ESCULTURA",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE COCACHACRA"
+                }
+            ]
+        },
+        {
+            "id": "CT_16444",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 25400.0,
+            "numContratos": 0,
+            "numOrdenes": 11,
+            "entidadContratante": "ENTIDAD DESCONOCIDA",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 2200.0,
+                    "fecha": "2024-02-23",
+                    "descripcion": "SERVICIO DE AUXILIAR ADMINISTRATIVO",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "ENTIDAD DESCONOCIDA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2200.0,
+                    "fecha": "2024-03-15",
+                    "descripcion": "SERVICIO DE AUXILIAR ADMINISTRATIVO",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "ENTIDAD DESCONOCIDA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2200.0,
+                    "fecha": "2024-04-12",
+                    "descripcion": "SERVICIO DE ASISTENCIA LEGAL EN PROCESOS ADMINISTRATIVOS",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "ENTIDAD DESCONOCIDA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2200.0,
+                    "fecha": "2024-05-17",
+                    "descripcion": "SERVICIO DE ASISTENCIA TÉCNICA LEGAL",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "ENTIDAD DESCONOCIDA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2200.0,
+                    "fecha": "2024-06-20",
+                    "descripcion": "SERVICIO DE AUXILIAR ADMINISTRATIVO",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "ENTIDAD DESCONOCIDA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2500.0,
+                    "fecha": "2024-07-11",
+                    "descripcion": "SERVICIO DE AUXILIAR ADMINISTRATIVO",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "ENTIDAD DESCONOCIDA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2200.0,
+                    "fecha": "2024-08-08",
+                    "descripcion": "SERVICIO DE AUXILIAR ADMINISTRATIVO",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "ENTIDAD DESCONOCIDA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2200.0,
+                    "fecha": "2024-09-11",
+                    "descripcion": "SERVICIO DE REVISIÓN LEGAL, CLASIFICACIÓN Y ARCHIVO DOCUMENTOS",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "ENTIDAD DESCONOCIDA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2500.0,
+                    "fecha": "2024-10-11",
+                    "descripcion": "SERVICIO DE REVISIÓN, ANÁLISIS LEGAL Y EVALUACIÓN DE PROCEDIMIENTOS ADMINISTRATIVOS DISCIPLINARIOS",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "ENTIDAD DESCONOCIDA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2500.0,
+                    "fecha": "2024-11-29",
+                    "descripcion": "SERVICIO DE ASISTENCIA TECNICA ADMINISTRATIVA",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "ENTIDAD DESCONOCIDA"
+                },
+                {
+                    "tipo": "orden",
+                    "monto": 2500.0,
+                    "fecha": "2024-12-13",
+                    "descripcion": "SERVICIO DE REVISIÓN, ANÁLISIS LEGAL Y EVALUACIÓN DE PROCEDIMIENTOS ADMINISTRATIVOS DISCIPLINARIOS",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "ENTIDAD DESCONOCIDA"
+                }
+            ]
+        },
+        {
+            "id": "CT_38302",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 27950.0,
+            "numContratos": 0,
+            "numOrdenes": 1,
+            "entidadContratante": "MUNICIPALIDAD DISTRITAL DE PUNTA DE BOMBON",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 27950.0,
+                    "fecha": "2024-04-16",
+                    "descripcion": "SERVICIO DE TRASLADO DE ADOQUIN Y MATERIAL GRUESO EN EL INTERIOR DE LA VIA PARA LA OBRA \"MEJORAMIENTO DEL SERVICIO DE TR",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE PUNTA DE BOMBON"
+                }
+            ]
+        },
+        {
+            "id": "CT_32090",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 41180.0,
+            "numContratos": 0,
+            "numOrdenes": 1,
+            "entidadContratante": "MUNICIPALIDAD DISTRITAL DE PUNTA DE BOMBON",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 41180.0,
+                    "fecha": "2024-04-16",
+                    "descripcion": "SERVICIO DE MANO DE OBRA PARA LA INSTALACION DE ADOQUINES EN PAVIMENTO PARA LA OBRA \"MEJORAMIENTO DEL SERVICIO DE TRANSI",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "MUNICIPALIDAD DISTRITAL DE PUNTA DE BOMBON"
+                }
+            ]
+        },
+        {
+            "id": "CT_23266",
+            "type": "contract",
+            "tipo": "orden",
+            "monto": 3200.0,
+            "numContratos": 0,
+            "numOrdenes": 1,
+            "entidadContratante": "GOBIERNO REGIONAL DE MOQUEGUA SEDE CENTRAL",
+            "detalles": [
+                {
+                    "tipo": "orden",
+                    "monto": 3200.0,
+                    "fecha": "2024-11-30",
+                    "descripcion": "INFORME N° 908-2024-GRM/GRDS-DRVCS",
+                    "objeto": "SERVICIO",
+                    "estado": "",
+                    "entidad_contratante": "GOBIERNO REGIONAL DE MOQUEGUA SEDE CENTRAL"
+                }
+            ]
+        },
+        {
+            "id": "ENT_25681",
+            "type": "entity",
+            "name": "MUNICIPALIDAD PROVINCIAL DE MARISCAL NIETO - MOQUEGUA",
+            "montoTotal": 23550.0,
+            "numContratos": 0,
+            "numOrdenes": 12
+        },
+        {
+            "id": "ENT_65995",
+            "type": "entity",
+            "name": "GOBIERNO REGIONAL DE MOQUEGUA UNIDAD EJECUTORA SUB REGION DE DESARROLLO ILO Nº 003",
+            "montoTotal": 1050.0,
+            "numContratos": 0,
+            "numOrdenes": 1
+        },
+        {
+            "id": "ENT_63182",
+            "type": "entity",
+            "name": "MUNICIPALIDAD DISTRITAL DE COCACHACRA",
+            "montoTotal": 29500.0,
+            "numContratos": 0,
+            "numOrdenes": 3
+        },
+        {
+            "id": "ENT_88019",
+            "type": "entity",
+            "name": "MUNICIPALIDAD DISTRITAL DE PUNTA DE BOMBON",
+            "montoTotal": 69130.0,
+            "numContratos": 0,
+            "numOrdenes": 2
+        },
+        {
+            "id": "ENT_21222",
+            "type": "entity",
+            "name": "GOBIERNO REGIONAL DE MOQUEGUA SEDE CENTRAL",
+            "montoTotal": 3200.0,
+            "numContratos": 0,
+            "numOrdenes": 1
         }
     ],
     "links": [
@@ -14986,6 +15821,216 @@ const NETWORK_DATA_IMPEDIDOS = {
         {
             "source": "CT_19396",
             "target": "ENT_71905",
+            "type": "contract-entity"
+        },
+        {
+            "source": "CP_44807108",
+            "target": "FAM_44807108_10445475497",
+            "type": "congressperson-familiar"
+        },
+        {
+            "source": "FAM_44807108_10445475497",
+            "target": "CT_06078",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_06078",
+            "target": "ENT_95218",
+            "type": "contract-entity"
+        },
+        {
+            "source": "CP_44807108",
+            "target": "FAM_44807108_10444664393",
+            "type": "congressperson-familiar"
+        },
+        {
+            "source": "FAM_44807108_10444664393",
+            "target": "CT_83736",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_83736",
+            "target": "ENT_95218",
+            "type": "contract-entity"
+        },
+        {
+            "source": "FAM_44807108_10444664393",
+            "target": "CT_10637",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_10637",
+            "target": "ENT_17912",
+            "type": "contract-entity"
+        },
+        {
+            "source": "CP_70546213",
+            "target": "FAM_70546213_10430272093",
+            "type": "congressperson-familiar"
+        },
+        {
+            "source": "FAM_70546213_10430272093",
+            "target": "CT_52665",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_52665",
+            "target": "ENT_24698",
+            "type": "contract-entity"
+        },
+        {
+            "source": "CP_70546213",
+            "target": "FAM_70546213_10295299997",
+            "type": "congressperson-familiar"
+        },
+        {
+            "source": "FAM_70546213_10295299997",
+            "target": "CT_89730",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_89730",
+            "target": "ENT_54481",
+            "type": "contract-entity"
+        },
+        {
+            "source": "CP_70546213",
+            "target": "FAM_70546213_10715692932",
+            "type": "congressperson-familiar"
+        },
+        {
+            "source": "FAM_70546213_10715692932",
+            "target": "CT_87236",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_87236",
+            "target": "ENT_34859",
+            "type": "contract-entity"
+        },
+        {
+            "source": "CP_70546213",
+            "target": "FAM_70546213_10295494251",
+            "type": "congressperson-familiar"
+        },
+        {
+            "source": "FAM_70546213_10295494251",
+            "target": "CT_98984",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_98984",
+            "target": "ENT_55931",
+            "type": "contract-entity"
+        },
+        {
+            "source": "CP_04647085",
+            "target": "FAM_04647085_10440608324",
+            "type": "congressperson-familiar"
+        },
+        {
+            "source": "FAM_04647085_10440608324",
+            "target": "CT_39997",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_39997",
+            "target": "ENT_25681",
+            "type": "contract-entity"
+        },
+        {
+            "source": "FAM_04647085_10440608324",
+            "target": "CT_16444",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_16444",
+            "target": "ENT_09846",
+            "type": "contract-entity"
+        },
+        {
+            "source": "CP_04647085",
+            "target": "FAM_04647085_10735435260",
+            "type": "congressperson-familiar"
+        },
+        {
+            "source": "FAM_04647085_10735435260",
+            "target": "CT_94623",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_94623",
+            "target": "ENT_65995",
+            "type": "contract-entity"
+        },
+        {
+            "source": "CP_04647085",
+            "target": "FAM_04647085_10745801744",
+            "type": "congressperson-familiar"
+        },
+        {
+            "source": "FAM_04647085_10745801744",
+            "target": "CT_06174",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_06174",
+            "target": "ENT_30668",
+            "type": "contract-entity"
+        },
+        {
+            "source": "CP_04647085",
+            "target": "FAM_04647085_10730622088",
+            "type": "congressperson-familiar"
+        },
+        {
+            "source": "FAM_04647085_10730622088",
+            "target": "CT_22043",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_22043",
+            "target": "ENT_63182",
+            "type": "contract-entity"
+        },
+        {
+            "source": "FAM_04647085_10730622088",
+            "target": "CT_32090",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_32090",
+            "target": "ENT_88019",
+            "type": "contract-entity"
+        },
+        {
+            "source": "CP_04647085",
+            "target": "FAM_04647085_10710767101",
+            "type": "congressperson-familiar"
+        },
+        {
+            "source": "FAM_04647085_10710767101",
+            "target": "CT_38302",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_38302",
+            "target": "ENT_88019",
+            "type": "contract-entity"
+        },
+        {
+            "source": "CP_04647085",
+            "target": "FAM_04647085_10701881937",
+            "type": "congressperson-familiar"
+        },
+        {
+            "source": "FAM_04647085_10701881937",
+            "target": "CT_23266",
+            "type": "familiar-contract"
+        },
+        {
+            "source": "CT_23266",
+            "target": "ENT_21222",
             "type": "contract-entity"
         }
     ]
