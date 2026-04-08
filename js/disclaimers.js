@@ -289,11 +289,6 @@ const DISCLAIMERS = {
         linkDescargos: '#box-descargos'
     },
 
-    // Victor Cutipa Ccama
-    "CP_04647085": {
-        html: `<p><stron>El Comercio</strong> solicitó al congresista su descargo sobre los contratos y órdenes de servicio de sus familiares; hasta el cierre de esta publicación no se obtuvo respuesta.</p>`,
-        linkDescargos: '#box-descargos'
-    },
 
     // Mery Infantes Castañeda
     "CP_16448130": {
